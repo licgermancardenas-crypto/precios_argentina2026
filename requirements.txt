@@ -1,0 +1,21 @@
+# Scraping
+playwright==1.44.0
+
+# Data
+pandas==2.2.2
+numpy==1.26.4
+
+# Base de datos
+# sqlite3 viene incluido en Python stdlib
+
+# Dashboard
+streamlit==1.35.0
+plotly==5.22.0
+
+# ML (v3 — se activa en esa fase)
+# prophet==1.1.5
+# scikit-learn==1.5.0
+
+# Utils
+python-dotenv==1.0.1
+requests==2.32.3
