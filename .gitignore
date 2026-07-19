@@ -13,8 +13,8 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Base de datos local (no se versiona, se regenera)
-data/atlas.db
+# Base de datos — SÍ se versiona (el Action la actualiza diariamente)
+# data/atlas.db
 
 # Playwright
 playwright/.cache/
