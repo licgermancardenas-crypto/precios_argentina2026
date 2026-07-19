@@ -2,10 +2,12 @@
 
 > Monitor de precios de supermercados argentinos con pipeline de datos automatizado, índice propio de inflación y (próximamente) modelo predictivo.
 
+### [Ver dashboard en vivo →](https://preciosargentina2026-hzmu5aufmjjbsieqf7ek7d.streamlit.app)
+
 [![scrape-diario](https://github.com/licgermancardenas-crypto/precios_argentina2026/actions/workflows/scrape.yml/badge.svg)](https://github.com/licgermancardenas-crypto/precios_argentina2026/actions/workflows/scrape.yml)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://preciosargentina2026-hzmu5aufmjjbsieqf7ek7d.streamlit.app)
 ![Python](https://img.shields.io/badge/Python-3.11+-blue)
 ![SQLite](https://img.shields.io/badge/DB-SQLite-lightgrey)
-![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)
 
 ---
 
