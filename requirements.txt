@@ -1,5 +1,5 @@
-# Scraping
-playwright==1.44.0
+# Scraping (API HTTP pura — no necesita Playwright)
+# playwright==1.44.0  # solo si en el futuro alguna cadena requiere browser
 
 # Data
 pandas==2.2.2
