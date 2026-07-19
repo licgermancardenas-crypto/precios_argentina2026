@@ -21,33 +21,33 @@ CANASTA: list[dict] = [
     {"id": 2,  "categoria": "lacteos",     "nombre_ref": "Yogur bebible Ser o SanCor frutilla", "presentacion": "900 g / 1 L",   "ean": None},
     {"id": 3,  "categoria": "lacteos",     "nombre_ref": "Queso cremoso La Paulina",             "presentacion": "por kg",        "ean": None},
     {"id": 4,  "categoria": "lacteos",     "nombre_ref": "Manteca La Serenísima",               "presentacion": "200 g",         "ean": None},
-    {"id": 5,  "categoria": "lacteos",     "nombre_ref": "Huevos blancos",                      "presentacion": "maple x 12",    "ean": None},
+    {"id": 5,  "categoria": "lacteos",     "nombre_ref": "Huevo blanco maple 12",              "presentacion": "maple x 12",    "ean": None},
     # --- Almacén ---
-    {"id": 6,  "categoria": "almacen",     "nombre_ref": "Aceite de girasol Natura o Cocinero", "presentacion": "1.5 L",         "ean": None},
-    {"id": 7,  "categoria": "almacen",     "nombre_ref": "Arroz largo fino Gallo o Molinos Ala","presentacion": "1 kg",          "ean": None},
-    {"id": 8,  "categoria": "almacen",     "nombre_ref": "Fideos secos Matarazzo o Lucchetti",  "presentacion": "500 g",         "ean": None},
-    {"id": 9,  "categoria": "almacen",     "nombre_ref": "Harina de trigo 000 Morixe",          "presentacion": "1 kg",          "ean": None},
-    {"id": 10, "categoria": "almacen",     "nombre_ref": "Azúcar Ledesma",                      "presentacion": "1 kg",          "ean": None},
-    {"id": 11, "categoria": "almacen",     "nombre_ref": "Yerba mate Playadito o Taragüí",      "presentacion": "1 kg",          "ean": None},
-    {"id": 12, "categoria": "almacen",     "nombre_ref": "Café molido La Virginia o Cabrales",  "presentacion": "250 g",         "ean": None},
-    {"id": 13, "categoria": "almacen",     "nombre_ref": "Puré de tomate Arcor o Cica",         "presentacion": "520 g",         "ean": None},
+    {"id": 6,  "categoria": "almacen",     "nombre_ref": "Aceite girasol Natura 1.5 litros",  "presentacion": "1.5 L",         "ean": None},
+    {"id": 7,  "categoria": "almacen",     "nombre_ref": "Arroz largo fino Molinos Ala 1kg",     "presentacion": "1 kg",          "ean": None},
+    {"id": 8,  "categoria": "almacen",     "nombre_ref": "Fideos tallarines Matarazzo 500g",     "presentacion": "500 g",         "ean": None},
+    {"id": 9,  "categoria": "almacen",     "nombre_ref": "Harina de trigo 000 Morixe 1kg",       "presentacion": "1 kg",          "ean": None},
+    {"id": 10, "categoria": "almacen",     "nombre_ref": "Azúcar Ledesma 1kg",                   "presentacion": "1 kg",          "ean": None},
+    {"id": 11, "categoria": "almacen",     "nombre_ref": "Yerba mate Taragui 1kg",               "presentacion": "1 kg",          "ean": None},
+    {"id": 12, "categoria": "almacen",     "nombre_ref": "Cafe molido La Virginia 250g",         "presentacion": "250 g",         "ean": None},
+    {"id": 13, "categoria": "almacen",     "nombre_ref": "Pure de tomate Arcor 520g",            "presentacion": "520 g",         "ean": None},
     {"id": 14, "categoria": "almacen",     "nombre_ref": "Sal fina Celusal",                    "presentacion": "500 g",         "ean": None},
     # --- Panificados ---
-    {"id": 15, "categoria": "panificados", "nombre_ref": "Pan lactal Bimbo o Fargo",            "presentacion": "460 g",         "ean": None},
-    {"id": 16, "categoria": "panificados", "nombre_ref": "Galletitas Criollitas o Traviata",    "presentacion": "pack 3 u.",     "ean": None},
+    {"id": 15, "categoria": "panificados", "nombre_ref": "Pan lactal blanco Bimbo",             "presentacion": "400 g",         "ean": "7793890261233"},
+    {"id": 16, "categoria": "panificados", "nombre_ref": "Galletitas Criollitas Traviata",      "presentacion": "pack 3 u.",     "ean": None},
     # --- Carnes y frescos ---
-    {"id": 17, "categoria": "carnes",      "nombre_ref": "Carne picada común",                  "presentacion": "por kg",        "ean": None},
+    {"id": 17, "categoria": "carnes",      "nombre_ref": "Picada especial vacuna",             "presentacion": "por kg",        "ean": "2069607000002"},
     {"id": 18, "categoria": "carnes",      "nombre_ref": "Pollo entero",                        "presentacion": "por kg",        "ean": None},
     {"id": 19, "categoria": "carnes",      "nombre_ref": "Paleta cocida fiambre",               "presentacion": "por kg",        "ean": None},
     # --- Bebidas ---
-    {"id": 20, "categoria": "bebidas",     "nombre_ref": "Coca-Cola",                           "presentacion": "2.25 L",        "ean": None},
+    {"id": 20, "categoria": "bebidas",     "nombre_ref": "Coca-Cola Original 2.25L",            "presentacion": "2.25 L",        "ean": "7790895000997"},
     {"id": 21, "categoria": "bebidas",     "nombre_ref": "Agua sin gas Villavicencio",          "presentacion": "2 L",           "ean": None},
     {"id": 22, "categoria": "bebidas",     "nombre_ref": "Cerveza Quilmes",                     "presentacion": "1 L retornable","ean": None},
     # --- Limpieza e higiene ---
     {"id": 23, "categoria": "limpieza",    "nombre_ref": "Detergente Magistral",                "presentacion": "500 ml",        "ean": None},
     {"id": 24, "categoria": "limpieza",    "nombre_ref": "Lavandina Ayudín",                    "presentacion": "1 L",           "ean": None},
     {"id": 25, "categoria": "limpieza",    "nombre_ref": "Papel higiénico Higienol o Elite",   "presentacion": "pack 4 u.",     "ean": None},
-    {"id": 26, "categoria": "limpieza",    "nombre_ref": "Jabón en polvo Skip o Ala",           "presentacion": "800 g / 900 ml","ean": None},
+    {"id": 26, "categoria": "limpieza",    "nombre_ref": "Jabon en polvo Ala 800g",             "presentacion": "800 g / 900 ml","ean": None},
 ]
 
 # Parámetros de scraping
