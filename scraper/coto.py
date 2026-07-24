@@ -52,10 +52,16 @@ def _buscar_producto(nombre_ref: str) -> list[dict]:
     return data.get("response", {}).get("results", [])
 
 
-def _extraer_precio_promo(discounts: list[dict]) -> float | None:
+def _extraer_precio_promo(discounts: list[dict], precio_lista: float | None) -> float | None:
     """
     Extrae precio promocional si existe descuento directo de precio.
     Ignora promos condicionales (2do 70%, cuotas sin interés, etc.).
+
+    Guard de sanidad: un precio promocional válido siempre es *menor* al
+    precio de lista. La API de Coto a veces devuelve un discountPrice con un
+    formato que el parser infla (miles/decimales), produciendo valores
+    absurdos (>10x lista). Descartamos cualquier promo fuera del rango
+    (0, precio_lista) para no contaminar la serie.
     """
     for d in discounts:
         texto = d.get("discountText") or ""
@@ -64,9 +70,11 @@ def _extraer_precio_promo(discounts: list[dict]) -> float | None:
         if "Dto" in texto or "dto" in texto:
             try:
                 limpio = precio_str.replace("$", "").replace(".", "").replace(",", ".")
-                return float(limpio)
+                promo = float(limpio)
             except ValueError:
-                pass
+                continue
+            if precio_lista and 0 < promo < precio_lista:
+                return promo
     return None
 
 
@@ -75,7 +83,7 @@ def _parsear_resultado(raw: dict, categoria: str, nombre_ref: str) -> dict:
     d = raw.get("data", {})
 
     precio_lista = d.get("product_list_price")
-    precio_promo = _extraer_precio_promo(d.get("discounts", []))
+    precio_promo = _extraer_precio_promo(d.get("discounts", []), precio_lista)
 
     # precio_unitario: si el producto se vende por kg/l, calculamos $/unidad
     formato_qty = d.get("product_format_quantity") or 1

@@ -272,6 +272,10 @@ def normalizar(fecha: str | None = None) -> None:
             producto_id = _upsert_producto(con, crudo)
             precio_lista = float(crudo["precio_lista"])
             precio_promo = float(crudo["precio_promo"]) if crudo.get("precio_promo") else None
+            # Guard de sanidad: un promo válido siempre es menor al precio de lista.
+            # Descarta valores absurdos que quedaron en snapshots crudos previos al fix del scraper.
+            if precio_promo is not None and not (0 < precio_promo < precio_lista):
+                precio_promo = None
             precio_unitario = float(crudo["precio_unitario"]) if crudo.get("precio_unitario") else None
 
             _detectar_outlier(con, producto_id, fecha, precio_lista)
