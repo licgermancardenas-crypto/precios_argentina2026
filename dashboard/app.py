@@ -449,7 +449,8 @@ with tab4:
             # Gráfico de barras por producto
             comp = comparables.reset_index()
             fig4 = go.Figure()
-            paleta = {fuentes[0]: COLORES["navy"], **({fuentes[1]: COLORES["gold"]} if len(fuentes) > 1 else {})}
+            _ciclo = [COLORES["navy"], COLORES["gold"], COLORES["verde"], COLORES["rojo"]]
+            paleta = {f: _ciclo[i % len(_ciclo)] for i, f in enumerate(fuentes)}
             for f in fuentes:
                 fig4.add_trace(go.Bar(
                     y=comp["nombre_original"].str.slice(0, 38),

@@ -6,8 +6,9 @@ El EAN se congela en el primer scraping y no se modifica manualmente.
 # Registro de cadenas. Cada cadena define su motor de scraping y (si es VTEX) su dominio.
 # 'coto' usa Constructor.io; el resto usa la API pública de VTEX (misma clase, distinto dominio).
 CADENAS: list[dict] = [
-    {"fuente": "coto", "motor": "coto"},
-    {"fuente": "dia",  "motor": "vtex", "dominio": "https://diaonline.supermercadosdia.com.ar"},
+    {"fuente": "coto",      "motor": "coto"},
+    {"fuente": "dia",       "motor": "vtex", "dominio": "https://diaonline.supermercadosdia.com.ar"},
+    {"fuente": "carrefour", "motor": "vtex", "dominio": "https://www.carrefour.com.ar"},
 ]
 
 # Cadena de referencia para el Índice Canasta Atlas y las vistas históricas del dashboard.
