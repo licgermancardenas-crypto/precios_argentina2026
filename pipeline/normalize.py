@@ -15,6 +15,8 @@ import re
 from datetime import date
 from pathlib import Path
 
+from scraper.config import FUENTE_REFERENCIA
+
 log = logging.getLogger(__name__)
 logging.basicConfig(
     level=logging.INFO,
@@ -153,6 +155,7 @@ def _detectar_reduflacion(
     fecha: str,
     precio_nuevo: float,
     contenido_nuevo: float | None,
+    fuente: str,
 ) -> None:
     if not contenido_nuevo:
         return
@@ -160,9 +163,9 @@ def _detectar_reduflacion(
         """SELECT p.precio_lista, pr.contenido_valor
            FROM precios p
            JOIN productos pr ON pr.id = p.producto_id
-           WHERE p.producto_id = ? AND p.fecha < ?
+           WHERE p.producto_id = ? AND p.fuente = ? AND p.fecha < ?
            ORDER BY p.fecha DESC LIMIT 1""",
-        (producto_id, fecha),
+        (producto_id, fuente, fecha),
     ).fetchone()
     if not anterior or not anterior["precio_lista"] or not anterior["contenido_valor"]:
         return
@@ -185,10 +188,11 @@ def _detectar_outlier(
     producto_id: int,
     fecha: str,
     precio_nuevo: float,
+    fuente: str,
 ) -> None:
     anterior = con.execute(
-        "SELECT precio_lista FROM precios WHERE producto_id = ? ORDER BY fecha DESC LIMIT 1",
-        (producto_id,),
+        "SELECT precio_lista FROM precios WHERE producto_id = ? AND fuente = ? ORDER BY fecha DESC LIMIT 1",
+        (producto_id, fuente),
     ).fetchone()
     if not anterior or not anterior["precio_lista"]:
         return
@@ -205,9 +209,9 @@ def _detectar_outlier(
 # Cálculo del Índice Canasta Atlas
 # ---------------------------------------------------------------------------
 
-def calcular_indice(con: sqlite3.Connection, fecha: str) -> float | None:
+def calcular_indice(con: sqlite3.Connection, fecha: str, fuente: str = FUENTE_REFERENCIA) -> float | None:
     """
-    Suma los precios de los 26 productos de la canasta para la fecha dada.
+    Suma los precios de los 26 productos de la canasta para la fecha dada, en una cadena.
     Usa forward fill (último precio conocido, máximo 7 días) si falta alguno.
     """
     productos_canasta = con.execute(
@@ -222,12 +226,12 @@ def calcular_indice(con: sqlite3.Connection, fecha: str) -> float | None:
 
     for row in productos_canasta:
         pid = row["id"]
-        # Busca el último precio en los últimos 7 días (forward fill)
+        # Busca el último precio en los últimos 7 días (forward fill), dentro de la cadena
         precio = con.execute(
             """SELECT precio_lista FROM precios
-               WHERE producto_id = ? AND fecha <= ? AND fecha >= date(?, '-7 days')
+               WHERE producto_id = ? AND fuente = ? AND fecha <= ? AND fecha >= date(?, '-7 days')
                ORDER BY fecha DESC LIMIT 1""",
-            (pid, fecha, fecha),
+            (pid, fuente, fecha, fecha),
         ).fetchone()
         if precio:
             suma += precio["precio_lista"]
@@ -244,60 +248,67 @@ def calcular_indice(con: sqlite3.Connection, fecha: str) -> float | None:
 # Punto de entrada
 # ---------------------------------------------------------------------------
 
-def normalizar(fecha: str | None = None) -> None:
-    fecha = fecha or date.today().isoformat()
-    crudo_path = RAW_DIR / f"{fecha}.json"
+def _snapshots_de_fecha(fecha: str) -> list[Path]:
+    """Todos los snapshots crudos de una fecha, uno por cadena: data/raw/{cadena}/{fecha}.json."""
+    return sorted(RAW_DIR.glob(f"*/{fecha}.json"))
 
-    if not crudo_path.exists():
-        log.error("No existe snapshot crudo para %s: %s", fecha, crudo_path)
-        return
 
+def _procesar_snapshot(con: sqlite3.Connection, crudo_path: Path, fecha: str) -> None:
     snapshot = json.loads(crudo_path.read_text(encoding="utf-8"))
     productos_crudos: list[dict] = snapshot.get("productos", [])
     fuente: str = snapshot.get("fuente", "coto")
 
-    log.info(
-        "Normalizando %d productos del %s (fuente: %s)",
-        len(productos_crudos), fecha, fuente,
-    )
-
-    con = conectar()
+    log.info("Normalizando %d productos del %s (fuente: %s)", len(productos_crudos), fecha, fuente)
     procesados = 0
 
-    with con:
-        for crudo in productos_crudos:
-            if not crudo.get("precio_lista"):
-                continue
+    for crudo in productos_crudos:
+        if not crudo.get("precio_lista"):
+            continue
 
-            producto_id = _upsert_producto(con, crudo)
-            precio_lista = float(crudo["precio_lista"])
-            precio_promo = float(crudo["precio_promo"]) if crudo.get("precio_promo") else None
-            # Guard de sanidad: un promo válido siempre es menor al precio de lista.
-            # Descarta valores absurdos que quedaron en snapshots crudos previos al fix del scraper.
-            if precio_promo is not None and not (0 < precio_promo < precio_lista):
-                precio_promo = None
-            precio_unitario = float(crudo["precio_unitario"]) if crudo.get("precio_unitario") else None
+        producto_id = _upsert_producto(con, crudo)
+        precio_lista = float(crudo["precio_lista"])
+        precio_promo = float(crudo["precio_promo"]) if crudo.get("precio_promo") else None
+        # Guard de sanidad: un promo válido siempre es menor al precio de lista.
+        # Descarta valores absurdos que quedaron en snapshots crudos previos al fix del scraper.
+        if precio_promo is not None and not (0 < precio_promo < precio_lista):
+            precio_promo = None
+        precio_unitario = float(crudo["precio_unitario"]) if crudo.get("precio_unitario") else None
 
-            _detectar_outlier(con, producto_id, fecha, precio_lista)
-            _detectar_reduflacion(
-                con, producto_id, fecha, precio_lista,
-                float(crudo["formato_qty"]) if crudo.get("formato_qty") else None,
-            )
+        _detectar_outlier(con, producto_id, fecha, precio_lista, fuente)
+        _detectar_reduflacion(
+            con, producto_id, fecha, precio_lista,
+            float(crudo["formato_qty"]) if crudo.get("formato_qty") else None,
+            fuente,
+        )
 
-            con.execute(
-                """INSERT OR IGNORE INTO precios
-                   (producto_id, fecha, precio_lista, precio_promo, precio_unitario, fuente)
-                   VALUES (?, ?, ?, ?, ?, ?)""",
-                (producto_id, fecha, precio_lista, precio_promo, precio_unitario, fuente),
-            )
-            procesados += 1
+        con.execute(
+            """INSERT OR IGNORE INTO precios
+               (producto_id, fecha, precio_lista, precio_promo, precio_unitario, fuente)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (producto_id, fecha, precio_lista, precio_promo, precio_unitario, fuente),
+        )
+        procesados += 1
 
-    # Calculamos el índice del día
-    indice = calcular_indice(con, fecha)
+    indice = calcular_indice(con, fecha, fuente)
     log.info(
-        "Normalización completada: %d productos | Índice Canasta: $%s",
-        procesados, f"{indice:,.2f}" if indice else "N/A",
+        "  %s: %d productos | Índice Canasta: $%s",
+        fuente, procesados, f"{indice:,.2f}" if indice else "N/A",
     )
+
+
+def normalizar(fecha: str | None = None) -> None:
+    fecha = fecha or date.today().isoformat()
+    snapshots = _snapshots_de_fecha(fecha)
+
+    if not snapshots:
+        log.error("No existen snapshots crudos para %s en %s", fecha, RAW_DIR)
+        return
+
+    con = conectar()
+    with con:
+        for crudo_path in snapshots:
+            _procesar_snapshot(con, crudo_path, fecha)
+    con.close()
 
 
 if __name__ == "__main__":

@@ -22,8 +22,8 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
-      - name: Correr scraper
-        run: python -m scraper.coto
+      - name: Correr scrapers (todas las cadenas)
+        run: python -m scraper
 
       - name: Normalizar datos
         run: python -m pipeline.normalize

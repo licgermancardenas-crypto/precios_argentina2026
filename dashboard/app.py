@@ -56,6 +56,7 @@ def cargar_datos() -> tuple[pd.DataFrame, pd.DataFrame]:
     df_precios = pd.read_sql("""
         SELECT
             pr.fecha,
+            pr.fuente,
             pr.precio_lista,
             pr.precio_promo,
             p.nombre_original,
@@ -144,11 +145,17 @@ st.divider()
 # Carga
 # ---------------------------------------------------------------------------
 
-df_precios, df_eventos = cargar_datos()
+# Cadena de referencia para el índice y las vistas históricas (evita doble conteo multi-cadena).
+FUENTE_REFERENCIA = "coto"
 
-if df_precios.empty:
+df_todas, df_eventos = cargar_datos()
+
+if df_todas.empty:
     st.warning("Base de datos no encontrada o sin datos. Ejecutá el pipeline primero.", icon="⚠️")
     st.stop()
+
+# Las vistas históricas (índice, movimientos, producto) usan solo la cadena de referencia.
+df_precios = df_todas[df_todas["fuente"] == FUENTE_REFERENCIA]
 
 idx = calcular_indice(df_precios)
 ultima_fecha = idx["fecha"].max()
@@ -198,7 +205,9 @@ st.divider()
 # Tabs
 # ---------------------------------------------------------------------------
 
-tab1, tab2, tab3 = st.tabs(["📈 Índice Canasta", "🔥 Top Movimientos", "🔍 Por Producto"])
+tab1, tab2, tab3, tab4 = st.tabs(
+    ["📈 Índice Canasta", "🔥 Top Movimientos", "🔍 Por Producto", "🏪 Comparador de cadenas"]
+)
 
 
 # ============================================================
@@ -384,6 +393,98 @@ with tab3:
             f"Categoría: {info['categoria']} · "
             f"Contenido: {info['contenido_valor']} {info['contenido_unidad']}"
         )
+
+
+# ============================================================
+# TAB 4 — Comparador de cadenas
+# ============================================================
+with tab4:
+    st.subheader("¿Dónde conviene comprar la canasta?")
+    st.caption(
+        "Compara el último precio de cada cadena para el mismo producto exacto (match por EAN). "
+        "Los frescos de balanza y las presentaciones que una cadena no stockea no entran en la comparación."
+    )
+
+    fuentes = sorted(df_todas["fuente"].unique())
+    if len(fuentes) < 2:
+        st.info(
+            "Todavía hay una sola cadena en la base. El comparador se activa cuando entra la segunda.",
+            icon="ℹ️",
+        )
+    else:
+        # Último precio por (producto, cadena)
+        ult = (
+            df_todas.sort_values("fecha")
+            .groupby(["producto_id", "nombre_original", "categoria", "fuente"], as_index=False)
+            .last()
+        )
+        piv = ult.pivot_table(
+            index=["nombre_original", "categoria"], columns="fuente", values="precio_lista"
+        )
+        comparables = piv.dropna(subset=fuentes)  # producto presente en TODAS las cadenas
+
+        if comparables.empty:
+            st.warning("Aún no hay productos con precio en todas las cadenas el mismo período.", icon="⚠️")
+        else:
+            # KPIs: costo de la canasta comparable por cadena
+            totales = comparables[fuentes].sum()
+            mas_barata = totales.idxmin()
+            cols = st.columns(len(fuentes) + 1)
+            for col, f in zip(cols, fuentes):
+                dif = (totales[f] / totales.min() - 1) * 100
+                col.metric(
+                    label=f"Canasta en {f.capitalize()}",
+                    value=f"${totales[f]:,.0f}",
+                    delta=("más barata" if f == mas_barata else f"+{dif:.1f}%"),
+                    delta_color="off" if f == mas_barata else "inverse",
+                )
+            cols[-1].metric(
+                label="Productos comparados",
+                value=f"{len(comparables)}",
+                delta=f"la más barata: {mas_barata.capitalize()}",
+            )
+
+            st.divider()
+
+            # Gráfico de barras por producto
+            comp = comparables.reset_index()
+            fig4 = go.Figure()
+            paleta = {fuentes[0]: COLORES["navy"], **({fuentes[1]: COLORES["gold"]} if len(fuentes) > 1 else {})}
+            for f in fuentes:
+                fig4.add_trace(go.Bar(
+                    y=comp["nombre_original"].str.slice(0, 38),
+                    x=comp[f],
+                    name=f.capitalize(),
+                    orientation="h",
+                    marker_color=paleta.get(f),
+                    hovertemplate="<b>%{y}</b><br>" + f.capitalize() + ": $%{x:,.0f}<extra></extra>",
+                ))
+            fig4.update_layout(
+                barmode="group",
+                height=max(360, 26 * len(comp)),
+                margin=dict(t=20, b=20, l=10),
+                xaxis_title="Precio ($)", yaxis_title=None,
+                plot_bgcolor="white", xaxis=dict(gridcolor="#eee"),
+                legend=dict(orientation="h", y=1.05),
+            )
+            st.plotly_chart(fig4, use_container_width=True)
+
+            # Tabla: dónde conviene cada producto
+            tabla = comparables.copy()
+            tabla["Más barata"] = tabla[fuentes].idxmin(axis=1).str.capitalize()
+            tabla["Dif. %"] = (
+                (tabla[fuentes].max(axis=1) - tabla[fuentes].min(axis=1))
+                / tabla[fuentes].min(axis=1) * 100
+            ).round(1)
+            tabla = tabla.reset_index().sort_values("Dif. %", ascending=False)
+            cols_fmt = {f: st.column_config.NumberColumn(f.capitalize(), format="$%d") for f in fuentes}
+            st.dataframe(
+                tabla[["nombre_original", "categoria", *fuentes, "Más barata", "Dif. %"]].rename(
+                    columns={"nombre_original": "Producto", "categoria": "Categoría"}
+                ),
+                use_container_width=True, hide_index=True,
+                column_config=cols_fmt,
+            )
 
 
 # ---------------------------------------------------------------------------

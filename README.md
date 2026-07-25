@@ -24,22 +24,23 @@ Con esos datos construyo el **Índice Canasta Atlas**: el costo de comprar esa c
 ## Pipeline
 
 ```
-Coto Digital (web)
-      │
-      ▼
-  [scraper/coto.py]  ← Playwright, delays 2-4s, reintentos con backoff
-      │
-      ▼
- data/raw/YYYY-MM-DD.json   ← snapshot crudo, NUNCA se modifica
-      │
-      ▼
- [pipeline/normalize.py]   ← matching por EAN, normalización, detección de reduflación
-      │
-      ▼
-   data/atlas.db (SQLite)
-      │
-      ▼
- [dashboard/app.py]  ← Streamlit (en construcción)
+Coto (Constructor.io API)   Día / Carrefour / Jumbo (VTEX API)
+      │                              │
+      ▼                              ▼
+ [scraper/coto.py]            [scraper/vtex.py]     ← delays 2-4s, EAN fijado
+      │                              │
+      └──────────────┬───────────────┘
+                     ▼
+      data/raw/{cadena}/YYYY-MM-DD.json   ← snapshot crudo, NUNCA se modifica
+                     │
+                     ▼
+        [pipeline/normalize.py]   ← matching por EAN (unifica cadenas),
+                     │              normalización, reduflación, outliers
+                     ▼
+             data/atlas.db (SQLite)   ← precios con columna `fuente`
+                     │
+                     ▼
+           [dashboard/app.py]  ← Streamlit: índice + comparador de cadenas
 ```
 
 Automatizado con **GitHub Actions** (cron diario). El badge arriba muestra si el scraper corrió exitosamente hoy.
@@ -92,8 +93,8 @@ Automatizado con **GitHub Actions** (cron diario). El badge arriba muestra si el
 
 | Versión | Estado | Alcance |
 |---------|--------|---------|
-| v1 MVP | 🔨 En construcción | Pipeline Coto + Índice Canasta + Dashboard básico |
-| v2 | ⏳ Pendiente | Comparador entre cadenas (Día, Carrefour) |
+| v1 MVP | ✅ Listo | Pipeline Coto + Índice Canasta + Dashboard |
+| v2 | 🔨 En construcción | Comparador entre cadenas — **Coto + Día** ya integradas; Carrefour/Jumbo reutilizan la misma clase VTEX |
 | v2.5 | ⏳ Pendiente | Índices por categoría + API/CSV público |
 | v3 ML | ⏳ Pendiente | Forecasting (Prophet) + detección de anomalías + regresores externos (IPC, dólar, eventos de calendario) |
 | v4 Agente | ⏳ Pendiente | LLM que responde preguntas sobre la base en lenguaje natural |
@@ -134,15 +135,18 @@ Este proyecto realiza scraping de **baja frecuencia** (una vez por día, por cad
 ```
 precios_argentina2026/
 ├── scraper/
-│   ├── coto.py          # lógica de scraping de Coto Digital
-│   └── config.py        # canasta, URLs, constantes
+│   ├── __main__.py      # orquestador: python -m scraper [cadenas...]
+│   ├── base.py          # helpers compartidos (paths, delays, snapshot)
+│   ├── coto.py          # scraping de Coto (Constructor.io)
+│   ├── vtex.py          # scraping genérico VTEX (Día, Carrefour, Jumbo)
+│   └── config.py        # canasta (EAN fijado), registro de cadenas
 ├── pipeline/
-│   ├── normalize.py     # crudo → SQLite
+│   ├── normalize.py     # crudo → SQLite (multi-cadena, matching por EAN)
 │   └── schema.sql       # DDL de la base de datos
 ├── dashboard/
-│   └── app.py           # Streamlit
+│   └── app.py           # Streamlit (4 vistas, incl. comparador)
 ├── data/
-│   └── raw/             # snapshots crudos diarios (JSON)
+│   └── raw/{cadena}/    # snapshots crudos diarios por cadena (JSON)
 ├── notebooks/           # análisis exploratorio (cuando haya ≥3 semanas de datos)
 ├── .github/workflows/
 │   └── scrape.yml       # cron diario

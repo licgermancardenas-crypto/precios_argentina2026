@@ -8,14 +8,12 @@ from __future__ import annotations
 
 import json
 import logging
-import random
-import time
 import urllib.parse
 import urllib.request
 from datetime import date
-from pathlib import Path
 
-from scraper.config import CANASTA, DELAY_MAX_SEG, DELAY_MIN_SEG, USER_AGENT
+from scraper.base import delay, guardar_snapshot, raw_path
+from scraper.config import CANASTA, USER_AGENT
 
 logging.basicConfig(
     level=logging.INFO,
@@ -24,15 +22,11 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-RAW_DIR = Path("data/raw")
+FUENTE = "coto"
 
 # API key pública de Constructor.io embebida en el JS del sitio
 _CNSTRC_KEY = "key_r6xzz4IAoTWcipni"
 _SEARCH_URL  = "https://ac.cnstrc.com/search/{query}?key={key}&num_results_per_page=5&section=Products"
-
-
-def _delay() -> None:
-    time.sleep(random.uniform(DELAY_MIN_SEG, DELAY_MAX_SEG))
 
 
 def _buscar_producto(nombre_ref: str) -> list[dict]:
@@ -124,18 +118,17 @@ def _buscar_por_ean(ean: str) -> dict | None:
     return None
 
 
-def correr_scraper() -> Path:
+def correr_scraper() -> None:
     """
     Punto de entrada principal.
     Busca cada producto de la Canasta Atlas y guarda el snapshot crudo del día.
     """
     hoy = date.today().isoformat()
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
-    destino = RAW_DIR / f"{hoy}.json"
+    destino = raw_path(FUENTE, hoy)
 
     if destino.exists():
         log.info("Ya existe snapshot para hoy (%s), saliendo.", hoy)
-        return destino
+        return
 
     resultados: list[dict] = []
     errores: list[dict] = []
@@ -175,23 +168,9 @@ def correr_scraper() -> Path:
             log.error("  ERROR en '%s': %s", nombre_ref, exc)
             errores.append({"nombre_ref": nombre_ref, "motivo": str(exc)})
 
-        _delay()
+        delay()
 
-    snapshot = {
-        "fecha":          hoy,
-        "fuente":         "coto",
-        "total_ok":       len(resultados),
-        "total_errores":  len(errores),
-        "errores":        errores,
-        "productos":      resultados,
-    }
-
-    destino.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
-    log.info(
-        "Snapshot guardado: %s (%d productos, %d errores)",
-        destino, len(resultados), len(errores),
-    )
-    return destino
+    guardar_snapshot(FUENTE, hoy, resultados, errores)
 
 
 if __name__ == "__main__":
