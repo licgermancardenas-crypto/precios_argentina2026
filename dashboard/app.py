@@ -1,6 +1,7 @@
 """
 Dashboard Atlas Precios — Streamlit
-5 vistas: Índice, Movimientos, Por Producto, Comparador, Proyección & Contexto.
+5 vistas: Resumen (índice + nowcast), Categorías y movimientos, Por Producto,
+Comparador de cadenas, Proyección & Contexto.
 """
 
 from __future__ import annotations
@@ -355,7 +356,7 @@ st.divider()
 # ---------------------------------------------------------------------------
 
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
-    ["📈 Índice Canasta", "🔥 Top Movimientos", "🔍 Por Producto",
+    ["📊 Resumen", "📈 Categorías y movimientos", "🔍 Por Producto",
      "🏪 Comparador de cadenas", "📉 Proyección & Contexto"]
 )
 
@@ -364,33 +365,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
 # TAB 1 — Índice Canasta
 # ============================================================
 with tab1:
-    st.subheader("Índice Canasta Atlas")
-    st.caption("Base 100 = primer día de datos. Canasta fija (productos con serie completa) sobre la cadena de referencia.")
-
-    if len(idx) < 2:
-        st.info("Necesitás al menos 2 días de datos para ver la evolución.", icon="ℹ️")
-    else:
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            x=idx["fecha"],
-            y=idx["indice"],
-            mode="lines+markers",
-            name="Índice",
-            line=dict(color=COLORES["navy"], width=2.5),
-            marker=dict(size=5),
-            hovertemplate="<b>%{x|%d/%m/%Y}</b><br>Índice: %{y:.1f}<extra></extra>",
-        ))
-        fig.add_hline(y=100, line_dash="dot", line_color=COLORES["gold"], line_width=1.5,
-                      annotation_text="Base 100", annotation_position="left")
-        fig.update_layout(
-            height=380, margin=dict(t=20, b=20),
-            xaxis_title=None, yaxis_title="Índice (base 100)",
-            plot_bgcolor="white",
-            xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
-        )
-        st.plotly_chart(fig, use_container_width=True)
-
-    # Nowcast: nuestro índice vs IPC oficial
+    # Nowcast: nuestro índice vs IPC oficial — el diferencial del proyecto, va primero
     comp_ipc = cargar_comparativa_ipc()
     mec = comp_ipc.get("mes_en_curso")
     if mec:
@@ -434,8 +409,31 @@ with tab1:
                 f"el primer mes completo de historia. Por ahora, nowcast de {mec['mes']}.",
                 icon="⏳",
             )
+        st.divider()
 
-    # Índices por categoría
+    # Índice Canasta Atlas (base 100)
+    st.subheader("Índice Canasta Atlas")
+    st.caption("Base 100 = primer día de datos. Canasta fija (productos con serie completa) sobre la cadena de referencia.")
+    if len(idx) < 2:
+        st.info("Necesitás al menos 2 días de datos para ver la evolución.", icon="ℹ️")
+    else:
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=idx["fecha"], y=idx["indice"], mode="lines+markers", name="Índice",
+            line=dict(color=COLORES["navy"], width=2.5), marker=dict(size=5),
+            hovertemplate="<b>%{x|%d/%m/%Y}</b><br>Índice: %{y:.1f}<extra></extra>",
+        ))
+        fig.add_hline(y=100, line_dash="dot", line_color=COLORES["gold"], line_width=1.5,
+                      annotation_text="Base 100", annotation_position="left")
+        fig.update_layout(height=380, xaxis_title=None, yaxis_title="Índice (base 100)")
+        st.plotly_chart(fig, use_container_width=True)
+
+
+# ============================================================
+# TAB 2 — Categorías y movimientos
+# ============================================================
+with tab2:
+    # Índice por categoría
     idx_cat = calcular_indice_categoria(df_precios)
     if not idx_cat.empty and idx_cat["fecha"].nunique() > 1:
         st.subheader("Índice por categoría")
@@ -451,11 +449,8 @@ with tab1:
                     hovertemplate=f"<b>{cat.capitalize()}</b> %{{x|%d/%m}}<br>%{{y:.1f}}<extra></extra>",
                 ))
             figc.add_hline(y=100, line_dash="dot", line_color="#bbb", line_width=1)
-            figc.update_layout(
-                height=340, margin=dict(t=20, b=20), xaxis_title=None, yaxis_title="Índice (base 100)",
-                plot_bgcolor="white", xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
-                legend=dict(orientation="h", y=1.12, font=dict(size=11)),
-            )
+            figc.update_layout(height=340, xaxis_title=None, yaxis_title="Índice (base 100)",
+                               legend=dict(font=dict(size=11)))
             st.plotly_chart(figc, use_container_width=True)
         with colb:
             ultimo_cat = idx_cat.sort_values("fecha").groupby("categoria").last().reset_index()
@@ -466,15 +461,12 @@ with tab1:
                 marker_color=[COLORES["rojo"] if v > 0 else COLORES["verde"] for v in ultimo_cat["var"]],
                 hovertemplate="%{y}: %{x:+.1f}%<extra></extra>",
             ))
-            figb.update_layout(
-                height=340, margin=dict(t=20, b=20), xaxis_title="Var. acumulada %", yaxis_title=None,
-                plot_bgcolor="white", xaxis=dict(gridcolor="#eee"),
-            )
+            figb.update_layout(height=340, xaxis_title="Var. acumulada %", yaxis_title=None)
             st.plotly_chart(figb, use_container_width=True)
 
-    # Tabla de variaciones diarias
+    # Historial del índice
     if len(idx) > 1:
-        st.subheader("Historial")
+        st.subheader("Historial del índice")
         hist = idx.sort_values("fecha", ascending=False).head(30).copy()
         hist["fecha_str"] = hist["fecha"].dt.strftime("%d/%m/%Y")
         hist["costo_str"] = hist["costo_canasta"].apply(lambda x: f"${x:,.0f}")
@@ -490,11 +482,7 @@ with tab1:
             use_container_width=True, hide_index=True,
         )
 
-
-# ============================================================
-# TAB 2 — Top Movimientos
-# ============================================================
-with tab2:
+    st.divider()
     st.subheader("Mayores movimientos")
 
     n_dias = st.select_slider("Ventana", options=[1, 7, 14, 30], value=7, key="ventana_mov")
