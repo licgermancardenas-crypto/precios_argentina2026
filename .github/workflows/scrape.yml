@@ -43,6 +43,9 @@ jobs:
       - name: Hallazgos publicables
         run: python -m pipeline.hallazgos
 
+      - name: Control de calidad
+        run: python -m pipeline.qc
+
       - name: Commitear datos
         run: |
           git config user.name  "atlas-bot"
@@ -50,3 +53,6 @@ jobs:
           git add data/
           git commit -m "datos $(date +%F)" || echo "sin cambios"
           git push
+
+      - name: Alerta si una cadena falló
+        run: python -m pipeline.qc --alert   # falla el job (mail de GitHub) solo si el estado es crítico

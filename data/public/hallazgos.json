@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-07-26T18:04:36+00:00",
+  "generado_utc": "2026-07-26T18:52:09+00:00",
   "dispersion": {
     "fecha": "2026-07-26",
-    "n_productos": 42,
-    "dispersion_media_pct": 15.6,
+    "n_productos": 41,
+    "dispersion_media_pct": 15.3,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -59,15 +59,6 @@
         "dispersion_pct": 30.7,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Queso Cremoso La Paulina x Kg.",
-        "categoria": "lacteos",
-        "precio_min": 12589.0,
-        "precio_max": 16430.0,
-        "dispersion_pct": 30.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "dia"
       },
       {
         "producto": "Picada Especial X KG",
@@ -140,6 +131,15 @@
         "dispersion_pct": 17.6,
         "mas_barata": "coto",
         "mas_cara": "carrefour"
+      },
+      {
+        "producto": "Galletas Secas Sabor Original 354 Grs x 3 Un Oreo",
+        "categoria": "panificados",
+        "precio_min": 5659.0,
+        "precio_max": 6650.0,
+        "dispersion_pct": 17.5,
+        "mas_barata": "dia",
+        "mas_cara": "coto"
       }
     ]
   },

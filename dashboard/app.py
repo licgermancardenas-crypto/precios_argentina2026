@@ -137,6 +137,18 @@ def cargar_hallazgos() -> dict:
         return {}
 
 
+@st.cache_data(ttl=3600)
+def cargar_qc() -> dict:
+    """Lee data/public/qc.json (salud del relevamiento). {} si no existe."""
+    ruta = DB_PATH.parent / "public" / "qc.json"
+    if not ruta.exists():
+        return {}
+    try:
+        return json.loads(ruta.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def _costo_canasta_fija(df: pd.DataFrame) -> pd.Series:
     """
     Costo diario de una canasta FIJA: solo productos con precio todos los días.
@@ -219,6 +231,15 @@ col_logo, col_titulo = st.columns([1, 8])
 with col_titulo:
     st.title("Atlas Precios")
     st.caption("Monitor de inflación de supermercados argentinos · datos propios · actualización diaria")
+
+# Estado del relevamiento (control de calidad)
+_qc = cargar_qc()
+if _qc.get("cadenas"):
+    _ok = sum(1 for c in _qc["cadenas"].values() if c["estado"] == "ok")
+    _tot = len(_qc["cadenas"])
+    _icono = {"ok": "🟢", "warning": "🟡", "critical": "🔴"}.get(_qc["estado_global"], "⚪")
+    _detalle = "" if _qc["estado_global"] == "ok" else " · " + "; ".join(_qc.get("alertas", []))
+    st.caption(f"{_icono} Relevamiento {_qc.get('fecha', '—')}: {_ok}/{_tot} cadenas OK{_detalle}")
 
 st.divider()
 

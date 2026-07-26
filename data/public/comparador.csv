@@ -2,22 +2,12 @@ producto,categoria,ean,carrefour,coto,dia,jumbo,mas_barata,dif_pct_max
 aceite girasol natura botella 1 5 l,almacen,7790272001029,6975.0,6975.0,7460.0,7463.0,carrefour,7.0
 agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,2150.0,1949.0,3050.0,2527.0,coto,56.5
 arroz blanco largo fino molinos ala 1kg,almacen,7791120100857,,2500.0,,2850.0,coto,14.0
-arroz largo fino molinos ala 1 kg,almacen,7791120031557,1819.0,,,,carrefour,0.0
-arroz largo fino molinos ala 500 gr,almacen,7791120031564,,,1140.0,,dia,0.0
 arveja secas remojadas la campagnola lat 300 grm,almacen,7793360982309,,94.9,,112.39,coto,18.4
-arvejas secas la campagnola 300 gr,almacen,7793360132384,,,1549.0,,dia,0.0
-atun en aceite la campagnola 170 gr,almacen,7790580131357,,,6280.0,,dia,0.0
 atun en aceite la campagnola en lata 300 g,almacen,7790580138769,9079.0,9082.0,,6950.0,jumbo,30.7
-avena tradicional quaker 280 gr,almacen,7792170555499,,,2100.0,,dia,0.0
 avena tradicional quaker en caja 550 grs,almacen,7792170555543,3240.0,3240.1,,3550.0,carrefour,9.6
 azucar superior real ledesma 1kg,almacen,7792540250450,,1567.0,1565.0,2234.39,dia,42.8
 bizcochos 9 de oro de grasa 200 g,panificados,7792200000159,1389.0,1519.0,1519.0,1450.0,carrefour,9.4
-cafe molido tostado la virginia 250g,almacen,7790150037041,,8262.0,,,coto,0.0
-cafe molido tostado sutil la virginia 250g,almacen,7790150037140,,13252.0,,,coto,0.0
 cafe tostado molido la virginia 250 grs,almacen,7790150007501,8259.0,8262.0,8259.0,8024.89,jumbo,3.0
-carne picada especial atmosfera modificada 500 gr,carnes,7793281492468,,,11000.0,,dia,0.0
-carne vacuna picada especial la hacienda,carnes,2541751000003,,,,10999.0,jumbo,0.0
-cerveza quilmes 710 ml,bebidas,7792798014835,,,3706.0,,dia,0.0
 cerveza quilmes botella 1 l,bebidas,7792798007387,4580.0,4580.0,,4580.0,carrefour,0.0
 crema la serenisima para batir 520 cc,lacteos,7790742014122,6999.0,7349.0,7349.0,7900.0,carrefour,12.9
 detergente magistral ultra limon botella 500ml,limpieza,7790990003039,4189.0,5049.99,4189.0,4558.0,carrefour,20.6
@@ -27,14 +17,8 @@ galletitas oreo rellenas con crema sabor original 354 g,panificados,762220173525
 galletitas saladas sabor original traviata 96g,panificados,7790040143937,899.0,898.0,1063.0,1100.0,coto,22.5
 gaseosa coca cola sabor original 2 25 lt,bebidas,7790895000997,5700.0,4845.0,5700.0,5700.0,coto,17.6
 gaseosa lima limon sprite zero 2 25 lts,bebidas,7790895064166,5700.0,5700.0,5700.0,5700.0,carrefour,0.0
-harina de trigo fotivac morixe 000 1 kg,almacen,7790199604075,,,1110.0,,dia,0.0
 harina trigo 000 morixe 1kg,almacen,7790199000013,1049.0,1110.0,,1150.0,carrefour,9.6
-huevo blanco carrefour maple x 30 uni,lacteos,7798159716257,9090.0,,,,carrefour,0.0
-huevo blanco extra 12u,lacteos,7792062000021,,4090.0,,,coto,0.0
-huevo blanco grande 12 ud,lacteos,7798064180143,,,4190.0,,dia,0.0
-huevo blanco grande maple cyclamen 30u,lacteos,7798187930045,,7990.0,,,coto,0.0
 huevo blanco maple x 30u,lacteos,7798092353120,,7890.0,,9350.0,coto,18.5
-huevos blanco el mercado plastico 12 uni,lacteos,7798033339411,4790.0,,,,carrefour,0.0
 jabon de tocador dove original multipack x3 90 grs,limpieza,7891150046481,7265.0,7299.99,7289.0,7299.0,carrefour,0.5
 jabon en polvo matic a mano lavado total con bicarbonato ala 800 g,limpieza,7791290796829,3319.0,3321.99,3320.0,3650.0,carrefour,10.0
 jugo en polvo tang naranja dulce 15 g,bebidas,7622201735340,550.0,550.0,550.0,550.0,carrefour,0.0
@@ -43,40 +27,20 @@ leche larga vida entera ua clasica 3 la serenisima 1l,lacteos,7790742363008,2670
 manteca la serenisima 200gr,lacteos,7793940054006,4819.0,4819.0,4819.0,4819.0,carrefour,0.0
 mayonesa liviana hellmanns dp 475 g,almacen,7794000007109,2999.0,2999.0,2998.0,2999.0,dia,0.0
 mermelada light de durazno arcor 390 grs,almacen,7790580132224,3379.0,3379.0,3650.0,3800.0,carrefour,12.5
-paleta cocida fetas finas 200 grs paladini,carnes,7790079022616,,,,8650.0,jumbo,0.0
 paleta cocida feteada paladini xkg,carnes,2003836100003,,14559.0,,,coto,0.0
-paleta cocida paladini cristal x kg,carnes,2505246000008,24269.0,,,,carrefour,0.0
 pan blanco bimbo 400g,panificados,7793890261233,6020.0,6022.0,,6300.0,carrefour,4.7
-pan blanco bimbo 580 gr,panificados,7793890262131,,,8099.0,,dia,0.0
 papas fritas lays clasicas 330 g,almacen,7790310985588,9979.0,9979.0,,10450.0,carrefour,4.7
-papas fritas lays clasicas 85 gr,almacen,7790310985458,,,3850.0,,dia,0.0
 papel higienico elite ultra suave doble hoja 30 m 4 un,limpieza,7790250026075,4745.0,5617.99,5615.0,5600.0,carrefour,18.4
 pasta dental colgate total whitening con fluor 90 grs,limpieza,7891024135020,6600.0,6610.99,6600.0,,carrefour,0.2
-pasta dental sensitive pro alivio blanqueadora 110 grs colgate,limpieza,7891024124628,,,,8100.0,jumbo,0.0
 picada especial x kg,carnes,2069607000002,12990.0,10499.0,,,coto,23.7
 polenta instantanea presto pronta en bolsa 490 g,almacen,7790580138738,1599.0,1599.0,1635.0,1850.0,carrefour,15.7
-pollo entero con menudos 1 8 kg,carnes,2582916000001,,,,3499.0,jumbo,0.0
-pollo entero congelado x kg,carnes,2507384000001,3979.0,,,,carrefour,0.0
 pollo entero fresco x uni 4 kg refrigerado,carnes,2000000127910,,17596.0,,,coto,0.0
-pollo entero x kg,carnes,2490164000000,,,4390.0,,dia,0.0
 pure de tomate arcor 520g,almacen,7790580146115,1110.0,1110.0,1198.0,1199.0,carrefour,8.0
 queso cremoso fraccionado la paulina xkg,lacteos,2000199000001,,12599.0,,,coto,0.0
-queso cremoso la paulina x kg,lacteos,2505311000001,12589.0,,16430.0,,carrefour,30.5
-queso cremoso x 1 kg la serenisima cremon,lacteos,2593136000009,,,,14900.0,jumbo,0.0
 queso rallado coto 150g,lacteos,7790080014198,,6779.0,,,coto,0.0
-queso rallado milkaut 120 g,lacteos,7794820015247,5750.0,,,,carrefour,0.0
-queso rallado tradicional 0 12 kg ilolay,lacteos,7790787002931,,,,6400.0,jumbo,0.0
-queso rallado tregar 120 gr,lacteos,7793913013511,,,5850.0,,dia,0.0
 rollo de cocina elite ultra absorbente 60 panos 3 uni,limpieza,7790250022053,4300.0,3454.99,4805.0,4300.0,coto,39.1
 sal fina celusal 500g,almacen,7790072001014,1549.0,1549.0,1672.0,1650.0,carrefour,7.9
-shampoo luminous uv sedal 190 ml,limpieza,7791293051420,,,3919.0,,dia,0.0
 shampoo sedal ceramidas 190 cc,limpieza,7791293045658,3929.0,3929.99,,4250.0,carrefour,8.2
 vino tinto clasico toro bot 1125 ltr,bebidas,7790314074219,,1959.03,,990.29,jumbo,97.8
-vino tinto dulce toro brick 1 lt,bebidas,7790314054099,2729.0,,,,carrefour,0.0
-vino tinto toro 1 lt,bebidas,7790314079849,,,3550.0,,dia,0.0
-yerba mate clasica libre 1kg,almacen,7730945980039,,6636.0,,,coto,0.0
-yerba mate sin palo 4flex taragui 1 kg,almacen,7790387013498,6519.0,,,,carrefour,0.0
-yerba mate taragui 4 flex 1 kg,almacen,7790387013610,,,5369.0,,dia,0.0
 yerba mate ytacua 1000g,almacen,7790387120349,,1756.78,,1307.19,jumbo,34.4
 yogur bebible descremado sabor frutilla sancor vida 900g,lacteos,7798321152333,3120.0,3125.0,,3000.0,jumbo,4.2
-yogur bebible sabor frutilla ser 900 gr,lacteos,7791337009639,,,6120.0,,dia,0.0

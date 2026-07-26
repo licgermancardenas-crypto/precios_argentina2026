@@ -15,7 +15,12 @@ import re
 from datetime import date
 from pathlib import Path
 
-from scraper.config import FUENTE_REFERENCIA
+from scraper.config import CANASTA, FUENTE_REFERENCIA
+
+# EAN de los productos que integran la Canasta Atlas. Un producto es de canasta
+# solo si su EAN está acá; los sustitutos que devuelven las cadenas cuando no
+# stockean el SKU exacto (otro EAN) NO son canasta.
+CANASTA_EANS = {str(p["ean"]) for p in CANASTA if p.get("ean")}
 
 log = logging.getLogger(__name__)
 logging.basicConfig(
@@ -130,11 +135,12 @@ def _upsert_producto(con: sqlite3.Connection, p: dict, fuente: str = FUENTE_REFE
         )
         return existente["id"]
 
+    en_canasta = 1 if ean in CANASTA_EANS else 0
     cur = con.execute(
         """INSERT INTO productos
            (ean, nombre_normalizado, nombre_original, categoria,
             presentacion, contenido_valor, contenido_unidad, en_canasta)
-           VALUES (?, ?, ?, ?, ?, ?, ?, 1)""",
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             ean,
             nombre_norm,
@@ -143,6 +149,7 @@ def _upsert_producto(con: sqlite3.Connection, p: dict, fuente: str = FUENTE_REFE
             p.get("formato", ""),
             contenido_valor,
             contenido_unidad,
+            en_canasta,
         ),
     )
     return cur.lastrowid

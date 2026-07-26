@@ -1,0 +1,29 @@
+{
+  "generado_utc": "2026-07-26T18:52:09+00:00",
+  "fecha": "2026-07-26",
+  "esperado_por_cadena": 45,
+  "cadenas": {
+    "coto": {
+      "productos": 45,
+      "cobertura_pct": 100.0,
+      "estado": "ok"
+    },
+    "dia": {
+      "productos": 44,
+      "cobertura_pct": 97.8,
+      "estado": "ok"
+    },
+    "carrefour": {
+      "productos": 43,
+      "cobertura_pct": 95.6,
+      "estado": "ok"
+    },
+    "jumbo": {
+      "productos": 45,
+      "cobertura_pct": 100.0,
+      "estado": "ok"
+    }
+  },
+  "estado_global": "ok",
+  "alertas": []
+}

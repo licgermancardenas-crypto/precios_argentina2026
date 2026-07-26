@@ -32,7 +32,7 @@ Todos los días a las 06:00 (hora Argentina), un robot releva los precios de una
 | Área | Cómo |
 |------|------|
 | **Data engineering** | Pipeline reproducible *raw-first*: el crudo nunca se toca, la DB se reconstruye desde los JSON. Idempotente, multi-cadena, matching por EAN. |
-| **Automatización / DevOps** | GitHub Actions releva 4 cadenas, normaliza, exporta y commitea la data **sola**, todos los días. |
+| **Automatización / DevOps** | GitHub Actions releva 4 cadenas, normaliza, exporta y commitea la data **sola**, todos los días, con **control de calidad** que alerta si una cadena falla. |
 | **Rigor analítico** | Detecté y corregí bugs de datos que inflaban el índice **+157% semanal** (falso) antes de publicar nada. Metodología del índice documentada y defendible, **con tests** que cubren los guards de sanidad, el matching por EAN y el cálculo del índice. |
 | **ML aplicado con honestidad** | Forecasting con Prophet detrás de un *guard de datos*: no publica proyecciones sobre series demasiado cortas. |
 | **Aplicaciones LLM** | Agente text-to-SQL (Claude Opus 4.8) con tool de **solo lectura** y doble capa de seguridad. |
@@ -136,6 +136,7 @@ El pipeline exporta cada día a `data/public/` (licencia **CC BY 4.0**). Las URL
 | `forecast.json` | Proyección + anomalías (o estado "insuficiente") |
 | `comparativa_ipc.json` | Índice Canasta vs IPC oficial (nowcast del mes + histórico mensual) |
 | `hallazgos.json` | Dispersión de precios entre cadenas + eventos (reduflación) |
+| `qc.json` | Control de calidad del relevamiento (productos por cadena + estado) |
 | `metadata.json` | Esquema, cadenas, rango de fechas, licencia |
 
 También descargables desde el dashboard.

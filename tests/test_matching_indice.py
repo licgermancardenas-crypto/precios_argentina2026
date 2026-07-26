@@ -55,6 +55,26 @@ class TestMatchingEAN(unittest.TestCase):
         con.close()
 
 
+class TestEnCanasta(unittest.TestCase):
+    """Solo los productos con EAN de la canasta se marcan en_canasta=1."""
+
+    def test_ean_de_canasta_marca_1(self):
+        con = _db()
+        ean_real = next(iter(normalize.CANASTA_EANS))  # un EAN real de la canasta
+        pid = normalize._upsert_producto(con, _prod(ean_real, "Producto canasta"))
+        en = con.execute("SELECT en_canasta FROM productos WHERE id=?", (pid,)).fetchone()[0]
+        self.assertEqual(en, 1)
+        con.close()
+
+    def test_sustituto_con_ean_ajeno_marca_0(self):
+        con = _db()
+        # Un EAN que NO está en la canasta (sustituto que devolvió una cadena)
+        pid = normalize._upsert_producto(con, _prod("9999999999999", "Sustituto random"))
+        en = con.execute("SELECT en_canasta FROM productos WHERE id=?", (pid,)).fetchone()[0]
+        self.assertEqual(en, 0)
+        con.close()
+
+
 class TestIndiceFuenteAware(unittest.TestCase):
 
     def _insertar_precio(self, con, pid, fecha, precio, fuente):
@@ -65,7 +85,9 @@ class TestIndiceFuenteAware(unittest.TestCase):
 
     def test_indice_no_mezcla_cadenas(self):
         con = _db()
-        pid = normalize._upsert_producto(con, _prod("779", "Producto"))
+        # EAN real de canasta para que el producto quede en_canasta=1
+        ean = next(iter(normalize.CANASTA_EANS))
+        pid = normalize._upsert_producto(con, _prod(ean, "Producto"))
         self._insertar_precio(con, pid, "2026-07-25", 100.0, "coto")
         self._insertar_precio(con, pid, "2026-07-25", 250.0, "dia")
         con.commit()
