@@ -1,7 +1,7 @@
 {
   "proyecto": "Atlas Precios",
   "descripcion": "Serie histórica de precios de canasta de supermercado en Argentina, relevada diariamente.",
-  "actualizado_utc": "2026-07-26T10:54:01+00:00",
+  "actualizado_utc": "2026-07-26T18:04:35+00:00",
   "cadenas": [
     "carrefour",
     "coto",
@@ -21,6 +21,8 @@
     "indice_canasta.json": "Idem en JSON.",
     "comparador.csv": "Último precio por cadena de cada producto comparable.",
     "regresores.csv": "Series externas: dólar oficial/blue (diario) e IPC INDEC (mensual).",
-    "forecast.json": "Proyección del índice (Prophet) + anomalías; estado 'insuficiente' hasta acumular historia."
+    "forecast.json": "Proyección del índice (Prophet) + anomalías; estado 'insuficiente' hasta acumular historia.",
+    "comparativa_ipc.json": "Índice Canasta vs IPC oficial de INDEC (nowcast del mes en curso + histórico mensual).",
+    "hallazgos.json": "Hallazgos publicables: dispersión de precios entre cadenas + eventos (reduflación, cambios de presentación)."
   }
 }

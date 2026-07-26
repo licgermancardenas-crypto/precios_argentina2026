@@ -108,6 +108,13 @@ Lácteos y huevos, almacén, panificados, carnes, bebidas y limpieza. El EAN de 
 
 Mismo producto (match por **EAN**), precio de cada cadena, lado a lado. Hallazgo consistente: **no hay una cadena que gane en todo** — el "más barato" se reparte por producto, así que conviene combinar. Los frescos de balanza (queso x kg, pollo) no cross-matchean por EAN y quedan fuera de la comparación, a propósito, para no comparar peras con peras-distintas.
 
+### Hallazgos publicables
+
+El pipeline destila dos tipos de hallazgo sobre datos limpios (`pipeline/hallazgos.py` → `hallazgos.json`):
+
+- **Dispersión de precios**: el *mismo* producto cuesta hasta **~2×** según la cadena. Ejemplos reales del último relevamiento: un vino tinto a mitad de precio en una cadena vs otra, azúcar +43%, agua +56% — todos con EAN idéntico. Dispersión media ~15%.
+- **Reduflación / cambios de presentación**: eventos que detecta el pipeline (mismo EAN, precio estable, baja el contenido). La detección corre **solo en la cadena de referencia y deduplicada** — antes disparaba falsos positivos porque distintas cadenas reportan el contenido de forma distinta; ese ruido está corregido.
+
 ---
 
 ## Forecasting (v3) — honesto por diseño
@@ -128,6 +135,7 @@ El pipeline exporta cada día a `data/public/` (licencia **CC BY 4.0**). Las URL
 | `regresores.csv` | Series externas: dólar oficial/blue (diario) + IPC INDEC (mensual) |
 | `forecast.json` | Proyección + anomalías (o estado "insuficiente") |
 | `comparativa_ipc.json` | Índice Canasta vs IPC oficial (nowcast del mes + histórico mensual) |
+| `hallazgos.json` | Dispersión de precios entre cadenas + eventos (reduflación) |
 | `metadata.json` | Esquema, cadenas, rango de fechas, licencia |
 
 También descargables desde el dashboard.

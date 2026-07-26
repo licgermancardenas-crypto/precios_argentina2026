@@ -157,6 +157,7 @@ def exportar(db_path: Path = DB_PATH, out_dir: Path = OUT_DIR) -> None:
             "regresores.csv": "Series externas: dólar oficial/blue (diario) e IPC INDEC (mensual).",
             "forecast.json": "Proyección del índice (Prophet) + anomalías; estado 'insuficiente' hasta acumular historia.",
             "comparativa_ipc.json": "Índice Canasta vs IPC oficial de INDEC (nowcast del mes en curso + histórico mensual).",
+            "hallazgos.json": "Hallazgos publicables: dispersión de precios entre cadenas + eventos (reduflación, cambios de presentación).",
         },
     }
     (out_dir / "metadata.json").write_text(

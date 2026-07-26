@@ -1,0 +1,154 @@
+{
+  "generado_utc": "2026-07-26T18:04:36+00:00",
+  "dispersion": {
+    "fecha": "2026-07-26",
+    "n_productos": 42,
+    "dispersion_media_pct": 15.6,
+    "dispersion_maxima_pct": 97.8,
+    "top": [
+      {
+        "producto": "Vino Toro Clasico Tinto 1125",
+        "categoria": "bebidas",
+        "precio_min": 990.29,
+        "precio_max": 1959.03,
+        "dispersion_pct": 97.8,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
+        "categoria": "bebidas",
+        "precio_min": 1949.0,
+        "precio_max": 3050.0,
+        "dispersion_pct": 56.5,
+        "mas_barata": "coto",
+        "mas_cara": "dia"
+      },
+      {
+        "producto": "Azúcar Molida 1 Kg Ledesma",
+        "categoria": "almacen",
+        "precio_min": 1565.0,
+        "precio_max": 2234.39,
+        "dispersion_pct": 42.8,
+        "mas_barata": "dia",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 3454.99,
+        "precio_max": 4805.0,
+        "dispersion_pct": 39.1,
+        "mas_barata": "coto",
+        "mas_cara": "dia"
+      },
+      {
+        "producto": "Yerba Mate Ytacuá 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 1307.19,
+        "precio_max": 1756.78,
+        "dispersion_pct": 34.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
+        "categoria": "almacen",
+        "precio_min": 6950.0,
+        "precio_max": 9082.0,
+        "dispersion_pct": 30.7,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Queso Cremoso La Paulina x Kg.",
+        "categoria": "lacteos",
+        "precio_min": 12589.0,
+        "precio_max": 16430.0,
+        "dispersion_pct": 30.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
+      },
+      {
+        "producto": "Picada Especial X KG",
+        "categoria": "carnes",
+        "precio_min": 10499.0,
+        "precio_max": 12990.0,
+        "dispersion_pct": 23.7,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
+      },
+      {
+        "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
+        "categoria": "panificados",
+        "precio_min": 898.0,
+        "precio_max": 1100.0,
+        "dispersion_pct": 22.5,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
+        "categoria": "limpieza",
+        "precio_min": 4189.0,
+        "precio_max": 5049.99,
+        "dispersion_pct": 20.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 7890.0,
+        "precio_max": 9350.0,
+        "dispersion_pct": 18.5,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 4745.0,
+        "precio_max": 5617.99,
+        "dispersion_pct": 18.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
+        "categoria": "almacen",
+        "precio_min": 94.9,
+        "precio_max": 112.39,
+        "dispersion_pct": 18.4,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2849.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 18.2,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "categoria": "bebidas",
+        "precio_min": 4845.0,
+        "precio_max": 5700.0,
+        "dispersion_pct": 17.6,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
+      }
+    ]
+  },
+  "eventos": [
+    {
+      "fecha": "2026-07-26",
+      "tipo": "cambio_presentacion",
+      "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
+      "detalle": "Contenido: 1.0 → 100.0 unidad"
+    }
+  ]
+}

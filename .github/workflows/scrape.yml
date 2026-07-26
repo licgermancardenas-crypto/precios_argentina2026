@@ -40,6 +40,9 @@ jobs:
       - name: Comparativa vs IPC oficial
         run: python -m pipeline.comparativa_ipc
 
+      - name: Hallazgos publicables
+        run: python -m pipeline.hallazgos
+
       - name: Commitear datos
         run: |
           git config user.name  "atlas-bot"

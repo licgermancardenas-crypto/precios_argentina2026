@@ -86,10 +86,14 @@ def _crear_schema(con: sqlite3.Connection) -> None:
 # Upsert de productos
 # ---------------------------------------------------------------------------
 
-def _upsert_producto(con: sqlite3.Connection, p: dict) -> int:
+def _upsert_producto(con: sqlite3.Connection, p: dict, fuente: str = FUENTE_REFERENCIA) -> int:
     """
     Inserta o actualiza un producto. Retorna el producto_id.
     Matching por EAN (primario) o nombre_normalizado (fallback para frescos sin EAN).
+
+    La detección de cambio de presentación solo corre para la cadena de referencia:
+    distintas cadenas reportan el contenido de forma distinta (unitMultiplier, balanza),
+    lo que dispararía falsos positivos si se comparara cross-cadena.
     """
     ean = str(p["ean"]) if p.get("ean") else None
     nombre_norm = normalizar_nombre(p["nombre_original"])
@@ -106,20 +110,19 @@ def _upsert_producto(con: sqlite3.Connection, p: dict) -> int:
         ).fetchone()
 
     if existente:
-        # Detectar cambio de presentación (reduflación potencial)
+        # Detectar cambio de presentación (reduflación potencial) — solo cadena de
+        # referencia, y sin duplicar un evento idéntico ya registrado.
+        detalle = f"Contenido: {existente['contenido_valor']} → {contenido_valor} {contenido_unidad}"
         if (
-            contenido_valor
+            fuente == FUENTE_REFERENCIA
+            and contenido_valor
             and existente["contenido_valor"]
             and contenido_valor != existente["contenido_valor"]
+            and not _evento_existe(con, existente["id"], "cambio_presentacion", detalle)
         ):
             con.execute(
                 "INSERT INTO eventos (producto_id, fecha, tipo, detalle) VALUES (?, ?, ?, ?)",
-                (
-                    existente["id"],
-                    date.today().isoformat(),
-                    "cambio_presentacion",
-                    f"Contenido: {existente['contenido_valor']} → {contenido_valor} {contenido_unidad}",
-                ),
+                (existente["id"], date.today().isoformat(), "cambio_presentacion", detalle),
             )
         con.execute(
             "UPDATE productos SET nombre_original = ?, activo = 1 WHERE id = ?",
@@ -149,6 +152,14 @@ def _upsert_producto(con: sqlite3.Connection, p: dict) -> int:
 # Detección de anomalías
 # ---------------------------------------------------------------------------
 
+def _evento_existe(con: sqlite3.Connection, producto_id: int, tipo: str, detalle: str) -> bool:
+    """True si ya existe un evento idéntico (evita duplicados al reprocesar/diario)."""
+    return con.execute(
+        "SELECT 1 FROM eventos WHERE producto_id=? AND tipo=? AND detalle=? LIMIT 1",
+        (producto_id, tipo, detalle),
+    ).fetchone() is not None
+
+
 def _detectar_reduflacion(
     con: sqlite3.Connection,
     producto_id: int,
@@ -176,11 +187,12 @@ def _detectar_reduflacion(
             f"Precio estable ({variacion_precio:.1%}). "
             f"Contenido: {anterior['contenido_valor']} → {contenido_nuevo}"
         )
-        con.execute(
-            "INSERT INTO eventos (producto_id, fecha, tipo, detalle) VALUES (?, ?, ?, ?)",
-            (producto_id, fecha, "reduflacion", detalle),
-        )
-        log.info("REDUFLACION detectada — producto_id=%d: %s", producto_id, detalle)
+        if not _evento_existe(con, producto_id, "reduflacion", detalle):
+            con.execute(
+                "INSERT INTO eventos (producto_id, fecha, tipo, detalle) VALUES (?, ?, ?, ?)",
+                (producto_id, fecha, "reduflacion", detalle),
+            )
+            log.info("REDUFLACION detectada — producto_id=%d: %s", producto_id, detalle)
 
 
 def _detectar_outlier(
@@ -265,7 +277,7 @@ def _procesar_snapshot(con: sqlite3.Connection, crudo_path: Path, fecha: str) ->
         if not crudo.get("precio_lista"):
             continue
 
-        producto_id = _upsert_producto(con, crudo)
+        producto_id = _upsert_producto(con, crudo, fuente)
         precio_lista = float(crudo["precio_lista"])
         precio_promo = float(crudo["precio_promo"]) if crudo.get("precio_promo") else None
         # Guard de sanidad: un promo válido siempre es menor al precio de lista.
@@ -275,11 +287,14 @@ def _procesar_snapshot(con: sqlite3.Connection, crudo_path: Path, fecha: str) ->
         precio_unitario = float(crudo["precio_unitario"]) if crudo.get("precio_unitario") else None
 
         _detectar_outlier(con, producto_id, fecha, precio_lista, fuente)
-        _detectar_reduflacion(
-            con, producto_id, fecha, precio_lista,
-            float(crudo["formato_qty"]) if crudo.get("formato_qty") else None,
-            fuente,
-        )
+        # La reduflación se evalúa solo en la cadena de referencia (evita ruido de
+        # contenido reportado distinto entre cadenas).
+        if fuente == FUENTE_REFERENCIA:
+            _detectar_reduflacion(
+                con, producto_id, fecha, precio_lista,
+                float(crudo["formato_qty"]) if crudo.get("formato_qty") else None,
+                fuente,
+            )
 
         con.execute(
             """INSERT OR IGNORE INTO precios

@@ -125,6 +125,18 @@ def cargar_comparativa_ipc() -> dict:
         return {}
 
 
+@st.cache_data(ttl=3600)
+def cargar_hallazgos() -> dict:
+    """Lee data/public/hallazgos.json (dispersión + eventos). {} si no existe."""
+    ruta = DB_PATH.parent / "public" / "hallazgos.json"
+    if not ruta.exists():
+        return {}
+    try:
+        return json.loads(ruta.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def _costo_canasta_fija(df: pd.DataFrame) -> pd.Series:
     """
     Costo diario de una canasta FIJA: solo productos con precio todos los días.
@@ -639,6 +651,44 @@ with tab4:
                 use_container_width=True, hide_index=True,
                 column_config=cols_fmt,
             )
+
+    # --- Hallazgos: dispersión de precios ---
+    hall = cargar_hallazgos()
+    disp = hall.get("dispersion") or {}
+    if disp.get("top"):
+        st.divider()
+        st.subheader("💡 Hallazgo — dispersión de precios")
+        st.caption(
+            "El mismo producto (match por EAN) puede costar muy distinto según la cadena. "
+            "Sobre el precio de lista de la fecha con mayor cobertura."
+        )
+        h1, h2, h3 = st.columns(3)
+        h1.metric("Dispersión media", f"{disp['dispersion_media_pct']:.0f}%")
+        peor = disp["top"][0]
+        h2.metric("Diferencia máxima", f"{disp['dispersion_maxima_pct']:.0f}%",
+                  delta=peor["producto"][:28], delta_color="off")
+        h3.metric("Productos analizados", f"{disp['n_productos']}")
+
+        tabla_h = pd.DataFrame(disp["top"]).rename(columns={
+            "producto": "Producto", "categoria": "Categoría",
+            "precio_min": "Mín", "precio_max": "Máx", "dispersion_pct": "Dif. %",
+            "mas_barata": "Más barata", "mas_cara": "Más cara"})
+        st.dataframe(
+            tabla_h[["Producto", "Categoría", "Mín", "Máx", "Dif. %", "Más barata", "Más cara"]],
+            use_container_width=True, hide_index=True,
+            column_config={
+                "Mín": st.column_config.NumberColumn("Mín", format="$%d"),
+                "Máx": st.column_config.NumberColumn("Máx", format="$%d"),
+                "Dif. %": st.column_config.NumberColumn("Dif. %", format="%.1f%%"),
+            },
+        )
+
+        eventos_h = hall.get("eventos") or []
+        if eventos_h:
+            st.markdown("**Eventos detectados** (reduflación / cambios de presentación):")
+            ev_df = pd.DataFrame(eventos_h).rename(columns={
+                "fecha": "Fecha", "tipo": "Tipo", "producto": "Producto", "detalle": "Detalle"})
+            st.dataframe(ev_df, use_container_width=True, hide_index=True)
 
 
 # ============================================================
