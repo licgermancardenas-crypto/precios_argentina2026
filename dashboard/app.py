@@ -83,26 +83,53 @@ def cargar_datos() -> tuple[pd.DataFrame, pd.DataFrame]:
     return df_precios, df_eventos
 
 
+def _costo_canasta_fija(df: pd.DataFrame) -> pd.Series:
+    """
+    Costo diario de una canasta FIJA: solo productos con precio todos los días.
+    Evita artefactos de composición (un producto que aparece/desaparece no mueve
+    el índice). Misma metodología que el export público (pipeline/export.py).
+    """
+    piv = df.pivot_table(index="fecha", columns="nombre_original", values="precio_lista").sort_index()
+    completos = piv.dropna(axis=1)
+    return completos.sum(axis=1)
+
+
 @st.cache_data(ttl=3600)
 def calcular_indice(df: pd.DataFrame) -> pd.DataFrame:
-    """Calcula el Índice Canasta Atlas (base 100 en primer día)."""
+    """Índice Canasta Atlas total (base 100 en primer día), canasta fija."""
     if df.empty:
         return pd.DataFrame()
 
-    idx = (
-        df.groupby("fecha")["precio_lista"]
-        .sum()
-        .reset_index()
-        .rename(columns={"precio_lista": "costo_canasta"})
-    )
+    costos = _costo_canasta_fija(df)
+    idx = costos.reset_index()
+    idx.columns = ["fecha", "costo_canasta"]
     idx["fecha"] = pd.to_datetime(idx["fecha"])
     idx = idx.sort_values("fecha")
 
     base = idx["costo_canasta"].iloc[0]
     idx["indice"] = (idx["costo_canasta"] / base * 100).round(2)
     idx["var_diaria"] = idx["costo_canasta"].pct_change().mul(100).round(2)
-
     return idx
+
+
+@st.cache_data(ttl=3600)
+def calcular_indice_categoria(df: pd.DataFrame) -> pd.DataFrame:
+    """Índice base 100 por categoría (canasta fija). Columnas: fecha, categoria, indice."""
+    if df.empty:
+        return pd.DataFrame()
+
+    filas = []
+    for cat, g in df.groupby("categoria"):
+        costos = _costo_canasta_fija(g)
+        if costos.empty:
+            continue
+        base = costos.iloc[0]
+        for fecha, costo in costos.items():
+            filas.append({"fecha": fecha, "categoria": cat, "indice": round(costo / base * 100, 2)})
+    out = pd.DataFrame(filas)
+    if not out.empty:
+        out["fecha"] = pd.to_datetime(out["fecha"])
+    return out.sort_values(["categoria", "fecha"])
 
 
 # ---------------------------------------------------------------------------
@@ -215,7 +242,7 @@ tab1, tab2, tab3, tab4 = st.tabs(
 # ============================================================
 with tab1:
     st.subheader("Índice Canasta Atlas")
-    st.caption("Base 100 = primer día de datos. Refleja el costo de comprar los 26 productos de la canasta.")
+    st.caption("Base 100 = primer día de datos. Canasta fija (productos con serie completa) sobre la cadena de referencia.")
 
     if len(idx) < 2:
         st.info("Necesitás al menos 2 días de datos para ver la evolución.", icon="ℹ️")
@@ -239,6 +266,44 @@ with tab1:
             xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
         )
         st.plotly_chart(fig, use_container_width=True)
+
+    # Índices por categoría
+    idx_cat = calcular_indice_categoria(df_precios)
+    if not idx_cat.empty and idx_cat["fecha"].nunique() > 1:
+        st.subheader("Índice por categoría")
+        st.caption("Cada categoría en base 100 a su primer día. Muestra qué rubros empujan la canasta.")
+
+        colg, colb = st.columns([3, 2])
+        with colg:
+            figc = go.Figure()
+            paleta_cat = px.colors.qualitative.Set2
+            for i, (cat, g) in enumerate(idx_cat.groupby("categoria")):
+                figc.add_trace(go.Scatter(
+                    x=g["fecha"], y=g["indice"], mode="lines+markers", name=cat.capitalize(),
+                    line=dict(color=paleta_cat[i % len(paleta_cat)], width=2), marker=dict(size=4),
+                    hovertemplate=f"<b>{cat.capitalize()}</b> %{{x|%d/%m}}<br>%{{y:.1f}}<extra></extra>",
+                ))
+            figc.add_hline(y=100, line_dash="dot", line_color="#bbb", line_width=1)
+            figc.update_layout(
+                height=340, margin=dict(t=20, b=20), xaxis_title=None, yaxis_title="Índice (base 100)",
+                plot_bgcolor="white", xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
+                legend=dict(orientation="h", y=1.12, font=dict(size=11)),
+            )
+            st.plotly_chart(figc, use_container_width=True)
+        with colb:
+            ultimo_cat = idx_cat.sort_values("fecha").groupby("categoria").last().reset_index()
+            ultimo_cat["var"] = (ultimo_cat["indice"] - 100).round(2)
+            ultimo_cat = ultimo_cat.sort_values("var", ascending=False)
+            figb = go.Figure(go.Bar(
+                x=ultimo_cat["var"], y=ultimo_cat["categoria"].str.capitalize(), orientation="h",
+                marker_color=[COLORES["rojo"] if v > 0 else COLORES["verde"] for v in ultimo_cat["var"]],
+                hovertemplate="%{y}: %{x:+.1f}%<extra></extra>",
+            ))
+            figb.update_layout(
+                height=340, margin=dict(t=20, b=20), xaxis_title="Var. acumulada %", yaxis_title=None,
+                plot_bgcolor="white", xaxis=dict(gridcolor="#eee"),
+            )
+            st.plotly_chart(figb, use_container_width=True)
 
     # Tabla de variaciones diarias
     if len(idx) > 1:
@@ -486,6 +551,35 @@ with tab4:
                 use_container_width=True, hide_index=True,
                 column_config=cols_fmt,
             )
+
+
+# ---------------------------------------------------------------------------
+# Datos abiertos
+# ---------------------------------------------------------------------------
+
+st.divider()
+PUBLIC_DIR = DB_PATH.parent / "public"
+with st.expander("📂 Datos abiertos — descargá la serie completa (CSV / JSON)"):
+    st.caption(
+        "Datos propios bajo licencia CC BY 4.0. También accesibles como API estática "
+        "vía las URLs *raw* de GitHub (`data/public/`)."
+    )
+    archivos = [
+        ("indice_canasta.csv", "Índice base 100 diario: total + 6 categorías"),
+        ("precios.csv", "Serie completa de precios (todas las cadenas)"),
+        ("comparador.csv", "Último precio por cadena de cada producto"),
+    ]
+    cols = st.columns(len(archivos))
+    for col, (nombre, desc) in zip(cols, archivos):
+        ruta = PUBLIC_DIR / nombre
+        if ruta.exists():
+            col.download_button(
+                f"⬇️ {nombre}", data=ruta.read_bytes(), file_name=nombre,
+                mime="text/csv", use_container_width=True,
+            )
+            col.caption(desc)
+        else:
+            col.caption(f"{nombre} — se genera con el pipeline")
 
 
 # ---------------------------------------------------------------------------

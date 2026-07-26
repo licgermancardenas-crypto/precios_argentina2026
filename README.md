@@ -83,9 +83,24 @@ Automatizado con **GitHub Actions** (cron diario). El badge arriba muestra si el
 ## Metodología del índice
 
 - **Base 100** en el día de inicio. La variación refleja el costo relativo de comprar la misma canasta.
-- **Forward fill** máximo 7 días si un producto no aparece ese día (precio último conocido).
-- **Encadenamiento**: si un producto se reemplaza (desapareció >7 días), el índice se encadena para no generar una discontinuidad artificial.
+- **Canasta fija**: el índice se calcula sobre los productos con serie completa (precio todos los días) de la cadena de referencia. Así ningún producto que aparece o desaparece mueve el índice por composición — solo se mide precio.
+- **Total + 6 categorías**: cada categoría tiene su propio índice base 100 (ver `data/public/indice_canasta.csv`).
 - **Reduflación**: si el EAN mantiene precio (±2%) pero el contenido baja, se registra como evento `reduflacion` — hallazgo publicable.
+
+---
+
+## Datos abiertos
+
+El pipeline exporta cada día a `data/public/` (licencia **CC BY 4.0**). Las URLs *raw* de GitHub funcionan como API estática:
+
+| Archivo | Contenido |
+|---------|-----------|
+| `precios.csv` | Serie completa de precios (todas las cadenas) |
+| `indice_canasta.csv` / `.json` | Índice base 100 diario: total + 6 categorías |
+| `comparador.csv` | Último precio por cadena de cada producto + cuál conviene |
+| `metadata.json` | Esquema, cadenas, rango de fechas, licencia |
+
+También descargables desde el dashboard (sección *Datos abiertos*).
 
 ---
 
@@ -95,7 +110,7 @@ Automatizado con **GitHub Actions** (cron diario). El badge arriba muestra si el
 |---------|--------|---------|
 | v1 MVP | ✅ Listo | Pipeline Coto + Índice Canasta + Dashboard |
 | v2 | ✅ Listo | Comparador entre 4 cadenas — **Coto + Día + Carrefour + Jumbo** |
-| v2.5 | ⏳ Pendiente | Índices por categoría + API/CSV público |
+| v2.5 | ✅ Listo | Índices por categoría + **datos abiertos** (CSV/JSON en `data/public/`) |
 | v3 ML | ⏳ Pendiente | Forecasting (Prophet) + detección de anomalías + regresores externos (IPC, dólar, eventos de calendario) |
 | v4 Agente | ⏳ Pendiente | LLM que responde preguntas sobre la base en lenguaje natural |
 
@@ -142,11 +157,13 @@ precios_argentina2026/
 │   └── config.py        # canasta (EAN fijado), registro de cadenas
 ├── pipeline/
 │   ├── normalize.py     # crudo → SQLite (multi-cadena, matching por EAN)
+│   ├── export.py        # SQLite → data/public/ (CSV/JSON abiertos)
 │   └── schema.sql       # DDL de la base de datos
 ├── dashboard/
 │   └── app.py           # Streamlit (4 vistas, incl. comparador)
 ├── data/
-│   └── raw/{cadena}/    # snapshots crudos diarios por cadena (JSON)
+│   ├── raw/{cadena}/    # snapshots crudos diarios por cadena (JSON)
+│   └── public/          # datos abiertos exportados (CSV/JSON, CC BY 4.0)
 ├── notebooks/           # análisis exploratorio (cuando haya ≥3 semanas de datos)
 ├── .github/workflows/
 │   └── scrape.yml       # cron diario

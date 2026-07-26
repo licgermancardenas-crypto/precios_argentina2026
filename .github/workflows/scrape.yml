@@ -28,6 +28,9 @@ jobs:
       - name: Normalizar datos
         run: python -m pipeline.normalize
 
+      - name: Exportar datos públicos
+        run: python -m pipeline.export
+
       - name: Commitear datos
         run: |
           git config user.name  "atlas-bot"
