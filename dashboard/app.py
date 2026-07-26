@@ -15,6 +15,8 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import streamlit as st
 
+from pipeline.unidades import precio_por_unidad
+
 # ---------------------------------------------------------------------------
 # Identidad visual — paleta de marca (una sola fuente de verdad)
 # ---------------------------------------------------------------------------
@@ -627,10 +629,12 @@ with tab3:
             st.info("Con un solo día de datos todavía no hay serie que graficar. 📅", icon="ℹ️")
 
         info = df_prod.iloc[0]
-        st.caption(
-            f"EAN: `{info['ean']}` · Categoría: {info['categoria']} · "
-            f"Contenido: {info['contenido_valor']} {info['contenido_unidad']}"
-        )
+        _pu_txt = ""
+        if barata is not None:
+            _pu = precio_por_unidad(barata["precio_lista"], info["ean"])
+            if _pu:
+                _pu_txt = f" · Precio por unidad: **${_pu[0]:,.0f}/{_pu[1]}** (en {barata['fuente'].capitalize()})"
+        st.caption(f"EAN: `{info['ean']}` · Categoría: {info['categoria']}{_pu_txt}")
 
 
 # ============================================================
@@ -768,6 +772,49 @@ with tab4:
             ev_df = pd.DataFrame(eventos_h).rename(columns={
                 "fecha": "Fecha", "tipo": "Tipo", "producto": "Producto", "detalle": "Detalle"})
             st.dataframe(ev_df, use_container_width=True, hide_index=True)
+
+    # --- Precio por unidad ($/kg-litro) ---
+    st.divider()
+    st.subheader("📏 Precio por unidad — dónde está el kg / litro más barato")
+    st.caption("Normaliza el precio por contenido, para comparar más allá del tamaño del envase. "
+               "El contenido se toma de la canasta de referencia.")
+    base_lbl = {"kg": "$/kg", "L": "$/litro", "un": "$/unidad"}
+    base_sel = st.radio("Base", list(base_lbl), format_func=lambda b: base_lbl[b],
+                        horizontal=True, key="base_unidad")
+
+    ult_u = (df_todas.sort_values("fecha")
+             .groupby(["producto_id", "nombre_original", "ean", "fuente"], as_index=False).last())
+    filas_u = []
+    for _, r in ult_u.iterrows():
+        pu = precio_por_unidad(r["precio_lista"], r["ean"])
+        if pu and pu[1] == base_sel:
+            filas_u.append({"Producto": r["nombre_original"], "pu": pu[0], "Cadena": r["fuente"].capitalize()})
+    if filas_u:
+        dfu = pd.DataFrame(filas_u)
+        # cadena más barata por producto
+        barato = dfu.loc[dfu.groupby("Producto")["pu"].idxmin()].sort_values("pu").reset_index(drop=True)
+        c1, c2 = st.columns([2, 3])
+        with c1:
+            mas = barato.iloc[0]
+            st.metric(f"Más barato por {base_sel}", f"${mas['pu']:,.0f}",
+                      delta=f"{mas['Producto'][:26]} · {mas['Cadena']}", delta_color="off")
+            st.caption(f"{len(barato)} productos medidos en {base_lbl[base_sel]}.")
+        with c2:
+            fig_u = go.Figure(go.Bar(
+                x=barato["pu"].head(10)[::-1], y=barato["Producto"].str.slice(0, 30).head(10)[::-1],
+                orientation="h", marker_color=COLORES["navy"],
+                hovertemplate="%{y}<br>" + base_lbl[base_sel] + " $%{x:,.0f}<extra></extra>",
+            ))
+            fig_u.update_layout(height=320, xaxis_title=base_lbl[base_sel], yaxis_title=None)
+            st.plotly_chart(fig_u, use_container_width=True)
+        tabla_u = barato.rename(columns={"pu": base_lbl[base_sel], "Cadena": "Más barata"})
+        st.dataframe(
+            tabla_u[["Producto", base_lbl[base_sel], "Más barata"]],
+            use_container_width=True, hide_index=True,
+            column_config={base_lbl[base_sel]: st.column_config.NumberColumn(base_lbl[base_sel], format="$%d")},
+        )
+    else:
+        st.info(f"No hay productos medibles en {base_lbl[base_sel]} todavía.", icon="ℹ️")
 
 
 # ============================================================

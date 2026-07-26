@@ -108,6 +108,8 @@ Lácteos y huevos, almacén, panificados, carnes, bebidas y limpieza. El EAN de 
 
 Mismo producto (match por **EAN**), precio de cada cadena, lado a lado. Hallazgo consistente: **no hay una cadena que gane en todo** — el "más barato" se reparte por producto, así que conviene combinar. Los frescos de balanza (queso x kg, pollo) no cross-matchean por EAN y quedan fuera de la comparación, a propósito, para no comparar peras con peras-distintas.
 
+También hay una vista de **precio por unidad ($/kg, $/litro, $/unidad)** — normaliza por contenido (`pipeline/unidades.py` parsea la presentación) para responder "¿dónde está el kg de café / litro de aceite más barato?", más allá del tamaño del envase.
+
 ### Hallazgos publicables
 
 El pipeline destila dos tipos de hallazgo sobre datos limpios (`pipeline/hallazgos.py` → `hallazgos.json`):
