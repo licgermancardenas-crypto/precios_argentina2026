@@ -556,61 +556,55 @@ with tab2:
 # ============================================================
 with tab3:
     st.subheader("Serie histórica por producto")
+    st.caption("Precio del producto en cada cadena (match por EAN). Filtrá por categoría y cadenas.")
 
-    productos_lista = sorted(df_precios["nombre_original"].unique())
-    producto_sel = st.selectbox("Seleccioná un producto", productos_lista)
+    # --- Filtros ---
+    cats_p = ["Todas"] + [c.capitalize() for c in sorted(df_todas["categoria"].unique())]
+    fp1, fp2 = st.columns([1, 2])
+    cat_p = fp1.selectbox("Categoría", cats_p, key="cat_producto")
+    base_p = df_todas if cat_p == "Todas" else df_todas[df_todas["categoria"] == cat_p.lower()]
+    productos_lista = sorted(base_p["nombre_original"].dropna().unique())
+    producto_sel = fp2.selectbox("Producto", productos_lista, key="prod_sel")
 
-    df_prod = df_precios[df_precios["nombre_original"] == producto_sel].copy()
+    df_prod = df_todas[df_todas["nombre_original"] == producto_sel].copy()
     df_prod["fecha"] = pd.to_datetime(df_prod["fecha"])
-    df_prod = df_prod.sort_values("fecha")
+    cadenas_prod = sorted(df_prod["fuente"].unique())
+    sel_cad = st.multiselect("Cadenas", cadenas_prod, default=cadenas_prod,
+                             format_func=str.capitalize, key="cad_producto")
+    df_prod = df_prod[df_prod["fuente"].isin(sel_cad)].sort_values("fecha")
 
-    if len(df_prod) < 1:
-        st.info("Sin datos para este producto.")
+    if df_prod.empty:
+        st.info("Elegí al menos una cadena.")
     else:
-        # Métricas del producto
-        precio_actual = df_prod["precio_lista"].iloc[-1]
-        precio_min = df_prod["precio_lista"].min()
-        precio_max = df_prod["precio_lista"].max()
+        # Métricas: precio del último día por cadena + cuál conviene
+        ult_fecha = df_prod["fecha"].max()
+        hoy = df_prod[df_prod["fecha"] == ult_fecha]
+        cols = st.columns(max(len(hoy), 1) + 1)
+        barata = hoy.loc[hoy["precio_lista"].idxmin()] if not hoy.empty else None
+        for col, (_, r) in zip(cols, hoy.sort_values("precio_lista").iterrows()):
+            es_barata = barata is not None and r["fuente"] == barata["fuente"]
+            col.metric(r["fuente"].capitalize(), f"${r['precio_lista']:,.0f}",
+                       delta="más barata" if es_barata else None, delta_color="off")
+        if barata is not None:
+            cols[-1].metric("Conviene", barata["fuente"].capitalize(),
+                            delta=f"al {ult_fecha.strftime('%d/%m')}", delta_color="off")
 
-        m1, m2, m3 = st.columns(3)
-        m1.metric("Precio actual", f"${precio_actual:,.0f}")
-        m2.metric("Mínimo histórico", f"${precio_min:,.0f}")
-        m3.metric("Máximo histórico", f"${precio_max:,.0f}")
-
-        if len(df_prod) >= 2:
+        # Serie por cadena (una línea por cadena)
+        if df_prod["fecha"].nunique() >= 2:
             fig2 = go.Figure()
-            fig2.add_trace(go.Scatter(
-                x=df_prod["fecha"],
-                y=df_prod["precio_lista"],
-                mode="lines+markers",
-                name="Precio lista",
-                line=dict(color=COLORES["navy"], width=2),
-                hovertemplate="<b>%{x|%d/%m/%Y}</b><br>$%{y:,.0f}<extra></extra>",
-            ))
-            if df_prod["precio_promo"].notna().any():
+            for f, g in df_prod.groupby("fuente"):
                 fig2.add_trace(go.Scatter(
-                    x=df_prod["fecha"],
-                    y=df_prod["precio_promo"],
-                    mode="markers",
-                    name="Precio promo",
-                    marker=dict(color=COLORES["gold"], size=10, symbol="star"),
-                    hovertemplate="<b>Promo %{x|%d/%m/%Y}</b><br>$%{y:,.0f}<extra></extra>",
+                    x=g["fecha"], y=g["precio_lista"], mode="lines+markers", name=f.capitalize(),
+                    hovertemplate=f"<b>{f.capitalize()}</b> %{{x|%d/%m}}<br>$%{{y:,.0f}}<extra></extra>",
                 ))
-            fig2.update_layout(
-                height=340, margin=dict(t=20, b=20),
-                xaxis_title=None, yaxis_title="Precio ($)",
-                plot_bgcolor="white",
-                xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
-            )
+            fig2.update_layout(height=360, xaxis_title=None, yaxis_title="Precio de lista ($)")
             st.plotly_chart(fig2, use_container_width=True)
         else:
-            st.info("Con un solo día de datos no hay serie que graficar. Volvé mañana. 📅", icon="ℹ️")
+            st.info("Con un solo día de datos todavía no hay serie que graficar. 📅", icon="ℹ️")
 
-        # Info del producto
-        info = df_precios[df_precios["nombre_original"] == producto_sel].iloc[0]
+        info = df_prod.iloc[0]
         st.caption(
-            f"EAN: `{info['ean']}` · "
-            f"Categoría: {info['categoria']} · "
+            f"EAN: `{info['ean']}` · Categoría: {info['categoria']} · "
             f"Contenido: {info['contenido_valor']} {info['contenido_unidad']}"
         )
 
@@ -625,23 +619,29 @@ with tab4:
         "Los frescos de balanza y las presentaciones que una cadena no stockea no entran en la comparación."
     )
 
-    fuentes = sorted(df_todas["fuente"].unique())
-    if len(fuentes) < 2:
-        st.info(
-            "Todavía hay una sola cadena en la base. El comparador se activa cuando entra la segunda.",
-            icon="ℹ️",
-        )
+    # --- Filtros ---
+    fuentes_disp = sorted(df_todas["fuente"].unique())
+    cats_c = ["Todas"] + [c.capitalize() for c in sorted(df_todas["categoria"].unique())]
+    fcol1, fcol2 = st.columns([2, 1])
+    sel_fuentes = fcol1.multiselect("Cadenas a comparar", fuentes_disp, default=fuentes_disp,
+                                    format_func=str.capitalize, key="cad_comparador")
+    cat_c = fcol2.selectbox("Categoría", cats_c, key="cat_comparador")
+    dft = df_todas if cat_c == "Todas" else df_todas[df_todas["categoria"] == cat_c.lower()]
+
+    if len(sel_fuentes) < 2:
+        st.info("Elegí al menos 2 cadenas para comparar.", icon="ℹ️")
     else:
         # Último precio por (producto, cadena)
         ult = (
-            df_todas.sort_values("fecha")
+            dft.sort_values("fecha")
             .groupby(["producto_id", "nombre_original", "categoria", "fuente"], as_index=False)
             .last()
         )
         piv = ult.pivot_table(
             index=["nombre_original", "categoria"], columns="fuente", values="precio_lista"
         )
-        comparables = piv.dropna(subset=fuentes)  # producto presente en TODAS las cadenas
+        fuentes = [f for f in sorted(sel_fuentes) if f in piv.columns]
+        comparables = piv.dropna(subset=fuentes) if len(fuentes) >= 2 else piv.iloc[0:0]
 
         if comparables.empty:
             st.warning("Aún no hay productos con precio en todas las cadenas el mismo período.", icon="⚠️")
