@@ -5,6 +5,7 @@ Dashboard Atlas Precios — Streamlit
 
 from __future__ import annotations
 
+import json
 import sqlite3
 from pathlib import Path
 
@@ -81,6 +82,35 @@ def cargar_datos() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     con.close()
     return df_precios, df_eventos
+
+
+@st.cache_data(ttl=3600)
+def cargar_regresores() -> pd.DataFrame:
+    """Series externas (dólar) desde la base. Vacío si la tabla no existe aún."""
+    if not DB_PATH.exists():
+        return pd.DataFrame()
+    con = sqlite3.connect(DB_PATH)
+    try:
+        df = pd.read_sql("SELECT fecha, serie, valor FROM regresores ORDER BY fecha", con)
+    except Exception:
+        df = pd.DataFrame(columns=["fecha", "serie", "valor"])
+    finally:
+        con.close()
+    if not df.empty:
+        df["fecha"] = pd.to_datetime(df["fecha"])
+    return df
+
+
+@st.cache_data(ttl=3600)
+def cargar_forecast() -> dict:
+    """Lee data/public/forecast.json (lo genera pipeline/forecast.py). {} si no existe."""
+    ruta = DB_PATH.parent / "public" / "forecast.json"
+    if not ruta.exists():
+        return {}
+    try:
+        return json.loads(ruta.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
 
 
 def _costo_canasta_fija(df: pd.DataFrame) -> pd.Series:
@@ -232,8 +262,9 @@ st.divider()
 # Tabs
 # ---------------------------------------------------------------------------
 
-tab1, tab2, tab3, tab4 = st.tabs(
-    ["📈 Índice Canasta", "🔥 Top Movimientos", "🔍 Por Producto", "🏪 Comparador de cadenas"]
+tab1, tab2, tab3, tab4, tab5 = st.tabs(
+    ["📈 Índice Canasta", "🔥 Top Movimientos", "🔍 Por Producto",
+     "🏪 Comparador de cadenas", "📉 Proyección & Contexto"]
 )
 
 
@@ -551,6 +582,88 @@ with tab4:
                 use_container_width=True, hide_index=True,
                 column_config=cols_fmt,
             )
+
+
+# ============================================================
+# TAB 5 — Proyección & Contexto (v3)
+# ============================================================
+with tab5:
+    # --- Proyección del índice ---
+    st.subheader("Proyección del índice")
+    fc = cargar_forecast()
+    estado = fc.get("estado")
+
+    if estado == "ok" and fc.get("forecast"):
+        hist = pd.DataFrame(fc["historia"]); hist["fecha"] = pd.to_datetime(hist["fecha"])
+        fore = pd.DataFrame(fc["forecast"]); fore["fecha"] = pd.to_datetime(fore["fecha"])
+        st.caption(f"Modelo Prophet · proyección a {fc.get('horizonte_dias')} días · banda = intervalo de confianza.")
+        figf = go.Figure()
+        figf.add_trace(go.Scatter(x=fore["fecha"], y=fore["yhat_upper"], mode="lines",
+                                  line=dict(width=0), showlegend=False, hoverinfo="skip"))
+        figf.add_trace(go.Scatter(x=fore["fecha"], y=fore["yhat_lower"], mode="lines", fill="tonexty",
+                                  fillcolor="rgba(201,162,39,0.18)", line=dict(width=0),
+                                  name="Intervalo", hoverinfo="skip"))
+        figf.add_trace(go.Scatter(x=hist["fecha"], y=hist["indice"], mode="lines+markers", name="Histórico",
+                                  line=dict(color=COLORES["navy"], width=2.5)))
+        figf.add_trace(go.Scatter(x=fore["fecha"], y=fore["yhat"], mode="lines", name="Proyección",
+                                  line=dict(color=COLORES["gold"], width=2.5, dash="dash")))
+        figf.update_layout(height=380, margin=dict(t=20, b=20), plot_bgcolor="white",
+                           yaxis_title="Índice (base 100)", xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"))
+        st.plotly_chart(figf, use_container_width=True)
+    else:
+        n, need = fc.get("dias_historia", 0), fc.get("dias_necesarios", 30)
+        st.info(
+            f"**Acumulando historia para pronosticar: {n}/{need} días.** "
+            "El forecast se activa automáticamente al superar el umbral — no publicamos "
+            "proyecciones sobre series demasiado cortas (serían ruido con un intervalo de confianza falso).",
+            icon="⏳",
+        )
+        st.progress(min(n / need, 1.0))
+        if estado == "prophet_no_instalado":
+            st.warning("Hay datos suficientes pero falta instalar Prophet (`requirements-ml.txt`).", icon="⚙️")
+
+    st.divider()
+
+    # --- Contexto: dólar ---
+    st.subheader("Contexto macro — dólar")
+    reg = cargar_regresores()
+    if reg.empty:
+        st.caption("Todavía sin datos de regresores. Se ingieren a diario desde el próximo run.")
+    else:
+        st.caption("Regresor externo para el modelo. La correlación con el índice se activa al acumular historia.")
+        figd = go.Figure()
+        etiquetas = {"dolar_oficial": "Dólar oficial", "dolar_blue": "Dólar blue"}
+        for serie, g in reg.groupby("serie"):
+            figd.add_trace(go.Scatter(x=g["fecha"], y=g["valor"], mode="lines+markers",
+                                     name=etiquetas.get(serie, serie)))
+        figd.update_layout(height=300, margin=dict(t=20, b=20), plot_bgcolor="white",
+                          yaxis_title="$ / USD (venta)", xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
+                          legend=dict(orientation="h", y=1.12))
+        st.plotly_chart(figd, use_container_width=True)
+        piv_d = reg.pivot_table(index="fecha", columns="serie", values="valor")
+        if {"dolar_oficial", "dolar_blue"}.issubset(piv_d.columns):
+            ult = piv_d.dropna().iloc[-1]
+            brecha = (ult["dolar_blue"] / ult["dolar_oficial"] - 1) * 100
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Dólar oficial", f"${ult['dolar_oficial']:,.0f}")
+            c2.metric("Dólar blue", f"${ult['dolar_blue']:,.0f}")
+            c3.metric("Brecha", f"{brecha:.1f}%")
+
+    st.divider()
+
+    # --- Anomalías y eventos ---
+    st.subheader("Anomalías y eventos detectados")
+    anomalias = fc.get("anomalias", [])
+    if anomalias:
+        st.markdown("**Movimientos anómalos del índice** (retorno diario fuera de ±2,5σ):")
+        st.dataframe(pd.DataFrame(anomalias), use_container_width=True, hide_index=True)
+    if not df_eventos.empty:
+        st.markdown("**Eventos a nivel producto** (outliers, reduflación, cambios de presentación):")
+        ev = df_eventos[["fecha", "tipo", "nombre_original", "detalle"]].rename(columns={
+            "fecha": "Fecha", "tipo": "Tipo", "nombre_original": "Producto", "detalle": "Detalle"})
+        st.dataframe(ev.head(50), use_container_width=True, hide_index=True)
+    elif not anomalias:
+        st.caption("Sin anomalías ni eventos registrados por ahora.")
 
 
 # ---------------------------------------------------------------------------

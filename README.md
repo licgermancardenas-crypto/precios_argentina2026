@@ -111,7 +111,7 @@ También descargables desde el dashboard (sección *Datos abiertos*).
 | v1 MVP | ✅ Listo | Pipeline Coto + Índice Canasta + Dashboard |
 | v2 | ✅ Listo | Comparador entre 4 cadenas — **Coto + Día + Carrefour + Jumbo** |
 | v2.5 | ✅ Listo | Índices por categoría + **datos abiertos** (CSV/JSON en `data/public/`) |
-| v3 ML | ⏳ Pendiente | Forecasting (Prophet) + detección de anomalías + regresores externos (IPC, dólar, eventos de calendario) |
+| v3 ML | 🔨 En construcción | Forecasting (Prophet) + detección de anomalías + regresores externos (dólar diario; IPC próximamente). El forecast del índice se **activa solo al superar 30 días** de historia — no se publican proyecciones sobre series demasiado cortas. |
 | v4 Agente | ⏳ Pendiente | LLM que responde preguntas sobre la base en lenguaje natural |
 
 ---
@@ -157,6 +157,8 @@ precios_argentina2026/
 │   └── config.py        # canasta (EAN fijado), registro de cadenas
 ├── pipeline/
 │   ├── normalize.py     # crudo → SQLite (multi-cadena, matching por EAN)
+│   ├── regresores.py    # ingesta de series externas (dólar) — v3
+│   ├── forecast.py      # Prophet + anomalías, con guard de datos — v3
 │   ├── export.py        # SQLite → data/public/ (CSV/JSON abiertos)
 │   └── schema.sql       # DDL de la base de datos
 ├── dashboard/

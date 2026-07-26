@@ -1,0 +1,6 @@
+# Dependencias de forecasting (v3). Separadas de requirements.txt para no
+# recargar el deploy del dashboard (Streamlit Cloud) — Prophet solo se necesita
+# en el pipeline cuando hay historia suficiente (>=30 días).
+#
+#   pip install -r requirements.txt -r requirements-ml.txt
+prophet==1.1.5

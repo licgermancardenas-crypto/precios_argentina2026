@@ -116,10 +116,21 @@ def exportar(db_path: Path = DB_PATH, out_dir: Path = OUT_DIR) -> None:
     indice = _construir_indice(precios)
     comparador = _construir_comparador(precios)
 
+    # Regresores externos (v3): dólar, IPC. Puede no existir aún.
+    con = sqlite3.connect(db_path)
+    try:
+        regresores = pd.read_sql("SELECT fecha, serie, valor FROM regresores ORDER BY fecha, serie", con)
+    except Exception:
+        regresores = pd.DataFrame(columns=["fecha", "serie", "valor"])
+    finally:
+        con.close()
+
     # CSVs
     precios.to_csv(out_dir / "precios.csv", index=False)
     indice.to_csv(out_dir / "indice_canasta.csv", index=False)
     comparador.to_csv(out_dir / "comparador.csv", index=False)
+    if not regresores.empty:
+        regresores.to_csv(out_dir / "regresores.csv", index=False)
 
     # JSON del índice (cómodo para consumir desde JS/apps)
     indice.to_json(out_dir / "indice_canasta.json", orient="records", force_ascii=False)
@@ -143,6 +154,8 @@ def exportar(db_path: Path = DB_PATH, out_dir: Path = OUT_DIR) -> None:
             "indice_canasta.csv": "Índice base 100 diario: total + 6 categorías.",
             "indice_canasta.json": "Idem en JSON.",
             "comparador.csv": "Último precio por cadena de cada producto comparable.",
+            "regresores.csv": "Series externas diarias (dólar oficial y blue).",
+            "forecast.json": "Proyección del índice (Prophet) + anomalías; estado 'insuficiente' hasta acumular historia.",
         },
     }
     (out_dir / "metadata.json").write_text(

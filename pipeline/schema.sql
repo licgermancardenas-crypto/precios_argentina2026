@@ -35,7 +35,15 @@ CREATE TABLE IF NOT EXISTS eventos (                    -- auditoría y hallazgo
     detalle     TEXT
 );
 
+CREATE TABLE IF NOT EXISTS regresores (                 -- series externas (v3): dólar, IPC
+    fecha   TEXT NOT NULL,
+    serie   TEXT NOT NULL,                              -- 'dolar_oficial', 'dolar_blue', 'ipc'
+    valor   REAL NOT NULL,
+    UNIQUE (fecha, serie)
+);
+
 -- Índices para queries frecuentes del dashboard
 CREATE INDEX IF NOT EXISTS idx_precios_fecha    ON precios(fecha);
 CREATE INDEX IF NOT EXISTS idx_precios_producto ON precios(producto_id, fecha);
 CREATE INDEX IF NOT EXISTS idx_eventos_fecha    ON eventos(fecha);
+CREATE INDEX IF NOT EXISTS idx_regresores       ON regresores(serie, fecha);

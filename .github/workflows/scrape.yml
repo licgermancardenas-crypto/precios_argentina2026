@@ -28,6 +28,12 @@ jobs:
       - name: Normalizar datos
         run: python -m pipeline.normalize
 
+      - name: Ingestar regresores (dólar)
+        run: python -m pipeline.regresores
+
+      - name: Forecast + anomalías
+        run: python -m pipeline.forecast   # con <30 días escribe estado "insuficiente" (no requiere Prophet)
+
       - name: Exportar datos públicos
         run: python -m pipeline.export
 

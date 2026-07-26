@@ -1,0 +1,40 @@
+{
+  "generado_utc": "2026-07-26T00:28:28+00:00",
+  "serie": "indice_canasta_total",
+  "dias_historia": 7,
+  "dias_necesarios": 30,
+  "horizonte_dias": 14,
+  "historia": [
+    {
+      "fecha": "2026-07-17",
+      "indice": 100.0
+    },
+    {
+      "fecha": "2026-07-20",
+      "indice": 100.22
+    },
+    {
+      "fecha": "2026-07-21",
+      "indice": 102.12
+    },
+    {
+      "fecha": "2026-07-22",
+      "indice": 102.12
+    },
+    {
+      "fecha": "2026-07-23",
+      "indice": 102.12
+    },
+    {
+      "fecha": "2026-07-24",
+      "indice": 102.12
+    },
+    {
+      "fecha": "2026-07-25",
+      "indice": 102.12
+    }
+  ],
+  "anomalias": [],
+  "forecast": [],
+  "estado": "insuficiente"
+}
