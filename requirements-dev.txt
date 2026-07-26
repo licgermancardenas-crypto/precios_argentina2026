@@ -3,3 +3,6 @@
 #   pytest            # corre tests/
 # Los tests usan unittest.TestCase (stdlib) y pytest los descubre y corre igual.
 pytest>=8.0
+# Notebooks de análisis (notebooks/)
+matplotlib>=3.7
+jupyter>=1.0
