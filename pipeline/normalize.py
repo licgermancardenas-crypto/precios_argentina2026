@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import sqlite3
 import unicodedata
-import re
 from datetime import date
 from pathlib import Path
 

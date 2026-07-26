@@ -27,7 +27,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scraper.config import CANASTA, CADENAS
+from scraper.config import CADENAS, CANASTA
 
 log = logging.getLogger(__name__)
 
