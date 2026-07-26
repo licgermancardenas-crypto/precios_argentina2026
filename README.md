@@ -1,6 +1,6 @@
 # Atlas Precios 📊
 
-> Monitor de precios de supermercados argentinos con pipeline de datos automatizado, índice propio de inflación y (próximamente) modelo predictivo.
+> Sistema automatizado que mide la inflación de una canasta de supermercado en Argentina **en tiempo real**, con datos propios relevados diariamente en 4 cadenas — índice propio, comparador de precios, datos abiertos y un agente que responde en lenguaje natural.
 
 ### [Ver dashboard en vivo →](https://preciosargentina2026-hzmu5aufmjjbsieqf7ek7d.streamlit.app)
 
@@ -8,16 +8,41 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://preciosargentina2026-hzmu5aufmjjbsieqf7ek7d.streamlit.app)
 ![Python](https://img.shields.io/badge/Python-3.11+-blue)
 ![SQLite](https://img.shields.io/badge/DB-SQLite-lightgrey)
+![CC BY 4.0](https://img.shields.io/badge/datos-CC%20BY%204.0-green)
 
 ---
 
 ## ¿Qué es esto?
 
-Todos los días a las 06:00 (hora Argentina), un robot entra a Coto Digital, anota los precios de **26 productos básicos** y los guarda en una base de datos histórica.
+Todos los días a las 06:00 (hora Argentina), un robot releva los precios de una **canasta fija de 26 productos básicos** en **Coto, Día, Carrefour y Jumbo**, y los guarda en una base histórica. Con esos datos:
 
-Con esos datos construyo el **Índice Canasta Atlas**: el costo de comprar esa canasta fija, expresado en base 100 al día de inicio. Funciona como un mini-IPC privado con resolución diaria, algo que no existe públicamente.
+- construyo el **Índice Canasta Atlas** — un mini-IPC privado con resolución diaria que no existe públicamente;
+- **comparo precios entre cadenas** producto por producto (¿dónde conviene comprar?);
+- **publico los datos abiertos** (CSV/JSON, CC BY 4.0);
+- y respondo preguntas sobre la base **en lenguaje natural** con un agente LLM.
 
-**El pitch en una frase:** *"Un sistema automatizado que mide la inflación de una canasta de supermercado en tiempo real, con datos propios relevados diariamente."*
+**El pitch en una frase:** *"Datos propios de inflación minorista, relevados a diario, convertidos en un índice, un comparador y una API abierta — todo automatizado y reproducible."*
+
+---
+
+## Qué demuestra este proyecto
+
+| Área | Cómo |
+|------|------|
+| **Data engineering** | Pipeline reproducible *raw-first*: el crudo nunca se toca, la DB se reconstruye desde los JSON. Idempotente, multi-cadena, matching por EAN. |
+| **Automatización / DevOps** | GitHub Actions releva 4 cadenas, normaliza, exporta y commitea la data **sola**, todos los días. |
+| **Rigor analítico** | Detecté y corregí bugs de datos que inflaban el índice **+157% semanal** (falso) antes de publicar nada. Metodología del índice documentada y defendible. |
+| **ML aplicado con honestidad** | Forecasting con Prophet detrás de un *guard de datos*: no publica proyecciones sobre series demasiado cortas. |
+| **Aplicaciones LLM** | Agente text-to-SQL (Claude Opus 4.8) con tool de **solo lectura** y doble capa de seguridad. |
+| **Producto** | Dashboard público (Streamlit) con 5 vistas + datos abiertos consumibles por terceros. |
+
+---
+
+## Un hallazgo real (por qué el rigor importa)
+
+El primer índice que calculé daba **+157% en una semana** — imposible. La causa no era inflación: el scraper capturaba un `precio_promo` corrupto (la API devolvía valores ×80). El precio de lista estaba limpio; el promo era basura. Con el campo correcto, la inflación real de la canasta fue **~+2% semanal** — coherente.
+
+Ese patrón se repitió al sumar Jumbo (su `ListPrice` VTEX venía ×80 inflado). La lección quedó en el código: **guards de sanidad en dos capas** (scraper y pipeline) que descartan cualquier valor implausible antes de que contamine la serie. Un índice publicable se gana validando los datos, no confiando en ellos.
 
 ---
 
@@ -27,7 +52,7 @@ Con esos datos construyo el **Índice Canasta Atlas**: el costo de comprar esa c
 Coto (Constructor.io API)   Día / Carrefour / Jumbo (VTEX API)
       │                              │
       ▼                              ▼
- [scraper/coto.py]            [scraper/vtex.py]     ← delays 2-4s, EAN fijado
+ [scraper/coto.py]            [scraper/vtex.py]     ← HTTP puro, delays 2-4s, EAN fijado
       │                              │
       └──────────────┬───────────────┘
                      ▼
@@ -35,57 +60,57 @@ Coto (Constructor.io API)   Día / Carrefour / Jumbo (VTEX API)
                      │
                      ▼
         [pipeline/normalize.py]   ← matching por EAN (unifica cadenas),
-                     │              normalización, reduflación, outliers
+                     │              guards de sanidad, reduflación, outliers
                      ▼
              data/atlas.db (SQLite)   ← precios con columna `fuente`
                      │
-                     ▼
-           [dashboard/app.py]  ← Streamlit: índice + comparador de cadenas
+      ┌──────────────┼───────────────┬────────────────────┐
+      ▼              ▼               ▼                    ▼
+ [export.py]   [forecast.py]   [dashboard/app.py]   [agent/preguntar.py]
+ datos abiertos  Prophet+       índice · comparador   text-to-SQL
+ (CSV/JSON)      anomalías       proyección           (Claude Opus 4.8)
 ```
 
-Automatizado con **GitHub Actions** (cron diario). El badge arriba muestra si el scraper corrió exitosamente hoy.
+Todo orquestado por **GitHub Actions** (cron diario). El badge arriba muestra si el relevamiento corrió hoy.
 
 ---
 
 ## Canasta Atlas — 26 productos, 6 categorías
 
-| # | Producto | Presentación | Categoría |
-|---|----------|--------------|-----------|
-| 1 | Leche entera La Serenísima | 1 L | Lácteos |
-| 2 | Yogur bebible Ser o SanCor frutilla | 900 g / 1 L | Lácteos |
-| 3 | Queso cremoso La Paulina | por kg | Lácteos |
-| 4 | Manteca La Serenísima | 200 g | Lácteos |
-| 5 | Huevos blancos | maple x 12 | Lácteos |
-| 6 | Aceite de girasol Natura o Cocinero | 1.5 L | Almacén |
-| 7 | Arroz largo fino Gallo o Molinos Ala | 1 kg | Almacén |
-| 8 | Fideos secos Matarazzo o Lucchetti | 500 g | Almacén |
-| 9 | Harina de trigo 000 Morixe | 1 kg | Almacén |
-| 10 | Azúcar Ledesma | 1 kg | Almacén |
-| 11 | Yerba mate Playadito o Taragüí | 1 kg | Almacén |
-| 12 | Café molido La Virginia o Cabrales | 250 g | Almacén |
-| 13 | Puré de tomate Arcor o Cica | 520 g | Almacén |
-| 14 | Sal fina Celusal | 500 g | Almacén |
-| 15 | Pan lactal Bimbo o Fargo | ~460 g | Panificados |
-| 16 | Galletitas Criollitas o Traviata | pack 3 u. | Panificados |
-| 17 | Carne picada común | por kg | Carnes |
-| 18 | Pollo entero | por kg | Carnes |
-| 19 | Paleta cocida (fiambre) | por kg | Carnes |
-| 20 | Coca-Cola | 2.25 L | Bebidas |
-| 21 | Agua sin gas Villavicencio | 2 L | Bebidas |
-| 22 | Cerveza Quilmes | 1 L retornable | Bebidas |
-| 23 | Detergente Magistral | 500 ml | Limpieza |
-| 24 | Lavandina Ayudín | 1 L | Limpieza |
-| 25 | Papel higiénico Higienol o Elite | pack 4 u. | Limpieza |
-| 26 | Jabón en polvo Skip o Ala | 800 g / 900 ml | Limpieza |
+Lácteos y huevos, almacén, panificados, carnes, bebidas y limpieza. El EAN de cada producto se **congela** en el primer relevamiento y es la clave de matching entre cadenas.
+
+| Categoría | Productos (ej.) |
+|-----------|-----------------|
+| **Lácteos** | Leche La Serenísima, yogur Ser, queso cremoso La Paulina, manteca, huevos |
+| **Almacén** | Aceite Natura, arroz Molinos Ala, fideos Matarazzo, harina Morixe, azúcar Ledesma, yerba Taragüi, café La Virginia, puré Arcor, sal Celusal |
+| **Panificados** | Pan Bimbo, galletitas Traviata |
+| **Carnes** | Carne picada, pollo entero, paleta cocida |
+| **Bebidas** | Coca-Cola 2.25 L, agua Villavicencio, cerveza Quilmes |
+| **Limpieza** | Detergente Magistral, lavandina Ayudín, papel Higienol, jabón en polvo Ala |
+
+> La lista completa con presentaciones y EAN vive en [`scraper/config.py`](scraper/config.py).
 
 ---
 
 ## Metodología del índice
 
 - **Base 100** en el día de inicio. La variación refleja el costo relativo de comprar la misma canasta.
-- **Canasta fija**: el índice se calcula sobre los productos con serie completa (precio todos los días) de la cadena de referencia. Así ningún producto que aparece o desaparece mueve el índice por composición — solo se mide precio.
-- **Total + 6 categorías**: cada categoría tiene su propio índice base 100 (ver `data/public/indice_canasta.csv`).
-- **Reduflación**: si el EAN mantiene precio (±2%) pero el contenido baja, se registra como evento `reduflacion` — hallazgo publicable.
+- **Canasta fija**: se calcula sobre los productos con **serie completa** (precio todos los días) de la cadena de referencia. Así ningún producto que aparece o desaparece mueve el índice por composición — solo se mide precio.
+- **Solo `precio_lista`**, nunca el promo (ver *Un hallazgo real*).
+- **Total + 6 categorías**: cada categoría tiene su propio índice base 100.
+- **Reduflación**: si el EAN mantiene precio (±2%) pero el contenido baja, se registra como evento `reduflacion`.
+
+---
+
+## Comparador de cadenas
+
+Mismo producto (match por **EAN**), precio de cada cadena, lado a lado. Hallazgo consistente: **no hay una cadena que gane en todo** — el "más barato" se reparte por producto, así que conviene combinar. Los frescos de balanza (queso x kg, pollo) no cross-matchean por EAN y quedan fuera de la comparación, a propósito, para no comparar peras con peras-distintas.
+
+---
+
+## Forecasting (v3) — honesto por diseño
+
+El módulo de proyección usa **Prophet**, pero detrás de un *guard de datos*: con menos de 30 días de historia **no** publica un pronóstico (sería ruido con un intervalo de confianza falso) — muestra "acumulando historia N/30" y se activa solo cuando hay datos. En paralelo ingiere **regresores externos** (dólar oficial/blue, diario) y detecta anomalías del índice. El dashboard lee el resultado precomputado: no depende de Prophet.
 
 ---
 
@@ -98,9 +123,11 @@ El pipeline exporta cada día a `data/public/` (licencia **CC BY 4.0**). Las URL
 | `precios.csv` | Serie completa de precios (todas las cadenas) |
 | `indice_canasta.csv` / `.json` | Índice base 100 diario: total + 6 categorías |
 | `comparador.csv` | Último precio por cadena de cada producto + cuál conviene |
+| `regresores.csv` | Series externas (dólar oficial/blue) |
+| `forecast.json` | Proyección + anomalías (o estado "insuficiente") |
 | `metadata.json` | Esquema, cadenas, rango de fechas, licencia |
 
-También descargables desde el dashboard (sección *Datos abiertos*).
+También descargables desde el dashboard.
 
 ---
 
@@ -115,7 +142,7 @@ python -m agent.preguntar "¿qué cadena es la más barata para la canasta?"
 python -m agent.preguntar "¿cuánto subió la categoría lácteos esta semana?"
 ```
 
-Es una CLI local: corre con **tu** API key, no toca el deploy del dashboard ni expone costos públicos. La tool de consulta es de **solo lectura** (rechaza cualquier escritura, y abre la base en modo `ro`).
+CLI local: corre con **tu** API key, no toca el deploy del dashboard ni expone costos públicos. La tool de consulta es de **solo lectura** — guard que rechaza toda escritura *y* apertura de SQLite en modo `ro` (defensa en dos capas).
 
 ---
 
@@ -123,21 +150,23 @@ Es una CLI local: corre con **tu** API key, no toca el deploy del dashboard ni e
 
 | Versión | Estado | Alcance |
 |---------|--------|---------|
-| v1 MVP | ✅ Listo | Pipeline Coto + Índice Canasta + Dashboard |
-| v2 | ✅ Listo | Comparador entre 4 cadenas — **Coto + Día + Carrefour + Jumbo** |
-| v2.5 | ✅ Listo | Índices por categoría + **datos abiertos** (CSV/JSON en `data/public/`) |
-| v3 ML | 🔨 En construcción | Forecasting (Prophet) + detección de anomalías + regresores externos (dólar diario; IPC próximamente). El forecast del índice se **activa solo al superar 30 días** de historia — no se publican proyecciones sobre series demasiado cortas. |
-| v4 Agente | 🔨 En construcción | Agente **text-to-SQL** (Claude Opus 4.8) que responde preguntas sobre la base en lenguaje natural — CLI local |
+| v1 MVP | ✅ | Pipeline + Índice Canasta + Dashboard |
+| v2 | ✅ | Comparador entre 4 cadenas — Coto + Día + Carrefour + Jumbo |
+| v2.5 | ✅ | Índices por categoría + datos abiertos (CSV/JSON) |
+| v3 ML | ✅ | Forecasting (Prophet) + anomalías + regresores. Se **activa solo** al superar 30 días de historia |
+| v4 Agente | ✅ | Agente text-to-SQL (Claude Opus 4.8) en lenguaje natural |
 
 ---
 
 ## Stack técnico
 
-- **Scraping:** Python 3.11 + Playwright
-- **Storage:** SQLite (crudo en JSON, procesado en DB)
-- **Automatización:** GitHub Actions (cron diario)
-- **Dashboard:** Streamlit
-- **ML (v3):** Prophet + scikit-learn
+- **Scraping:** Python 3.11, HTTP puro (`urllib`) contra las APIs de Constructor.io (Coto) y VTEX (Día/Carrefour/Jumbo) — sin navegador headless, más estable que parsear HTML.
+- **Storage:** SQLite (crudo en JSON, procesado en DB).
+- **Análisis:** pandas.
+- **Automatización:** GitHub Actions (cron diario).
+- **Dashboard:** Streamlit + Plotly.
+- **ML (v3):** Prophet.
+- **Agente (v4):** Anthropic SDK — Claude Opus 4.8, tool use.
 
 ---
 
@@ -146,17 +175,20 @@ Es una CLI local: corre con **tu** API key, no toca el deploy del dashboard ni e
 **¿Por qué guardar el crudo antes de normalizar?**
 El dato crudo nunca se toca. Si hay un bug en la normalización, se reprocesa todo desde los JSON sin perder nada. Es la diferencia entre un pipeline reproducible y uno frágil.
 
+**¿Por qué HTTP directo y no un navegador headless?**
+Las cadenas exponen APIs JSON públicas (Constructor.io, VTEX). Consumirlas es más rápido, más estable y menos frágil que renderizar y parsear HTML.
+
 **¿Por qué SQLite y no Postgres?**
-Para un pipeline de un solo writer diario con ~30 productos × N cadenas, SQLite en WAL mode es más que suficiente y elimina toda la infraestructura de servidor. Se migra cuando haya razón real para hacerlo.
+Para un pipeline de un solo writer diario con 26 productos × 4 cadenas, SQLite en WAL mode sobra y elimina toda la infraestructura de servidor. Se migra cuando haya razón real.
 
 **¿Por qué EAN como clave de matching?**
-El EAN es el identificador más estable en retail. Los nombres de productos cambian, las URLs cambian, los SKUs internos cambian. El EAN no.
+El EAN es el identificador más estable en retail. Los nombres cambian, las URLs cambian, los SKUs internos cambian. El EAN no — y es el mismo código en todas las cadenas, lo que hace posible el comparador.
 
 ---
 
 ## Consideración ética y legal
 
-Este proyecto realiza scraping de **baja frecuencia** (una vez por día, por cadena) sobre **precios públicos** de productos de consumo masivo. No se recopilan datos personales. El objetivo es analítico y de interés público: construir una serie histórica de inflación minorista con resolución diaria que no existe en fuentes abiertas.
+Scraping de **baja frecuencia** (una vez por día, por cadena) sobre **precios públicos** de productos de consumo masivo. No se recopilan datos personales. El objetivo es analítico y de interés público: una serie histórica de inflación minorista con resolución diaria que no existe en fuentes abiertas.
 
 ---
 
@@ -179,14 +211,15 @@ precios_argentina2026/
 ├── agent/
 │   └── preguntar.py     # CLI text-to-SQL con Claude Opus 4.8 — v4
 ├── dashboard/
-│   └── app.py           # Streamlit (5 vistas, incl. comparador y proyección)
+│   └── app.py           # Streamlit (5 vistas)
 ├── data/
 │   ├── raw/{cadena}/    # snapshots crudos diarios por cadena (JSON)
 │   └── public/          # datos abiertos exportados (CSV/JSON, CC BY 4.0)
-├── notebooks/           # análisis exploratorio (cuando haya ≥3 semanas de datos)
-├── .github/workflows/
-│   └── scrape.yml       # cron diario
-└── requirements.txt
+├── notebooks/           # análisis exploratorio (EDA del índice)
+├── .github/workflows/scrape.yml   # cron diario
+├── requirements.txt          # dashboard + pipeline
+├── requirements-ml.txt       # Prophet (forecasting)
+└── requirements-agent.txt    # Anthropic SDK (agente v4)
 ```
 
 ---
