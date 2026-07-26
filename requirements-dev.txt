@@ -1,0 +1,5 @@
+# Dependencias de desarrollo/tests.
+#   pip install -r requirements.txt -r requirements-dev.txt
+#   pytest            # corre tests/
+# Los tests usan unittest.TestCase (stdlib) y pytest los descubre y corre igual.
+pytest>=8.0

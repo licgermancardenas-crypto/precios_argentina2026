@@ -5,6 +5,7 @@
 ### [Ver dashboard en vivo →](https://preciosargentina2026-hzmu5aufmjjbsieqf7ek7d.streamlit.app)
 
 [![scrape-diario](https://github.com/licgermancardenas-crypto/precios_argentina2026/actions/workflows/scrape.yml/badge.svg)](https://github.com/licgermancardenas-crypto/precios_argentina2026/actions/workflows/scrape.yml)
+[![tests](https://github.com/licgermancardenas-crypto/precios_argentina2026/actions/workflows/tests.yml/badge.svg)](https://github.com/licgermancardenas-crypto/precios_argentina2026/actions/workflows/tests.yml)
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://preciosargentina2026-hzmu5aufmjjbsieqf7ek7d.streamlit.app)
 ![Python](https://img.shields.io/badge/Python-3.11+-blue)
 ![SQLite](https://img.shields.io/badge/DB-SQLite-lightgrey)
@@ -31,7 +32,7 @@ Todos los días a las 06:00 (hora Argentina), un robot releva los precios de una
 |------|------|
 | **Data engineering** | Pipeline reproducible *raw-first*: el crudo nunca se toca, la DB se reconstruye desde los JSON. Idempotente, multi-cadena, matching por EAN. |
 | **Automatización / DevOps** | GitHub Actions releva 4 cadenas, normaliza, exporta y commitea la data **sola**, todos los días. |
-| **Rigor analítico** | Detecté y corregí bugs de datos que inflaban el índice **+157% semanal** (falso) antes de publicar nada. Metodología del índice documentada y defendible. |
+| **Rigor analítico** | Detecté y corregí bugs de datos que inflaban el índice **+157% semanal** (falso) antes de publicar nada. Metodología del índice documentada y defendible, **con tests** que cubren los guards de sanidad, el matching por EAN y el cálculo del índice. |
 | **ML aplicado con honestidad** | Forecasting con Prophet detrás de un *guard de datos*: no publica proyecciones sobre series demasiado cortas. |
 | **Aplicaciones LLM** | Agente text-to-SQL (Claude Opus 4.8) con tool de **solo lectura** y doble capa de seguridad. |
 | **Producto** | Dashboard público (Streamlit) con 5 vistas + datos abiertos consumibles por terceros. |
@@ -170,6 +171,23 @@ CLI local: corre con **tu** API key, no toca el deploy del dashboard ni expone c
 
 ---
 
+## Tests
+
+Suite de tests (`tests/`) sobre la lógica crítica del pipeline — se corren en CI en cada push:
+
+```bash
+pip install -r requirements.txt -r requirements-dev.txt
+pytest        # o: python -m unittest discover -s tests
+```
+
+Cubren:
+- **Guards de sanidad** — el promo corrupto de Coto y el `ListPrice` inflado de Jumbo se descartan (los dos bugs reales que rompían el índice).
+- **Matching por EAN** — mismo EAN entre cadenas = mismo producto; fallback por nombre para frescos.
+- **Índice** — filtra por `fuente` (no mezcla cadenas) y usa canasta fija (un producto que aparece/desaparece no lo mueve).
+- **Agente** — la tool SQL rechaza toda escritura e inyección.
+
+---
+
 ## Decisiones técnicas
 
 **¿Por qué guardar el crudo antes de normalizar?**
@@ -215,11 +233,15 @@ precios_argentina2026/
 ├── data/
 │   ├── raw/{cadena}/    # snapshots crudos diarios por cadena (JSON)
 │   └── public/          # datos abiertos exportados (CSV/JSON, CC BY 4.0)
+├── tests/               # suite de tests (unittest / pytest)
 ├── notebooks/           # análisis exploratorio (EDA del índice)
-├── .github/workflows/scrape.yml   # cron diario
+├── .github/workflows/
+│   ├── scrape.yml       # cron diario de relevamiento
+│   └── tests.yml        # CI: corre los tests en cada push
 ├── requirements.txt          # dashboard + pipeline
 ├── requirements-ml.txt       # Prophet (forecasting)
-└── requirements-agent.txt    # Anthropic SDK (agente v4)
+├── requirements-agent.txt    # Anthropic SDK (agente v4)
+└── requirements-dev.txt      # pytest (tests)
 ```
 
 ---
