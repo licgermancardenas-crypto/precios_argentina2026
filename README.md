@@ -18,6 +18,7 @@
 Todos los días a las 06:00 (hora Argentina), un robot releva los precios de una **canasta fija de 45 productos básicos** en **Coto, Día, Carrefour y Jumbo**, y los guarda en una base histórica. Con esos datos:
 
 - construyo el **Índice Canasta Atlas** — un mini-IPC privado con resolución diaria que no existe públicamente;
+- **adelanto la inflación oficial**: el IPC de INDEC se publica con ~6 semanas de rezago, así que el índice funciona como un *nowcast* del mes en curso;
 - **comparo precios entre cadenas** producto por producto (¿dónde conviene comprar?);
 - **publico los datos abiertos** (CSV/JSON, CC BY 4.0);
 - y respondo preguntas sobre la base **en lenguaje natural** con un agente LLM.
@@ -126,6 +127,7 @@ El pipeline exporta cada día a `data/public/` (licencia **CC BY 4.0**). Las URL
 | `comparador.csv` | Último precio por cadena de cada producto + cuál conviene |
 | `regresores.csv` | Series externas: dólar oficial/blue (diario) + IPC INDEC (mensual) |
 | `forecast.json` | Proyección + anomalías (o estado "insuficiente") |
+| `comparativa_ipc.json` | Índice Canasta vs IPC oficial (nowcast del mes + histórico mensual) |
 | `metadata.json` | Esquema, cadenas, rango de fechas, licencia |
 
 También descargables desde el dashboard.

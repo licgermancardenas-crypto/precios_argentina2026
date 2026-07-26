@@ -113,6 +113,18 @@ def cargar_forecast() -> dict:
         return {}
 
 
+@st.cache_data(ttl=3600)
+def cargar_comparativa_ipc() -> dict:
+    """Lee data/public/comparativa_ipc.json (índice vs IPC oficial). {} si no existe."""
+    ruta = DB_PATH.parent / "public" / "comparativa_ipc.json"
+    if not ruta.exists():
+        return {}
+    try:
+        return json.loads(ruta.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 def _costo_canasta_fija(df: pd.DataFrame) -> pd.Series:
     """
     Costo diario de una canasta FIJA: solo productos con precio todos los días.
@@ -297,6 +309,51 @@ with tab1:
             xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
         )
         st.plotly_chart(fig, use_container_width=True)
+
+    # Nowcast: nuestro índice vs IPC oficial
+    comp_ipc = cargar_comparativa_ipc()
+    mec = comp_ipc.get("mes_en_curso")
+    if mec:
+        st.subheader("🎯 Nowcast — nuestro índice vs IPC oficial")
+        st.caption(
+            "El IPC de INDEC se publica con ~6 semanas de rezago. La Canasta Atlas "
+            "mide el mes en curso **en tiempo real**: adelantamos la inflación oficial."
+        )
+        ipc_u = comp_ipc.get("ipc_ultimo") or {}
+        n1, n2, n3 = st.columns(3)
+        n1.metric(
+            f"Canasta Atlas — {mec['mes']} (parcial)",
+            f"{mec['var_canasta_pct']:+.1f}%",
+            delta=f"{mec['dias_observados']} días relevados",
+            delta_color="off",
+        )
+        if ipc_u:
+            n2.metric(f"IPC oficial — {ipc_u['mes']}", f"{ipc_u['var_pct']:+.1f}%",
+                      delta="último dato publicado", delta_color="off")
+        n3.metric("Ventaja temporal", "~6 semanas",
+                  delta=f"IPC {mec['mes']} se publica después", delta_color="off")
+
+        # Histórico mensual: nuestra canasta vs IPC (se llena al cerrar meses)
+        mensual = comp_ipc.get("mensual") or []
+        cerrados = [m for m in mensual if m.get("var_ipc_pct") is not None]
+        if cerrados:
+            dfm = pd.DataFrame(cerrados)
+            figm = go.Figure()
+            figm.add_trace(go.Bar(x=dfm["mes"], y=dfm["var_canasta_pct"],
+                                  name="Canasta Atlas", marker_color=COLORES["navy"]))
+            figm.add_trace(go.Bar(x=dfm["mes"], y=dfm["var_ipc_pct"],
+                                  name="IPC oficial", marker_color=COLORES["gold"]))
+            figm.update_layout(barmode="group", height=300, margin=dict(t=20, b=20),
+                               yaxis_title="Var. mensual %", plot_bgcolor="white",
+                               xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
+                               legend=dict(orientation="h", y=1.15))
+            st.plotly_chart(figm, use_container_width=True)
+        else:
+            st.info(
+                f"El contraste mensual completo (Canasta vs IPC) se activa al cerrar "
+                f"el primer mes completo de historia. Por ahora, nowcast de {mec['mes']}.",
+                icon="⏳",
+            )
 
     # Índices por categoría
     idx_cat = calcular_indice_categoria(df_precios)

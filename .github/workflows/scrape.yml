@@ -37,6 +37,9 @@ jobs:
       - name: Exportar datos públicos
         run: python -m pipeline.export
 
+      - name: Comparativa vs IPC oficial
+        run: python -m pipeline.comparativa_ipc
+
       - name: Commitear datos
         run: |
           git config user.name  "atlas-bot"
