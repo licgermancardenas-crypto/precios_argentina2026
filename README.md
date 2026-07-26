@@ -15,7 +15,7 @@
 
 ## ¿Qué es esto?
 
-Todos los días a las 06:00 (hora Argentina), un robot releva los precios de una **canasta fija de 26 productos básicos** en **Coto, Día, Carrefour y Jumbo**, y los guarda en una base histórica. Con esos datos:
+Todos los días a las 06:00 (hora Argentina), un robot releva los precios de una **canasta fija de 45 productos básicos** en **Coto, Día, Carrefour y Jumbo**, y los guarda en una base histórica. Con esos datos:
 
 - construyo el **Índice Canasta Atlas** — un mini-IPC privado con resolución diaria que no existe públicamente;
 - **comparo precios entre cadenas** producto por producto (¿dónde conviene comprar?);
@@ -76,7 +76,7 @@ Todo orquestado por **GitHub Actions** (cron diario). El badge arriba muestra si
 
 ---
 
-## Canasta Atlas — 26 productos, 6 categorías
+## Canasta Atlas — 45 productos, 6 categorías
 
 Lácteos y huevos, almacén, panificados, carnes, bebidas y limpieza. El EAN de cada producto se **congela** en el primer relevamiento y es la clave de matching entre cadenas.
 
@@ -197,7 +197,7 @@ El dato crudo nunca se toca. Si hay un bug en la normalización, se reprocesa to
 Las cadenas exponen APIs JSON públicas (Constructor.io, VTEX). Consumirlas es más rápido, más estable y menos frágil que renderizar y parsear HTML.
 
 **¿Por qué SQLite y no Postgres?**
-Para un pipeline de un solo writer diario con 26 productos × 4 cadenas, SQLite en WAL mode sobra y elimina toda la infraestructura de servidor. Se migra cuando haya razón real.
+Para un pipeline de un solo writer diario con 45 productos × 4 cadenas, SQLite en WAL mode sobra y elimina toda la infraestructura de servidor. Se migra cuando haya razón real.
 
 **¿Por qué EAN como clave de matching?**
 El EAN es el identificador más estable en retail. Los nombres cambian, las URLs cambian, los SKUs internos cambian. El EAN no — y es el mismo código en todas las cadenas, lo que hace posible el comparador.

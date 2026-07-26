@@ -6,6 +6,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-07-23,TOTAL,117942.96,102.12
 2026-07-24,TOTAL,117942.96,102.12
 2026-07-25,TOTAL,117942.96,102.12
+2026-07-26,TOTAL,117942.96,102.12
 2026-07-17,almacen,16727.0,100.0
 2026-07-20,almacen,16727.0,100.0
 2026-07-21,almacen,16727.0,100.0
@@ -13,6 +14,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-07-23,almacen,16727.0,100.0
 2026-07-24,almacen,16727.0,100.0
 2026-07-25,almacen,16727.0,100.0
+2026-07-26,almacen,16727.0,100.0
 2026-07-17,bebidas,12221.0,100.0
 2026-07-20,bebidas,12475.0,102.08
 2026-07-21,bebidas,11374.0,93.07
@@ -20,6 +22,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-07-23,bebidas,11374.0,93.07
 2026-07-24,bebidas,11374.0,93.07
 2026-07-25,bebidas,11374.0,93.07
+2026-07-26,bebidas,11374.0,93.07
 2026-07-17,carnes,43094.0,100.0
 2026-07-20,carnes,43094.0,100.0
 2026-07-21,carnes,42654.0,98.98
@@ -27,6 +30,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-07-23,carnes,42654.0,98.98
 2026-07-24,carnes,42654.0,98.98
 2026-07-25,carnes,42654.0,98.98
+2026-07-26,carnes,42654.0,98.98
 2026-07-17,lacteos,20152.0,100.0
 2026-07-20,lacteos,20152.0,100.0
 2026-07-21,lacteos,23352.0,115.88
@@ -34,6 +38,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-07-23,lacteos,23352.0,115.88
 2026-07-24,lacteos,23352.0,115.88
 2026-07-25,lacteos,23352.0,115.88
+2026-07-26,lacteos,23352.0,115.88
 2026-07-17,limpieza,16383.96,100.0
 2026-07-20,limpieza,16383.96,100.0
 2026-07-21,limpieza,16915.96,103.25
@@ -41,6 +46,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-07-23,limpieza,16915.96,103.25
 2026-07-24,limpieza,16915.96,103.25
 2026-07-25,limpieza,16915.96,103.25
+2026-07-26,limpieza,16915.96,103.25
 2026-07-17,panificados,6920.0,100.0
 2026-07-20,panificados,6920.0,100.0
 2026-07-21,panificados,6920.0,100.0
@@ -48,3 +54,4 @@ fecha,categoria,costo_canasta,indice_base100
 2026-07-23,panificados,6920.0,100.0
 2026-07-24,panificados,6920.0,100.0
 2026-07-25,panificados,6920.0,100.0
+2026-07-26,panificados,6920.0,100.0
