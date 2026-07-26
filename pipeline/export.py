@@ -154,7 +154,7 @@ def exportar(db_path: Path = DB_PATH, out_dir: Path = OUT_DIR) -> None:
             "indice_canasta.csv": "Índice base 100 diario: total + 6 categorías.",
             "indice_canasta.json": "Idem en JSON.",
             "comparador.csv": "Último precio por cadena de cada producto comparable.",
-            "regresores.csv": "Series externas diarias (dólar oficial y blue).",
+            "regresores.csv": "Series externas: dólar oficial/blue (diario) e IPC INDEC (mensual).",
             "forecast.json": "Proyección del índice (Prophet) + anomalías; estado 'insuficiente' hasta acumular historia.",
         },
     }

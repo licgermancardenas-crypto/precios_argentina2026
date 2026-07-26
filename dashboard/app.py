@@ -624,30 +624,57 @@ with tab5:
 
     st.divider()
 
-    # --- Contexto: dólar ---
-    st.subheader("Contexto macro — dólar")
+    # --- Contexto macro: dólar + IPC ---
+    st.subheader("Contexto macro")
     reg = cargar_regresores()
     if reg.empty:
         st.caption("Todavía sin datos de regresores. Se ingieren a diario desde el próximo run.")
     else:
-        st.caption("Regresor externo para el modelo. La correlación con el índice se activa al acumular historia.")
-        figd = go.Figure()
-        etiquetas = {"dolar_oficial": "Dólar oficial", "dolar_blue": "Dólar blue"}
-        for serie, g in reg.groupby("serie"):
-            figd.add_trace(go.Scatter(x=g["fecha"], y=g["valor"], mode="lines+markers",
-                                     name=etiquetas.get(serie, serie)))
-        figd.update_layout(height=300, margin=dict(t=20, b=20), plot_bgcolor="white",
-                          yaxis_title="$ / USD (venta)", xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
-                          legend=dict(orientation="h", y=1.12))
-        st.plotly_chart(figd, use_container_width=True)
-        piv_d = reg.pivot_table(index="fecha", columns="serie", values="valor")
-        if {"dolar_oficial", "dolar_blue"}.issubset(piv_d.columns):
-            ult = piv_d.dropna().iloc[-1]
-            brecha = (ult["dolar_blue"] / ult["dolar_oficial"] - 1) * 100
-            c1, c2, c3 = st.columns(3)
-            c1.metric("Dólar oficial", f"${ult['dolar_oficial']:,.0f}")
-            c2.metric("Dólar blue", f"${ult['dolar_blue']:,.0f}")
-            c3.metric("Brecha", f"{brecha:.1f}%")
+        st.caption("Regresores externos para el modelo (dólar diario, IPC mensual). "
+                   "La correlación con el índice se activa al acumular historia.")
+
+        # Dólar (diario)
+        dolar = reg[reg["serie"].str.startswith("dolar")]
+        if not dolar.empty:
+            figd = go.Figure()
+            etiquetas = {"dolar_oficial": "Dólar oficial", "dolar_blue": "Dólar blue"}
+            for serie, g in dolar.groupby("serie"):
+                figd.add_trace(go.Scatter(x=g["fecha"], y=g["valor"], mode="lines+markers",
+                                         name=etiquetas.get(serie, serie)))
+            figd.update_layout(height=280, margin=dict(t=20, b=20), plot_bgcolor="white",
+                              yaxis_title="$ / USD (venta)", xaxis=dict(gridcolor="#eee"),
+                              yaxis=dict(gridcolor="#eee"), legend=dict(orientation="h", y=1.15))
+            st.plotly_chart(figd, use_container_width=True)
+            piv_d = dolar.pivot_table(index="fecha", columns="serie", values="valor")
+            if {"dolar_oficial", "dolar_blue"}.issubset(piv_d.columns):
+                ult = piv_d.dropna().iloc[-1]
+                brecha = (ult["dolar_blue"] / ult["dolar_oficial"] - 1) * 100
+                c1, c2, c3 = st.columns(3)
+                c1.metric("Dólar oficial", f"${ult['dolar_oficial']:,.0f}")
+                c2.metric("Dólar blue", f"${ult['dolar_blue']:,.0f}")
+                c3.metric("Brecha", f"{brecha:.1f}%")
+
+        # IPC INDEC (mensual) — inflación oficial, para contrastar con nuestro índice
+        ipc = reg[reg["serie"] == "ipc"].sort_values("fecha")
+        if len(ipc) >= 2:
+            st.markdown("**Inflación oficial — IPC INDEC (Nivel General)**")
+            ipc = ipc.assign(var=ipc["valor"].pct_change() * 100)
+            ult, prev = ipc.iloc[-1], ipc.iloc[-2]
+            interanual = None
+            if len(ipc) >= 13:
+                interanual = (ult["valor"] / ipc.iloc[-13]["valor"] - 1) * 100
+            k1, k2 = st.columns(2)
+            k1.metric(f"IPC mensual ({ult['fecha'].strftime('%b %Y')})", f"{ult['var']:.1f}%")
+            k2.metric("IPC interanual", f"{interanual:.1f}%" if interanual is not None else "—")
+            figi = go.Figure(go.Bar(
+                x=ipc["fecha"].tail(12), y=ipc["var"].tail(12),
+                marker_color=COLORES["navy"],
+                hovertemplate="%{x|%b %Y}: %{y:.1f}%<extra></extra>",
+            ))
+            figi.update_layout(height=240, margin=dict(t=10, b=20), plot_bgcolor="white",
+                              yaxis_title="Var. mensual %", xaxis=dict(gridcolor="#eee"),
+                              yaxis=dict(gridcolor="#eee"))
+            st.plotly_chart(figi, use_container_width=True)
 
     st.divider()
 

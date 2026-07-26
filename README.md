@@ -110,7 +110,7 @@ Mismo producto (match por **EAN**), precio de cada cadena, lado a lado. Hallazgo
 
 ## Forecasting (v3) — honesto por diseño
 
-El módulo de proyección usa **Prophet**, pero detrás de un *guard de datos*: con menos de 30 días de historia **no** publica un pronóstico (sería ruido con un intervalo de confianza falso) — muestra "acumulando historia N/30" y se activa solo cuando hay datos. En paralelo ingiere **regresores externos** (dólar oficial/blue, diario) y detecta anomalías del índice. El dashboard lee el resultado precomputado: no depende de Prophet.
+El módulo de proyección usa **Prophet**, pero detrás de un *guard de datos*: con menos de 30 días de historia **no** publica un pronóstico (sería ruido con un intervalo de confianza falso) — muestra "acumulando historia N/30" y se activa solo cuando hay datos. En paralelo ingiere **regresores externos** — dólar oficial/blue (diario, dolarapi.com) e **IPC INDEC** (mensual, API de datos.gob.ar) — y detecta anomalías del índice. El dashboard contrasta nuestro índice con la inflación oficial y lee el forecast precomputado: no depende de Prophet.
 
 ---
 
@@ -123,7 +123,7 @@ El pipeline exporta cada día a `data/public/` (licencia **CC BY 4.0**). Las URL
 | `precios.csv` | Serie completa de precios (todas las cadenas) |
 | `indice_canasta.csv` / `.json` | Índice base 100 diario: total + 6 categorías |
 | `comparador.csv` | Último precio por cadena de cada producto + cuál conviene |
-| `regresores.csv` | Series externas (dólar oficial/blue) |
+| `regresores.csv` | Series externas: dólar oficial/blue (diario) + IPC INDEC (mensual) |
 | `forecast.json` | Proyección + anomalías (o estado "insuficiente") |
 | `metadata.json` | Esquema, cadenas, rango de fechas, licencia |
 
