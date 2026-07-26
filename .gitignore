@@ -15,6 +15,9 @@ env/
 
 # Base de datos — SÍ se versiona (el Action la actualiza diariamente)
 # data/atlas.db
+# ...pero los sidecars WAL de SQLite son transitorios y NO se versionan
+data/*.db-shm
+data/*.db-wal
 
 # Playwright
 playwright/.cache/
