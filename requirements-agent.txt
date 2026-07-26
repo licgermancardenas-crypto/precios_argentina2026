@@ -1,0 +1,7 @@
+# Dependencias del agente de preguntas (v4). Separadas de requirements.txt
+# para no tocar el deploy del dashboard — el agente es una CLI local opcional.
+#
+#   pip install -r requirements-agent.txt
+#   export ANTHROPIC_API_KEY=sk-ant-...
+#   python -m agent.preguntar "¿qué cadena es la más barata?"
+anthropic>=0.69.0

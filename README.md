@@ -104,6 +104,21 @@ También descargables desde el dashboard (sección *Datos abiertos*).
 
 ---
 
+## Preguntá en lenguaje natural (v4)
+
+Agente **text-to-SQL** con Claude Opus 4.8: traduce tu pregunta a SQL, la ejecuta contra la base (solo lectura) y responde citando los números.
+
+```bash
+pip install -r requirements-agent.txt
+export ANTHROPIC_API_KEY=sk-ant-...
+python -m agent.preguntar "¿qué cadena es la más barata para la canasta?"
+python -m agent.preguntar "¿cuánto subió la categoría lácteos esta semana?"
+```
+
+Es una CLI local: corre con **tu** API key, no toca el deploy del dashboard ni expone costos públicos. La tool de consulta es de **solo lectura** (rechaza cualquier escritura, y abre la base en modo `ro`).
+
+---
+
 ## Roadmap
 
 | Versión | Estado | Alcance |
@@ -112,7 +127,7 @@ También descargables desde el dashboard (sección *Datos abiertos*).
 | v2 | ✅ Listo | Comparador entre 4 cadenas — **Coto + Día + Carrefour + Jumbo** |
 | v2.5 | ✅ Listo | Índices por categoría + **datos abiertos** (CSV/JSON en `data/public/`) |
 | v3 ML | 🔨 En construcción | Forecasting (Prophet) + detección de anomalías + regresores externos (dólar diario; IPC próximamente). El forecast del índice se **activa solo al superar 30 días** de historia — no se publican proyecciones sobre series demasiado cortas. |
-| v4 Agente | ⏳ Pendiente | LLM que responde preguntas sobre la base en lenguaje natural |
+| v4 Agente | 🔨 En construcción | Agente **text-to-SQL** (Claude Opus 4.8) que responde preguntas sobre la base en lenguaje natural — CLI local |
 
 ---
 
@@ -161,8 +176,10 @@ precios_argentina2026/
 │   ├── forecast.py      # Prophet + anomalías, con guard de datos — v3
 │   ├── export.py        # SQLite → data/public/ (CSV/JSON abiertos)
 │   └── schema.sql       # DDL de la base de datos
+├── agent/
+│   └── preguntar.py     # CLI text-to-SQL con Claude Opus 4.8 — v4
 ├── dashboard/
-│   └── app.py           # Streamlit (4 vistas, incl. comparador)
+│   └── app.py           # Streamlit (5 vistas, incl. comparador y proyección)
 ├── data/
 │   ├── raw/{cadena}/    # snapshots crudos diarios por cadena (JSON)
 │   └── public/          # datos abiertos exportados (CSV/JSON, CC BY 4.0)
