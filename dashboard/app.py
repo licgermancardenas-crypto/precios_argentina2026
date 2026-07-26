@@ -1,6 +1,6 @@
 """
 Dashboard Atlas Precios — Streamlit
-3 vistas: Índice Canasta, Top Movimientos, Detalle por producto.
+5 vistas: Índice, Movimientos, Por Producto, Comparador, Proyección & Contexto.
 """
 
 from __future__ import annotations
@@ -10,9 +10,27 @@ import sqlite3
 from pathlib import Path
 
 import pandas as pd
-import plotly.express as px
 import plotly.graph_objects as go
+import plotly.io as pio
 import streamlit as st
+
+# ---------------------------------------------------------------------------
+# Identidad visual — paleta de marca (una sola fuente de verdad)
+# ---------------------------------------------------------------------------
+COLORES = {
+    "navy":   "#1a2744",
+    "gold":   "#c9a227",
+    "rojo":   "#d64550",
+    "gris":   "#f2f2f2",
+    "verde":  "#2e9e6b",
+    "azul":   "#4a7fb5",
+    "texto":  "#212529",
+    "grilla": "#eef0f3",
+}
+_FUENTE = "IBM Plex Sans, sans-serif"
+# Colorway de marca para series múltiples (categorías, comparador, etc.)
+_COLORWAY = [COLORES["navy"], COLORES["gold"], COLORES["verde"], COLORES["azul"],
+             COLORES["rojo"], "#8a6d3b", "#5a6472", "#9aa4b2"]
 
 # ---------------------------------------------------------------------------
 # Configuración
@@ -27,17 +45,55 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Estilos
+# Template de Plotly de marca — se aplica a TODOS los gráficos automáticamente
+# (fuente, paleta de series, grillas, hover, márgenes).
+pio.templates["atlas"] = go.layout.Template(
+    layout=dict(
+        font=dict(family=_FUENTE, color=COLORES["texto"], size=13),
+        colorway=_COLORWAY,
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+        xaxis=dict(gridcolor=COLORES["grilla"], zerolinecolor=COLORES["grilla"], zeroline=False),
+        yaxis=dict(gridcolor=COLORES["grilla"], zerolinecolor=COLORES["grilla"], zeroline=False),
+        hoverlabel=dict(bgcolor="white", bordercolor=COLORES["grilla"], font=dict(family=_FUENTE, size=12)),
+        margin=dict(t=30, b=20, l=10, r=10),
+        legend=dict(orientation="h", y=1.12, x=0),
+        colorscale=dict(sequential=[[0, "#eaf0f6"], [1, COLORES["navy"]]]),
+    )
+)
+pio.templates.default = "atlas"
+
+# Estilos de la app (fuente + tarjetas de métrica + tabs + limpieza de chrome)
 st.markdown("""
 <style>
-    .metric-card {
-        background: #f8f9fa;
-        border-radius: 8px;
-        padding: 16px;
-        border-left: 4px solid #1a2744;
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+    html, body, [class*="css"], .stApp, [data-testid="stMarkdownContainer"] {
+        font-family: 'IBM Plex Sans', sans-serif;
     }
-    .footer {text-align:center; color:#aaa; font-size:12px; margin-top:40px;}
-    h1 {color: #1a2744;}
+    h1, h2, h3 { color: #1a2744; font-weight: 600; letter-spacing: -0.01em; }
+    h1 { font-weight: 700; }
+
+    /* Tarjetas de métrica */
+    [data-testid="stMetric"] {
+        background: #f8f9fb;
+        border: 1px solid #eceef2;
+        border-left: 4px solid #1a2744;
+        border-radius: 10px;
+        padding: 14px 16px 12px;
+    }
+    [data-testid="stMetricLabel"] p { color: #5a6472; font-weight: 500; font-size: 0.8rem; }
+    [data-testid="stMetricValue"] { color: #1a2744; font-weight: 600; }
+
+    /* Tabs */
+    [data-baseweb="tab-list"] { gap: 2px; border-bottom: 1px solid #eceef2; }
+    button[data-baseweb="tab"] { font-weight: 500; }
+    button[data-baseweb="tab"][aria-selected="true"] { color: #1a2744; }
+
+    /* Limpieza del chrome default de Streamlit */
+    #MainMenu, header [data-testid="stToolbar"] { visibility: hidden; }
+    footer { visibility: hidden; }
+    .block-container { padding-top: 2.2rem; }
+    .footer { text-align: center; color: #9aa4b2; font-size: 12px; margin-top: 32px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -201,15 +257,6 @@ def calcular_indice_categoria(df: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 # Helpers de UI
 # ---------------------------------------------------------------------------
-
-COLORES = {
-    "navy":   "#1a2744",
-    "gold":   "#c9a227",
-    "rojo":   "#E20025",
-    "gris":   "#f2f2f2",
-    "verde":  "#00a524",
-}
-
 
 def _flecha(val: float | None) -> str:
     if val is None:
@@ -397,11 +444,10 @@ with tab1:
         colg, colb = st.columns([3, 2])
         with colg:
             figc = go.Figure()
-            paleta_cat = px.colors.qualitative.Set2
             for i, (cat, g) in enumerate(idx_cat.groupby("categoria")):
                 figc.add_trace(go.Scatter(
                     x=g["fecha"], y=g["indice"], mode="lines+markers", name=cat.capitalize(),
-                    line=dict(color=paleta_cat[i % len(paleta_cat)], width=2), marker=dict(size=4),
+                    line=dict(color=_COLORWAY[i % len(_COLORWAY)], width=2), marker=dict(size=4),
                     hovertemplate=f"<b>{cat.capitalize()}</b> %{{x|%d/%m}}<br>%{{y:.1f}}<extra></extra>",
                 ))
             figc.add_hline(y=100, line_dash="dot", line_color="#bbb", line_width=1)
