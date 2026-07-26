@@ -9,6 +9,7 @@ CADENAS: list[dict] = [
     {"fuente": "coto",      "motor": "coto"},
     {"fuente": "dia",       "motor": "vtex", "dominio": "https://diaonline.supermercadosdia.com.ar"},
     {"fuente": "carrefour", "motor": "vtex", "dominio": "https://www.carrefour.com.ar"},
+    {"fuente": "jumbo",     "motor": "vtex", "dominio": "https://www.jumbo.com.ar"},
 ]
 
 # Cadena de referencia para el Índice Canasta Atlas y las vistas históricas del dashboard.

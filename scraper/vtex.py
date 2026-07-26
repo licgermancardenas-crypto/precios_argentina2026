@@ -62,13 +62,20 @@ def _parsear_producto(prod: dict, categoria: str, nombre_ref: str) -> dict | Non
         return None
     oferta = sellers[0].get("commertialOffer", {})
 
-    precio_lista = oferta.get("ListPrice")
+    # 'Price' es el precio efectivo (a pagar). 'ListPrice' es el precio regular "de",
+    # pero algunas cadenas (Jumbo) lo devuelven corrupto (>>Price): en ese caso lo
+    # descartamos y usamos el precio efectivo como regular.
     precio_venta = oferta.get("Price")
-    if not precio_lista:
+    list_price = oferta.get("ListPrice")
+    if not precio_venta:
         return None
+    if list_price and list_price <= precio_venta * 3:
+        precio_lista = list_price
+    else:
+        precio_lista = oferta.get("PriceWithoutDiscount") or precio_venta
 
-    # En VTEX 'Price' es el precio efectivo; si es menor a 'ListPrice' hay promo real.
-    precio_promo = precio_venta if (precio_venta and precio_venta < precio_lista) else None
+    # Si el precio efectivo es menor al regular, hay promo real.
+    precio_promo = precio_venta if precio_venta < precio_lista else None
 
     formato_qty = it.get("unitMultiplier") or 1
     unidad = (it.get("measurementUnit") or "").upper()

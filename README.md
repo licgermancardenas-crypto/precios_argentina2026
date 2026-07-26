@@ -94,7 +94,7 @@ Automatizado con **GitHub Actions** (cron diario). El badge arriba muestra si el
 | Versión | Estado | Alcance |
 |---------|--------|---------|
 | v1 MVP | ✅ Listo | Pipeline Coto + Índice Canasta + Dashboard |
-| v2 | 🔨 En construcción | Comparador entre cadenas — **Coto + Día + Carrefour** integradas; Jumbo reutiliza la misma clase VTEX |
+| v2 | ✅ Listo | Comparador entre 4 cadenas — **Coto + Día + Carrefour + Jumbo** |
 | v2.5 | ⏳ Pendiente | Índices por categoría + API/CSV público |
 | v3 ML | ⏳ Pendiente | Forecasting (Prophet) + detección de anomalías + regresores externos (IPC, dólar, eventos de calendario) |
 | v4 Agente | ⏳ Pendiente | LLM que responde preguntas sobre la base en lenguaje natural |
