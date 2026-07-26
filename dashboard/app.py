@@ -275,10 +275,16 @@ def _color_var(val: float | None) -> str:
 # Header
 # ---------------------------------------------------------------------------
 
-col_logo, col_titulo = st.columns([1, 8])
+col_logo, col_titulo = st.columns([1, 9])
+with col_logo:
+    st.markdown("<div style='font-size:52px; line-height:1.2'>📊</div>", unsafe_allow_html=True)
 with col_titulo:
     st.title("Atlas Precios")
-    st.caption("Monitor de inflación de supermercados argentinos · datos propios · actualización diaria")
+    st.markdown(
+        "Relevo **4 supermercados** argentinos todos los días y construyo un índice de "
+        "inflación propio con resolución diaria — que **adelanta al IPC oficial**. "
+        "Todo automatizado, reproducible y con datos abiertos."
+    )
 
 # Estado del relevamiento (control de calidad)
 _qc = cargar_qc()
@@ -365,6 +371,24 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(
 # TAB 1 — Índice Canasta
 # ============================================================
 with tab1:
+    # Insight dinámico — lee los datos actuales para el primer visitante
+    if len(idx) >= 2:
+        var_total = idx["indice"].iloc[-1] - 100
+        dias_serie = (idx["fecha"].iloc[-1] - idx["fecha"].iloc[0]).days + 1
+        verbo = "subió" if var_total > 0 else ("bajó" if var_total < 0 else "se mantuvo")
+        _idx_cat_ins = calcular_indice_categoria(df_precios)
+        _extra = ""
+        if not _idx_cat_ins.empty:
+            _uc = _idx_cat_ins.sort_values("fecha").groupby("categoria").last()
+            _uc["var"] = _uc["indice"] - 100
+            _lider = _uc["var"].idxmax()
+            if _uc["var"].max() > 0:
+                _extra = f" El rubro que más empuja es **{_lider.capitalize()}** ({_uc['var'].max():+.1f}%)."
+        st.info(
+            f"En los últimos **{dias_serie} días**, la Canasta Atlas {verbo} **{var_total:+.1f}%**.{_extra}",
+            icon="📊",
+        )
+
     # Nowcast: nuestro índice vs IPC oficial — el diferencial del proyecto, va primero
     comp_ipc = cargar_comparativa_ipc()
     mec = comp_ipc.get("mes_en_curso")
@@ -854,6 +878,45 @@ with tab5:
     elif not anomalias:
         st.caption("Sin anomalías ni eventos registrados por ahora.")
 
+
+# ---------------------------------------------------------------------------
+# Acerca de y metodología
+# ---------------------------------------------------------------------------
+
+st.divider()
+with st.expander("ℹ️ Acerca de Atlas Precios y metodología"):
+    st.markdown(
+        """
+**Qué es.** Todos los días a las 06:00 (hora Argentina) un robot releva los precios de una
+**canasta fija de 45 productos básicos** en **Coto, Día, Carrefour y Jumbo**, y los guarda en
+una base histórica. Con esos datos construyo un índice de inflación propio con resolución
+**diaria** — algo que no existe públicamente.
+
+**Nowcast de la inflación.** El IPC oficial de INDEC se publica con ~6 semanas de rezago. Como
+la Canasta Atlas mide el mes en curso en tiempo real, funciona como un *nowcast*: adelanta la
+cifra oficial.
+
+**Cómo se construye el índice.**
+- **Base 100** en el primer día; la variación refleja el costo de comprar la misma canasta.
+- **Canasta fija**: solo productos con precio *todos los días* de la cadena de referencia (Coto),
+  así ningún producto que aparece o desaparece mueve el índice por composición.
+- Se usa el **precio de lista** (no el promocional).
+- **Total + 6 categorías**, cada una con su propio índice.
+
+**Comparador entre cadenas.** El mismo producto se identifica por **EAN** (código de barras), que
+es el mismo en todas las cadenas. Los frescos de balanza (queso x kg, pollo) no cross-matchean y
+quedan fuera de la comparación, a propósito.
+
+**Fuentes.** Precios: APIs públicas de Coto (Constructor.io) y VTEX (Día/Carrefour/Jumbo).
+Contexto: dólar oficial/blue (dolarapi.com) e IPC INDEC (API de datos.gob.ar).
+
+**Límites.** Es un relevamiento de baja frecuencia (1 vez por día) sobre precios públicos, sin
+datos personales. La serie recién arranca: el pronóstico y el contraste mensual con el IPC se
+activan solos al acumular historia.
+
+Proyecto de portfolio · datos bajo licencia **CC BY 4.0** · no afiliado a ninguna cadena.
+        """
+    )
 
 # ---------------------------------------------------------------------------
 # Datos abiertos
