@@ -21,7 +21,8 @@ class TestDispersion(unittest.TestCase):
         self.dir = Path(tempfile.mkdtemp())
         self.db = self.dir / "atlas.db"
         self.out = self.dir / "hallazgos.json"
-        con = sqlite3.connect(self.db); con.row_factory = sqlite3.Row
+        con = sqlite3.connect(self.db)
+        con.row_factory = sqlite3.Row
         normalize._crear_schema(con)
         con.execute("INSERT INTO productos (id, nombre_normalizado, nombre_original, categoria, en_canasta, activo) "
                     "VALUES (1,'a','Prod A','almacen',1,1)")
@@ -31,7 +32,8 @@ class TestDispersion(unittest.TestCase):
         for pid, fuente, precio in [(1, "coto", 100.0), (1, "dia", 150.0), (2, "coto", 80.0)]:
             con.execute("INSERT INTO precios (producto_id, fecha, precio_lista, fuente) "
                         "VALUES (?, '2026-07-25', ?, ?)", (pid, precio, fuente))
-        con.commit(); con.close()
+        con.commit()
+        con.close()
 
     def _generar(self):
         hallazgos.generar(db_path=self.db, out_path=self.out)

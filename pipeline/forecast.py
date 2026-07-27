@@ -76,7 +76,7 @@ def _detectar_anomalias(serie: pd.DataFrame) -> list[dict]:
 
 def _forecast_prophet(serie: pd.DataFrame) -> list[dict]:
     """Ajusta Prophet y proyecta HORIZONTE_DIAS. Import lazy: solo se llama con datos suficientes."""
-    from prophet import Prophet  # noqa: import lazy a propósito
+    from prophet import Prophet  # import lazy a propósito
 
     dfp = serie.rename(columns={"fecha": "ds", "indice": "y"}).copy()
     dfp["ds"] = pd.to_datetime(dfp["ds"])

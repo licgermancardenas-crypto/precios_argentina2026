@@ -62,17 +62,20 @@ def generar(out_path: Path = OUT_PATH) -> dict:
         n = crudos if crudos is not None else 0
         cobertura = round(n / ESPERADO * 100, 1) if ESPERADO else 0.0
         if n == 0:
-            est = "critical"; estado = "critical"
+            est = "critical"
+            estado = "critical"
             alertas.append(f"{f}: NO relevó ningún producto")
         elif n < ESPERADO * UMBRAL_OK:
-            est = "warning"; estado = "critical" if estado == "critical" else "warning"
+            est = "warning"
+            estado = "critical" if estado == "critical" else "warning"
             alertas.append(f"{f}: relevó {n}/{ESPERADO} ({cobertura:.0f}%)")
         else:
             est = "ok"
         cadenas[f] = {"productos": n, "cobertura_pct": cobertura, "estado": est}
 
     if not ultima:
-        estado = "critical"; alertas.append("Sin datos para ninguna fecha")
+        estado = "critical"
+        alertas.append("Sin datos para ninguna fecha")
 
     resultado = {
         "generado_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),

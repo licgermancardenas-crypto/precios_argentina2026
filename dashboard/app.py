@@ -827,8 +827,10 @@ with tab5:
     estado = fc.get("estado")
 
     if estado == "ok" and fc.get("forecast"):
-        hist = pd.DataFrame(fc["historia"]); hist["fecha"] = pd.to_datetime(hist["fecha"])
-        fore = pd.DataFrame(fc["forecast"]); fore["fecha"] = pd.to_datetime(fore["fecha"])
+        hist = pd.DataFrame(fc["historia"])
+        hist["fecha"] = pd.to_datetime(hist["fecha"])
+        fore = pd.DataFrame(fc["forecast"])
+        fore["fecha"] = pd.to_datetime(fore["fecha"])
         st.caption(f"Modelo Prophet · proyección a {fc.get('horizonte_dias')} días · banda = intervalo de confianza.")
         figf = go.Figure()
         figf.add_trace(go.Scatter(x=fore["fecha"], y=fore["yhat_upper"], mode="lines",
