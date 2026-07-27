@@ -2,20 +2,21 @@
 # playwright==1.44.0  # solo si en el futuro alguna cadena requiere browser
 
 # Data
-pandas==2.2.2
-numpy==1.26.4
+pandas>=2.2
+numpy>=1.26
 
 # Base de datos
 # sqlite3 viene incluido en Python stdlib
 
-# Dashboard
-streamlit==1.35.0
-plotly==5.22.0
+# Dashboard  (rangos modernos: el dashboard se desarrolla/testea contra Streamlit
+# 1.5x; pines viejos rompían el deploy)
+streamlit>=1.40
+plotly>=5.24
 
 # ML (v3 — se activa en esa fase)
 # prophet==1.1.5
 # scikit-learn==1.5.0
 
 # Utils
-python-dotenv==1.0.1
-requests==2.32.3
+python-dotenv>=1.0
+requests>=2.32
