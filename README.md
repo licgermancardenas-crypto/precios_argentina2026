@@ -186,11 +186,12 @@ CLI local: corre con **tu** API key, no toca el deploy del dashboard ni expone c
 
 ## Tests
 
-Suite de tests (`tests/`) sobre la lógica crítica del pipeline — se corren en CI en cada push:
+Suite de tests (`tests/`) sobre la lógica crítica del pipeline — se corren en CI en cada push, junto al linter **ruff**:
 
 ```bash
 pip install -r requirements.txt -r requirements-dev.txt
-pytest        # o: python -m unittest discover -s tests
+ruff check .   # linter (pyflakes + orden de imports)
+pytest         # o: python -m unittest discover -s tests
 ```
 
 Cubren:
