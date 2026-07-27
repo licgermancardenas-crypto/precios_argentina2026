@@ -199,6 +199,7 @@ Cubren:
 - **Matching por EAN** — mismo EAN entre cadenas = mismo producto; fallback por nombre para frescos.
 - **Índice** — filtra por `fuente` (no mezcla cadenas) y usa canasta fija (un producto que aparece/desaparece no lo mueve).
 - **Agente** — la tool SQL rechaza toda escritura e inyección.
+- **Integración end-to-end** — un snapshot crudo de ejemplo corre por el pipeline real (`normalize`) y se verifica matching por EAN, guard de promo, `en_canasta` e índice multi-cadena.
 
 ---
 
