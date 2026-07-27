@@ -9,8 +9,9 @@ numpy>=1.26
 # sqlite3 viene incluido en Python stdlib
 
 # Dashboard  (rangos modernos: el dashboard se desarrolla/testea contra Streamlit
-# 1.5x; pines viejos rompían el deploy)
-streamlit>=1.40
+# 1.5x. Pines viejos rompían el deploy; y `use_container_width` fue removido en
+# streamlit reciente, por eso se migró a width="stretch" — necesita >=1.58.)
+streamlit>=1.58
 plotly>=5.24
 
 # ML (v3 — se activa en esa fase)

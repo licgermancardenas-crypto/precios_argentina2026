@@ -428,7 +428,7 @@ with tab1:
                                yaxis_title="Var. mensual %", plot_bgcolor="white",
                                xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
                                legend=dict(orientation="h", y=1.15))
-            st.plotly_chart(figm, use_container_width=True)
+            st.plotly_chart(figm, width="stretch")
         else:
             st.info(
                 f"El contraste mensual completo (Canasta vs IPC) se activa al cerrar "
@@ -452,7 +452,7 @@ with tab1:
         fig.add_hline(y=100, line_dash="dot", line_color=COLORES["gold"], line_width=1.5,
                       annotation_text="Base 100", annotation_position="left")
         fig.update_layout(height=380, xaxis_title=None, yaxis_title="Índice (base 100)")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
 
 # ============================================================
@@ -477,7 +477,7 @@ with tab2:
             figc.add_hline(y=100, line_dash="dot", line_color="#bbb", line_width=1)
             figc.update_layout(height=340, xaxis_title=None, yaxis_title="Índice (base 100)",
                                legend=dict(font=dict(size=11)))
-            st.plotly_chart(figc, use_container_width=True)
+            st.plotly_chart(figc, width="stretch")
         with colb:
             ultimo_cat = idx_cat.sort_values("fecha").groupby("categoria").last().reset_index()
             ultimo_cat["var"] = (ultimo_cat["indice"] - 100).round(2)
@@ -488,7 +488,7 @@ with tab2:
                 hovertemplate="%{y}: %{x:+.1f}%<extra></extra>",
             ))
             figb.update_layout(height=340, xaxis_title="Var. acumulada %", yaxis_title=None)
-            st.plotly_chart(figb, use_container_width=True)
+            st.plotly_chart(figb, width="stretch")
 
     # Historial del índice
     if len(idx) > 1:
@@ -505,7 +505,7 @@ with tab2:
                 "fecha_str": "Fecha", "indice_str": "Índice",
                 "costo_str": "Costo canasta", "var_str": "Var. diaria",
             }),
-            use_container_width=True, hide_index=True,
+            width="stretch", hide_index=True,
         )
 
     st.divider()
@@ -573,7 +573,7 @@ with tab2:
                 "fecha": "Fecha", "tipo": "Tipo",
                 "nombre_original": "Producto", "detalle": "Detalle",
             }),
-            use_container_width=True, hide_index=True,
+            width="stretch", hide_index=True,
         )
 
 
@@ -624,7 +624,7 @@ with tab3:
                     hovertemplate=f"<b>{f.capitalize()}</b> %{{x|%d/%m}}<br>$%{{y:,.0f}}<extra></extra>",
                 ))
             fig2.update_layout(height=360, xaxis_title=None, yaxis_title="Precio de lista ($)")
-            st.plotly_chart(fig2, use_container_width=True)
+            st.plotly_chart(fig2, width="stretch")
         else:
             st.info("Con un solo día de datos todavía no hay serie que graficar. 📅", icon="ℹ️")
 
@@ -716,7 +716,7 @@ with tab4:
                 plot_bgcolor="white", xaxis=dict(gridcolor="#eee"),
                 legend=dict(orientation="h", y=1.05),
             )
-            st.plotly_chart(fig4, use_container_width=True)
+            st.plotly_chart(fig4, width="stretch")
 
             # Tabla: dónde conviene cada producto
             tabla = comparables.copy()
@@ -731,7 +731,7 @@ with tab4:
                 tabla[["nombre_original", "categoria", *fuentes, "Más barata", "Dif. %"]].rename(
                     columns={"nombre_original": "Producto", "categoria": "Categoría"}
                 ),
-                use_container_width=True, hide_index=True,
+                width="stretch", hide_index=True,
                 column_config=cols_fmt,
             )
 
@@ -758,7 +758,7 @@ with tab4:
             "mas_barata": "Más barata", "mas_cara": "Más cara"})
         st.dataframe(
             tabla_h[["Producto", "Categoría", "Mín", "Máx", "Dif. %", "Más barata", "Más cara"]],
-            use_container_width=True, hide_index=True,
+            width="stretch", hide_index=True,
             column_config={
                 "Mín": st.column_config.NumberColumn("Mín", format="$%d"),
                 "Máx": st.column_config.NumberColumn("Máx", format="$%d"),
@@ -771,7 +771,7 @@ with tab4:
             st.markdown("**Eventos detectados** (reduflación / cambios de presentación):")
             ev_df = pd.DataFrame(eventos_h).rename(columns={
                 "fecha": "Fecha", "tipo": "Tipo", "producto": "Producto", "detalle": "Detalle"})
-            st.dataframe(ev_df, use_container_width=True, hide_index=True)
+            st.dataframe(ev_df, width="stretch", hide_index=True)
 
     # --- Precio por unidad ($/kg-litro) ---
     st.divider()
@@ -806,11 +806,11 @@ with tab4:
                 hovertemplate="%{y}<br>" + base_lbl[base_sel] + " $%{x:,.0f}<extra></extra>",
             ))
             fig_u.update_layout(height=320, xaxis_title=base_lbl[base_sel], yaxis_title=None)
-            st.plotly_chart(fig_u, use_container_width=True)
+            st.plotly_chart(fig_u, width="stretch")
         tabla_u = barato.rename(columns={"pu": base_lbl[base_sel], "Cadena": "Más barata"})
         st.dataframe(
             tabla_u[["Producto", base_lbl[base_sel], "Más barata"]],
-            use_container_width=True, hide_index=True,
+            width="stretch", hide_index=True,
             column_config={base_lbl[base_sel]: st.column_config.NumberColumn(base_lbl[base_sel], format="$%d")},
         )
     else:
@@ -844,7 +844,7 @@ with tab5:
                                   line=dict(color=COLORES["gold"], width=2.5, dash="dash")))
         figf.update_layout(height=380, margin=dict(t=20, b=20), plot_bgcolor="white",
                            yaxis_title="Índice (base 100)", xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"))
-        st.plotly_chart(figf, use_container_width=True)
+        st.plotly_chart(figf, width="stretch")
     else:
         n, need = fc.get("dias_historia", 0), fc.get("dias_necesarios", 30)
         st.info(
@@ -879,7 +879,7 @@ with tab5:
             figd.update_layout(height=280, margin=dict(t=20, b=20), plot_bgcolor="white",
                               yaxis_title="$ / USD (venta)", xaxis=dict(gridcolor="#eee"),
                               yaxis=dict(gridcolor="#eee"), legend=dict(orientation="h", y=1.15))
-            st.plotly_chart(figd, use_container_width=True)
+            st.plotly_chart(figd, width="stretch")
             piv_d = dolar.pivot_table(index="fecha", columns="serie", values="valor")
             if {"dolar_oficial", "dolar_blue"}.issubset(piv_d.columns):
                 ult = piv_d.dropna().iloc[-1]
@@ -909,7 +909,7 @@ with tab5:
             figi.update_layout(height=240, margin=dict(t=10, b=20), plot_bgcolor="white",
                               yaxis_title="Var. mensual %", xaxis=dict(gridcolor="#eee"),
                               yaxis=dict(gridcolor="#eee"))
-            st.plotly_chart(figi, use_container_width=True)
+            st.plotly_chart(figi, width="stretch")
 
     st.divider()
 
@@ -918,12 +918,12 @@ with tab5:
     anomalias = fc.get("anomalias", [])
     if anomalias:
         st.markdown("**Movimientos anómalos del índice** (retorno diario fuera de ±2,5σ):")
-        st.dataframe(pd.DataFrame(anomalias), use_container_width=True, hide_index=True)
+        st.dataframe(pd.DataFrame(anomalias), width="stretch", hide_index=True)
     if not df_eventos.empty:
         st.markdown("**Eventos a nivel producto** (outliers, reduflación, cambios de presentación):")
         ev = df_eventos[["fecha", "tipo", "nombre_original", "detalle"]].rename(columns={
             "fecha": "Fecha", "tipo": "Tipo", "nombre_original": "Producto", "detalle": "Detalle"})
-        st.dataframe(ev.head(50), use_container_width=True, hide_index=True)
+        st.dataframe(ev.head(50), width="stretch", hide_index=True)
     elif not anomalias:
         st.caption("Sin anomalías ni eventos registrados por ahora.")
 
@@ -989,7 +989,7 @@ with st.expander("📂 Datos abiertos — descargá la serie completa (CSV / JSO
         if ruta.exists():
             col.download_button(
                 f"⬇️ {nombre}", data=ruta.read_bytes(), file_name=nombre,
-                mime="text/csv", use_container_width=True,
+                mime="text/csv", width="stretch",
             )
             col.caption(desc)
         else:
