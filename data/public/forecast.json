@@ -1,7 +1,7 @@
 {
-  "generado_utc": "2026-07-27T12:37:13+00:00",
+  "generado_utc": "2026-07-28T11:30:48+00:00",
   "serie": "indice_canasta_total",
-  "dias_historia": 9,
+  "dias_historia": 10,
   "dias_necesarios": 30,
   "horizonte_dias": 14,
   "historia": [
@@ -40,9 +40,19 @@
     {
       "fecha": "2026-07-27",
       "indice": 102.12
+    },
+    {
+      "fecha": "2026-07-28",
+      "indice": 110.38
     }
   ],
-  "anomalias": [],
+  "anomalias": [
+    {
+      "fecha": "2026-07-28",
+      "indice": 110.38,
+      "retorno_pct": 8.09
+    }
+  ],
   "forecast": [],
   "estado": "insuficiente"
 }

@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-07-27T12:37:13+00:00",
+  "generado_utc": "2026-07-28T11:30:50+00:00",
   "dispersion": {
-    "fecha": "2026-07-27",
+    "fecha": "2026-07-28",
     "n_productos": 41,
-    "dispersion_media_pct": 15.3,
+    "dispersion_media_pct": 14.3,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -16,31 +16,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
-        "categoria": "bebidas",
-        "precio_min": 1949.0,
-        "precio_max": 3050.0,
-        "dispersion_pct": 56.5,
-        "mas_barata": "coto",
-        "mas_cara": "dia"
-      },
-      {
         "producto": "Azúcar Molida 1 Kg Ledesma",
         "categoria": "almacen",
-        "precio_min": 1565.0,
+        "precio_min": 1409.0,
         "precio_max": 2234.39,
-        "dispersion_pct": 42.8,
-        "mas_barata": "dia",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 3454.99,
-        "precio_max": 4805.0,
-        "dispersion_pct": 39.1,
+        "dispersion_pct": 58.6,
         "mas_barata": "coto",
-        "mas_cara": "dia"
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Yerba Mate Ytacuá 1 Kg",
@@ -59,6 +41,24 @@
         "dispersion_pct": 30.7,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
+      },
+      {
+        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
+        "categoria": "bebidas",
+        "precio_min": 1949.0,
+        "precio_max": 2529.0,
+        "dispersion_pct": 29.8,
+        "mas_barata": "coto",
+        "mas_cara": "dia"
+      },
+      {
+        "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 3350.0,
+        "precio_max": 4300.0,
+        "dispersion_pct": 28.4,
+        "mas_barata": "dia",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Picada Especial X KG",
@@ -88,13 +88,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 7890.0,
-        "precio_max": 9350.0,
-        "dispersion_pct": 18.5,
+        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "categoria": "bebidas",
+        "precio_min": 4845.0,
+        "precio_max": 5800.0,
+        "dispersion_pct": 19.7,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
@@ -124,26 +124,32 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
-        "categoria": "bebidas",
-        "precio_min": 4845.0,
-        "precio_max": 5700.0,
-        "dispersion_pct": 17.6,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
+        "producto": "Polenta Presto Pronta 490gr",
+        "categoria": "almacen",
+        "precio_min": 1599.0,
+        "precio_max": 1850.0,
+        "dispersion_pct": 15.7,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       },
       {
-        "producto": "Galletas Secas Sabor Original 354 Grs x 3 Un Oreo",
-        "categoria": "panificados",
-        "precio_min": 5659.0,
-        "precio_max": 6650.0,
-        "dispersion_pct": 17.5,
-        "mas_barata": "dia",
-        "mas_cara": "coto"
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2850.0,
+        "dispersion_pct": 14.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
       }
     ]
   },
   "eventos": [
+    {
+      "fecha": "2026-07-28",
+      "tipo": "outlier",
+      "producto": "Paleta Cocida Feteada Paladini Xkg",
+      "detalle": "Variación 66.7%: 14559.0 → 24265.0"
+    },
     {
       "fecha": "2026-07-26",
       "tipo": "cambio_presentacion",
