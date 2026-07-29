@@ -1,7 +1,7 @@
 {
-  "generado_utc": "2026-07-28T11:30:48+00:00",
+  "generado_utc": "2026-07-29T11:39:46+00:00",
   "serie": "indice_canasta_total",
-  "dias_historia": 10,
+  "dias_historia": 11,
   "dias_necesarios": 30,
   "horizonte_dias": 14,
   "historia": [
@@ -43,6 +43,10 @@
     },
     {
       "fecha": "2026-07-28",
+      "indice": 110.38
+    },
+    {
+      "fecha": "2026-07-29",
       "indice": 110.38
     }
   ],
