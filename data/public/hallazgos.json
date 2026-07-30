@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-07-29T11:39:47+00:00",
+  "generado_utc": "2026-07-30T11:20:10+00:00",
   "dispersion": {
-    "fecha": "2026-07-29",
+    "fecha": "2026-07-30",
     "n_productos": 41,
-    "dispersion_media_pct": 14.3,
+    "dispersion_media_pct": 15.0,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -25,6 +25,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
+        "categoria": "bebidas",
+        "precio_min": 1949.0,
+        "precio_max": 3050.0,
+        "dispersion_pct": 56.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
         "producto": "Yerba Mate Ytacuá 1 Kg",
         "categoria": "almacen",
         "precio_min": 1307.19,
@@ -43,22 +52,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
-        "categoria": "bebidas",
-        "precio_min": 1949.0,
-        "precio_max": 2529.0,
-        "dispersion_pct": 29.8,
-        "mas_barata": "coto",
-        "mas_cara": "dia"
-      },
-      {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
         "categoria": "limpieza",
         "precio_min": 3350.0,
-        "precio_max": 4300.0,
-        "dispersion_pct": 28.4,
+        "precio_max": 4350.0,
+        "dispersion_pct": 29.9,
         "mas_barata": "dia",
-        "mas_cara": "carrefour"
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Picada Especial X KG",
@@ -144,6 +144,12 @@
     ]
   },
   "eventos": [
+    {
+      "fecha": "2026-07-30",
+      "tipo": "outlier",
+      "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
+      "detalle": "Variación 56.5%: 1949.0 → 3050.0"
+    },
     {
       "fecha": "2026-07-28",
       "tipo": "outlier",

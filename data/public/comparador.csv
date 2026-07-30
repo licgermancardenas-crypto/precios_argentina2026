@@ -1,6 +1,6 @@
 producto,categoria,ean,carrefour,coto,dia,jumbo,mas_barata,dif_pct_max
-aceite girasol natura botella 1 5 l,almacen,7790272001029,6975.0,6975.0,7460.0,6990.0,carrefour,7.0
-agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,2150.0,1949.0,2529.0,2527.0,coto,29.8
+aceite girasol natura botella 1 5 l,almacen,7790272001029,6975.0,6975.0,7460.0,7463.0,carrefour,7.0
+agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,1949.0,3050.0,2529.0,2527.0,carrefour,56.5
 arroz blanco largo fino molinos ala 1kg,almacen,7791120100857,,2500.0,,2850.0,coto,14.0
 arveja secas remojadas la campagnola lat 300 grm,almacen,7793360982309,,94.9,,112.39,coto,18.4
 atun en aceite la campagnola en lata 300 g,almacen,7790580138769,9079.0,9082.0,,6950.0,jumbo,30.7
@@ -23,8 +23,8 @@ jabon de tocador dove original multipack x3 90 grs,limpieza,7891150046481,7265.0
 jabon en polvo matic a mano lavado total con bicarbonato ala 800 g,limpieza,7791290796829,3319.0,3321.99,3320.0,3650.0,carrefour,10.0
 jugo en polvo tang naranja dulce 15 g,bebidas,7622201735340,550.0,550.0,550.0,550.0,carrefour,0.0
 lavandina original ayudin 2l,limpieza,7793253006709,2849.0,2925.99,2950.0,3366.45,carrefour,18.2
-leche larga vida entera ua clasica 3 la serenisima 1l,lacteos,7790742363008,2670.0,2809.0,2805.0,2799.0,carrefour,5.2
-manteca la serenisima 200gr,lacteos,7793940054006,4819.0,4819.0,4819.0,4819.0,carrefour,0.0
+leche larga vida entera ua clasica 3 la serenisima 1l,lacteos,7790742363008,2799.0,2809.0,2805.0,2799.0,carrefour,0.4
+manteca la serenisima 200gr,lacteos,7793940054006,4709.0,4819.0,4819.0,4819.0,carrefour,2.3
 mayonesa liviana hellmanns dp 475 g,almacen,7794000007109,2999.0,2999.0,2998.0,2999.0,dia,0.0
 mermelada light de durazno arcor 390 grs,almacen,7790580132224,3379.0,3379.0,3650.0,3800.0,carrefour,12.5
 paleta cocida feteada paladini xkg,carnes,2003836100003,,24265.0,,,coto,0.0
@@ -38,7 +38,7 @@ pollo entero fresco x uni 4 kg refrigerado,carnes,2000000127910,,17596.0,,,coto,
 pure de tomate arcor 520g,almacen,7790580146115,1110.0,1110.0,1198.0,1199.0,carrefour,8.0
 queso cremoso fraccionado la paulina xkg,lacteos,2000199000001,,12599.0,,,coto,0.0
 queso rallado coto 150g,lacteos,7790080014198,,6779.0,,,coto,0.0
-rollo de cocina elite ultra absorbente 60 panos 3 uni,limpieza,7790250022053,4300.0,3454.99,3350.0,4300.0,dia,28.4
+rollo de cocina elite ultra absorbente 60 panos 3 uni,limpieza,7790250022053,4300.0,3454.99,3350.0,4350.0,dia,29.9
 sal fina celusal 500g,almacen,7790072001014,1549.0,1549.0,1672.0,1650.0,carrefour,7.9
 shampoo sedal ceramidas 190 cc,limpieza,7791293045658,3929.0,3929.99,,4250.0,carrefour,8.2
 vino tinto clasico toro bot 1125 ltr,bebidas,7790314074219,,1959.03,,990.29,jumbo,97.8
