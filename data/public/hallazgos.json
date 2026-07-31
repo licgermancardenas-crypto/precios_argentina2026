@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-07-30T11:20:10+00:00",
+  "generado_utc": "2026-07-31T11:40:53+00:00",
   "dispersion": {
-    "fecha": "2026-07-30",
+    "fecha": "2026-07-31",
     "n_productos": 41,
-    "dispersion_media_pct": 15.0,
+    "dispersion_media_pct": 14.1,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -23,15 +23,6 @@
         "dispersion_pct": 58.6,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
-        "categoria": "bebidas",
-        "precio_min": 1949.0,
-        "precio_max": 3050.0,
-        "dispersion_pct": 56.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
       },
       {
         "producto": "Yerba Mate Ytacuá 1 Kg",
@@ -59,6 +50,15 @@
         "dispersion_pct": 29.9,
         "mas_barata": "dia",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
+        "categoria": "bebidas",
+        "precio_min": 2527.0,
+        "precio_max": 3200.0,
+        "dispersion_pct": 26.6,
+        "mas_barata": "jumbo",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Picada Especial X KG",
@@ -144,6 +144,12 @@
     ]
   },
   "eventos": [
+    {
+      "fecha": "2026-07-31",
+      "tipo": "outlier",
+      "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
+      "detalle": "Variación 64.2%: 1949.0 → 3200.0"
+    },
     {
       "fecha": "2026-07-30",
       "tipo": "outlier",
