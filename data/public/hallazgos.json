@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-07-31T11:40:53+00:00",
+  "generado_utc": "2026-08-01T10:53:14+00:00",
   "dispersion": {
-    "fecha": "2026-07-31",
+    "fecha": "2026-08-01",
     "n_productos": 41,
-    "dispersion_media_pct": 14.1,
+    "dispersion_media_pct": 13.8,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -79,12 +79,21 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2749.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 22.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4189.0,
         "precio_max": 5049.99,
         "dispersion_pct": 20.6,
-        "mas_barata": "carrefour",
+        "mas_barata": "dia",
         "mas_cara": "coto"
       },
       {
@@ -97,30 +106,12 @@
         "mas_cara": "carrefour"
       },
       {
-        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 4745.0,
-        "precio_max": 5617.99,
-        "dispersion_pct": 18.4,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
         "categoria": "almacen",
         "precio_min": 94.9,
         "precio_max": 112.39,
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2849.0,
-        "precio_max": 3366.45,
-        "dispersion_pct": 18.2,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -139,6 +130,15 @@
         "precio_max": 2850.0,
         "dispersion_pct": 14.0,
         "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Crema para Batir 520 Ml La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 6999.0,
+        "precio_max": 7900.0,
+        "dispersion_pct": 12.9,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
     ]
