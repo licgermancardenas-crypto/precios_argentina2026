@@ -1,7 +1,7 @@
 {
   "proyecto": "Atlas Precios",
   "descripcion": "Serie histórica de precios de canasta de supermercado en Argentina, relevada diariamente.",
-  "actualizado_utc": "2026-08-01T10:53:13+00:00",
+  "actualizado_utc": "2026-08-02T10:53:14+00:00",
   "cadenas": [
     "carrefour",
     "coto",
@@ -10,8 +10,8 @@
   ],
   "cadena_referencia_indice": "coto",
   "fecha_desde": "2026-07-17",
-  "fecha_hasta": "2026-08-01",
-  "n_dias": 14,
+  "fecha_hasta": "2026-08-02",
+  "n_dias": 15,
   "n_productos_canasta": 45,
   "metodologia_indice": "Suma de precio_lista de la canasta por día, base 100 en el primer día. Total y por categoría sobre la cadena de referencia.",
   "licencia": "CC BY 4.0 — citar 'Atlas Precios'",
