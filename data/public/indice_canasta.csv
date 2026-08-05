@@ -16,6 +16,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-02,TOTAL,128591.96,111.34
 2026-08-03,TOTAL,128591.96,111.34
 2026-08-04,TOTAL,128933.96,111.63
+2026-08-05,TOTAL,128933.96,111.63
 2026-07-17,almacen,16727.0,100.0
 2026-07-20,almacen,16727.0,100.0
 2026-07-21,almacen,16727.0,100.0
@@ -33,6 +34,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-02,almacen,16569.0,99.06
 2026-08-03,almacen,16569.0,99.06
 2026-08-04,almacen,16911.0,101.1
+2026-08-05,almacen,16911.0,101.1
 2026-07-17,bebidas,12221.0,100.0
 2026-07-20,bebidas,12475.0,102.08
 2026-07-21,bebidas,11374.0,93.07
@@ -50,6 +52,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-02,bebidas,12475.0,102.08
 2026-08-03,bebidas,12475.0,102.08
 2026-08-04,bebidas,12475.0,102.08
+2026-08-05,bebidas,12475.0,102.08
 2026-07-17,carnes,43094.0,100.0
 2026-07-20,carnes,43094.0,100.0
 2026-07-21,carnes,42654.0,98.98
@@ -67,6 +70,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-02,carnes,52360.0,121.5
 2026-08-03,carnes,52360.0,121.5
 2026-08-04,carnes,52360.0,121.5
+2026-08-05,carnes,52360.0,121.5
 2026-07-17,lacteos,20152.0,100.0
 2026-07-20,lacteos,20152.0,100.0
 2026-07-21,lacteos,23352.0,115.88
@@ -84,6 +88,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-02,lacteos,23352.0,115.88
 2026-08-03,lacteos,23352.0,115.88
 2026-08-04,lacteos,23352.0,115.88
+2026-08-05,lacteos,23352.0,115.88
 2026-07-17,limpieza,16383.96,100.0
 2026-07-20,limpieza,16383.96,100.0
 2026-07-21,limpieza,16915.96,103.25
@@ -101,6 +106,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-02,limpieza,16915.96,103.25
 2026-08-03,limpieza,16915.96,103.25
 2026-08-04,limpieza,16915.96,103.25
+2026-08-05,limpieza,16915.96,103.25
 2026-07-17,panificados,6920.0,100.0
 2026-07-20,panificados,6920.0,100.0
 2026-07-21,panificados,6920.0,100.0
@@ -118,3 +124,4 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-02,panificados,6920.0,100.0
 2026-08-03,panificados,6920.0,100.0
 2026-08-04,panificados,6920.0,100.0
+2026-08-05,panificados,6920.0,100.0
