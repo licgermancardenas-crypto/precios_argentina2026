@@ -1,6 +1,6 @@
 producto,categoria,ean,carrefour,coto,dia,jumbo,mas_barata,dif_pct_max
 aceite girasol natura botella 1 5 l,almacen,7790272001029,6975.0,6975.0,7460.0,7463.0,carrefour,7.0
-agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,3200.0,3050.0,3050.0,3200.0,coto,4.9
+agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,3050.0,3050.0,3050.0,3200.0,carrefour,4.9
 arroz blanco largo fino molinos ala 1kg,almacen,7791120100857,,2500.0,,2850.0,coto,14.0
 arveja secas remojadas la campagnola lat 300 grm,almacen,7793360982309,,94.9,,112.39,coto,18.4
 atun en aceite la campagnola en lata 300 g,almacen,7790580138769,9079.0,9082.0,,6950.0,jumbo,30.7
@@ -18,7 +18,7 @@ galletitas saladas sabor original traviata 96g,panificados,7790040143937,899.0,8
 gaseosa coca cola sabor original 2 25 lt,bebidas,7790895000997,5800.0,4845.0,5800.0,5800.0,coto,19.7
 gaseosa lima limon sprite zero 2 25 lts,bebidas,7790895064166,5800.0,5700.0,5800.0,5800.0,coto,1.8
 harina trigo 000 morixe 1kg,almacen,7790199000013,1109.0,1110.0,,1150.0,carrefour,3.7
-huevo blanco maple x 30u,lacteos,7798092353120,,9750.0,,9350.0,jumbo,4.3
+huevo blanco maple x 30u,lacteos,7798092353120,,7990.0,,9350.0,coto,17.0
 jabon de tocador dove original multipack x3 90 grs,limpieza,7891150046481,7265.0,7299.99,7289.0,7168.0,jumbo,1.8
 jabon en polvo matic a mano lavado total con bicarbonato ala 800 g,limpieza,7791290796829,3319.0,3321.99,3320.0,3650.0,carrefour,10.0
 jugo en polvo tang naranja dulce 15 g,bebidas,7622201735340,550.0,550.0,550.0,550.0,carrefour,0.0

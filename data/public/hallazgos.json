@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-05T11:33:42+00:00",
+  "generado_utc": "2026-08-06T11:35:54+00:00",
   "dispersion": {
-    "fecha": "2026-08-05",
+    "fecha": "2026-08-06",
     "n_productos": 41,
-    "dispersion_media_pct": 12.2,
+    "dispersion_media_pct": 12.5,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -97,6 +97,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 7990.0,
+        "precio_max": 9350.0,
+        "dispersion_pct": 17.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Polenta Presto Pronta 490gr",
         "categoria": "almacen",
         "precio_min": 1599.0,
@@ -122,15 +131,6 @@
         "dispersion_pct": 12.9,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
-        "categoria": "panificados",
-        "precio_min": 1350.0,
-        "precio_max": 1519.0,
-        "dispersion_pct": 12.5,
-        "mas_barata": "dia",
-        "mas_cara": "coto"
       },
       {
         "producto": "Mermelada Light Arcor Durazno 390gr",
