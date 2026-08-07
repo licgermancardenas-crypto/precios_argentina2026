@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-06T11:35:54+00:00",
+  "generado_utc": "2026-08-07T10:14:21+00:00",
   "dispersion": {
-    "fecha": "2026-08-06",
+    "fecha": "2026-08-07",
     "n_productos": 41,
-    "dispersion_media_pct": 12.5,
+    "dispersion_media_pct": 12.7,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -25,22 +25,22 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
-        "categoria": "almacen",
-        "precio_min": 6950.0,
-        "precio_max": 9082.0,
-        "dispersion_pct": 30.7,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
         "categoria": "limpieza",
         "precio_min": 3350.0,
         "precio_max": 4350.0,
         "dispersion_pct": 29.9,
         "mas_barata": "dia",
-        "mas_cara": "jumbo"
+        "mas_cara": "carrefour"
+      },
+      {
+        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
+        "categoria": "almacen",
+        "precio_min": 7300.0,
+        "precio_max": 9082.0,
+        "dispersion_pct": 24.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
       },
       {
         "producto": "Picada Especial X KG",
@@ -68,6 +68,15 @@
         "dispersion_pct": 22.5,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 4640.0,
+        "precio_max": 5617.99,
+        "dispersion_pct": 21.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
       },
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
@@ -111,15 +120,6 @@
         "precio_min": 1599.0,
         "precio_max": 1850.0,
         "dispersion_pct": 15.7,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2850.0,
-        "dispersion_pct": 14.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
       },

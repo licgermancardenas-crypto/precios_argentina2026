@@ -1,9 +1,9 @@
 producto,categoria,ean,carrefour,coto,dia,jumbo,mas_barata,dif_pct_max
 aceite girasol natura botella 1 5 l,almacen,7790272001029,6975.0,6975.0,7460.0,7463.0,carrefour,7.0
 agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,3050.0,3050.0,3050.0,3200.0,carrefour,4.9
-arroz blanco largo fino molinos ala 1kg,almacen,7791120100857,,2500.0,,2850.0,coto,14.0
+arroz blanco largo fino molinos ala 1kg,almacen,7791120100857,,2500.0,,2750.0,coto,10.0
 arveja secas remojadas la campagnola lat 300 grm,almacen,7793360982309,,94.9,,112.39,coto,18.4
-atun en aceite la campagnola en lata 300 g,almacen,7790580138769,9079.0,9082.0,,6950.0,jumbo,30.7
+atun en aceite la campagnola en lata 300 g,almacen,7790580138769,9079.0,9082.0,,7300.0,jumbo,24.4
 avena tradicional quaker en caja 550 grs,almacen,7792170555543,3240.0,3240.1,,3550.0,carrefour,9.6
 azucar superior real ledesma 1kg,almacen,7792540250450,,1567.0,1565.0,1565.0,dia,0.1
 bizcochos 9 de oro de grasa 200 g,panificados,7792200000159,1384.62,1519.0,1350.0,1450.0,dia,12.5
@@ -30,15 +30,15 @@ mermelada light de durazno arcor 390 grs,almacen,7790580132224,3379.0,3379.0,365
 paleta cocida feteada paladini xkg,carnes,2003836100003,,24265.0,,,coto,0.0
 pan blanco bimbo 400g,panificados,7793890261233,6020.0,6022.0,,6300.0,carrefour,4.7
 papas fritas lays clasicas 330 g,almacen,7790310985588,9979.0,9979.0,,10450.0,carrefour,4.7
-papel higienico elite ultra suave doble hoja 30 m 4 un,limpieza,7790250026075,5459.0,5617.99,5615.0,5459.0,carrefour,2.9
+papel higienico elite ultra suave doble hoja 30 m 4 un,limpieza,7790250026075,4640.0,5617.99,5615.0,5459.0,carrefour,21.1
 pasta dental colgate total whitening con fluor 90 grs,limpieza,7891024135020,6600.0,6610.99,7040.0,,carrefour,6.7
 picada especial x kg,carnes,2069607000002,12990.0,10499.0,,,coto,23.7
-polenta instantanea presto pronta en bolsa 490 g,almacen,7790580138738,1599.0,1599.0,1768.0,1850.0,carrefour,15.7
+polenta instantanea presto pronta en bolsa 490 g,almacen,7790580138738,1709.0,1599.0,1768.0,1850.0,coto,15.7
 pollo entero fresco x uni 4 kg refrigerado,carnes,2000000127910,,17596.0,,,coto,0.0
 pure de tomate arcor 520g,almacen,7790580146115,1110.0,1110.0,1220.0,1110.0,carrefour,9.9
 queso cremoso fraccionado la paulina xkg,lacteos,2000199000001,,12599.0,,,coto,0.0
 queso rallado coto 150g,lacteos,7790080014198,,6779.0,,,coto,0.0
-rollo de cocina elite ultra absorbente 60 panos 3 uni,limpieza,7790250022053,4300.0,3454.99,3350.0,4350.0,dia,29.9
+rollo de cocina elite ultra absorbente 60 panos 3 uni,limpieza,7790250022053,4350.0,3454.99,3350.0,4350.0,dia,29.9
 sal fina celusal 500g,almacen,7790072001014,1549.0,1549.0,1549.0,1650.0,carrefour,6.5
 shampoo sedal ceramidas 190 cc,limpieza,7791293045658,3929.0,3929.99,,4250.0,carrefour,8.2
 vino tinto clasico toro bot 1125 ltr,bebidas,7790314074219,,1959.03,,990.29,jumbo,97.8
