@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-08T09:51:07+00:00",
+  "generado_utc": "2026-08-09T09:52:13+00:00",
   "dispersion": {
-    "fecha": "2026-08-08",
+    "fecha": "2026-08-09",
     "n_productos": 41,
-    "dispersion_media_pct": 12.9,
+    "dispersion_media_pct": 12.8,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -79,15 +79,6 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
-        "categoria": "limpieza",
-        "precio_min": 4189.0,
-        "precio_max": 5049.99,
-        "dispersion_pct": 20.6,
-        "mas_barata": "dia",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
         "categoria": "bebidas",
         "precio_min": 4845.0,
@@ -104,6 +95,15 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
+        "categoria": "limpieza",
+        "precio_min": 4290.0,
+        "precio_max": 5049.99,
+        "dispersion_pct": 17.7,
+        "mas_barata": "dia",
+        "mas_cara": "coto"
       },
       {
         "producto": "Puré de Tomate Clásico 520 Grs Arcor",
