@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-12T10:20:06+00:00",
+  "generado_utc": "2026-08-13T10:21:02+00:00",
   "dispersion": {
-    "fecha": "2026-08-12",
+    "fecha": "2026-08-13",
     "n_productos": 41,
-    "dispersion_media_pct": 12.4,
+    "dispersion_media_pct": 11.7,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -97,33 +97,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
-        "categoria": "limpieza",
-        "precio_min": 4290.0,
-        "precio_max": 5049.99,
-        "dispersion_pct": 17.7,
-        "mas_barata": "dia",
-        "mas_cara": "coto"
-      },
-      {
-        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
-        "categoria": "almacen",
-        "precio_min": 1110.0,
-        "precio_max": 1300.0,
-        "dispersion_pct": 17.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 7990.0,
-        "precio_max": 9350.0,
-        "dispersion_pct": 17.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Polenta Presto Pronta 490gr",
         "categoria": "almacen",
         "precio_min": 1599.0,
@@ -138,6 +111,33 @@
         "precio_min": 6999.0,
         "precio_max": 7900.0,
         "dispersion_pct": 12.9,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Mermelada Light Arcor Durazno 390gr",
+        "categoria": "almacen",
+        "precio_min": 3379.0,
+        "precio_max": 3800.0,
+        "dispersion_pct": 12.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
+        "categoria": "limpieza",
+        "precio_min": 4558.0,
+        "precio_max": 5049.99,
+        "dispersion_pct": 10.8,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
