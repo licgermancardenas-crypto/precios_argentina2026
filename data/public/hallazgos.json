@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-14T10:16:03+00:00",
+  "generado_utc": "2026-08-15T09:38:40+00:00",
   "dispersion": {
-    "fecha": "2026-08-14",
+    "fecha": "2026-08-15",
     "n_productos": 40,
-    "dispersion_media_pct": 12.4,
+    "dispersion_media_pct": 12.5,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -13,6 +13,15 @@
         "precio_max": 1959.03,
         "dispersion_pct": 97.8,
         "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 4049.0,
+        "precio_max": 5617.99,
+        "dispersion_pct": 38.8,
+        "mas_barata": "carrefour",
         "mas_cara": "coto"
       },
       {
@@ -61,24 +70,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2749.0,
-        "precio_max": 3366.45,
-        "dispersion_pct": 22.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 4640.0,
-        "precio_max": 5617.99,
-        "dispersion_pct": 21.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
         "categoria": "bebidas",
         "precio_min": 4845.0,
@@ -106,6 +97,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
+        "categoria": "limpieza",
+        "precio_min": 4409.0,
+        "precio_max": 5049.99,
+        "dispersion_pct": 14.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
         "producto": "Crema para Batir 520 Ml La Serenisima",
         "categoria": "lacteos",
         "precio_min": 6999.0,
@@ -124,13 +124,13 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
         "categoria": "limpieza",
-        "precio_min": 4558.0,
-        "precio_max": 5049.99,
-        "dispersion_pct": 10.8,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
@@ -147,13 +147,13 @@
     {
       "fecha": "2026-07-31",
       "tipo": "outlier",
-      "producto": "Agua Sin Gas Villavicencio 2 L",
+      "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
       "detalle": "Variación 64.2%: 1949.0 → 3200.0"
     },
     {
       "fecha": "2026-07-30",
       "tipo": "outlier",
-      "producto": "Agua Sin Gas Villavicencio 2 L",
+      "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
       "detalle": "Variación 56.5%: 1949.0 → 3050.0"
     },
     {
