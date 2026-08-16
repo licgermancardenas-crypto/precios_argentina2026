@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-15T09:38:40+00:00",
+  "generado_utc": "2026-08-16T09:39:59+00:00",
   "dispersion": {
-    "fecha": "2026-08-15",
+    "fecha": "2026-08-16",
     "n_productos": 40,
-    "dispersion_media_pct": 12.5,
+    "dispersion_media_pct": 12.8,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -88,6 +88,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2849.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 18.2,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Polenta Presto Pronta 490gr",
         "categoria": "almacen",
         "precio_min": 1599.0,
@@ -120,15 +129,6 @@
         "precio_min": 3379.0,
         "precio_max": 3800.0,
         "dispersion_pct": 12.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
-        "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
