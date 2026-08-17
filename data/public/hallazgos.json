@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-16T09:39:59+00:00",
+  "generado_utc": "2026-08-17T09:55:54+00:00",
   "dispersion": {
-    "fecha": "2026-08-16",
+    "fecha": "2026-08-17",
     "n_productos": 40,
-    "dispersion_media_pct": 12.8,
+    "dispersion_media_pct": 13.9,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -14,6 +14,15 @@
         "dispersion_pct": 97.8,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
+      },
+      {
+        "producto": "Azúcar Molida 1 Kg Ledesma",
+        "categoria": "almacen",
+        "precio_min": 1565.0,
+        "precio_max": 2234.39,
+        "dispersion_pct": 42.8,
+        "mas_barata": "dia",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
@@ -130,15 +139,6 @@
         "precio_max": 3800.0,
         "dispersion_pct": 12.5,
         "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
         "mas_cara": "jumbo"
       }
     ]
