@@ -352,7 +352,7 @@ with k3:
         f"{((costo - hace_30['costo_canasta']) / hace_30['costo_canasta'] * 100):+.1f}%"
         if hace_30 is not None else "< 30 días de datos"
     )
-    st.metric(label="Variación mensual", value=delta_30 if hace_30 else "—", delta=None)
+    st.metric(label="Variación mensual", value=delta_30 if hace_30 is not None else "—", delta=None)
 
 with k4:
     st.metric(label="Días de historia", value=f"{dias_de_datos}", delta=f"desde {primera_fecha.strftime('%d/%m/%Y')}")
