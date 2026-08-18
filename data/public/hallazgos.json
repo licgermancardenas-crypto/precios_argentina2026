@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-17T09:55:54+00:00",
+  "generado_utc": "2026-08-18T09:46:37+00:00",
   "dispersion": {
-    "fecha": "2026-08-17",
-    "n_productos": 40,
-    "dispersion_media_pct": 13.9,
+    "fecha": "2026-08-18",
+    "n_productos": 41,
+    "dispersion_media_pct": 14.1,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -70,6 +70,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Picada Especial X KG",
+        "categoria": "carnes",
+        "precio_min": 10499.0,
+        "precio_max": 12990.0,
+        "dispersion_pct": 23.7,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
+      },
+      {
         "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
         "categoria": "panificados",
         "precio_min": 898.0,
@@ -129,15 +138,6 @@
         "precio_min": 6999.0,
         "precio_max": 7900.0,
         "dispersion_pct": 12.9,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Mermelada Light Arcor Durazno 390gr",
-        "categoria": "almacen",
-        "precio_min": 3379.0,
-        "precio_max": 3800.0,
-        "dispersion_pct": 12.5,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
