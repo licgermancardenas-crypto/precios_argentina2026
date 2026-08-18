@@ -54,5 +54,12 @@ jobs:
           git commit -m "datos $(date +%F)" || echo "sin cambios"
           git push
 
+      - name: Verificar que el dashboard renderiza con los datos nuevos
+        # Va después del commit a propósito: los datos del día se publican igual
+        # (no se puede re-scrapear ayer), pero si el dashboard se rompe el job
+        # falla y llega el mail de GitHub el mismo día.
+        # Streamlit en "bare mode" ejecuta el script entero y propaga excepciones.
+        run: python streamlit_app.py
+
       - name: Alerta si una cadena falló
         run: python -m pipeline.qc --alert   # falla el job (mail de GitHub) solo si el estado es crítico
