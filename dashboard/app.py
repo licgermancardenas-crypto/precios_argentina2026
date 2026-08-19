@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -15,7 +16,15 @@ import plotly.graph_objects as go
 import plotly.io as pio
 import streamlit as st
 
-from pipeline.unidades import precio_por_unidad
+# Streamlit Cloud arranca este archivo como módulo principal (no vía
+# streamlit_app.py), así que sys.path[0] es dashboard/ y la raíz del repo no
+# queda importable: `import pipeline` explota con ModuleNotFoundError. Agregarla
+# acá hace que el dashboard funcione con cualquiera de los dos entrypoints.
+_RAIZ = Path(__file__).resolve().parent.parent
+if str(_RAIZ) not in sys.path:
+    sys.path.insert(0, str(_RAIZ))
+
+from pipeline.unidades import precio_por_unidad  # noqa: E402  (necesita el sys.path de arriba)
 
 # ---------------------------------------------------------------------------
 # Identidad visual — paleta de marca (una sola fuente de verdad)
