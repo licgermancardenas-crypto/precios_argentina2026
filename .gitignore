@@ -36,3 +36,9 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Capturas de pantalla de trabajo (documentación ad-hoc, no son assets del repo).
+# Regla puntual a propósito: un `*.png` genérico se comería imágenes legítimas
+# si algún día el README o docs/ las necesitan.
+Captura desde *.png
+/modelo predictivo de costos/
