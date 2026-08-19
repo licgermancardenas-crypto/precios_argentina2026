@@ -1,11 +1,20 @@
 {
-  "generado_utc": "2026-08-18T09:46:37+00:00",
+  "generado_utc": "2026-08-19T09:46:23+00:00",
   "dispersion": {
-    "fecha": "2026-08-18",
-    "n_productos": 41,
-    "dispersion_media_pct": 14.1,
-    "dispersion_maxima_pct": 97.8,
+    "fecha": "2026-08-19",
+    "n_productos": 40,
+    "dispersion_media_pct": 23.2,
+    "dispersion_maxima_pct": 400.0,
     "top": [
+      {
+        "producto": "Cerveza Rubia 1 Lts Quilmes",
+        "categoria": "bebidas",
+        "precio_min": 916.0,
+        "precio_max": 4580.0,
+        "dispersion_pct": 400.0,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
       {
         "producto": "Vino Toro Clasico Tinto 1125",
         "categoria": "bebidas",
@@ -16,13 +25,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Azúcar Molida 1 Kg Ledesma",
-        "categoria": "almacen",
-        "precio_min": 1565.0,
-        "precio_max": 2234.39,
-        "dispersion_pct": 42.8,
-        "mas_barata": "dia",
-        "mas_cara": "jumbo"
+        "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 3454.99,
+        "precio_max": 4805.0,
+        "dispersion_pct": 39.1,
+        "mas_barata": "coto",
+        "mas_cara": "dia"
       },
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
@@ -52,15 +61,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 3350.0,
-        "precio_max": 4350.0,
-        "dispersion_pct": 29.9,
-        "mas_barata": "dia",
-        "mas_cara": "carrefour"
-      },
-      {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
         "categoria": "almacen",
         "precio_min": 7300.0,
@@ -68,15 +68,6 @@
         "dispersion_pct": 24.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Picada Especial X KG",
-        "categoria": "carnes",
-        "precio_min": 10499.0,
-        "precio_max": 12990.0,
-        "dispersion_pct": 23.7,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
       },
       {
         "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
@@ -140,10 +131,25 @@
         "dispersion_pct": 12.9,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Mermelada Light Arcor Durazno 390gr",
+        "categoria": "almacen",
+        "precio_min": 3379.0,
+        "precio_max": 3800.0,
+        "dispersion_pct": 12.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       }
     ]
   },
   "eventos": [
+    {
+      "fecha": "2026-08-19",
+      "tipo": "outlier",
+      "producto": "Cerveza Rubia 1 Lts Quilmes",
+      "detalle": "Variación 80.0%: 4580.0 → 916.0"
+    },
     {
       "fecha": "2026-07-31",
       "tipo": "outlier",

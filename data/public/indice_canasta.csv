@@ -30,6 +30,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-16,TOTAL,119667.96,103.61
 2026-08-17,TOTAL,119667.96,103.61
 2026-08-18,TOTAL,119667.96,103.61
+2026-08-19,TOTAL,119667.96,103.61
 2026-07-17,almacen,16727.0,100.0
 2026-07-20,almacen,16727.0,100.0
 2026-07-21,almacen,16727.0,100.0
@@ -61,6 +62,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-16,almacen,16911.0,101.1
 2026-08-17,almacen,16911.0,101.1
 2026-08-18,almacen,16911.0,101.1
+2026-08-19,almacen,16911.0,101.1
 2026-07-17,bebidas,12221.0,100.0
 2026-07-20,bebidas,12475.0,102.08
 2026-07-21,bebidas,11374.0,93.07
@@ -92,6 +94,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-16,bebidas,12475.0,102.08
 2026-08-17,bebidas,12475.0,102.08
 2026-08-18,bebidas,12475.0,102.08
+2026-08-19,bebidas,12475.0,102.08
 2026-07-17,carnes,43094.0,100.0
 2026-07-20,carnes,43094.0,100.0
 2026-07-21,carnes,42654.0,98.98
@@ -123,6 +126,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-16,carnes,43094.0,100.0
 2026-08-17,carnes,43094.0,100.0
 2026-08-18,carnes,43094.0,100.0
+2026-08-19,carnes,43094.0,100.0
 2026-07-17,lacteos,20152.0,100.0
 2026-07-20,lacteos,20152.0,100.0
 2026-07-21,lacteos,23352.0,115.88
@@ -154,6 +158,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-16,lacteos,23352.0,115.88
 2026-08-17,lacteos,23352.0,115.88
 2026-08-18,lacteos,23352.0,115.88
+2026-08-19,lacteos,23352.0,115.88
 2026-07-17,limpieza,16383.96,100.0
 2026-07-20,limpieza,16383.96,100.0
 2026-07-21,limpieza,16915.96,103.25
@@ -185,6 +190,7 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-16,limpieza,16915.96,103.25
 2026-08-17,limpieza,16915.96,103.25
 2026-08-18,limpieza,16915.96,103.25
+2026-08-19,limpieza,16915.96,103.25
 2026-07-17,panificados,6920.0,100.0
 2026-07-20,panificados,6920.0,100.0
 2026-07-21,panificados,6920.0,100.0
@@ -216,3 +222,4 @@ fecha,categoria,costo_canasta,indice_base100
 2026-08-16,panificados,6920.0,100.0
 2026-08-17,panificados,6920.0,100.0
 2026-08-18,panificados,6920.0,100.0
+2026-08-19,panificados,6920.0,100.0
