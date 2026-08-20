@@ -20,7 +20,9 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: pip install -r requirements.txt
+        # requirements-ml.txt (Prophet) va acá porque la serie ya superó los 30
+        # días y el forecast se publica; sin esto queda en "prophet_no_instalado".
+        run: pip install -r requirements.txt -r requirements-ml.txt
 
       - name: Correr scrapers (todas las cadenas)
         run: python -m scraper
@@ -32,7 +34,7 @@ jobs:
         run: python -m pipeline.regresores
 
       - name: Forecast + anomalías
-        run: python -m pipeline.forecast   # con <30 días escribe estado "insuficiente" (no requiere Prophet)
+        run: python -m pipeline.forecast   # con <30 días escribe estado "insuficiente" sin tocar Prophet
 
       - name: Exportar datos públicos
         run: python -m pipeline.export

@@ -3,4 +3,7 @@
 # en el pipeline cuando hay historia suficiente (>=30 días).
 #
 #   pip install -r requirements.txt -r requirements-ml.txt
-prophet==1.1.5
+#
+# Rango y no pin: prophet 1.1.5 usa np.float_, removido en numpy 2, y explota al
+# importarse contra el numpy que arrastra pandas>=2.2 (requirements.txt).
+prophet>=1.4
