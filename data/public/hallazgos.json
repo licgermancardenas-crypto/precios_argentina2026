@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-20T02:40:51+00:00",
+  "generado_utc": "2026-08-20T09:47:26+00:00",
   "dispersion": {
-    "fecha": "2026-08-19",
+    "fecha": "2026-08-20",
     "n_productos": 40,
-    "dispersion_media_pct": 23.2,
+    "dispersion_media_pct": 23.1,
     "dispersion_maxima_pct": 400.0,
     "top": [
       {
@@ -52,13 +52,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Huevos Blancos 30 Un",
+        "producto": "Leche Entera 1 Lts La Serenisima",
         "categoria": "lacteos",
-        "precio_min": 6990.0,
-        "precio_max": 9350.0,
+        "precio_min": 2099.0,
+        "precio_max": 2809.0,
         "dispersion_pct": 33.8,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
       },
       {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
