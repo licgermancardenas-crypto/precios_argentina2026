@@ -186,6 +186,38 @@ class TestIndiceBordes(unittest.TestCase):
         self.assertTrue(indice_encadenado(vacio).empty)
 
 
+class TestMigracionImagenes(unittest.TestCase):
+    """La tabla imagenes llega a bases ya creadas y guarda una foto por cadena."""
+
+    def test_migracion_crea_la_tabla_en_una_base_vieja(self):
+        con = _db()
+        con.execute("DROP TABLE imagenes")            # base anterior a v5
+        for _ in range(2):                            # idempotente
+            normalize._migrar_schema(con)
+        tablas = {r["name"] for r in con.execute(
+            "SELECT name FROM sqlite_master WHERE type='table'")}
+        self.assertIn("imagenes", tablas)
+
+    def test_una_foto_por_producto_y_cadena_y_se_actualiza(self):
+        con = _db()
+        con.execute("INSERT INTO productos (id, nombre_normalizado, categoria) "
+                    "VALUES (1, 'leche', 'lacteos')")
+        def guardar(fuente, url, fecha):
+            con.execute(
+                """INSERT INTO imagenes (producto_id, fuente, url, actualizado)
+                   VALUES (1, ?, ?, ?)
+                   ON CONFLICT (producto_id, fuente)
+                   DO UPDATE SET url = excluded.url, actualizado = excluded.actualizado""",
+                (fuente, url, fecha))
+        guardar("coto", "http://a/1.jpg", "2026-08-19")
+        guardar("dia", "http://b/1.jpg", "2026-08-19")
+        # Las URLs de VTEX rotan al recargar el catálogo: la última vista gana.
+        guardar("coto", "http://a/2.jpg", "2026-08-20")
+
+        filas = dict(con.execute("SELECT fuente, url FROM imagenes").fetchall())
+        self.assertEqual(filas, {"coto": "http://a/2.jpg", "dia": "http://b/1.jpg"})
+
+
 class TestMigracionPesoVariable(unittest.TestCase):
     """La columna peso_variable llega a bases ya creadas y se re-sincroniza sola."""
 

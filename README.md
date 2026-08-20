@@ -94,6 +94,16 @@ Lácteos y huevos, almacén, panificados, carnes, bebidas y limpieza. El EAN de 
 
 ---
 
+## Fotos de producto
+
+El dashboard muestra la foto de cada producto en cada cadena (tab *Comparar con fotos*).
+
+- **No se descargan ni se versionan.** Se guarda la URL de la CDN del retailer en la tabla `imagenes` y el navegador la pide directo. Las fotos son assets de los supermercados: la licencia CC BY 4.0 de Atlas cubre la serie de precios que construimos, no las imágenes de ellos.
+- **Se piden miniaturas, no el original.** Coto sirve variantes por carpeta (`/large/` → `/medium/`) y las tres cadenas VTEX insertando `-ANCHO-ALTO` en el id. Una vista pasa de ~270 KB por foto a ~9 KB.
+- **Coto es la excepción y va por el servidor.** Su CDN negocia contenido: cuando el navegador manda `Accept: image/webp` responde `Content-Type: image/webp` con bytes JPEG, y Chrome bloquea la respuesta (`ERR_BLOCKED_BY_ORB`) incluso desde el mismo origen. Esas se traen desde Python —que recibe el `image/jpeg` correcto— y se embeben cacheadas por 24 h.
+
+---
+
 ## Metodología del índice
 
 - **Base 100** en el día de inicio. La variación refleja el costo relativo de comprar la misma canasta.
@@ -200,6 +210,7 @@ Cubren:
 - **Guards de sanidad** — el promo corrupto de Coto y el `ListPrice` inflado de Jumbo se descartan (los dos bugs reales que rompían el índice).
 - **Matching por EAN** — mismo EAN entre cadenas = mismo producto; fallback por nombre para frescos.
 - **Índice** — filtra por `fuente` (no mezcla cadenas), encadena sobre productos pareados (un alta no lo mueve por composición) y excluye los frescos de balanza.
+- **Miniaturas** — la derivación de URL de cada CDN (Coto por carpeta, VTEX por `-ANCHO-ALTO` en el id) y el ruteo de la que hay que traer por servidor.
 - **Agente** — la tool SQL rechaza toda escritura e inyección.
 - **Integración end-to-end** — un snapshot crudo de ejemplo corre por el pipeline real (`normalize`) y se verifica matching por EAN, guard de promo, `en_canasta` e índice multi-cadena.
 

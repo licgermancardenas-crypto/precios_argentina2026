@@ -24,7 +24,8 @@ _RAIZ = Path(__file__).resolve().parent.parent
 if str(_RAIZ) not in sys.path:
     sys.path.insert(0, str(_RAIZ))
 
-from pipeline.indice import costo_canasta, indice_encadenado  # noqa: E402  (necesita el sys.path de arriba)
+from pipeline.imagenes import como_data_uri, miniatura, requiere_proxy  # noqa: E402  (necesita el sys.path de arriba)
+from pipeline.indice import costo_canasta, indice_encadenado  # noqa: E402
 from pipeline.unidades import precio_por_unidad  # noqa: E402
 
 # ---------------------------------------------------------------------------
@@ -254,6 +255,42 @@ st.markdown("""
         box-shadow: 0 0 0 3px rgba(52,211,153,.16);
     }
 
+    /* --- Comparador con fotos --- */
+    .fila-cadena {
+        display: flex; align-items: center; gap: 14px;
+        background: var(--card); border: 1px solid var(--borde);
+        border-radius: 14px; padding: 10px 16px; margin-bottom: 9px;
+    }
+    .fila-cadena img, .fila-cadena .thumb-vacia {
+        width: 46px; height: 46px; border-radius: 10px; flex: none;
+        object-fit: contain; background: #fff;
+    }
+    .fila-cadena .thumb-vacia { background: var(--card-2); }
+    .fila-cadena .cadena {
+        padding-left: 10px; color: var(--txt); font-weight: 600; font-size: .95rem;
+        min-width: 116px;
+    }
+    .fila-cadena .precio {
+        margin-left: auto; color: var(--txt); font-weight: 700;
+        font-size: 1.32rem; letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+    }
+    .pill-barata, .pill-dif {
+        border-radius: 999px; padding: 4px 11px; font-size: .76rem; font-weight: 600;
+        white-space: nowrap; min-width: 82px; text-align: center;
+    }
+    .pill-barata { background: rgba(52,211,153,.16); color: var(--pos); }
+    .pill-igual  { background: rgba(139,150,173,.16); color: var(--txt-2); }
+    .pill-dif    { background: rgba(248,113,113,.14); color: var(--neg); }
+    .brecha { color: var(--txt-2); font-size: .88rem; margin-top: 12px; }
+    .sin-foto {
+        display: grid; place-items: center; aspect-ratio: 1;
+        background: var(--card-2); border: 1px dashed var(--borde);
+        border-radius: 14px; color: var(--txt-2); font-size: .82rem;
+    }
+    /* Las fotos vienen sobre fondo blanco del retailer: se les da su propia
+       superficie clara para que no floten sobre el oscuro con halo. */
+    [data-testid="stImage"] img { border-radius: 14px; background: #fff; }
+
     /* --- Limpieza del chrome default de Streamlit --- */
     #MainMenu, header [data-testid="stToolbar"] { visibility: hidden; }
     footer { visibility: hidden; }
@@ -304,6 +341,43 @@ def cargar_datos() -> tuple[pd.DataFrame, pd.DataFrame]:
 
     con.close()
     return df_precios, df_eventos
+
+
+@st.cache_data(ttl=3600)
+def cargar_imagenes() -> pd.DataFrame:
+    """
+    Fotos de producto por cadena. Cols: producto_id, fuente, url.
+
+    La tabla es nueva (v5): una base normalizada antes de la migración no la
+    tiene, así que se degrada a vacío en vez de romper el dashboard.
+    """
+    if not DB_PATH.exists():
+        return pd.DataFrame(columns=["producto_id", "fuente", "url"])
+    con = sqlite3.connect(DB_PATH)
+    try:
+        df = pd.read_sql("SELECT producto_id, fuente, url FROM imagenes", con)
+    except Exception:
+        df = pd.DataFrame(columns=["producto_id", "fuente", "url"])
+    finally:
+        con.close()
+    return df
+
+
+@st.cache_data(ttl=86400, show_spinner=False, max_entries=400)
+def foto(url: str | None, px: int) -> str | None:
+    """
+    URL lista para poner en un <img>, al tamaño pedido.
+
+    Las CDNs de VTEX se enlazan directo (cero costo para nosotros). La de Coto
+    rompe en el navegador —manda Content-Type webp con bytes jpeg y Chrome la
+    bloquea por ORB— así que esas se traen por el servidor y se embeben. Se
+    cachea un día: son fotos de catálogo, no cambian de un rerun al otro, y así
+    no se golpea la CDN ajena en cada interacción del filtro.
+    """
+    chica = miniatura(url, px)
+    if not chica:
+        return None
+    return como_data_uri(chica) if requiere_proxy(chica) else chica
 
 
 @st.cache_data(ttl=3600)
@@ -484,9 +558,127 @@ if df_todas.empty:
     st.warning("Base de datos no encontrada o sin datos. Ejecutá el pipeline primero.", icon="⚠️")
     st.stop()
 
+# ---------------------------------------------------------------------------
+# Barra de filtros global
+# ---------------------------------------------------------------------------
+# Un solo lugar de control para todo el tablero. Dos reglas que NO se negocian,
+# porque si se rompen el número publicado deja de ser el índice:
+#
+#   1. El filtro de cadenas NO toca el índice. El Índice Canasta Atlas está
+#      definido sobre la cadena de referencia; dejar que el visitante lo
+#      recalcule sobre "Día + Jumbo" produciría un número que no es el que
+#      publicamos en indice_canasta.csv, con el mismo nombre.
+#   2. El rango de fechas es una ventana de VISTA, no un rebase. La base 100
+#      sigue anclada al primer día de la serie; acortar el rango hace zoom, no
+#      cambia el índice. Rebasar mostraría "+0.0%" cada vez que alguien elige
+#      "últimos 7 días", que es exactamente la lectura equivocada.
+
+_TODAS = sorted(df_todas["fuente"].unique())
+_CATS = sorted(df_todas["categoria"].dropna().unique())
+_RANGOS = {"Todo": None, "Últimos 30 días": 30, "Últimos 14 días": 14, "Últimos 7 días": 7}
+
+# El color sigue a la ENTIDAD, nunca a su posición: se asigna sobre el universo
+# completo, así deseleccionar una cadena o una categoría no repinta las que
+# quedan. Con índices por enumerate() del set filtrado, cada filtro cambiaba el
+# color de todas las series y la lectura se volvía imposible.
+COLOR_CADENA = {f: _COLORWAY[i % len(_COLORWAY)] for i, f in enumerate(_TODAS)}
+COLOR_CATEGORIA = {c: _COLORWAY[i % len(_COLORWAY)] for i, c in enumerate(_CATS)}
+
+for _k, _v in {"f_cadenas": _TODAS, "f_categoria": "Todas",
+               "f_rango": "Todo", "f_producto": None}.items():
+    st.session_state.setdefault(_k, _v)
+
+# Cross-filter: un clic en un gráfico no puede escribir la clave de un widget ya
+# instanciado (Streamlit lo prohíbe, y el tablero se caía con StreamlitAPIException).
+# El handler deja el valor "pendiente" y pide un rerun; acá arriba, ANTES de crear
+# los widgets, se aplica. Es el único punto del script donde se puede.
+if "_pendiente" in st.session_state:
+    for _pk, _pv in st.session_state.pop("_pendiente").items():
+        st.session_state[_pk] = _pv
+
+
+def pedir_filtro(**cambios) -> None:
+    """Aplica filtros desde un clic en un gráfico, en el próximo rerun."""
+    st.session_state["_pendiente"] = cambios
+    st.rerun()
+
+
+def _reset_filtros() -> None:
+    st.session_state.update(f_cadenas=_TODAS, f_categoria="Todas",
+                            f_rango="Todo", f_producto=None)
+
+
+with st.container(border=True):
+    fb1, fb2, fb3, fb4 = st.columns([4, 2, 2, 1])
+    fb1.multiselect("Supermercados", _TODAS, key="f_cadenas",
+                    format_func=str.capitalize,
+                    help="Aplica al comparador, a las series por producto y al precio "
+                         "por unidad. El Índice Canasta Atlas siempre se calcula sobre "
+                         f"{FUENTE_REFERENCIA.capitalize()}, la cadena de referencia.")
+    fb2.selectbox("Categoría", ["Todas"] + [c.capitalize() for c in _CATS], key="f_categoria")
+    fb3.selectbox("Rango", list(_RANGOS), key="f_rango",
+                  help="Hace zoom en las series. No cambia la base 100 del índice.")
+    fb4.markdown("<div style='height:28px'></div>", unsafe_allow_html=True)
+    fb4.button("Limpiar", on_click=_reset_filtros, width="stretch")
+
+# Selección efectiva (una cadena vacía se lee como "todas", no como "ninguna").
+CADENAS_SEL = st.session_state["f_cadenas"] or _TODAS
+CAT_SEL = st.session_state["f_categoria"]
+_dias_rango = _RANGOS[st.session_state["f_rango"]]
+
+
+def filtrar(df: pd.DataFrame, *, cadenas: bool = True, categoria: bool = True,
+            rango: bool = True) -> pd.DataFrame:
+    """Aplica la barra global a un dataframe de precios."""
+    out = df
+    if cadenas and "fuente" in out.columns:
+        out = out[out["fuente"].isin(CADENAS_SEL)]
+    if categoria and CAT_SEL != "Todas" and "categoria" in out.columns:
+        out = out[out["categoria"].str.lower() == CAT_SEL.lower()]
+    if rango and _dias_rango and "fecha" in out.columns:
+        corte = pd.to_datetime(out["fecha"]).max() - pd.Timedelta(days=_dias_rango - 1)
+        out = out[pd.to_datetime(out["fecha"]) >= corte]
+    return out
+
+
+def selector_producto(df: pd.DataFrame, key: str) -> str | None:
+    """
+    Selector de producto respaldado por el estado global `f_producto`.
+
+    Vive en session_state y no en el widget para que la tab de fotos y la de
+    serie histórica queden sincronizadas: elegís un producto en una y la otra
+    ya está parada en el mismo. La lista respeta la categoría de la barra.
+    """
+    base = df if CAT_SEL == "Todas" else df[df["categoria"].str.lower() == CAT_SEL.lower()]
+    opciones = sorted(base["nombre_original"].dropna().unique())
+    if not opciones:
+        st.info("Ningún producto entra en la categoría elegida.", icon="ℹ️")
+        return None
+
+    actual = st.session_state.get("f_producto")
+    # Si el filtro de categoría dejó afuera al producto elegido, se cae al primero
+    # en vez de romper el índice del selectbox.
+    indice = opciones.index(actual) if actual in opciones else 0
+
+    elegido = st.selectbox("Producto", opciones, index=indice, key=key)
+    if elegido != st.session_state.get("f_producto"):
+        st.session_state["f_producto"] = elegido
+    return elegido
+
+
+def ventana(df: pd.DataFrame, col: str = "fecha") -> pd.DataFrame:
+    """Recorta una serie ya calculada al rango elegido (zoom, no recálculo)."""
+    if not _dias_rango or df.empty or col not in df.columns:
+        return df
+    fechas = pd.to_datetime(df[col])
+    return df[fechas >= fechas.max() - pd.Timedelta(days=_dias_rango - 1)]
+
+
 # Las vistas históricas (índice, movimientos, producto) usan solo la cadena de referencia.
 df_precios = df_todas[df_todas["fuente"] == FUENTE_REFERENCIA]
 
+# El índice se calcula SIEMPRE sobre la serie completa y la canasta entera: es
+# el número publicado. La categoría y el rango se aplican después, al mostrar.
 idx = calcular_indice(df_precios)
 ultima_fecha = idx["fecha"].max()
 primera_fecha = idx["fecha"].min()
@@ -535,9 +727,9 @@ st.divider()
 # Tabs
 # ---------------------------------------------------------------------------
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(
+tab1, tab2, tab3, tab4, tab6, tab5 = st.tabs(
     ["📊 Resumen", "📈 Categorías y movimientos", "🔍 Por Producto",
-     "🏪 Comparador de cadenas", "📉 Proyección & Contexto"]
+     "🏪 Comparador de cadenas", "🛒 Comparar con fotos", "📉 Proyección & Contexto"]
 )
 
 
@@ -616,9 +808,10 @@ with tab1:
     if len(idx) < 2:
         st.info("Necesitás al menos 2 días de datos para ver la evolución.", icon="ℹ️")
     else:
+        idx_v = ventana(idx)
         fig = go.Figure()
         fig.add_trace(go.Scatter(
-            x=idx["fecha"], y=idx["indice"], mode="lines+markers", name="Índice",
+            x=idx_v["fecha"], y=idx_v["indice"], mode="lines+markers", name="Índice",
             line=dict(color=COLORES["cyan"], width=2.5), marker=dict(size=5),
             hovertemplate="<b>%{x|%d/%m/%Y}</b><br>Índice: %{y:.1f}<extra></extra>",
         ))
@@ -635,6 +828,9 @@ with tab1:
 with tab2:
     # Índice por categoría
     idx_cat = calcular_indice_categoria(df_precios)
+    if CAT_SEL != "Todas":
+        idx_cat = idx_cat[idx_cat["categoria"].str.lower() == CAT_SEL.lower()]
+    idx_cat = ventana(idx_cat)
     if not idx_cat.empty and idx_cat["fecha"].nunique() > 1:
         st.subheader("Índice por categoría")
         st.caption("Cada categoría en base 100 a su primer día. Muestra qué rubros empujan la canasta.")
@@ -642,13 +838,14 @@ with tab2:
         colg, colb = st.columns([3, 2])
         with colg:
             figc = go.Figure()
-            for i, (cat, g) in enumerate(idx_cat.groupby("categoria")):
+            for cat, g in idx_cat.groupby("categoria"):
                 figc.add_trace(go.Scatter(
                     x=g["fecha"], y=g["indice"], mode="lines+markers", name=cat.capitalize(),
-                    line=dict(color=_COLORWAY[i % len(_COLORWAY)], width=2), marker=dict(size=4),
+                    line=dict(color=COLOR_CATEGORIA.get(cat, COLORES["cyan"]), width=2),
+                    marker=dict(size=4),
                     hovertemplate=f"<b>{cat.capitalize()}</b> %{{x|%d/%m}}<br>%{{y:.1f}}<extra></extra>",
                 ))
-            figc.add_hline(y=100, line_dash="dot", line_color="#bbb", line_width=1)
+            figc.add_hline(y=100, line_dash="dot", line_color=COLORES["texto_2"], line_width=1)
             figc.update_layout(height=340, xaxis_title=None, yaxis_title="Índice (base 100)",
                                legend=dict(font=dict(size=11)))
             st.plotly_chart(figc, width="stretch")
@@ -662,8 +859,17 @@ with tab2:
                 hovertemplate="%{y}: %{x:+.1f}%<extra></extra>",
             ))
             figb.update_layout(height=340, xaxis_title="Var. acumulada %", yaxis_title=None,
-                               margin=dict(t=30, b=48, l=10, r=24))
-            st.plotly_chart(figb, width="stretch")
+                               margin=dict(t=30, b=48, l=10, r=24), clickmode="event+select")
+            st.caption("Hacé clic en un rubro para filtrar todo el tablero.")
+            _sel_cat = st.plotly_chart(figb, width="stretch", key="cx_categoria",
+                                       on_select="rerun", selection_mode="points")
+            _pts = (_sel_cat or {}).get("selection", {}).get("points", [])
+            if _pts:
+                # El eje y del gráfico son los rubros capitalizados; el filtro global
+                # los guarda igual, así que se asigna directo.
+                _clic = _pts[0].get("y")
+                if _clic and _clic != CAT_SEL:
+                    pedir_filtro(f_categoria=_clic)
 
     # Historial del índice
     if len(idx) > 1:
@@ -757,22 +963,18 @@ with tab2:
 # ============================================================
 with tab3:
     st.subheader("Serie histórica por producto")
-    st.caption("Precio del producto en cada cadena (match por EAN). Filtrá por categoría y cadenas.")
+    st.caption("Precio del producto en cada cadena (match por EAN). "
+               "Los supermercados, la categoría y el rango salen de la barra de arriba.")
 
-    # --- Filtros ---
-    cats_p = ["Todas"] + [c.capitalize() for c in sorted(df_todas["categoria"].unique())]
-    fp1, fp2 = st.columns([1, 2])
-    cat_p = fp1.selectbox("Categoría", cats_p, key="cat_producto")
-    base_p = df_todas if cat_p == "Todas" else df_todas[df_todas["categoria"] == cat_p.lower()]
-    productos_lista = sorted(base_p["nombre_original"].dropna().unique())
-    producto_sel = fp2.selectbox("Producto", productos_lista, key="prod_sel")
+    # La categoría y las cadenas ya vienen de la barra global; acá sólo queda
+    # elegir el producto, que se guarda en el mismo estado compartido para que
+    # el comparador con fotos abra en el mismo que se está mirando.
+    producto_sel = selector_producto(df_todas, "prod_tab3")
 
-    df_prod = df_todas[df_todas["nombre_original"] == producto_sel].copy()
+    df_prod = filtrar(df_todas[df_todas["nombre_original"] == producto_sel].copy(),
+                      categoria=False)
     df_prod["fecha"] = pd.to_datetime(df_prod["fecha"])
-    cadenas_prod = sorted(df_prod["fuente"].unique())
-    sel_cad = st.multiselect("Cadenas", cadenas_prod, default=cadenas_prod,
-                             format_func=str.capitalize, key="cad_producto")
-    df_prod = df_prod[df_prod["fuente"].isin(sel_cad)].sort_values("fecha")
+    df_prod = df_prod.sort_values("fecha")
 
     if df_prod.empty:
         st.info("Elegí al menos una cadena.")
@@ -796,6 +998,7 @@ with tab3:
             for f, g in df_prod.groupby("fuente"):
                 fig2.add_trace(go.Scatter(
                     x=g["fecha"], y=g["precio_lista"], mode="lines+markers", name=f.capitalize(),
+                    line=dict(color=COLOR_CADENA.get(f)),
                     hovertemplate=f"<b>{f.capitalize()}</b> %{{x|%d/%m}}<br>$%{{y:,.0f}}<extra></extra>",
                 ))
             fig2.update_layout(height=360, xaxis_title=None, yaxis_title="Precio de lista ($)")
@@ -822,17 +1025,13 @@ with tab4:
         "Los frescos de balanza y las presentaciones que una cadena no stockea no entran en la comparación."
     )
 
-    # --- Filtros ---
-    fuentes_disp = sorted(df_todas["fuente"].unique())
-    cats_c = ["Todas"] + [c.capitalize() for c in sorted(df_todas["categoria"].unique())]
-    fcol1, fcol2 = st.columns([2, 1])
-    sel_fuentes = fcol1.multiselect("Cadenas a comparar", fuentes_disp, default=fuentes_disp,
-                                    format_func=str.capitalize, key="cad_comparador")
-    cat_c = fcol2.selectbox("Categoría", cats_c, key="cat_comparador")
-    dft = df_todas if cat_c == "Todas" else df_todas[df_todas["categoria"] == cat_c.lower()]
+    # Cadenas y categoría salen de la barra global. El rango NO se aplica acá:
+    # el comparador mira el último precio de cada cadena, no una serie.
+    sel_fuentes = CADENAS_SEL
+    dft = filtrar(df_todas, cadenas=False, rango=False)
 
     if len(sel_fuentes) < 2:
-        st.info("Elegí al menos 2 cadenas para comparar.", icon="ℹ️")
+        st.info("Elegí al menos 2 supermercados en la barra de arriba para comparar.", icon="ℹ️")
     else:
         # Último precio por (producto, cadena)
         ult = (
@@ -872,9 +1071,9 @@ with tab4:
             # Gráfico de barras por producto
             comp = comparables.reset_index()
             fig4 = go.Figure()
-            # Orden FIJO de la paleta validada (nunca cíclico): cada cadena
-            # conserva su color aunque el filtro cambie el set visible.
-            paleta = {f: _COLORWAY[i] for i, f in enumerate(sorted(fuentes))}
+            # Color por entidad: la cadena conserva el suyo aunque el filtro
+            # cambie el set visible (COLOR_CADENA se arma sobre el universo completo).
+            paleta = COLOR_CADENA
             for f in fuentes:
                 fig4.add_trace(go.Bar(
                     y=comp["nombre_original"].str.slice(0, 38),
@@ -1100,6 +1299,106 @@ with tab5:
         st.dataframe(ev.head(50), width="stretch", hide_index=True)
     elif not anomalias:
         st.caption("Sin anomalías ni eventos registrados por ahora.")
+
+
+# ============================================================
+# TAB 6 — Comparar con fotos
+# ============================================================
+with tab6:
+    st.subheader("El mismo producto, en cada supermercado")
+    st.caption(
+        "Elegí un producto y compará su precio de hoy en cada cadena. El match es por EAN: "
+        "es exactamente el mismo artículo, no uno parecido. Las fotos vienen de cada "
+        "supermercado."
+    )
+
+    producto_foto = selector_producto(df_todas, "prod_tab6")
+
+    if producto_foto:
+        _pf = filtrar(df_todas[df_todas["nombre_original"] == producto_foto].copy(),
+                      categoria=False, rango=False)
+        if _pf.empty:
+            st.info("Ese producto no está en los supermercados elegidos.", icon="ℹ️")
+        else:
+            # Último precio de cada cadena para ese producto.
+            _pf["fecha"] = pd.to_datetime(_pf["fecha"])
+            hoy_pf = (_pf.sort_values("fecha")
+                      .groupby("fuente", as_index=False).last()
+                      .sort_values("precio_lista"))
+
+            imgs = cargar_imagenes()
+            _pid = int(_pf["producto_id"].iloc[0])
+            urls = dict(zip(*(lambda d: (d["fuente"], d["url"]))(
+                imgs[imgs["producto_id"] == _pid]))) if not imgs.empty else {}
+
+            barato = hoy_pf.iloc[0]
+            caro = hoy_pf.iloc[-1]
+            brecha = (caro["precio_lista"] / barato["precio_lista"] - 1) * 100
+
+            col_foto, col_precios = st.columns([1, 2])
+
+            with col_foto:
+                # Foto de referencia: la de la cadena más barata, o cualquiera que
+                # haya. Se pide la miniatura de la CDN, no el original.
+                _u = foto(urls.get(barato["fuente"]) or next(iter(urls.values()), None), 320)
+                if _u:
+                    st.image(_u, width="stretch")
+                else:
+                    st.markdown(
+                        "<div class='sin-foto'>sin foto disponible</div>",
+                        unsafe_allow_html=True)
+                st.caption(f"**{producto_foto}**")
+                _info = _pf.iloc[0]
+                if pd.notna(_info.get("ean")):
+                    st.caption(f"EAN {_info['ean']} · {str(_info['categoria']).capitalize()}")
+
+            with col_precios:
+                for _, r in hoy_pf.iterrows():
+                    dif = (r["precio_lista"] / barato["precio_lista"] - 1) * 100
+                    # Los empates son frecuentes (varias cadenas al mismo precio de
+                    # lista): marcarlos todos evita un "más barata" arbitrario en una
+                    # y un "+0.0%" en rojo en las otras, que se leía como que eran
+                    # más caras.
+                    if len(hoy_pf) == 1:
+                        # Una sola cadena con este EAN: no hay nada que comparar.
+                        etiqueta = "<span class='pill-igual'>único precio</span>"
+                    elif abs(dif) >= 0.05:
+                        etiqueta = f"<span class='pill-dif'>+{dif:.1f}%</span>"
+                    elif hoy_pf["precio_lista"].nunique() == 1:
+                        etiqueta = "<span class='pill-igual'>igual</span>"
+                    else:
+                        etiqueta = "<span class='pill-barata'>más barata</span>"
+                    _thumb = foto(urls.get(r["fuente"]), 80)
+                    _img = (f"<img src='{_thumb}' loading='lazy' alt=''>" if _thumb
+                            else "<div class='thumb-vacia'></div>")
+                    st.markdown(
+                        f"""<div class='fila-cadena'>
+                              {_img}
+                              <span class='cadena' style='border-left:3px solid {COLOR_CADENA.get(r["fuente"], "#888")}'>
+                                {r["fuente"].capitalize()}</span>
+                              <span class='precio'>${r["precio_lista"]:,.0f}</span>
+                              {etiqueta}
+                            </div>""",
+                        unsafe_allow_html=True,
+                    )
+
+                if len(hoy_pf) >= 2:
+                    st.markdown(
+                        f"<p class='brecha'>Entre {barato['fuente'].capitalize()} y "
+                        f"{caro['fuente'].capitalize()} hay <b>{brecha:.1f}%</b> de diferencia "
+                        f"por el mismo producto — ${caro['precio_lista'] - barato['precio_lista']:,.0f}"
+                        f" de bolsillo.</p>",
+                        unsafe_allow_html=True,
+                    )
+                else:
+                    st.caption(
+                        "Sólo una cadena tiene este EAN hoy: no hay comparación posible. "
+                        "Las demás no lo stockean o devuelven un sustituto con otro código."
+                    )
+
+            _faltan = [f for f in CADENAS_SEL if f not in set(hoy_pf["fuente"])]
+            if _faltan:
+                st.caption("Sin precio hoy en: " + ", ".join(f.capitalize() for f in _faltan))
 
 
 # ---------------------------------------------------------------------------
