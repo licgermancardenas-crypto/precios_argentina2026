@@ -28,6 +28,14 @@ CREATE TABLE IF NOT EXISTS precios (
     UNIQUE (producto_id, fecha, fuente)
 );
 
+CREATE TABLE IF NOT EXISTS imagenes (              -- foto del producto en cada cadena
+    producto_id   INTEGER NOT NULL REFERENCES productos(id),
+    fuente        TEXT NOT NULL,
+    url           TEXT NOT NULL,                     -- se enlaza a la CDN del retailer, no se descarga
+    actualizado   TEXT NOT NULL,                     -- YYYY-MM-DD del último relevamiento que la vio
+    UNIQUE (producto_id, fuente)
+);
+
 CREATE TABLE IF NOT EXISTS eventos (                    -- auditoría y hallazgos publicables
     id          INTEGER PRIMARY KEY,
     producto_id INTEGER REFERENCES productos(id),

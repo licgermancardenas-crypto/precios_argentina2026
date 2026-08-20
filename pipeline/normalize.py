@@ -93,6 +93,18 @@ def _migrar_schema(con: sqlite3.Connection) -> None:
     Migraciones idempotentes para bases ya creadas: schema.sql usa
     CREATE TABLE IF NOT EXISTS, así que una columna nueva no llega sola.
     """
+    tablas = {r["name"] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+    if "imagenes" not in tablas:
+        con.executescript(
+            """CREATE TABLE IF NOT EXISTS imagenes (
+                   producto_id INTEGER NOT NULL REFERENCES productos(id),
+                   fuente      TEXT NOT NULL,
+                   url         TEXT NOT NULL,
+                   actualizado TEXT NOT NULL,
+                   UNIQUE (producto_id, fuente));"""
+        )
+        log.info("Migración: tabla imagenes creada.")
+
     cols = {r["name"] for r in con.execute("PRAGMA table_info(productos)")}
     if "peso_variable" not in cols:
         con.execute("ALTER TABLE productos ADD COLUMN peso_variable INTEGER DEFAULT 0")
@@ -333,6 +345,20 @@ def _procesar_snapshot(con: sqlite3.Connection, crudo_path: Path, fecha: str) ->
                VALUES (?, ?, ?, ?, ?, ?)""",
             (producto_id, fecha, precio_lista, precio_promo, precio_unitario, fuente),
         )
+
+        # Foto del producto en esta cadena. Se guarda la URL de la CDN del
+        # retailer (no se descarga la imagen: es un asset de ellos). Se
+        # sobrescribe siempre porque las URLs de VTEX rotan al recargar el
+        # catálogo y la última vista es la que anda.
+        if crudo.get("imagen_url"):
+            con.execute(
+                """INSERT INTO imagenes (producto_id, fuente, url, actualizado)
+                   VALUES (?, ?, ?, ?)
+                   ON CONFLICT (producto_id, fuente)
+                   DO UPDATE SET url = excluded.url, actualizado = excluded.actualizado""",
+                (producto_id, fuente, crudo["imagen_url"], fecha),
+            )
+
         procesados += 1
 
     indice = calcular_indice(con, fecha, fuente)
