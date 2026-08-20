@@ -97,7 +97,9 @@ Lácteos y huevos, almacén, panificados, carnes, bebidas y limpieza. El EAN de 
 ## Metodología del índice
 
 - **Base 100** en el día de inicio. La variación refleja el costo relativo de comprar la misma canasta.
-- **Canasta fija**: se calcula sobre los productos con **serie completa** (precio todos los días) de la cadena de referencia. Así ningún producto que aparece o desaparece mueve el índice por composición — solo se mide precio.
+- **Índice encadenado** (*matched pairs*): entre dos días consecutivos se comparan solo los productos con precio en **ambos** días, y los ratios se encadenan — `I_t = I_(t-1) · Σp_t / Σp_(t-1)`. Un producto que aparece o desaparece no mueve el índice por composición, y las altas empiezan a aportar el día que tienen par (no quedan excluidas para siempre, como pasaba con la suma sobre serie completa: con 45 productos relevados el índice corría sobre 23).
+- **Frescos de balanza fuera del índice**: los productos vendidos por kilo (`peso_variable=1` en `precios.csv`) se relevan y se publican, pero no entran al índice. Su precio publicado es el de una pieza cuyo peso cambia entre relevamientos: la paleta cocida pasó de $14.559 a $24.265 y volvió a $14.999 sin que se moviera el $/kg, y ese único producto movía el índice ±8%.
+- **`costo_canasta`**: el nivel en pesos a composición constante, anclado en el último día (el costo real de comprar la canasta hoy) y reconstruido hacia atrás con el índice.
 - **Solo `precio_lista`**, nunca el promo (ver *Un hallazgo real*).
 - **Total + 6 categorías**: cada categoría tiene su propio índice base 100.
 - **Reduflación**: si el EAN mantiene precio (±2%) pero el contenido baja, se registra como evento `reduflacion`.
@@ -197,7 +199,7 @@ pytest         # o: python -m unittest discover -s tests
 Cubren:
 - **Guards de sanidad** — el promo corrupto de Coto y el `ListPrice` inflado de Jumbo se descartan (los dos bugs reales que rompían el índice).
 - **Matching por EAN** — mismo EAN entre cadenas = mismo producto; fallback por nombre para frescos.
-- **Índice** — filtra por `fuente` (no mezcla cadenas) y usa canasta fija (un producto que aparece/desaparece no lo mueve).
+- **Índice** — filtra por `fuente` (no mezcla cadenas), encadena sobre productos pareados (un alta no lo mueve por composición) y excluye los frescos de balanza.
 - **Agente** — la tool SQL rechaza toda escritura e inyección.
 - **Integración end-to-end** — un snapshot crudo de ejemplo corre por el pipeline real (`normalize`) y se verifica matching por EAN, guard de promo, `en_canasta` e índice multi-cadena.
 

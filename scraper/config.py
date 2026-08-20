@@ -91,6 +91,16 @@ CANASTA: list[dict] = [
     {"id": 45, "categoria": "limpieza",    "nombre_ref": "Rollo de cocina Elite",               "presentacion": "un.",           "ean": "7790250022053"},
 ]
 
+# Frescos de balanza: el precio publicado es el de UNA pieza, cuyo peso varía
+# entre relevamientos, así que sus saltos no son inflación (la paleta cocida
+# pasó de $14.559 a $24.265 y volvió a $14.999 sin que cambiara el $/kg).
+# Se siguen relevando y publicando en precios.csv, pero quedan FUERA del índice:
+# un solo producto de estos movía el índice ±8% y hacía que el forecast
+# extrapolara el artefacto. Ver pipeline/indice.py.
+PESO_VARIABLE_EANS: set[str] = {
+    str(p["ean"]) for p in CANASTA if p.get("presentacion") == "por kg" and p.get("ean")
+}
+
 # Parámetros de scraping
 DELAY_MIN_SEG: float = 2.0
 DELAY_MAX_SEG: float = 4.0

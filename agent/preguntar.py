@@ -56,7 +56,9 @@ TABLA regresores(fecha, serie, valor)
 
 Metodología clave:
 - El Índice Canasta Atlas y las series históricas se calculan sobre la cadena \
-de referencia 'coto' con precio_lista (canasta fija = productos con serie completa).
+de referencia 'coto' con precio_lista, encadenando la variación día a día sobre \
+los productos con precio en ambos días, y excluyendo productos.peso_variable = 1 \
+(frescos de balanza: el precio es el de una pieza de peso variable).
 - Para comparar precios entre cadenas, uná por producto_id (matchean por EAN) y \
 compará el mismo producto. Solo son comparables los productos con precio en las \
 cadenas involucradas.

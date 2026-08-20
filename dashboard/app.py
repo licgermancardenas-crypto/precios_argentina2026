@@ -24,7 +24,8 @@ _RAIZ = Path(__file__).resolve().parent.parent
 if str(_RAIZ) not in sys.path:
     sys.path.insert(0, str(_RAIZ))
 
-from pipeline.unidades import precio_por_unidad  # noqa: E402  (necesita el sys.path de arriba)
+from pipeline.indice import costo_canasta, indice_encadenado  # noqa: E402  (necesita el sys.path de arriba)
+from pipeline.unidades import precio_por_unidad  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Identidad visual — paleta de marca (una sola fuente de verdad)
@@ -134,6 +135,7 @@ def cargar_datos() -> tuple[pd.DataFrame, pd.DataFrame]:
             p.categoria,
             p.contenido_valor,
             p.contenido_unidad,
+            COALESCE(p.peso_variable, 0) AS peso_variable,
             p.id AS producto_id
         FROM precios pr
         JOIN productos p ON p.id = pr.producto_id
@@ -217,49 +219,50 @@ def cargar_qc() -> dict:
         return {}
 
 
-def _costo_canasta_fija(df: pd.DataFrame) -> pd.Series:
-    """
-    Costo diario de una canasta FIJA: solo productos con precio todos los días.
-    Evita artefactos de composición (un producto que aparece/desaparece no mueve
-    el índice). Misma metodología que el export público (pipeline/export.py).
-    """
-    piv = df.pivot_table(index="fecha", columns="nombre_original", values="precio_lista").sort_index()
-    completos = piv.dropna(axis=1)
-    return completos.sum(axis=1)
+# El índice vive en pipeline/indice.py — una sola fuente de verdad compartida
+# con el export público, el forecast y la comparativa vs IPC. Acá sólo se
+# pivotea por nombre_original (el nombre que ve el usuario en el dashboard).
+_COL = "nombre_original"
+
+
+def _base_indice(df: pd.DataFrame) -> pd.DataFrame:
+    """Filas que alimentan el índice: sin frescos de balanza (peso variable)."""
+    if "peso_variable" not in df.columns:
+        return df
+    return df[df["peso_variable"] == 0]
 
 
 @st.cache_data(ttl=3600)
 def calcular_indice(df: pd.DataFrame) -> pd.DataFrame:
-    """Índice Canasta Atlas total (base 100 en primer día), canasta fija."""
+    """Índice Canasta Atlas total (encadenado, base 100 en el primer día)."""
     if df.empty:
         return pd.DataFrame()
 
-    costos = _costo_canasta_fija(df)
-    idx = costos.reset_index()
-    idx.columns = ["fecha", "costo_canasta"]
-    idx["fecha"] = pd.to_datetime(idx["fecha"])
-    idx = idx.sort_values("fecha")
+    base = _base_indice(df)
+    indice = indice_encadenado(base, col_producto=_COL)
+    if indice.empty:
+        return pd.DataFrame()
 
-    base = idx["costo_canasta"].iloc[0]
-    idx["indice"] = (idx["costo_canasta"] / base * 100).round(2)
-    idx["var_diaria"] = idx["costo_canasta"].pct_change().mul(100).round(2)
+    idx = pd.DataFrame({
+        "fecha": pd.to_datetime(indice.index),
+        "costo_canasta": costo_canasta(base, col_producto=_COL).values,
+        "indice": indice.values,
+    }).sort_values("fecha")
+    idx["var_diaria"] = idx["indice"].pct_change().mul(100).round(2)
     return idx
 
 
 @st.cache_data(ttl=3600)
 def calcular_indice_categoria(df: pd.DataFrame) -> pd.DataFrame:
-    """Índice base 100 por categoría (canasta fija). Columnas: fecha, categoria, indice."""
+    """Índice base 100 por categoría (encadenado). Columnas: fecha, categoria, indice."""
     if df.empty:
         return pd.DataFrame()
 
     filas = []
-    for cat, g in df.groupby("categoria"):
-        costos = _costo_canasta_fija(g)
-        if costos.empty:
-            continue
-        base = costos.iloc[0]
-        for fecha, costo in costos.items():
-            filas.append({"fecha": fecha, "categoria": cat, "indice": round(costo / base * 100, 2)})
+    for cat, g in _base_indice(df).groupby("categoria"):
+        indice = indice_encadenado(g, col_producto=_COL)
+        for fecha, valor in indice.items():
+            filas.append({"fecha": fecha, "categoria": cat, "indice": round(valor, 2)})
     out = pd.DataFrame(filas)
     if not out.empty:
         out["fecha"] = pd.to_datetime(out["fecha"])
@@ -448,7 +451,9 @@ with tab1:
 
     # Índice Canasta Atlas (base 100)
     st.subheader("Índice Canasta Atlas")
-    st.caption("Base 100 = primer día de datos. Canasta fija (productos con serie completa) sobre la cadena de referencia.")
+    st.caption("Base 100 = primer día de datos. Índice encadenado sobre la cadena de referencia: "
+               "se comparan los productos con precio en ambos días. Los frescos de balanza "
+               "(precio por pieza de peso variable) quedan fuera.")
     if len(idx) < 2:
         st.info("Necesitás al menos 2 días de datos para ver la evolución.", icon="ℹ️")
     else:

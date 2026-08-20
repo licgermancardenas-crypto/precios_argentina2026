@@ -9,9 +9,9 @@ Genera archivos versionados en data/public/ que funcionan como API estática
   comparador.csv        último precio por cadena de cada producto comparable
   metadata.json         esquema, cadenas, fechas, licencia
 
-Metodología del índice: suma del precio_lista de la canasta por día, base 100 en
-el primer día (idéntica a la del dashboard). El total y cada categoría se
-calculan solo sobre la cadena de referencia.
+Metodología del índice: índice encadenado sobre precio_lista, base 100 en el
+primer día (ver pipeline/indice.py — misma función que usa el dashboard). El
+total y cada categoría se calculan solo sobre la cadena de referencia.
 """
 
 from __future__ import annotations
@@ -24,6 +24,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from pipeline.indice import costo_canasta, indice_encadenado, productos_del_indice
 from scraper.config import FUENTE_REFERENCIA
 
 log = logging.getLogger(__name__)
@@ -37,6 +38,7 @@ def _leer_precios(con: sqlite3.Connection) -> pd.DataFrame:
         """
         SELECT pr.fecha, pr.fuente, p.categoria, p.ean,
                p.nombre_normalizado AS producto,
+               COALESCE(p.peso_variable, 0) AS peso_variable,
                pr.precio_lista, pr.precio_promo
         FROM precios pr
         JOIN productos p ON p.id = pr.producto_id
@@ -47,34 +49,28 @@ def _leer_precios(con: sqlite3.Connection) -> pd.DataFrame:
     )
 
 
-def _costo_canasta_fija(g: pd.DataFrame) -> pd.Series:
-    """
-    Costo diario de una canasta FIJA: solo productos con precio todos los días.
-    Evita artefactos de composición (un producto que aparece/desaparece no mueve
-    el índice). Devuelve una serie fecha → costo.
-    """
-    piv = g.pivot_table(index="fecha", columns="producto", values="precio_lista").sort_index()
-    completos = piv.dropna(axis=1)
-    return completos.sum(axis=1)
+def _base_indice(df: pd.DataFrame) -> pd.DataFrame:
+    """Filas que alimentan el índice: cadena de referencia, sin frescos de balanza."""
+    return df[(df["fuente"] == FUENTE_REFERENCIA) & (df["peso_variable"] == 0)]
 
 
-def _filas_indice(costos: pd.Series, categoria: str) -> list[dict]:
-    base = costos.iloc[0]
+def _filas_indice(g: pd.DataFrame, categoria: str) -> list[dict]:
+    costos = costo_canasta(g)
+    indice = indice_encadenado(g)
     return [
         {"fecha": fecha, "categoria": categoria,
-         "costo_canasta": round(costo, 2), "indice_base100": round(costo / base * 100, 2)}
-        for fecha, costo in costos.items()
+         "costo_canasta": round(costos[fecha], 2), "indice_base100": round(valor, 2)}
+        for fecha, valor in indice.items()
     ]
 
 
 def _construir_indice(df: pd.DataFrame) -> pd.DataFrame:
-    """Índice diario total + por categoría (canasta fija, cadena de referencia)."""
-    ref = df[df["fuente"] == FUENTE_REFERENCIA]
-    filas = _filas_indice(_costo_canasta_fija(ref), "TOTAL")
+    """Índice diario total + por categoría (encadenado, cadena de referencia)."""
+    ref = _base_indice(df)
+    filas = _filas_indice(ref, "TOTAL")
     for cat, g in ref.groupby("categoria"):
-        costos = _costo_canasta_fija(g)
-        if not costos.empty:
-            filas += _filas_indice(costos, cat)
+        if not g.empty:
+            filas += _filas_indice(g, cat)
     return pd.DataFrame(filas).sort_values(["categoria", "fecha"])
 
 
@@ -147,10 +143,18 @@ def exportar(db_path: Path = DB_PATH, out_dir: Path = OUT_DIR) -> None:
         "fecha_hasta": precios["fecha"].max(),
         "n_dias": int(precios["fecha"].nunique()),
         "n_productos_canasta": int(precios["producto"].nunique()),
-        "metodologia_indice": "Suma de precio_lista de la canasta por día, base 100 en el primer día. Total y por categoría sobre la cadena de referencia.",
+        "n_productos_indice": productos_del_indice(_base_indice(precios)),
+        "metodologia_indice": (
+            "Índice encadenado (matched pairs) sobre precio_lista, base 100 en el primer día: "
+            "I_t = I_(t-1) · Σp_t / Σp_(t-1) sobre los productos con precio en ambos días. "
+            "Total y por categoría sobre la cadena de referencia. "
+            "Los frescos de balanza (peso_variable=1) se relevan pero quedan fuera del índice: "
+            "el precio publicado es el de una pieza de peso variable, así que sus saltos no son inflación. "
+            "costo_canasta es el nivel en pesos a composición constante, anclado en el último día."
+        ),
         "licencia": "CC BY 4.0 — citar 'Atlas Precios'",
         "archivos": {
-            "precios.csv": "Serie completa de precios (todas las cadenas).",
+            "precios.csv": "Serie completa de precios (todas las cadenas). peso_variable=1 marca los frescos de balanza, excluidos del índice.",
             "indice_canasta.csv": "Índice base 100 diario: total + 6 categorías.",
             "indice_canasta.json": "Idem en JSON.",
             "comparador.csv": "Último precio por cadena de cada producto comparable.",

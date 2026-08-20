@@ -24,7 +24,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from pipeline.export import _costo_canasta_fija
+from pipeline.indice import indice_encadenado
 from scraper.config import FUENTE_REFERENCIA
 
 log = logging.getLogger(__name__)
@@ -34,18 +34,18 @@ OUT_PATH = Path("data/public/comparativa_ipc.json")
 
 
 def _indice_diario(con: sqlite3.Connection) -> pd.Series:
-    """Índice base 100 diario (canasta fija, cadena de referencia)."""
+    """Índice base 100 diario (encadenado, cadena de referencia)."""
     df = pd.read_sql(
         """SELECT pr.fecha, p.nombre_normalizado AS producto, pr.precio_lista
            FROM precios pr JOIN productos p ON p.id = pr.producto_id
-           WHERE p.en_canasta = 1 AND pr.fuente = ?""",
+           WHERE p.en_canasta = 1 AND COALESCE(p.peso_variable, 0) = 0 AND pr.fuente = ?""",
         con, params=(FUENTE_REFERENCIA,),
     )
     if df.empty:
         return pd.Series(dtype=float)
-    costo = _costo_canasta_fija(df)
-    costo.index = pd.to_datetime(costo.index)
-    return (costo / costo.iloc[0] * 100).round(3)
+    indice = indice_encadenado(df)
+    indice.index = pd.to_datetime(indice.index)
+    return indice
 
 
 def _ipc_mensual(con: sqlite3.Connection) -> pd.DataFrame:

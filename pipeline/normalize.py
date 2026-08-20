@@ -15,7 +15,7 @@ import unicodedata
 from datetime import date
 from pathlib import Path
 
-from scraper.config import CANASTA, FUENTE_REFERENCIA
+from scraper.config import CANASTA, FUENTE_REFERENCIA, PESO_VARIABLE_EANS
 
 # EAN de los productos que integran la Canasta Atlas. Un producto es de canasta
 # solo si su EAN está acá; los sustitutos que devuelven las cadenas cuando no
@@ -73,6 +73,7 @@ def conectar() -> sqlite3.Connection:
     con.execute("PRAGMA foreign_keys=ON")
     if not _tablas_existen(con):
         _crear_schema(con)
+    _migrar_schema(con)
     return con
 
 
@@ -85,6 +86,24 @@ def _crear_schema(con: sqlite3.Connection) -> None:
     con.executescript(SCHEMA.read_text(encoding="utf-8"))
     con.commit()
     log.info("Schema de base de datos creado.")
+
+
+def _migrar_schema(con: sqlite3.Connection) -> None:
+    """
+    Migraciones idempotentes para bases ya creadas: schema.sql usa
+    CREATE TABLE IF NOT EXISTS, así que una columna nueva no llega sola.
+    """
+    cols = {r["name"] for r in con.execute("PRAGMA table_info(productos)")}
+    if "peso_variable" not in cols:
+        con.execute("ALTER TABLE productos ADD COLUMN peso_variable INTEGER DEFAULT 0")
+        log.info("Migración: columna productos.peso_variable agregada.")
+    # Se re-sincroniza siempre (no solo al migrar): la lista vive en la config,
+    # así que agregar un fresco de balanza a la canasta se propaga sin tocar la base.
+    con.executemany(
+        "UPDATE productos SET peso_variable = ? WHERE ean = ?",
+        [(1, e) for e in PESO_VARIABLE_EANS],
+    )
+    con.commit()
 
 
 # ---------------------------------------------------------------------------
@@ -136,11 +155,12 @@ def _upsert_producto(con: sqlite3.Connection, p: dict, fuente: str = FUENTE_REFE
         return existente["id"]
 
     en_canasta = 1 if ean in CANASTA_EANS else 0
+    peso_variable = 1 if ean in PESO_VARIABLE_EANS else 0
     cur = con.execute(
         """INSERT INTO productos
            (ean, nombre_normalizado, nombre_original, categoria,
-            presentacion, contenido_valor, contenido_unidad, en_canasta)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+            presentacion, contenido_valor, contenido_unidad, en_canasta, peso_variable)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
         (
             ean,
             nombre_norm,
@@ -150,6 +170,7 @@ def _upsert_producto(con: sqlite3.Connection, p: dict, fuente: str = FUENTE_REFE
             contenido_valor,
             contenido_unidad,
             en_canasta,
+            peso_variable,
         ),
     )
     return cur.lastrowid
@@ -230,8 +251,11 @@ def _detectar_outlier(
 
 def calcular_indice(con: sqlite3.Connection, fecha: str, fuente: str = FUENTE_REFERENCIA) -> float | None:
     """
-    Suma los precios de los 26 productos de la canasta para la fecha dada, en una cadena.
-    Usa forward fill (último precio conocido, máximo 7 días) si falta alguno.
+    Suma los precios de la canasta para la fecha dada, en una cadena, con forward
+    fill (último precio conocido, máximo 7 días) si falta alguno.
+
+    Es el número de control que se loguea al normalizar, NO el índice publicado:
+    ese se calcula encadenado y sin frescos de balanza (ver pipeline/indice.py).
     """
     productos_canasta = con.execute(
         "SELECT id FROM productos WHERE en_canasta = 1 AND activo = 1"

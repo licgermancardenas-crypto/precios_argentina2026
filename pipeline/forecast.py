@@ -7,7 +7,7 @@ Honestidad ante todo: un pronóstico diario necesita historia. Con menos de
 hay datos, sin tocar código.
 
 Cuando hay historia suficiente:
-  - ajusta Prophet sobre el índice total (canasta fija, cadena de referencia)
+  - ajusta Prophet sobre el índice total (encadenado, cadena de referencia)
   - opcionalmente usa el dólar blue como regresor si hay historia alineada
   - proyecta `HORIZONTE_DIAS` hacia adelante
 
@@ -27,6 +27,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from pipeline.indice import indice_encadenado
 from scraper.config import FUENTE_REFERENCIA
 
 log = logging.getLogger(__name__)
@@ -40,18 +41,16 @@ Z_ANOMALIA = 2.5            # umbral de anomalía en retornos diarios (desvíos 
 
 
 def _indice_total(con: sqlite3.Connection) -> pd.DataFrame:
-    """Índice total base 100 (canasta fija, cadena de referencia). Cols: fecha, indice."""
+    """Índice total base 100 (encadenado, cadena de referencia). Cols: fecha, indice."""
     df = pd.read_sql(
         """SELECT pr.fecha, p.nombre_normalizado AS producto, pr.precio_lista
            FROM precios pr JOIN productos p ON p.id = pr.producto_id
-           WHERE p.en_canasta = 1 AND pr.fuente = ?""",
+           WHERE p.en_canasta = 1 AND COALESCE(p.peso_variable, 0) = 0 AND pr.fuente = ?""",
         con, params=(FUENTE_REFERENCIA,),
     )
     if df.empty:
         return pd.DataFrame(columns=["fecha", "indice"])
-    piv = df.pivot_table(index="fecha", columns="producto", values="precio_lista").sort_index()
-    costos = piv.dropna(axis=1).sum(axis=1)
-    indice = (costos / costos.iloc[0] * 100).round(2)
+    indice = indice_encadenado(df)
     return pd.DataFrame({"fecha": indice.index, "indice": indice.values})
 
 

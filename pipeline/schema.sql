@@ -11,6 +11,8 @@ CREATE TABLE IF NOT EXISTS productos (
     contenido_valor     REAL,                           -- 1.0, 500, ...
     contenido_unidad    TEXT,                           -- "l", "g", "kg", "unidad"
     en_canasta          INTEGER DEFAULT 0,              -- 1 si integra la Canasta Atlas
+    peso_variable       INTEGER DEFAULT 0,              -- 1 = fresco de balanza (pieza de peso
+                                                        -- variable): se releva, pero NO entra al índice
     activo              INTEGER DEFAULT 1,
     creado_en           TEXT DEFAULT (date('now'))
 );

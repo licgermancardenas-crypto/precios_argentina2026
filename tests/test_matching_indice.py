@@ -3,7 +3,7 @@ Tests del matching por EAN y del cálculo del índice.
 
 - _upsert_producto: mismo EAN (aunque venga de otra cadena) = mismo producto_id.
 - calcular_indice: filtra por `fuente` (no mezcla cadenas).
-- _construir_indice (export): canasta fija (solo productos con serie completa).
+- _construir_indice (export): índice encadenado, sin frescos de balanza.
 
 Ejecutar: pytest  (o: python -m unittest)
 """
@@ -15,6 +15,7 @@ import pandas as pd
 
 from pipeline import normalize
 from pipeline.export import _construir_indice
+from pipeline.indice import indice_encadenado
 
 
 def _db():
@@ -97,35 +98,116 @@ class TestIndiceFuenteAware(unittest.TestCase):
         con.close()
 
 
-class TestCanastaFija(unittest.TestCase):
-    """El índice del export usa solo productos con precio TODOS los días."""
+def _fila(fecha, producto, precio, *, categoria="almacen", ean="1", peso_variable=0):
+    return {"fecha": fecha, "fuente": "coto", "categoria": categoria, "ean": ean,
+            "producto": producto, "precio_lista": precio, "peso_variable": peso_variable}
 
-    def test_producto_incompleto_no_mueve_el_indice(self):
-        # A: presente los 2 días (100 -> 110). B: solo el día 2 (aparece).
+
+class TestIndiceEncadenado(unittest.TestCase):
+    """El índice del export encadena ratios sobre los productos pareados."""
+
+    def test_alta_de_producto_no_mueve_el_indice(self):
+        # A: presente los 2 días (100 -> 110). B: aparece recién el día 2.
         df = pd.DataFrame([
-            {"fecha": "2026-07-01", "fuente": "coto", "categoria": "almacen", "ean": "1",
-             "producto": "a", "precio_lista": 100.0},
-            {"fecha": "2026-07-02", "fuente": "coto", "categoria": "almacen", "ean": "1",
-             "producto": "a", "precio_lista": 110.0},
-            {"fecha": "2026-07-02", "fuente": "coto", "categoria": "almacen", "ean": "2",
-             "producto": "b", "precio_lista": 999.0},
+            _fila("2026-07-01", "a", 100.0),
+            _fila("2026-07-02", "a", 110.0),
+            _fila("2026-07-02", "b", 999.0, ean="2"),
         ])
-        idx = _construir_indice(df)
-        total = idx[idx["categoria"] == "TOTAL"].sort_values("fecha")
-        # Solo A entra (serie completa) -> índice 100 y 110, sin salto por B
+        total = _construir_indice(df).query("categoria == 'TOTAL'").sort_values("fecha")
+        # B no tiene par el 01, así que no entra al ratio: +10%, no un salto por composición.
         self.assertEqual(list(total["indice_base100"]), [100.0, 110.0])
 
     def test_base_100_primer_dia(self):
         df = pd.DataFrame([
-            {"fecha": "2026-07-01", "fuente": "coto", "categoria": "lacteos", "ean": "1",
-             "producto": "a", "precio_lista": 50.0},
-            {"fecha": "2026-07-02", "fuente": "coto", "categoria": "lacteos", "ean": "1",
-             "producto": "a", "precio_lista": 75.0},
+            _fila("2026-07-01", "a", 50.0, categoria="lacteos"),
+            _fila("2026-07-02", "a", 75.0, categoria="lacteos"),
         ])
-        idx = _construir_indice(df)
-        total = idx[idx["categoria"] == "TOTAL"].sort_values("fecha")
+        total = _construir_indice(df).query("categoria == 'TOTAL'").sort_values("fecha")
         self.assertEqual(total["indice_base100"].iloc[0], 100.0)
         self.assertEqual(total["indice_base100"].iloc[1], 150.0)
+
+    def test_producto_tardio_aporta_desde_que_tiene_par(self):
+        """
+        Lo que la suma simple sobre serie completa no hacía: B entra el día 2 y
+        desde el día 3 su variación cuenta. Antes quedaba excluido para siempre.
+        """
+        df = pd.DataFrame([
+            _fila("2026-07-01", "a", 100.0),
+            _fila("2026-07-02", "a", 100.0),
+            _fila("2026-07-02", "b", 100.0, ean="2"),
+            _fila("2026-07-03", "a", 100.0),
+            _fila("2026-07-03", "b", 200.0, ean="2"),   # B duplica: 200/100 sobre el par {a,b}
+        ])
+        total = _construir_indice(df).query("categoria == 'TOTAL'").sort_values("fecha")
+        # día 3: (100+200)/(100+100) = 1.5 -> 150
+        self.assertEqual(list(total["indice_base100"]), [100.0, 100.0, 150.0])
+
+    def test_peso_variable_queda_fuera_del_indice(self):
+        """Los frescos de balanza se relevan pero no mueven el índice."""
+        df = pd.DataFrame([
+            _fila("2026-07-01", "a", 100.0),
+            _fila("2026-07-01", "paleta", 10000.0, ean="2", peso_variable=1),
+            _fila("2026-07-02", "a", 100.0),
+            _fila("2026-07-02", "paleta", 20000.0, ean="2", peso_variable=1),  # pieza más pesada
+        ])
+        total = _construir_indice(df).query("categoria == 'TOTAL'").sort_values("fecha")
+        self.assertEqual(list(total["indice_base100"]), [100.0, 100.0])
+
+    def test_costo_y_indice_son_consistentes(self):
+        """En el CSV público, costo_t/costo_s tiene que dar igual que indice_t/indice_s."""
+        df = pd.DataFrame([
+            _fila("2026-07-01", "a", 100.0),
+            _fila("2026-07-02", "a", 125.0),
+        ])
+        total = _construir_indice(df).query("categoria == 'TOTAL'").sort_values("fecha")
+        razon_costo = total["costo_canasta"].iloc[1] / total["costo_canasta"].iloc[0]
+        razon_indice = total["indice_base100"].iloc[1] / total["indice_base100"].iloc[0]
+        self.assertAlmostEqual(razon_costo, razon_indice, places=4)
+        # El ancla es el último día: el costo publicado hoy es el de la góndola.
+        self.assertAlmostEqual(total["costo_canasta"].iloc[-1], 125.0, places=2)
+
+
+class TestIndiceBordes(unittest.TestCase):
+
+    def test_dia_sin_productos_pareados_sostiene_el_indice(self):
+        """
+        Si un día no comparte ningún producto con el anterior no hay variación
+        medible: el índice se sostiene en vez de saltar por el cambio de canasta.
+        """
+        df = pd.DataFrame([
+            {"fecha": "2026-07-01", "producto": "a", "precio_lista": 100.0},
+            {"fecha": "2026-07-02", "producto": "b", "precio_lista": 5000.0},
+            {"fecha": "2026-07-03", "producto": "b", "precio_lista": 5500.0},
+        ])
+        self.assertEqual(list(indice_encadenado(df)), [100.0, 100.0, 110.0])
+
+    def test_df_vacio_no_explota(self):
+        vacio = pd.DataFrame(columns=["fecha", "producto", "precio_lista"])
+        self.assertTrue(indice_encadenado(vacio).empty)
+
+
+class TestMigracionPesoVariable(unittest.TestCase):
+    """La columna peso_variable llega a bases ya creadas y se re-sincroniza sola."""
+
+    def test_migracion_es_idempotente(self):
+        con = _db()
+        con.execute("ALTER TABLE productos DROP COLUMN peso_variable")   # base "vieja"
+        for _ in range(2):
+            normalize._migrar_schema(con)
+        cols = {r["name"] for r in con.execute("PRAGMA table_info(productos)")}
+        self.assertIn("peso_variable", cols)
+
+    def test_marca_los_frescos_de_balanza_de_la_config(self):
+        from scraper.config import PESO_VARIABLE_EANS
+        ean = next(iter(PESO_VARIABLE_EANS))
+        con = _db()
+        con.execute(
+            "INSERT INTO productos (ean, nombre_normalizado, categoria, en_canasta) "
+            "VALUES (?, 'x', 'carnes', 1)", (ean,),
+        )
+        normalize._migrar_schema(con)
+        marcado = con.execute("SELECT peso_variable FROM productos WHERE ean=?", (ean,)).fetchone()[0]
+        self.assertEqual(marcado, 1)
 
 
 if __name__ == "__main__":
