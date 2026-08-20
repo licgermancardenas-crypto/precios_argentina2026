@@ -28,22 +28,43 @@ from pipeline.indice import costo_canasta, indice_encadenado  # noqa: E402  (nec
 from pipeline.unidades import precio_por_unidad  # noqa: E402
 
 # ---------------------------------------------------------------------------
-# Identidad visual — paleta de marca (una sola fuente de verdad)
+# Identidad visual — tokens de marca (una sola fuente de verdad)
 # ---------------------------------------------------------------------------
+# Tema oscuro. Dos superficies: la página y la tarjeta que la contiene; todo el
+# contenido vive en tarjetas, así que los gráficos se dibujan sobre CARD.
 COLORES = {
-    "navy":   "#1a2744",
-    "gold":   "#c9a227",
-    "rojo":   "#d64550",
-    "gris":   "#f2f2f2",
-    "verde":  "#2e9e6b",
-    "azul":   "#4a7fb5",
-    "texto":  "#212529",
-    "grilla": "#eef0f3",
+    "bg":      "#0f1729",   # fondo de página
+    "card":    "#18213a",   # superficie de tarjeta
+    "card_2":  "#1f2a47",   # tarjeta elevada / hover
+    "borde":   "#26324f",
+    "texto":   "#e8edf7",   # 13.6:1 sobre card
+    "texto_2": "#8b96ad",   # 5.4:1  sobre card — mínimo para texto legible
+    "grilla":  "#253150",   # recesiva a propósito
+    "cyan":    "#22d3ee",   # acento de marca
+    "teal":    "#2dd4bf",
+    "verde":   "#34d399",   # baja de precios (buena)
+    "rojo":    "#f87171",   # suba de precios (mala)
 }
+
+# Paleta categórica: orden FIJO, nunca cíclico. Validada con el script del skill
+# de dataviz contra las dos superficies oscuras
+# (banda de luminosidad, piso de croma, separación CVD, visión normal, contraste).
+# El cyan de marca NO está acá: con L 0.797 se sale de la banda oscura (0.48–0.67),
+# así que es acento de UI y de serie única, no un slot categórico.
+# Ojo al extender: con 4+ slots el set sólo cierra en el pairlist ADYACENTE
+# (líneas y barras, que es lo que usa este dashboard). Para scatter de puntos
+# habría que cortar en 3 o facetar.
+_COLORWAY = [
+    "#3987e5",  # azul
+    "#d95926",  # naranja
+    "#199e70",  # aqua
+    "#c98500",  # amarillo
+    "#d55181",  # magenta
+    "#008300",  # verde
+    "#9085e9",  # violeta
+    "#e66767",  # rojo
+]
 _FUENTE = "IBM Plex Sans, sans-serif"
-# Colorway de marca para series múltiples (categorías, comparador, etc.)
-_COLORWAY = [COLORES["navy"], COLORES["gold"], COLORES["verde"], COLORES["azul"],
-             COLORES["rojo"], "#8a6d3b", "#5a6472", "#9aa4b2"]
 
 # ---------------------------------------------------------------------------
 # Configuración
@@ -58,55 +79,186 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Template de Plotly de marca — se aplica a TODOS los gráficos automáticamente
-# (fuente, paleta de series, grillas, hover, márgenes).
+# Template de Plotly de marca — se aplica a TODOS los gráficos automáticamente.
+# Transparente sobre la tarjeta: el gráfico hereda la superficie en la que cae.
 pio.templates["atlas"] = go.layout.Template(
     layout=dict(
-        font=dict(family=_FUENTE, color=COLORES["texto"], size=13),
+        font=dict(family=_FUENTE, color=COLORES["texto_2"], size=13),
         colorway=_COLORWAY,
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        xaxis=dict(gridcolor=COLORES["grilla"], zerolinecolor=COLORES["grilla"], zeroline=False),
-        yaxis=dict(gridcolor=COLORES["grilla"], zerolinecolor=COLORES["grilla"], zeroline=False),
-        hoverlabel=dict(bgcolor="white", bordercolor=COLORES["grilla"], font=dict(family=_FUENTE, size=12)),
-        margin=dict(t=30, b=20, l=10, r=10),
-        legend=dict(orientation="h", y=1.12, x=0),
-        colorscale=dict(sequential=[[0, "#eaf0f6"], [1, COLORES["navy"]]]),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        xaxis=dict(gridcolor=COLORES["grilla"], showline=False, zeroline=False,
+                   tickfont=dict(color=COLORES["texto_2"], size=11)),
+        yaxis=dict(gridcolor=COLORES["grilla"], showline=False, zeroline=False,
+                   tickfont=dict(color=COLORES["texto_2"], size=11)),
+        hoverlabel=dict(bgcolor=COLORES["card_2"], bordercolor=COLORES["borde"],
+                        font=dict(family=_FUENTE, size=12, color=COLORES["texto"])),
+        margin=dict(t=30, b=20, l=10, r=24),
+        legend=dict(orientation="h", y=1.14, x=0, font=dict(color=COLORES["texto_2"], size=11)),
+        colorscale=dict(sequential=[[0, "#1b3550"], [1, COLORES["cyan"]]]),
     )
 )
 pio.templates.default = "atlas"
 
-# Estilos de la app (fuente + tarjetas de métrica + tabs + limpieza de chrome)
+# Estilos de la app. La referencia es un dashboard de tarjetas: superficie
+# elevada, radio generoso, bordes de 1px muy sutiles y acento cyan sólo en lo
+# que está activo o es la cifra principal.
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+    :root {
+        --bg: #0f1729;  --card: #18213a;  --card-2: #1f2a47;  --borde: #26324f;
+        --txt: #e8edf7; --txt-2: #8b96ad; --cyan: #22d3ee;    --teal: #2dd4bf;
+        --pos: #34d399; --neg: #f87171;
+    }
+
     html, body, [class*="css"], .stApp, [data-testid="stMarkdownContainer"] {
         font-family: 'IBM Plex Sans', sans-serif;
     }
-    h1, h2, h3 { color: #1a2744; font-weight: 600; letter-spacing: -0.01em; }
+    .stApp { background: var(--bg); }
+    h1, h2, h3 { color: var(--txt); font-weight: 600; letter-spacing: -0.015em; }
     h1 { font-weight: 700; }
 
-    /* Tarjetas de métrica */
-    [data-testid="stMetric"] {
-        background: #f8f9fb;
-        border: 1px solid #eceef2;
-        border-left: 4px solid #1a2744;
-        border-radius: 10px;
-        padding: 14px 16px 12px;
+    /* --- Tarjetas: el contenedor base de todo el layout --- */
+    .atlas-card {
+        background: var(--card);
+        border: 1px solid var(--borde);
+        border-radius: 16px;
+        padding: 18px 20px;
+        margin-bottom: 14px;
     }
-    [data-testid="stMetricLabel"] p { color: #5a6472; font-weight: 500; font-size: 0.8rem; }
-    [data-testid="stMetricValue"] { color: #1a2744; font-weight: 600; }
+    .atlas-card h4 {
+        color: var(--txt-2); font-size: .78rem; font-weight: 600;
+        text-transform: uppercase; letter-spacing: .06em; margin: 0 0 12px;
+    }
 
-    /* Tabs */
-    [data-baseweb="tab-list"] { gap: 2px; border-bottom: 1px solid #eceef2; }
-    button[data-baseweb="tab"] { font-weight: 500; }
-    button[data-baseweb="tab"][aria-selected="true"] { color: #1a2744; }
+    /* --- KPI: la cifra manda, el label se retira --- */
+    [data-testid="stMetric"] {
+        background: var(--card);
+        border: 1px solid var(--borde);
+        border-radius: 16px;
+        padding: 16px 18px 14px;
+    }
+    [data-testid="stMetricLabel"] p {
+        color: var(--txt-2); font-weight: 500; font-size: .78rem;
+        text-transform: uppercase; letter-spacing: .05em;
+    }
+    [data-testid="stMetricValue"] {
+        color: var(--txt); font-weight: 600; font-size: 2rem; letter-spacing: -.02em;
+    }
+    /* --- Tabs como pills segmentadas (la nav de la referencia) ---
+       Streamlit 1.62 ya no emite los data-baseweb viejos: el elemento con
+       role=tab ES [data-testid="stTab"], y el texto vive en un markdown adentro. */
+    [data-testid="stTabs"] [role="tablist"] {
+        gap: 4px; background: var(--card); border: 1px solid var(--borde);
+        border-radius: 12px; padding: 5px; margin-bottom: 6px;
+    }
+    [data-testid="stTabs"] [role="tablist"] > div:last-child:empty,
+    [data-testid="stTabs"] [data-baseweb="tab-highlight"],
+    [data-testid="stTabs"] [data-baseweb="tab-border"] { display: none !important; }
+    [data-testid="stTabs"] [role="tablist"] { border-bottom: 1px solid var(--borde); }
 
-    /* Limpieza del chrome default de Streamlit */
+    [data-testid="stTab"] {
+        border-radius: 8px; padding: 6px 14px; transition: background .12s ease;
+    }
+    [data-testid="stTab"] p { color: var(--txt-2); font-weight: 500; font-size: .88rem; }
+    [data-testid="stTab"]:hover { background: var(--card-2); }
+    [data-testid="stTab"]:hover p { color: var(--txt); }
+    [data-testid="stTab"][aria-selected="true"] { background: var(--cyan); }
+    [data-testid="stTab"][aria-selected="true"] p { color: #0b1220; font-weight: 600; }
+
+    /* --- Cada gráfico vive en una tarjeta (el layout de la referencia) --- */
+    [data-testid="stPlotlyChart"] {
+        background: var(--card); border: 1px solid var(--borde);
+        border-radius: 16px; padding: 14px 16px 10px; margin-bottom: 4px;
+    }
+    [data-testid="stPlotlyChart"] > div,
+    .js-plotly-plot, .plot-container, .svg-container { background: transparent !important; }
+
+    /* Títulos de sección: chicos y en versalita, como los de la referencia,
+       para que la cifra del gráfico sea lo que pesa y no el encabezado. */
+    [data-testid="stHeadingWithActionElements"] h3 {
+        font-size: 1.02rem; font-weight: 600; letter-spacing: .01em;
+        margin: 4px 0 2px;
+    }
+    [data-testid="stAlert"] { border-radius: 14px; border: 1px solid var(--borde); }
+
+    /* --- Contenedores con borde = las tarjetas del layout --- */
+    [data-testid="stVerticalBlockBorderWrapper"]:has(> div > [data-testid="stVerticalBlock"]) {
+        background: var(--card); border: 1px solid var(--borde);
+        border-radius: 16px;
+    }
+    /* El KPI destacado lleva el acento; el resto queda neutro para que no compitan. */
+    .st-key-kpi_hero [data-testid="stMetric"] {
+        background: linear-gradient(150deg, #1c2b4d 0%, var(--card) 62%);
+        border-color: #2f4670;
+    }
+    .st-key-kpi_hero [data-testid="stMetricValue"] { color: var(--cyan); }
+
+    /* --- Controles --- */
+    [data-testid="stDataFrame"], [data-testid="stTable"] {
+        border: 1px solid var(--borde); border-radius: 12px;
+    }
+    .stSelectbox div[data-baseweb="select"] > div,
+    .stMultiSelect div[data-baseweb="select"] > div {
+        background: var(--card); border-color: var(--borde); border-radius: 10px;
+    }
+    .stDownloadButton button, .stButton button {
+        background: var(--card-2); color: var(--txt);
+        border: 1px solid var(--borde); border-radius: 10px; font-weight: 500;
+    }
+    .stDownloadButton button:hover, .stButton button:hover {
+        border-color: var(--cyan); color: var(--cyan);
+    }
+    [data-testid="stExpander"] {
+        background: var(--card); border: 1px solid var(--borde); border-radius: 14px;
+    }
+    hr, [data-testid="stDivider"] { border-color: var(--borde); }
+
+    /* --- Densidad: la referencia apila tarjetas juntas, sin aire muerto --- */
+    [data-testid="stVerticalBlock"] { gap: .62rem; }
+    [data-testid="stHorizontalBlock"] { gap: .7rem; }
+    [data-testid="stElementContainer"]:has(> [data-testid="stMarkdownContainer"] > hr) {
+        margin: .1rem 0;
+    }
+    hr { margin: .5rem 0; border-color: var(--borde); opacity: .55; }
+    [data-testid="stCaptionContainer"] p { color: var(--txt-2); font-size: .82rem; }
+
+    /* --- Header compacto: marca a la izquierda, estado a la derecha --- */
+    .atlas-head {
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 16px; flex-wrap: wrap;
+        background: var(--card); border: 1px solid var(--borde);
+        border-radius: 16px; padding: 14px 20px; margin-bottom: 12px;
+    }
+    .atlas-head .marca { display: flex; align-items: center; gap: 12px; }
+    .atlas-head .logo {
+        width: 38px; height: 38px; border-radius: 11px; flex: none;
+        background: linear-gradient(140deg, var(--cyan), #2f6ed4);
+        display: grid; place-items: center; font-size: 19px;
+    }
+    .atlas-head h1 {
+        margin: 0; font-size: 1.32rem; font-weight: 700; letter-spacing: -.02em;
+        line-height: 1.15;
+    }
+    .atlas-head .bajada { margin: 1px 0 0; color: var(--txt-2); font-size: .8rem; }
+    .atlas-head .chip {
+        display: inline-flex; align-items: center; gap: 7px;
+        background: var(--card-2); border: 1px solid var(--borde);
+        border-radius: 999px; padding: 6px 13px;
+        color: var(--txt-2); font-size: .78rem; white-space: nowrap;
+    }
+    .atlas-head .punto {
+        width: 7px; height: 7px; border-radius: 50%; background: var(--pos);
+        box-shadow: 0 0 0 3px rgba(52,211,153,.16);
+    }
+
+    /* --- Limpieza del chrome default de Streamlit --- */
     #MainMenu, header [data-testid="stToolbar"] { visibility: hidden; }
     footer { visibility: hidden; }
-    .block-container { padding-top: 2.2rem; }
-    .footer { text-align: center; color: #9aa4b2; font-size: 12px; margin-top: 32px; }
+    .block-container { padding-top: 2.2rem; max-width: 1500px; }
+    .footer { text-align: center; color: var(--txt-2); font-size: 12px; margin-top: 32px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -280,36 +432,44 @@ def _flecha(val: float | None) -> str:
 
 
 def _color_var(val: float | None) -> str:
+    """Suba de precios = malo (rojo), baja = bueno (verde), sin cambio = texto neutro."""
     if val is None:
-        return "black"
-    return COLORES["rojo"] if val > 0 else (COLORES["verde"] if val < 0 else "black")
+        return COLORES["texto_2"]
+    return COLORES["rojo"] if val > 0 else (COLORES["verde"] if val < 0 else COLORES["texto_2"])
 
 
 # ---------------------------------------------------------------------------
 # Header
 # ---------------------------------------------------------------------------
 
-col_logo, col_titulo = st.columns([1, 9])
-with col_logo:
-    st.markdown("<div style='font-size:52px; line-height:1.2'>📊</div>", unsafe_allow_html=True)
-with col_titulo:
-    st.title("Atlas Precios")
-    st.markdown(
-        "Relevo **4 supermercados** argentinos todos los días y construyo un índice de "
-        "inflación propio con resolución diaria — que **adelanta al IPC oficial**. "
-        "Todo automatizado, reproducible y con datos abiertos."
-    )
-
-# Estado del relevamiento (control de calidad)
+# Barra de marca compacta: identidad a la izquierda, salud del relevamiento a
+# la derecha — el estado es lo primero que hay que poder chequear de un vistazo.
 _qc = cargar_qc()
+_chip = ""
 if _qc.get("cadenas"):
     _ok = sum(1 for c in _qc["cadenas"].values() if c["estado"] == "ok")
     _tot = len(_qc["cadenas"])
-    _icono = {"ok": "🟢", "warning": "🟡", "critical": "🔴"}.get(_qc["estado_global"], "⚪")
+    _tono = {"ok": "var(--pos)", "warning": "#fbbf24", "critical": "var(--neg)"}.get(
+        _qc["estado_global"], "var(--txt-2)")
     _detalle = "" if _qc["estado_global"] == "ok" else " · " + "; ".join(_qc.get("alertas", []))
-    st.caption(f"{_icono} Relevamiento {_qc.get('fecha', '—')}: {_ok}/{_tot} cadenas OK{_detalle}")
+    _chip = (
+        f"<span class='chip'><span class='punto' style='background:{_tono};'></span>"
+        f"Relevamiento {_qc.get('fecha', '—')} · {_ok}/{_tot} cadenas OK{_detalle}</span>"
+    )
 
-st.divider()
+st.markdown(f"""
+<div class="atlas-head">
+  <div class="marca">
+    <div class="logo">📊</div>
+    <div>
+      <h1>Atlas Precios</h1>
+      <p class="bajada">Índice de inflación diario sobre 4 supermercados argentinos —
+      datos abiertos, reproducibles, y por delante del IPC oficial.</p>
+    </div>
+  </div>
+  {_chip}
+</div>
+""", unsafe_allow_html=True)
 
 # ---------------------------------------------------------------------------
 # Carga
@@ -343,7 +503,7 @@ hace_30 = idx[idx["fecha"] <= ultima_fecha - pd.Timedelta(days=30)].iloc[-1] if 
 
 k1, k2, k3, k4 = st.columns(4)
 
-with k1:
+with k1.container(key="kpi_hero"):
     st.metric(
         label="Índice Canasta Atlas",
         value=f"{ultimo['indice']:.1f}",
@@ -433,12 +593,11 @@ with tab1:
             dfm = pd.DataFrame(cerrados)
             figm = go.Figure()
             figm.add_trace(go.Bar(x=dfm["mes"], y=dfm["var_canasta_pct"],
-                                  name="Canasta Atlas", marker_color=COLORES["navy"]))
+                                  name="Canasta Atlas", marker_color=COLORES["cyan"]))
             figm.add_trace(go.Bar(x=dfm["mes"], y=dfm["var_ipc_pct"],
-                                  name="IPC oficial", marker_color=COLORES["gold"]))
+                                  name="IPC oficial", marker_color="#c98500"))
             figm.update_layout(barmode="group", height=300, margin=dict(t=20, b=20),
-                               yaxis_title="Var. mensual %", plot_bgcolor="white",
-                               xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"),
+                               yaxis_title="Var. mensual %",
                                legend=dict(orientation="h", y=1.15))
             st.plotly_chart(figm, width="stretch")
         else:
@@ -460,11 +619,12 @@ with tab1:
         fig = go.Figure()
         fig.add_trace(go.Scatter(
             x=idx["fecha"], y=idx["indice"], mode="lines+markers", name="Índice",
-            line=dict(color=COLORES["navy"], width=2.5), marker=dict(size=5),
+            line=dict(color=COLORES["cyan"], width=2.5), marker=dict(size=5),
             hovertemplate="<b>%{x|%d/%m/%Y}</b><br>Índice: %{y:.1f}<extra></extra>",
         ))
-        fig.add_hline(y=100, line_dash="dot", line_color=COLORES["gold"], line_width=1.5,
-                      annotation_text="Base 100", annotation_position="left")
+        fig.add_hline(y=100, line_dash="dot", line_color=COLORES["texto_2"], line_width=1,
+                      annotation_text="Base 100", annotation_position="top left",
+                      annotation_font=dict(color=COLORES["texto_2"], size=11))
         fig.update_layout(height=380, xaxis_title=None, yaxis_title="Índice (base 100)")
         st.plotly_chart(fig, width="stretch")
 
@@ -501,7 +661,8 @@ with tab2:
                 marker_color=[COLORES["rojo"] if v > 0 else COLORES["verde"] for v in ultimo_cat["var"]],
                 hovertemplate="%{y}: %{x:+.1f}%<extra></extra>",
             ))
-            figb.update_layout(height=340, xaxis_title="Var. acumulada %", yaxis_title=None)
+            figb.update_layout(height=340, xaxis_title="Var. acumulada %", yaxis_title=None,
+                               margin=dict(t=30, b=48, l=10, r=24))
             st.plotly_chart(figb, width="stretch")
 
     # Historial del índice
@@ -569,7 +730,7 @@ with tab2:
                 ["nombre_original", "categoria", "precio_lista_ant", "precio_lista_hoy", "variacion_pct"]
             ]
             for _, r in bajas.iterrows():
-                color = COLORES["verde"] if r["variacion_pct"] < 0 else "black"
+                color = _color_var(r["variacion_pct"])
                 flecha = _flecha(r["variacion_pct"])
                 html = (
                     f"**{r['nombre_original'][:40]}**  \n"
@@ -711,8 +872,9 @@ with tab4:
             # Gráfico de barras por producto
             comp = comparables.reset_index()
             fig4 = go.Figure()
-            _ciclo = [COLORES["navy"], COLORES["gold"], COLORES["verde"], COLORES["rojo"]]
-            paleta = {f: _ciclo[i % len(_ciclo)] for i, f in enumerate(fuentes)}
+            # Orden FIJO de la paleta validada (nunca cíclico): cada cadena
+            # conserva su color aunque el filtro cambie el set visible.
+            paleta = {f: _COLORWAY[i] for i, f in enumerate(sorted(fuentes))}
             for f in fuentes:
                 fig4.add_trace(go.Bar(
                     y=comp["nombre_original"].str.slice(0, 38),
@@ -727,7 +889,7 @@ with tab4:
                 height=max(360, 26 * len(comp)),
                 margin=dict(t=20, b=20, l=10),
                 xaxis_title="Precio ($)", yaxis_title=None,
-                plot_bgcolor="white", xaxis=dict(gridcolor="#eee"),
+                xaxis=dict(gridcolor=COLORES["grilla"]),
                 legend=dict(orientation="h", y=1.05),
             )
             st.plotly_chart(fig4, width="stretch")
@@ -816,7 +978,7 @@ with tab4:
         with c2:
             fig_u = go.Figure(go.Bar(
                 x=barato["pu"].head(10)[::-1], y=barato["Producto"].str.slice(0, 30).head(10)[::-1],
-                orientation="h", marker_color=COLORES["navy"],
+                orientation="h", marker_color=COLORES["cyan"],
                 hovertemplate="%{y}<br>" + base_lbl[base_sel] + " $%{x:,.0f}<extra></extra>",
             ))
             fig_u.update_layout(height=320, xaxis_title=base_lbl[base_sel], yaxis_title=None)
@@ -850,14 +1012,14 @@ with tab5:
         figf.add_trace(go.Scatter(x=fore["fecha"], y=fore["yhat_upper"], mode="lines",
                                   line=dict(width=0), showlegend=False, hoverinfo="skip"))
         figf.add_trace(go.Scatter(x=fore["fecha"], y=fore["yhat_lower"], mode="lines", fill="tonexty",
-                                  fillcolor="rgba(201,162,39,0.18)", line=dict(width=0),
+                                  fillcolor="rgba(34,211,238,0.14)", line=dict(width=0),
                                   name="Intervalo", hoverinfo="skip"))
         figf.add_trace(go.Scatter(x=hist["fecha"], y=hist["indice"], mode="lines+markers", name="Histórico",
-                                  line=dict(color=COLORES["navy"], width=2.5)))
+                                  line=dict(color=COLORES["cyan"], width=2.5)))
         figf.add_trace(go.Scatter(x=fore["fecha"], y=fore["yhat"], mode="lines", name="Proyección",
-                                  line=dict(color=COLORES["gold"], width=2.5, dash="dash")))
-        figf.update_layout(height=380, margin=dict(t=20, b=20), plot_bgcolor="white",
-                           yaxis_title="Índice (base 100)", xaxis=dict(gridcolor="#eee"), yaxis=dict(gridcolor="#eee"))
+                                  line=dict(color="#c98500", width=2.5, dash="dash")))
+        figf.update_layout(height=380, margin=dict(t=20, b=20),
+                           yaxis_title="Índice (base 100)")
         st.plotly_chart(figf, width="stretch")
     else:
         n, need = fc.get("dias_historia", 0), fc.get("dias_necesarios", 30)
@@ -890,9 +1052,8 @@ with tab5:
             for serie, g in dolar.groupby("serie"):
                 figd.add_trace(go.Scatter(x=g["fecha"], y=g["valor"], mode="lines+markers",
                                          name=etiquetas.get(serie, serie)))
-            figd.update_layout(height=280, margin=dict(t=20, b=20), plot_bgcolor="white",
-                              yaxis_title="$ / USD (venta)", xaxis=dict(gridcolor="#eee"),
-                              yaxis=dict(gridcolor="#eee"), legend=dict(orientation="h", y=1.15))
+            figd.update_layout(height=280, margin=dict(t=20, b=20),
+                              yaxis_title="$ / USD (venta)", legend=dict(orientation="h", y=1.15))
             st.plotly_chart(figd, width="stretch")
             piv_d = dolar.pivot_table(index="fecha", columns="serie", values="valor")
             if {"dolar_oficial", "dolar_blue"}.issubset(piv_d.columns):
@@ -917,12 +1078,11 @@ with tab5:
             k2.metric("IPC interanual", f"{interanual:.1f}%" if interanual is not None else "—")
             figi = go.Figure(go.Bar(
                 x=ipc["fecha"].tail(12), y=ipc["var"].tail(12),
-                marker_color=COLORES["navy"],
+                marker_color="#c98500",
                 hovertemplate="%{x|%b %Y}: %{y:.1f}%<extra></extra>",
             ))
-            figi.update_layout(height=240, margin=dict(t=10, b=20), plot_bgcolor="white",
-                              yaxis_title="Var. mensual %", xaxis=dict(gridcolor="#eee"),
-                              yaxis=dict(gridcolor="#eee"))
+            figi.update_layout(height=240, margin=dict(t=10, b=20),
+                              yaxis_title="Var. mensual %", )
             st.plotly_chart(figi, width="stretch")
 
     st.divider()
