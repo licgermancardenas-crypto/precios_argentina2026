@@ -20,9 +20,16 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        # requirements-ml.txt (Prophet) va acá porque la serie ya superó los 30
-        # días y el forecast se publica; sin esto queda en "prophet_no_instalado".
-        run: pip install -r requirements.txt -r requirements-ml.txt
+        run: pip install -r requirements.txt
+
+      - name: Instalar Prophet (forecast)
+        # Aparte del resto y tolerante a fallos a propósito: el forecast es lo
+        # accesorio del job, el relevamiento del día es lo que no se puede
+        # perder (no se puede re-scrapear ayer). Si el build de Prophet se
+        # rompe, pipeline.forecast degrada solo a estado "prophet_no_instalado"
+        # —el dashboard ya sabe renderizar ese estado— y el día se publica igual.
+        continue-on-error: true
+        run: pip install -r requirements-ml.txt
 
       - name: Correr scrapers (todas las cadenas)
         run: python -m scraper
@@ -34,6 +41,9 @@ jobs:
         run: python -m pipeline.regresores
 
       - name: Forecast + anomalías
+        # Mismo criterio: si el modelo falla, escribe estado "error" y el job
+        # sigue hasta commitear los precios del día.
+        continue-on-error: true
         run: python -m pipeline.forecast   # con <30 días escribe estado "insuficiente" sin tocar Prophet
 
       - name: Exportar datos públicos
