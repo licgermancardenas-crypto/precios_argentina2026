@@ -1,20 +1,11 @@
 {
-  "generado_utc": "2026-08-20T09:47:26+00:00",
+  "generado_utc": "2026-08-21T09:49:29+00:00",
   "dispersion": {
-    "fecha": "2026-08-20",
-    "n_productos": 40,
-    "dispersion_media_pct": 23.1,
-    "dispersion_maxima_pct": 400.0,
+    "fecha": "2026-08-21",
+    "n_productos": 41,
+    "dispersion_media_pct": 13.3,
+    "dispersion_maxima_pct": 97.8,
     "top": [
-      {
-        "producto": "Cerveza Rubia 1 Lts Quilmes",
-        "categoria": "bebidas",
-        "precio_min": 916.0,
-        "precio_max": 4580.0,
-        "dispersion_pct": 400.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
       {
         "producto": "Vino Toro Clasico Tinto 1125",
         "categoria": "bebidas",
@@ -23,6 +14,15 @@
         "dispersion_pct": 97.8,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
+      },
+      {
+        "producto": "Azúcar Molida 1 Kg Ledesma",
+        "categoria": "almacen",
+        "precio_min": 1565.0,
+        "precio_max": 2234.39,
+        "dispersion_pct": 42.8,
+        "mas_barata": "dia",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
@@ -34,15 +34,6 @@
         "mas_cara": "dia"
       },
       {
-        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 4049.0,
-        "precio_max": 5617.99,
-        "dispersion_pct": 38.8,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Yerba Mate Ytacuá 1 Kg",
         "categoria": "almacen",
         "precio_min": 1307.19,
@@ -52,12 +43,12 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Leche Entera 1 Lts La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 2099.0,
-        "precio_max": 2809.0,
-        "dispersion_pct": 33.8,
-        "mas_barata": "carrefour",
+        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 4366.0,
+        "precio_max": 5617.99,
+        "dispersion_pct": 28.7,
+        "mas_barata": "jumbo",
         "mas_cara": "coto"
       },
       {
@@ -68,6 +59,15 @@
         "dispersion_pct": 24.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
+      },
+      {
+        "producto": "Picada Especial X KG",
+        "categoria": "carnes",
+        "precio_min": 10499.0,
+        "precio_max": 12990.0,
+        "dispersion_pct": 23.7,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
@@ -97,15 +97,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2849.0,
-        "precio_max": 3366.45,
-        "dispersion_pct": 18.2,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Polenta Presto Pronta 490gr",
         "categoria": "almacen",
         "precio_min": 1599.0,
@@ -115,12 +106,21 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 15.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4409.0,
         "precio_max": 5049.99,
         "dispersion_pct": 14.5,
-        "mas_barata": "carrefour",
+        "mas_barata": "dia",
         "mas_cara": "coto"
       },
       {
