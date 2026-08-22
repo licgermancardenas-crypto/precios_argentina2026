@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-21T09:49:29+00:00",
+  "generado_utc": "2026-08-22T09:39:33+00:00",
   "dispersion": {
-    "fecha": "2026-08-21",
+    "fecha": "2026-08-22",
     "n_productos": 41,
-    "dispersion_media_pct": 13.3,
+    "dispersion_media_pct": 13.1,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -102,7 +102,7 @@
         "precio_min": 1599.0,
         "precio_max": 1850.0,
         "dispersion_pct": 15.7,
-        "mas_barata": "coto",
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {

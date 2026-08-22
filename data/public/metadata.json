@@ -1,7 +1,7 @@
 {
   "proyecto": "Atlas Precios",
   "descripcion": "Serie histórica de precios de canasta de supermercado en Argentina, relevada diariamente.",
-  "actualizado_utc": "2026-08-21T09:49:28+00:00",
+  "actualizado_utc": "2026-08-22T09:39:32+00:00",
   "cadenas": [
     "carrefour",
     "coto",
@@ -10,8 +10,8 @@
   ],
   "cadena_referencia_indice": "coto",
   "fecha_desde": "2026-07-17",
-  "fecha_hasta": "2026-08-21",
-  "n_dias": 34,
+  "fecha_hasta": "2026-08-22",
+  "n_dias": 35,
   "n_productos_canasta": 45,
   "n_productos_indice": 41,
   "metodologia_indice": "Índice encadenado (matched pairs) sobre precio_lista, base 100 en el primer día: I_t = I_(t-1) · Σp_t / Σp_(t-1) sobre los productos con precio en ambos días. Total y por categoría sobre la cadena de referencia. Los frescos de balanza (peso_variable=1) se relevan pero quedan fuera del índice: el precio publicado es el de una pieza de peso variable, así que sus saltos no son inflación. costo_canasta es el nivel en pesos a composición constante, anclado en el último día.",
