@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-22T09:39:33+00:00",
+  "generado_utc": "2026-08-23T09:40:28+00:00",
   "dispersion": {
-    "fecha": "2026-08-22",
-    "n_productos": 41,
-    "dispersion_media_pct": 13.1,
+    "fecha": "2026-08-23",
+    "n_productos": 40,
+    "dispersion_media_pct": 12.9,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -59,15 +59,6 @@
         "dispersion_pct": 24.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Picada Especial X KG",
-        "categoria": "carnes",
-        "precio_min": 10499.0,
-        "precio_max": 12990.0,
-        "dispersion_pct": 23.7,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
       },
       {
         "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
@@ -138,6 +129,15 @@
         "precio_min": 3379.0,
         "precio_max": 3800.0,
         "dispersion_pct": 12.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
