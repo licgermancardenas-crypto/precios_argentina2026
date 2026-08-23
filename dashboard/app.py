@@ -24,6 +24,7 @@ _RAIZ = Path(__file__).resolve().parent.parent
 if str(_RAIZ) not in sys.path:
     sys.path.insert(0, str(_RAIZ))
 
+from pipeline.comparador import ultimo_por_cadena  # noqa: E402
 from pipeline.imagenes import como_data_uri, miniatura, requiere_proxy  # noqa: E402  (necesita el sys.path de arriba)
 from pipeline.indice import costo_canasta, indice_encadenado  # noqa: E402
 from pipeline.unidades import precio_por_unidad  # noqa: E402
@@ -282,8 +283,25 @@ st.markdown("""
     .pill-igual  { background: rgba(139,150,173,.16); color: var(--txt-2); }
     .pill-dif    { background: rgba(248,113,113,.14); color: var(--neg); }
     .brecha { color: var(--txt-2); font-size: .88rem; margin-top: 12px; }
+
+    /* --- Grilla catálogo --- */
+    .card-foto {
+        width: 100%; aspect-ratio: 1; object-fit: contain;
+        background: #fff; border-radius: 12px;
+        border: 1px solid var(--borde); padding: 6px;
+    }
+    .card-precio {
+        margin: 8px 0 2px; color: var(--txt); font-weight: 700; font-size: 1.02rem;
+        font-variant-numeric: tabular-nums; line-height: 1.2;
+    }
+    .card-precio span { color: var(--txt-2); font-weight: 500; font-size: .78rem; }
+    /* El nombre del producto es el botón: tipografía de texto, no de control. */
+    .stButton button {
+        font-size: .78rem; font-weight: 500; text-align: left;
+        padding: 7px 10px; line-height: 1.25; min-height: 46px;
+    }
     .sin-foto {
-        display: grid; place-items: center; aspect-ratio: 1;
+        display: grid; place-items: center; aspect-ratio: 1; width: 100%;
         background: var(--card-2); border: 1px dashed var(--borde);
         border-radius: 14px; color: var(--txt-2); font-size: .82rem;
     }
@@ -378,6 +396,21 @@ def foto(url: str | None, px: int) -> str | None:
     if not chica:
         return None
     return como_data_uri(chica) if requiere_proxy(chica) else chica
+
+
+def url_preferida(urls: dict[str, str]) -> str | None:
+    """
+    De las fotos que hay para un producto, la mejor para una miniatura de grilla.
+
+    Prioriza las CDNs que el navegador puede pedir directo: en una grilla de 45
+    productos, mandarlas todas por el proxy serían 45 descargas del lado del
+    servidor. Como el match es por EAN, es el mismo artículo en cualquier
+    cadena, así que la foto sirve igual venga de donde venga.
+    """
+    if not urls:
+        return None
+    directas = [u for u in urls.values() if not requiere_proxy(u)]
+    return directas[0] if directas else next(iter(urls.values()))
 
 
 @st.cache_data(ttl=3600)
@@ -657,13 +690,23 @@ def selector_producto(df: pd.DataFrame, key: str) -> str | None:
 
     actual = st.session_state.get("f_producto")
     # Si el filtro de categoría dejó afuera al producto elegido, se cae al primero
-    # en vez de romper el índice del selectbox.
-    indice = opciones.index(actual) if actual in opciones else 0
+    # en vez de romper el selectbox con un valor que no está en las opciones.
+    if actual not in opciones:
+        actual = opciones[0]
+        st.session_state["f_producto"] = actual
 
-    elegido = st.selectbox("Producto", opciones, index=indice, key=key)
-    if elegido != st.session_state.get("f_producto"):
-        st.session_state["f_producto"] = elegido
-    return elegido
+    # Streamlit ignora `index` cuando la clave del widget ya existe en el estado,
+    # así que el desplegable se sincroniza a mano contra el estado canónico. Sin
+    # esto, elegir un producto en la grilla no movía el selector (el widget
+    # pisaba el valor con el suyo viejo). Se escribe ANTES de instanciarlo, que
+    # es la única ventana en que Streamlit lo permite.
+    if st.session_state.get(key) != actual:
+        st.session_state[key] = actual
+
+    def _sincronizar() -> None:
+        st.session_state["f_producto"] = st.session_state[key]
+
+    return st.selectbox("Producto", opciones, key=key, on_change=_sincronizar)
 
 
 def ventana(df: pd.DataFrame, col: str = "fecha") -> pd.DataFrame:
@@ -1033,12 +1076,9 @@ with tab4:
     if len(sel_fuentes) < 2:
         st.info("Elegí al menos 2 supermercados en la barra de arriba para comparar.", icon="ℹ️")
     else:
-        # Último precio por (producto, cadena)
-        ult = (
-            dft.sort_values("fecha")
-            .groupby(["producto_id", "nombre_original", "categoria", "fuente"], as_index=False)
-            .last()
-        )
+        # Último precio por (producto, cadena), sin las cadenas que dejaron de
+        # listarlo: un precio viejo no puede ganar una comparación de hoy.
+        ult = ultimo_por_cadena(dft, extra=("categoria",))
         piv = ult.pivot_table(
             index=["nombre_original", "categoria"], columns="fuente", values="precio_lista"
         )
@@ -1157,8 +1197,7 @@ with tab4:
     base_sel = st.radio("Base", list(base_lbl), format_func=lambda b: base_lbl[b],
                         horizontal=True, key="base_unidad")
 
-    ult_u = (df_todas.sort_values("fecha")
-             .groupby(["producto_id", "nombre_original", "ean", "fuente"], as_index=False).last())
+    ult_u = ultimo_por_cadena(df_todas, extra=("ean",))
     filas_u = []
     for _, r in ult_u.iterrows():
         pu = precio_por_unidad(r["precio_lista"], r["ean"])
@@ -1311,6 +1350,61 @@ with tab6:
         "es exactamente el mismo artículo, no uno parecido. Las fotos vienen de cada "
         "supermercado."
     )
+
+    # --- Grilla catálogo: portada de la sección ---
+    # Una tarjeta por producto de la canasta con su foto, el precio más barato de
+    # hoy y qué cadena lo tiene. Es el índice visual: se hace clic y abajo se abre
+    # el comparador de ese producto.
+    _grid_base = filtrar(df_todas, rango=False)
+    if not _grid_base.empty:
+        _ult = ultimo_por_cadena(_grid_base)
+        # Más barata por producto entre las cadenas elegidas.
+        _min = (_ult.sort_values("precio_lista")
+                .groupby(["producto_id", "nombre_original"], as_index=False).first()
+                .sort_values("nombre_original"))
+
+        # Un producto que ninguna cadena releva hace días sigue en la grilla, pero
+        # su precio no es el de hoy: se le pone la fecha para no venderlo como tal.
+        _hoy = _grid_base["fecha"].max()
+
+        _imgs = cargar_imagenes()
+        _por_prod: dict[int, dict[str, str]] = {}
+        for _pid, _g in _imgs.groupby("producto_id"):
+            _por_prod[int(_pid)] = dict(zip(_g["fuente"], _g["url"]))
+
+        with st.expander(f"🧺 Ver la canasta completa ({len(_min)} productos)", expanded=False):
+            st.caption("Hacé clic en un producto para compararlo abajo.")
+            _COLS = 5
+            for _i in range(0, len(_min), _COLS):
+                _fila = _min.iloc[_i:_i + _COLS]
+                for _col, (_, _p) in zip(st.columns(_COLS), _fila.iterrows()):
+                    with _col:
+                        _u = foto(url_preferida(_por_prod.get(int(_p["producto_id"]), {})), 160)
+                        _nombre = str(_p["nombre_original"])
+                        if _u:
+                            st.markdown(
+                                f"<img class='card-foto' src='{_u}' loading='lazy' alt=''>",
+                                unsafe_allow_html=True)
+                        else:
+                            st.markdown("<div class='card-foto sin-foto'>sin foto</div>",
+                                        unsafe_allow_html=True)
+                        _sello = str(_p["fuente"]).capitalize()
+                        if _p["fecha"] != _hoy:
+                            _sello += f" · {pd.to_datetime(_p['fecha']):%d-%m}"
+                        st.markdown(
+                            f"<p class='card-precio'>${_p['precio_lista']:,.0f}"
+                            f"<span> · {_sello}</span></p>",
+                            unsafe_allow_html=True)
+                        st.button(
+                            _nombre if len(_nombre) <= 34 else _nombre[:32] + "…",
+                            key=f"grid_{int(_p['producto_id'])}",
+                            width="stretch",
+                            help=_nombre,
+                            # El callback corre antes del rerun, así que escribir el
+                            # estado acá es seguro: todavía no se instanció el
+                            # selectbox que lo lee.
+                            on_click=lambda n=_nombre: st.session_state.update(f_producto=n),
+                        )
 
     producto_foto = selector_producto(df_todas, "prod_tab6")
 
