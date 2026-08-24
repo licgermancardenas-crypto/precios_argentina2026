@@ -1,6 +1,6 @@
 {
-  "generado_utc": "2026-08-23T09:40:29+00:00",
-  "fecha": "2026-08-23",
+  "generado_utc": "2026-08-24T02:45:40+00:00",
+  "fecha": "2026-08-24",
   "esperado_por_cadena": 45,
   "cadenas": {
     "coto": {
@@ -14,8 +14,8 @@
       "estado": "ok"
     },
     "carrefour": {
-      "productos": 42,
-      "cobertura_pct": 93.3,
+      "productos": 43,
+      "cobertura_pct": 95.6,
       "estado": "ok"
     },
     "jumbo": {
