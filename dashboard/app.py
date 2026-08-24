@@ -256,6 +256,32 @@ st.markdown("""
         box-shadow: 0 0 0 3px rgba(52,211,153,.16);
     }
 
+    /* --- Contador de días relevando --- */
+    .contador {
+        display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+        background: linear-gradient(120deg, #1c2b4d 0%, var(--card) 62%);
+        border: 1px solid var(--borde); border-radius: 16px;
+        padding: 15px 24px; margin-bottom: 14px;
+    }
+    .contador .num {
+        font-size: 3.7rem; font-weight: 700; line-height: .95;
+        letter-spacing: -.045em; font-variant-numeric: tabular-nums;
+        background: linear-gradient(145deg, var(--cyan), var(--teal));
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .contador .rotulo {
+        margin: 0; font-size: 1.04rem; font-weight: 600;
+        color: var(--txt); line-height: 1.25;
+    }
+    .contador .detalle { margin: 5px 0 0; font-size: .8rem; color: var(--txt-2); }
+    /* En pantallas angostas el numeral se come el ancho y el rótulo queda en una
+       columna de dos letras: se achica antes de que eso pase. */
+    @media (max-width: 640px) {
+        .contador { gap: 14px; padding: 14px 18px; }
+        .contador .num { font-size: 2.7rem; }
+        .contador .rotulo { font-size: .95rem; }
+    }
+
     /* --- Comparador con fotos --- */
     .fila-cadena {
         display: flex; align-items: center; gap: 14px;
@@ -724,8 +750,6 @@ df_precios = df_todas[df_todas["fuente"] == FUENTE_REFERENCIA]
 # el número publicado. La categoría y el rango se aplican después, al mostrar.
 idx = calcular_indice(df_precios)
 ultima_fecha = idx["fecha"].max()
-primera_fecha = idx["fecha"].min()
-dias_de_datos = (ultima_fecha - primera_fecha).days + 1
 
 # ---------------------------------------------------------------------------
 # KPIs superiores
@@ -735,6 +759,26 @@ ultimo = idx.iloc[-1]
 penultimo = idx.iloc[-2] if len(idx) > 1 else None
 hace_7 = idx[idx["fecha"] <= ultima_fecha - pd.Timedelta(days=7)].iloc[-1] if len(idx) >= 7 else None
 hace_30 = idx[idx["fecha"] <= ultima_fecha - pd.Timedelta(days=30)].iloc[-1] if len(idx) >= 30 else None
+
+# El contador que valida el proyecto: hace cuánto que esto viene corriendo solo.
+# Van dos números a propósito —días transcurridos y relevamientos efectivos—
+# porque no son el mismo: cuando el cron se saltea un día la diferencia queda a
+# la vista en vez de disimularse en un único número redondo.
+_fechas_relev = pd.to_datetime(df_todas["fecha"])
+_desde = _fechas_relev.min()
+_dias_relevando = (_fechas_relev.max() - _desde).days + 1
+_relevamientos = df_todas["fecha"].nunique()
+
+st.markdown(f"""
+<div class="contador">
+  <div class="num">{_dias_relevando}</div>
+  <div>
+    <p class="rotulo">días relevando la canasta</p>
+    <p class="detalle">Desde el {_desde:%d/%m/%Y} · {_relevamientos} relevamientos ·
+      {df_todas["fuente"].nunique()} cadenas · {df_todas["producto_id"].nunique()} productos</p>
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
 k1, k2, k3, k4 = st.columns(4)
 
@@ -762,7 +806,10 @@ with k3:
     st.metric(label="Variación mensual", value=delta_30 if hace_30 is not None else "—", delta=None)
 
 with k4:
-    st.metric(label="Días de historia", value=f"{dias_de_datos}", delta=f"desde {primera_fecha.strftime('%d/%m/%Y')}")
+    # Los días ya los canta el contador de arriba; acá va la otra dimensión del
+    # esfuerzo, el volumen: cuántos precios lleva guardados la base.
+    _hoy_n = int((df_todas["fecha"] == _fechas_relev.max().strftime("%Y-%m-%d")).sum())
+    st.metric(label="Precios relevados", value=f"{len(df_todas):,}", delta=f"+{_hoy_n} hoy")
 
 st.divider()
 
