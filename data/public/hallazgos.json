@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-24T10:01:14+00:00",
+  "generado_utc": "2026-08-25T09:48:36+00:00",
   "dispersion": {
-    "fecha": "2026-08-24",
+    "fecha": "2026-08-25",
     "n_productos": 40,
-    "dispersion_media_pct": 12.1,
+    "dispersion_media_pct": 13.2,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -14,6 +14,15 @@
         "dispersion_pct": 97.8,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
+      },
+      {
+        "producto": "Azúcar Molida 1 Kg Ledesma",
+        "categoria": "almacen",
+        "precio_min": 1565.0,
+        "precio_max": 2234.39,
+        "dispersion_pct": 42.8,
+        "mas_barata": "dia",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
@@ -55,10 +64,10 @@
         "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
         "categoria": "bebidas",
         "precio_min": 4845.0,
-        "precio_max": 5800.0,
-        "dispersion_pct": 19.7,
+        "precio_max": 5900.0,
+        "dispersion_pct": 21.8,
         "mas_barata": "coto",
-        "mas_cara": "carrefour"
+        "mas_cara": "dia"
       },
       {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
@@ -112,15 +121,6 @@
         "precio_max": 1250.0,
         "dispersion_pct": 12.7,
         "mas_barata": "dia",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Polenta Presto Pronta 490gr",
-        "categoria": "almacen",
-        "precio_min": 1599.0,
-        "precio_max": 1800.0,
-        "dispersion_pct": 12.6,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
