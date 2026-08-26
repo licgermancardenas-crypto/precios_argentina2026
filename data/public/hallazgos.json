@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-25T09:48:36+00:00",
+  "generado_utc": "2026-08-26T09:56:44+00:00",
   "dispersion": {
-    "fecha": "2026-08-25",
+    "fecha": "2026-08-26",
     "n_productos": 40,
-    "dispersion_media_pct": 13.2,
+    "dispersion_media_pct": 12.9,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -43,20 +43,20 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 4366.0,
-        "precio_max": 5617.99,
-        "dispersion_pct": 28.7,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
         "categoria": "almacen",
         "precio_min": 7300.0,
         "precio_max": 9082.0,
         "dispersion_pct": 24.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 4607.0,
+        "precio_max": 5617.99,
+        "dispersion_pct": 21.9,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
       },
@@ -67,7 +67,7 @@
         "precio_max": 5900.0,
         "dispersion_pct": 21.8,
         "mas_barata": "coto",
-        "mas_cara": "dia"
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
@@ -115,13 +115,13 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
-        "categoria": "almacen",
-        "precio_min": 1109.0,
-        "precio_max": 1250.0,
-        "dispersion_pct": 12.7,
+        "producto": "Manteca Clásica 200 Grs La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 4280.0,
+        "precio_max": 4819.0,
+        "dispersion_pct": 12.6,
         "mas_barata": "dia",
-        "mas_cara": "jumbo"
+        "mas_cara": "coto"
       },
       {
         "producto": "Mermelada Light Arcor Durazno 390gr",
