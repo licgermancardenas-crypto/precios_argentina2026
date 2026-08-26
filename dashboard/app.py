@@ -26,7 +26,13 @@ if str(_RAIZ) not in sys.path:
 
 from pipeline.comparador import ultimo_por_cadena  # noqa: E402
 from pipeline.imagenes import como_data_uri, miniatura, requiere_proxy  # noqa: E402  (necesita el sys.path de arriba)
-from pipeline.indice import costo_canasta, indice_encadenado  # noqa: E402
+from pipeline.indice import (  # noqa: E402
+    DIAS_MINIMOS_COMPARACION,
+    contraste_composicion,
+    costo_canasta,
+    indice_encadenado,
+    indices_por_cadena,
+)
 from pipeline.unidades import precio_por_unidad  # noqa: E402
 
 # ---------------------------------------------------------------------------
@@ -535,6 +541,24 @@ def calcular_indice(df: pd.DataFrame) -> pd.DataFrame:
     }).sort_values("fecha")
     idx["var_diaria"] = idx["indice"].pct_change().mul(100).round(2)
     return idx
+
+
+@st.cache_data(ttl=3600)
+def calcular_indices_cadena(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    (series, contraste) de la comparación de inflación entre cadenas.
+
+    Deliberadamente NO respeta el filtro de cadenas ni el de categoría: es un
+    índice, y rige la misma regla que el Índice Canasta Atlas —los filtros son
+    para mirar, no para recalcular el número publicado—. Además el control por
+    canasta común se define contra las 4 cadenas; recortarlas cambiaría la
+    intersección y el resultado dejaría de ser el mismo hallazgo.
+    """
+    if df.empty:
+        return pd.DataFrame(), pd.DataFrame()
+    base = _base_indice(df)
+    return (indices_por_cadena(base, col_producto=_COL),
+            contraste_composicion(base, col_producto=_COL))
 
 
 @st.cache_data(ttl=3600)
@@ -1196,6 +1220,95 @@ with tab4:
                 width="stretch", hide_index=True,
                 column_config=cols_fmt,
             )
+
+    # --- Hallazgo: la inflación no es la misma en cada cadena ---
+    # La vista corre sobre las 4 cadenas y la canasta entera, sin importar los
+    # filtros: ver calcular_indices_cadena.
+    _series_cad, _contraste = calcular_indices_cadena(df_todas)
+    _dias_comunes = _series_cad["fecha"].nunique() if not _series_cad.empty else 0
+
+    st.divider()
+    st.subheader("📈 Hallazgo — la inflación no es la misma en cada cadena")
+
+    if _dias_comunes < DIAS_MINIMOS_COMPARACION:
+        # Mismo criterio que el forecast: con la serie corta se publica el
+        # estado, no el número.
+        st.info(
+            f"Faltan días para comparar cadenas: hay {_dias_comunes} con relevamiento "
+            f"en las 4 y hacen falta {DIAS_MINIMOS_COMPARACION}. El dato aparece solo.",
+            icon="⏳",
+        )
+    else:
+        _n_prod = int(_contraste["productos_comunes"].max())
+        _peor = _contraste.loc[_contraste["var_comun"].idxmax()]
+        _mejor = _contraste.loc[_contraste["var_comun"].idxmin()]
+        _spread = _peor["var_comun"] - _mejor["var_comun"]
+
+        st.caption(
+            f"Un índice encadenado por cadena sobre los **{_n_prod} productos que están en las 4** "
+            f"(match por EAN), base 100 al primer día compartido. Cada cadena mide su propia "
+            f"canasta con distinta cobertura, así que compararlas sin este control mide "
+            f"composición, no precios."
+        )
+        st.markdown(
+            f"Sobre la misma canasta exacta y {_dias_comunes} días, "
+            f"**{_peor['fuente'].capitalize()}** aumentó **{_peor['var_comun']:+.2f}%** y "
+            f"**{_mejor['fuente'].capitalize()}** **{_mejor['var_comun']:+.2f}%**: "
+            f"**{_spread:.2f} puntos** de diferencia según dónde se compre lo mismo."
+        )
+
+        g1, g2 = st.columns([3, 2])
+        with g1:
+            figcad = go.Figure()
+            for _f, _g in _series_cad.groupby("fuente"):
+                figcad.add_trace(go.Scatter(
+                    x=pd.to_datetime(_g["fecha"]), y=_g["indice"],
+                    mode="lines", name=str(_f).capitalize(),
+                    line=dict(color=COLOR_CADENA.get(_f, COLORES["cyan"]), width=2),
+                    hovertemplate=f"<b>{str(_f).capitalize()}</b> %{{x|%d/%m}}"
+                                  f"<br>%{{y:.2f}}<extra></extra>",
+                ))
+            figcad.add_hline(y=100, line_dash="dot", line_color=COLORES["texto_2"], line_width=1)
+            figcad.update_layout(height=360, xaxis_title=None,
+                                 yaxis_title="Índice (base 100)")
+            st.plotly_chart(figcad, width="stretch")
+
+        with g2:
+            # Las dos columnas juntas SON el hallazgo: publicar solo la
+            # controlada esconde por qué hace falta controlar.
+            st.markdown("**Por qué hay que controlar por composición**")
+            _t = _contraste.copy()
+            _t["fuente"] = _t["fuente"].str.capitalize()
+            _t["prods"] = (_t["productos_propios"].astype(str) + " → "
+                           + _t["productos_comunes"].astype(str))
+            st.dataframe(
+                _t[["fuente", "var_propia", "var_comun", "prods"]].rename(columns={
+                    "fuente": "Cadena", "var_propia": "Canasta propia",
+                    "var_comun": "Canasta común", "prods": "Productos"}),
+                width="stretch", hide_index=True,
+                column_config={
+                    "Canasta propia": st.column_config.NumberColumn(
+                        "Canasta propia", format="%+.2f%%",
+                        help="Cada cadena medida sobre los productos que ella releva. "
+                             "Mezcla precios con cobertura."),
+                    "Canasta común": st.column_config.NumberColumn(
+                        "Canasta común", format="%+.2f%%",
+                        help="Todas medidas sobre los mismos productos. Es el número comparable."),
+                    "Productos": st.column_config.TextColumn(
+                        "Productos", help="Productos de la cadena → los que quedan al intersecar."),
+                },
+            )
+            _vuelta = _contraste[
+                (_contraste["var_propia"] < 0) & (_contraste["var_comun"] > 0)
+            ]
+            if not _vuelta.empty:
+                _v = _vuelta.iloc[0]
+                st.caption(
+                    f"⚠️ {_v['fuente'].capitalize()} sobre su propia canasta figura "
+                    f"**{_v['var_propia']:+.2f}%** —parece bajar precios— y sobre los productos "
+                    f"comunes es **{_v['var_comun']:+.2f}%**. El signo se da vuelta: la brecha "
+                    f"era su cobertura, no su política de precios."
+                )
 
     # --- Hallazgos: dispersión de precios ---
     hall = cargar_hallazgos()

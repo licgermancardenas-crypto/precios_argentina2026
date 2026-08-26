@@ -94,3 +94,121 @@ def productos_del_indice(
     """Cuántos productos distintos llegaron a entrar al índice (para metadata)."""
     piv = _pivot(df, col_producto, col_precio)
     return int(piv.notna().any().sum())
+
+
+# ---------------------------------------------------------------------------
+# Comparación entre cadenas
+# ---------------------------------------------------------------------------
+# Días comunes mínimos para publicar una comparación entre cadenas. Mismo
+# umbral que el forecast: por debajo de esto la serie no aguanta la lectura y
+# se muestra el estado, no el número.
+DIAS_MINIMOS_COMPARACION = 30
+
+COL_FUENTE = "fuente"
+
+
+def canasta_comun(
+    df: pd.DataFrame, col_producto: str = "producto", col_fuente: str = COL_FUENTE
+) -> pd.DataFrame:
+    """
+    Recorta a los productos y los días presentes en TODAS las cadenas.
+
+    Es el control que hace comparable un índice entre cadenas. Sin él, cada una
+    mide su propia canasta y lo que sale es composición disfrazada de inflación:
+    Carrefour matchea 34 productos contra los 27 de Día, y sobre canasta propia
+    aparecía BAJANDO 1.27% cuando sobre los productos comunes es el que más
+    aumenta (+1.83%). El signo se da vuelta.
+
+    Con una sola cadena no hay nada que intersecar y se devuelve `df` igual.
+    """
+    if df.empty:
+        return df
+    grupos = [g for _, g in df.groupby(col_fuente)]
+    if len(grupos) < 2:
+        return df
+    productos = set.intersection(*[set(g[col_producto]) for g in grupos])
+    return df[df[col_producto].isin(productos) & df[COL_FECHA].isin(_fechas_comunes(df, col_fuente))]
+
+
+def _fechas_comunes(df: pd.DataFrame, col_fuente: str = COL_FUENTE) -> set:
+    """Días con relevamiento en todas las cadenas."""
+    grupos = [g for _, g in df.groupby(col_fuente)]
+    if len(grupos) < 2:
+        return set(df[COL_FECHA])
+    return set.intersection(*[set(g[COL_FECHA]) for g in grupos])
+
+
+def indices_por_cadena(
+    df: pd.DataFrame,
+    col_producto: str = "producto",
+    col_precio: str = COL_PRECIO,
+    col_fuente: str = COL_FUENTE,
+) -> pd.DataFrame:
+    """
+    Un índice encadenado por cadena sobre la canasta común, base 100 al primer
+    día compartido. Cols: fecha, fuente, indice.
+
+    `df` viene filtrado por canasta y sin peso variable, igual que
+    `indice_encadenado`. Acá NO se filtra por cadena: se esperan todas juntas.
+    """
+    comun = canasta_comun(df, col_producto, col_fuente)
+    if comun.empty:
+        return pd.DataFrame(columns=[COL_FECHA, col_fuente, "indice"])
+
+    series = []
+    for fuente, g in comun.groupby(col_fuente):
+        serie = indice_encadenado(g, col_producto, col_precio)
+        if serie.empty:
+            continue
+        series.append(pd.DataFrame(
+            {COL_FECHA: serie.index, col_fuente: fuente, "indice": serie.to_numpy()}
+        ))
+    if not series:
+        return pd.DataFrame(columns=[COL_FECHA, col_fuente, "indice"])
+    return pd.concat(series, ignore_index=True)
+
+
+def contraste_composicion(
+    df: pd.DataFrame,
+    col_producto: str = "producto",
+    col_precio: str = COL_PRECIO,
+    col_fuente: str = COL_FUENTE,
+) -> pd.DataFrame:
+    """
+    El hallazgo, en tabla: cuánto varió cada cadena medida sobre su propia
+    canasta y cuánto sobre la común, con cuántos productos sostiene cada una.
+
+    Publicar solo la columna controlada esconde por qué hace falta controlar.
+    Las dos juntas son el resultado: la diferencia entre ambas es exactamente el
+    sesgo de composición que se le estaría atribuyendo a los precios.
+
+    Cols: fuente, var_propia, var_comun, productos_propios, productos_comunes.
+    """
+    if df.empty:
+        return pd.DataFrame(
+            columns=[col_fuente, "var_propia", "var_comun",
+                     "productos_propios", "productos_comunes"]
+        )
+
+    comun = canasta_comun(df, col_producto, col_fuente)
+    # Las dos columnas se miden sobre la MISMA ventana: si a la canasta propia
+    # se le deja su rango completo, la diferencia entre ambas ya no es solo
+    # composición sino también período. Coto arrancó 7 días antes que las otras
+    # tres, y sin este recorte su var_propia salía 1.88 en vez de 1.37.
+    en_ventana = df[df[COL_FECHA].isin(_fechas_comunes(df, col_fuente))]
+
+    def _variacion(g: pd.DataFrame) -> float | None:
+        serie = indice_encadenado(g, col_producto, col_precio)
+        return round(float(serie.iloc[-1]) - 100, 2) if len(serie) else None
+
+    filas = []
+    for fuente, g in en_ventana.groupby(col_fuente):
+        g_comun = comun[comun[col_fuente] == fuente]
+        filas.append({
+            col_fuente: fuente,
+            "var_propia": _variacion(g),
+            "var_comun": _variacion(g_comun) if not g_comun.empty else None,
+            "productos_propios": int(g[col_producto].nunique()),
+            "productos_comunes": int(g_comun[col_producto].nunique()),
+        })
+    return pd.DataFrame(filas).sort_values(col_fuente).reset_index(drop=True)
