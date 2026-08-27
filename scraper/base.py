@@ -12,7 +12,7 @@ import json
 import logging
 import random
 import time
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 from scraper.config import DELAY_MAX_SEG, DELAY_MIN_SEG
@@ -44,6 +44,11 @@ def guardar_snapshot(
     destino.parent.mkdir(parents=True, exist_ok=True)
     snapshot = {
         "fecha":         fecha,
+        # Momento real de la captura, en UTC. `fecha` sola no alcanza para
+        # auditar: cuando hubo que verificar si un relevamiento era el de las
+        # 06:00 o una corrida manual de la noche anterior, el dato no estaba en
+        # el snapshot y hubo que ir al timestamp del commit que lo trajo.
+        "capturado_en":  datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "fuente":        fuente,
         "total_ok":      len(resultados),
         "total_errores": len(errores),
