@@ -44,7 +44,9 @@ Todos los días a las 06:00 (hora Argentina), un robot releva los precios de una
 
 El primer índice que calculé daba **+157% en una semana** — imposible. La causa no era inflación: el scraper capturaba un `precio_promo` corrupto (la API devolvía valores ×80). El precio de lista estaba limpio; el promo era basura. Con el campo correcto, la inflación real de la canasta fue **~+2% semanal** — coherente.
 
-Ese patrón se repitió al sumar Jumbo (su `ListPrice` VTEX venía ×80 inflado). La lección quedó en el código: **guards de sanidad en dos capas** (scraper y pipeline) que descartan cualquier valor implausible antes de que contamine la serie. Un índice publicable se gana validando los datos, no confiando en ellos.
+Ese patrón se repitió al sumar Jumbo, cuyo `ListPrice` VTEX venía ×80 respecto del precio efectivo. La lección quedó en el código: **guards de sanidad en dos capas** (scraper y pipeline) que descartan cualquier valor implausible antes de que contamine la serie. Un índice publicable se gana validando los datos, no confiando en ellos.
+
+**Y el segundo hallazgo fue descubrir que el primero estaba mal.** Ese ×80 de Jumbo no era corrupción: el factor era **82,645 clavado** en 37 de los 39 productos de la canasta, y 82,645 = 100 / 1,21. Jumbo publica su `ListPrice` **neto de IVA y en centavos**. Descartarlo como basura tenía un costo silencioso: el scraper caía a `PriceWithoutDiscount`, que en Jumbo replica el precio efectivo, así que **cuando Jumbo hacía una promo, el precio con descuento quedaba registrado como precio de lista** — justo la contaminación que el índice evita al no usar nunca el promo. Hoy `_precio_regular()` decodifica las dos lecturas posibles y se queda con la plausible: descartar un dato ruidoso es más barato que entenderlo, y a veces sale más caro.
 
 ---
 
@@ -127,6 +129,7 @@ También hay una vista de **precio por unidad ($/kg, $/litro, $/unidad)** — no
 El pipeline destila dos tipos de hallazgo sobre datos limpios (`pipeline/hallazgos.py` → `hallazgos.json`):
 
 - **Dispersión de precios**: el *mismo* producto cuesta hasta **~2×** según la cadena. Ejemplos reales del último relevamiento: un vino tinto a mitad de precio en una cadena vs otra, azúcar +43%, agua +56% — todos con EAN idéntico. Dispersión media ~15%.
+- **La inflación no es la misma en cada cadena**: un índice encadenado por cadena sobre los **25 productos presentes en las 4** (base 100 al primer día compartido) da **1,58 puntos de spread** en 33 días — Carrefour +1,83% contra Jumbo +0,25% comprando exactamente lo mismo. El control por canasta común no es un detalle: medida sobre su **propia** canasta Carrefour figura **bajando 1,27%**, porque matchea 34 productos contra los 27 de Día y cada índice corre sobre una canasta distinta. El signo se da vuelta. El dashboard publica **las dos columnas juntas**, porque sola, la controlada esconde por qué hace falta controlar. *Alcance de la afirmación:* 33 días alcanzan para mostrar que el spread existe, no para decir que es estructural — eso se sabrá si el orden entre cadenas se sostiene a los 60-90 días. La vista respeta un guard de 30 días comunes, igual que el forecast.
 - **Reduflación / cambios de presentación**: eventos que detecta el pipeline (mismo EAN, precio estable, baja el contenido). La detección corre **solo en la cadena de referencia y deduplicada** — antes disparaba falsos positivos porque distintas cadenas reportan el contenido de forma distinta; ese ruido está corregido.
 
 ---
@@ -201,13 +204,15 @@ CLI local: corre con **tu** API key, no toca el deploy del dashboard ni expone c
 Suite de tests (`tests/`) sobre la lógica crítica del pipeline — se corren en CI en cada push, junto al linter **ruff**:
 
 ```bash
-pip install -r requirements.txt -r requirements-dev.txt
-ruff check .   # linter (pyflakes + orden de imports)
-pytest         # o: python -m unittest discover -s tests
+python -m venv .venv && .venv/bin/pip install -r requirements.txt -r requirements-dev.txt
+.venv/bin/ruff check .   # linter (pyflakes + orden de imports)
+.venv/bin/pytest         # o: python -m unittest discover -s tests
 ```
 
+> **Usá un entorno virtual, no el Python del sistema.** En Debian/Ubuntu recientes `pip install --user` falla con `externally-managed-environment` (PEP 668), y si el intérprete del sistema ya tiene una versión vieja de Streamlit los tests fallan por el entorno y no por el código: `width="stretch"` no existe antes de la 1.49, así que el smoke test del dashboard explota contra un `requirements.txt` que pide `streamlit>=1.58`. Si `python -m venv` se queja de `ensurepip`, o instalás `python3-venv`, o usás [uv](https://github.com/astral-sh/uv): `uv venv .venv && uv pip install --python .venv/bin/python -r requirements.txt -r requirements-dev.txt`.
+
 Cubren:
-- **Guards de sanidad** — el promo corrupto de Coto y el `ListPrice` inflado de Jumbo se descartan (los dos bugs reales que rompían el índice).
+- **Guards de sanidad** — el promo corrupto de Coto se descarta, y el `ListPrice` de Jumbo se decodifica en sus dos codificaciones (neto de IVA en centavos, o en pesos) en vez de tirarse.
 - **Matching por EAN** — mismo EAN entre cadenas = mismo producto; fallback por nombre para frescos.
 - **Índice** — filtra por `fuente` (no mezcla cadenas), encadena sobre productos pareados (un alta no lo mueve por composición) y excluye los frescos de balanza.
 - **Miniaturas** — la derivación de URL de cada CDN (Coto por carpeta, VTEX por `-ANCHO-ALTO` en el id) y el ruteo de la que hay que traer por servidor.
