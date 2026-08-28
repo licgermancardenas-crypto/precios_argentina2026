@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-27T19:51:23+00:00",
+  "generado_utc": "2026-08-28T20:56:19+00:00",
   "dispersion": {
-    "fecha": "2026-08-27",
+    "fecha": "2026-08-28",
     "n_productos": 41,
-    "dispersion_media_pct": 12.9,
+    "dispersion_media_pct": 13.4,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -21,7 +21,7 @@
         "precio_min": 1565.0,
         "precio_max": 2234.39,
         "dispersion_pct": 42.8,
-        "mas_barata": "dia",
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -63,10 +63,10 @@
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
-        "precio_min": 4609.0,
+        "precio_min": 4607.0024,
         "precio_max": 5617.99,
         "dispersion_pct": 21.9,
-        "mas_barata": "carrefour",
+        "mas_barata": "jumbo",
         "mas_cara": "coto"
       },
       {
@@ -95,6 +95,15 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 15.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
@@ -131,15 +140,6 @@
         "dispersion_pct": 12.6,
         "mas_barata": "dia",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Mermelada Light Arcor Durazno 390gr",
-        "categoria": "almacen",
-        "precio_min": 3379.0,
-        "precio_max": 3800.005,
-        "dispersion_pct": 12.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
       }
     ]
   },
