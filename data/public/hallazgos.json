@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-28T20:56:19+00:00",
+  "generado_utc": "2026-08-29T14:24:52+00:00",
   "dispersion": {
-    "fecha": "2026-08-28",
+    "fecha": "2026-08-29",
     "n_productos": 41,
-    "dispersion_media_pct": 13.4,
+    "dispersion_media_pct": 13.1,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -97,15 +97,6 @@
         "mas_cara": "dia"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3366.45,
-        "dispersion_pct": 15.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4409.0,
@@ -140,6 +131,15 @@
         "dispersion_pct": 12.6,
         "mas_barata": "dia",
         "mas_cara": "coto"
+      },
+      {
+        "producto": "Mermelada Light Arcor Durazno 390gr",
+        "categoria": "almacen",
+        "precio_min": 3379.0,
+        "precio_max": 3800.005,
+        "dispersion_pct": 12.5,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       }
     ]
   },
