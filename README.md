@@ -216,7 +216,7 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt -r requirement
 > **Usá un entorno virtual, no el Python del sistema.** En Debian/Ubuntu recientes `pip install --user` falla con `externally-managed-environment` (PEP 668), y si el intérprete del sistema ya tiene una versión vieja de Streamlit los tests fallan por el entorno y no por el código: `width="stretch"` no existe antes de la 1.49, así que el smoke test del dashboard explota contra un `requirements.txt` que pide `streamlit>=1.58`. Si `python -m venv` se queja de `ensurepip`, o instalás `python3-venv`, o usás [uv](https://github.com/astral-sh/uv): `uv venv .venv && uv pip install --python .venv/bin/python -r requirements.txt -r requirements-dev.txt`.
 
 Cubren:
-- **Guards de sanidad** — el promo corrupto de Coto se descarta, y el `ListPrice` de Jumbo (neto de IVA, en centavos, con alícuota que cambia por producto) no se usa para inferir descuentos: hay un test que fija que no invente promos con la alícuota reducida.
+- **Guards de sanidad** — el promo corrupto de Coto se descarta; el `ListPrice` de Jumbo (neto de IVA, en centavos, con alícuota que cambia por producto) no se usa para inferir descuentos; y ningún "descuento" menor al 0,5% se registra como promo, porque a esa escala es ruido de punto flotante y no una oferta.
 - **Matching por EAN** — mismo EAN entre cadenas = mismo producto; fallback por nombre para frescos.
 - **Índice** — filtra por `fuente` (no mezcla cadenas), encadena sobre productos pareados (un alta no lo mueve por composición) y excluye los frescos de balanza.
 - **Miniaturas** — la derivación de URL de cada CDN (Coto por carpeta, VTEX por `-ANCHO-ALTO` en el id) y el ruteo de la que hay que traer por servidor.
@@ -229,6 +229,8 @@ Cubren:
 
 **¿Por qué guardar el crudo antes de normalizar?**
 El dato crudo nunca se toca. Si hay un bug en la normalización, se reprocesa todo desde los JSON sin perder nada. Es la diferencia entre un pipeline reproducible y uno frágil.
+
+Con un límite que costó descubrir: el snapshot guardaba el dict **ya parseado**, así que esa garantía cubría los bugs del pipeline pero no los del scraper — un precio mal interpretado quedaba horneado en el crudo, y reprocesar lo reproducía idéntico. Es exactamente lo que pasó con el `ListPrice` de Jumbo: para auditarlo hubo que re-sondear la API en vivo, días después, sobre otros datos. Hoy cada producto archiva además su `crudo_precio` —los campos de precio tal como los manda la API, sin interpretar—, así que la alícuota de IVA de un producto se deduce del propio snapshot (`ListPrice / 100 / Price` = 0,905 → 10,5%) en vez de exigir una consulta nueva. Cuesta ~10 KB por cadena por día; el producto VTEX entero pesa 35 KB y volcarlo completo serían 4,7 MB diarios en git, así que se archivan los campos de precio y se dejan afuera los tokens que cambian en cada request.
 
 **¿Por qué HTTP directo y no un navegador headless?**
 Las cadenas exponen APIs JSON públicas (Constructor.io, VTEX). Consumirlas es más rápido, más estable y menos frágil que renderizar y parsear HTML.

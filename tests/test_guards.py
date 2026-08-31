@@ -10,6 +10,7 @@ Ejecutar: pytest  (o: python -m unittest)
 
 import unittest
 
+from scraper.config import DESCUENTO_MINIMO_PCT, es_promo_valida
 from scraper.coto import _extraer_precio_promo
 from scraper.vtex import _parsear_producto, _precio_regular
 
@@ -152,3 +153,73 @@ class TestPrecioRegularVTEX(unittest.TestCase):
         parseado = _parsear_producto(prod, "almacen", "ref")
         self.assertAlmostEqual(parseado["precio_lista"], 1150.0, places=2)
         self.assertIsNone(parseado["precio_promo"])
+
+
+class TestDescuentoMinimo(unittest.TestCase):
+    """
+    es_promo_valida corta los "descuentos" que son ruido numérico.
+
+    El guard anterior era solo `0 < promo < lista`, que un promo de 7463.0
+    contra una lista de 7463.0017 cumple. Así se publicaron 21 promos falsas por
+    día durante 4 días sin que nada las marcara.
+    """
+
+    def test_rechaza_ruido_de_punto_flotante(self):
+        # El caso real: descuento del 0,00002%.
+        self.assertFalse(es_promo_valida(7463.0, 7463.0017))
+
+    def test_acepta_una_promo_real_chica(self):
+        # La más chica observada en producción: 6,5% en Día.
+        self.assertTrue(es_promo_valida(3200.0, 3423.0))
+
+    def test_acepta_una_promo_grande(self):
+        self.assertTrue(es_promo_valida(3200.0, 4280.0))
+
+    def test_el_umbral_es_inclusivo(self):
+        lista = 1000.0
+        justo = lista * (1 - DESCUENTO_MINIMO_PCT / 100)
+        self.assertTrue(es_promo_valida(justo, lista))
+        self.assertFalse(es_promo_valida(justo + 0.01, lista))
+
+    def test_rechaza_promo_mayor_o_igual_a_la_lista(self):
+        self.assertFalse(es_promo_valida(1200.0, 1000.0))
+        self.assertFalse(es_promo_valida(1000.0, 1000.0))
+
+    def test_rechaza_promo_no_positivo(self):
+        self.assertFalse(es_promo_valida(0.0, 1000.0))
+        self.assertFalse(es_promo_valida(-50.0, 1000.0))
+
+    def test_tolera_nulos(self):
+        self.assertFalse(es_promo_valida(None, 1000.0))
+        self.assertFalse(es_promo_valida(500.0, None))
+
+
+class TestCrudoPrecioArchivado(unittest.TestCase):
+    """
+    El snapshot archiva los campos de precio sin interpretar.
+
+    Sin esto no se pudo auditar el ListPrice de Jumbo: el crudo guardaba solo el
+    dict ya parseado y hubo que re-sondear la API en vivo, días después.
+    """
+
+    def test_el_parser_vtex_archiva_los_campos_de_precio(self):
+        prod = _producto_vtex(list_price=104072.0, price=1150.0, price_without_discount=1150.0)
+        crudo = _parsear_producto(prod, "almacen", "ref")["crudo_precio"]
+        self.assertEqual(crudo["ListPrice"], 104072.0)
+        self.assertEqual(crudo["Price"], 1150.0)
+
+    def test_la_alicuota_se_deduce_del_snapshot(self):
+        # Es la auditoría que antes exigía volver a la API: 1/1,105 = IVA 10,5%.
+        prod = _producto_vtex(list_price=104072.0, price=1150.0, price_without_discount=1150.0)
+        crudo = _parsear_producto(prod, "almacen", "ref")["crudo_precio"]
+        self.assertAlmostEqual(crudo["ListPrice"] / 100 / crudo["Price"], 1 / 1.105, places=3)
+
+    def test_no_archiva_tokens_de_request(self):
+        # Cambian en cada llamada: ensuciarían el diff a diario sin aportar nada.
+        prod = _producto_vtex(list_price=100.0, price=100.0)
+        oferta = prod["items"][0]["sellers"][0]["commertialOffer"]
+        oferta["PriceToken"] = "abc123"
+        oferta["CacheVersionUsedToCallCheckout"] = "v9"
+        crudo = _parsear_producto(prod, "almacen", "ref")["crudo_precio"]
+        self.assertNotIn("PriceToken", crudo)
+        self.assertNotIn("CacheVersionUsedToCallCheckout", crudo)

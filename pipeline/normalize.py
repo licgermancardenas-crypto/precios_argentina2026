@@ -15,7 +15,12 @@ import unicodedata
 from datetime import date
 from pathlib import Path
 
-from scraper.config import CANASTA, FUENTE_REFERENCIA, PESO_VARIABLE_EANS
+from scraper.config import (
+    CANASTA,
+    FUENTE_REFERENCIA,
+    PESO_VARIABLE_EANS,
+    es_promo_valida,
+)
 
 # EAN de los productos que integran la Canasta Atlas. Un producto es de canasta
 # solo si su EAN está acá; los sustitutos que devuelven las cadenas cuando no
@@ -323,9 +328,9 @@ def _procesar_snapshot(con: sqlite3.Connection, crudo_path: Path, fecha: str) ->
         producto_id = _upsert_producto(con, crudo, fuente)
         precio_lista = float(crudo["precio_lista"])
         precio_promo = float(crudo["precio_promo"]) if crudo.get("precio_promo") else None
-        # Guard de sanidad: un promo válido siempre es menor al precio de lista.
-        # Descarta valores absurdos que quedaron en snapshots crudos previos al fix del scraper.
-        if precio_promo is not None and not (0 < precio_promo < precio_lista):
+        # Guard de sanidad, segunda capa: descarta valores absurdos que quedaron
+        # en snapshots crudos previos a los fixes del scraper.
+        if not es_promo_valida(precio_promo, precio_lista):
             precio_promo = None
         precio_unitario = float(crudo["precio_unitario"]) if crudo.get("precio_unitario") else None
 

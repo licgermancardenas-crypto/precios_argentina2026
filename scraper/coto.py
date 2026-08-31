@@ -13,7 +13,7 @@ import urllib.request
 from datetime import date
 
 from scraper.base import delay, guardar_snapshot, raw_path
-from scraper.config import CANASTA, USER_AGENT
+from scraper.config import CANASTA, USER_AGENT, es_promo_valida
 
 logging.basicConfig(
     level=logging.INFO,
@@ -67,7 +67,7 @@ def _extraer_precio_promo(discounts: list[dict], precio_lista: float | None) -> 
                 promo = float(limpio)
             except ValueError:
                 continue
-            if precio_lista and 0 < promo < precio_lista:
+            if es_promo_valida(promo, precio_lista):
                 return promo
     return None
 
@@ -97,6 +97,11 @@ def _parsear_resultado(raw: dict, categoria: str, nombre_ref: str) -> dict:
         "formato_qty":         formato_qty,
         "unidad_medida":       unidad,
         "precio_lista":        precio_lista,
+        # Campos de precio sin interpretar, para poder auditar después contra el
+        # crudo en vez de re-sondear la API. Ver _crudo_precio en scraper/vtex.py.
+        "crudo_precio":        {k: d.get(k) for k in
+                                ("price", "product_list_price", "discounts",
+                                 "discounts_payment_methods") if k in d},
         "precio_promo":        precio_promo,
         "precio_unitario":     precio_unitario,
         "precios_por_sucursal": [

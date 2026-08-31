@@ -101,6 +101,26 @@ PESO_VARIABLE_EANS: set[str] = {
     str(p["ean"]) for p in CANASTA if p.get("presentacion") == "por kg" and p.get("ean")
 }
 
+# Descuento mínimo, en %, para que una promo se registre como tal.
+#
+# Un "descuento" del 0,00002% no es un descuento: es ruido de punto flotante. Un
+# bug del parser de Jumbo publicó 21 promos falsas por día durante 4 días con
+# precios como 7463.0017 contra 7463.0, y nada lo detectó porque el único guard
+# que había era `promo < lista`, que esos valores cumplen. Las promos reales
+# observadas arrancan en 6,5% (Día) y 10% (Carrefour), así que 0,5% deja pasar
+# cualquier oferta legítima y corta el ruido numérico.
+DESCUENTO_MINIMO_PCT: float = 0.5
+
+def es_promo_valida(promo: float | None, lista: float | None) -> bool:
+    """
+    Un promo es válido si es positivo, menor a la lista, y el descuento supera
+    DESCUENTO_MINIMO_PCT. Único criterio, usado por los scrapers y el pipeline.
+    """
+    if promo is None or lista is None or not (0 < promo < lista):
+        return False
+    return (1 - promo / lista) * 100 >= DESCUENTO_MINIMO_PCT
+
+
 # Parámetros de scraping
 DELAY_MIN_SEG: float = 2.0
 DELAY_MAX_SEG: float = 4.0

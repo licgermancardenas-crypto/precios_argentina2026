@@ -18,7 +18,7 @@ import urllib.request
 from datetime import date
 
 from scraper.base import delay, guardar_snapshot, raw_path
-from scraper.config import CANASTA, USER_AGENT
+from scraper.config import CANASTA, USER_AGENT, es_promo_valida
 
 log = logging.getLogger(__name__)
 
@@ -55,6 +55,30 @@ def _buscar_por_texto(dominio: str, texto: str) -> dict | None:
 # desmedido: por encima de 3x es un error de unidad, no un descuento. El techo
 # deja afuera rebajas de más del 66%, que en supermercado no existen.
 _TOPE_REGULAR = 3
+
+
+# Campos de `commertialOffer` que se archivan sin interpretar. Se listan a mano
+# en vez de volcar la oferta entera por dos razones: el producto VTEX completo
+# pesa 35 KB (×45 productos ×3 cadenas serían ~4,7 MB por día en git), y los
+# campos que quedan afuera —PriceToken, CacheVersionUsedToCallCheckout— cambian
+# en cada request, así que ensuciarían el diff todos los días sin aportar nada.
+_CAMPOS_PRECIO_VTEX = (
+    "Price", "ListPrice", "PriceWithoutDiscount", "FullSellingPrice",
+    "Tax", "PriceValidUntil", "AvailableQuantity", "IsAvailable",
+)
+
+
+def _crudo_precio(oferta: dict) -> dict:
+    """
+    Los campos de precio tal como los manda la API, sin interpretar.
+
+    Existe por un caso concreto: cuando hubo que auditar si el `ListPrice` de
+    Jumbo escondía descuentos, el snapshot guardaba solo el dict ya parseado y
+    el valor original se había perdido. Hubo que re-sondear la API en vivo y
+    reconstruir por inferencia, sobre datos de otro día. Con esto, esa auditoría
+    es una query.
+    """
+    return {k: oferta.get(k) for k in _CAMPOS_PRECIO_VTEX if k in oferta}
 
 
 def _precio_regular(oferta: dict, precio_venta: float) -> float:
@@ -106,8 +130,9 @@ def _parsear_producto(prod: dict, categoria: str, nombre_ref: str) -> dict | Non
         return None
     precio_lista = _precio_regular(oferta, precio_venta)
 
-    # Si el precio efectivo es menor al regular, hay promo real.
-    precio_promo = precio_venta if precio_venta < precio_lista else None
+    # Si el precio efectivo es menor al regular, hay promo real —siempre que el
+    # descuento sea de un tamaño creíble; ver es_promo_valida.
+    precio_promo = precio_venta if es_promo_valida(precio_venta, precio_lista) else None
 
     formato_qty = it.get("unitMultiplier") or 1
     unidad = (it.get("measurementUnit") or "").upper()
@@ -129,6 +154,7 @@ def _parsear_producto(prod: dict, categoria: str, nombre_ref: str) -> dict | Non
         "precio_lista":          precio_lista,
         "precio_promo":          precio_promo,
         "precio_unitario":       precio_unitario,
+        "crudo_precio":          _crudo_precio(oferta),
         "precios_por_sucursal":  [],
         "imagen_url":            imagenes[0].get("imageUrl") if imagenes else None,
         "url_producto":          prod.get("link"),
