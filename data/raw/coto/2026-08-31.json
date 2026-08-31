@@ -1,0 +1,7969 @@
+{
+  "fecha": "2026-08-31",
+  "capturado_en": "2026-08-31T16:54:42+00:00",
+  "fuente": "coto",
+  "total_ok": 45,
+  "total_errores": 0,
+  "errores": [],
+  "productos": [
+    {
+      "nombre_original": "Leche Larga Vida Entera Ua Clasica 3% LA SERENISIMA 1l",
+      "nombre_ref": "Leche entera La Serenísima",
+      "categoria": "lacteos",
+      "ean": 7790742363008,
+      "sku_plu": 251875,
+      "marca": "LA SERENISIMA",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 2809,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "160",
+          "precio": 2809
+        },
+        {
+          "sucursal": "075",
+          "precio": 2809
+        },
+        {
+          "sucursal": "091",
+          "precio": 2809
+        },
+        {
+          "sucursal": "109",
+          "precio": 2809
+        },
+        {
+          "sucursal": "061",
+          "precio": 2750
+        },
+        {
+          "sucursal": "189",
+          "precio": 2809
+        },
+        {
+          "sucursal": "238",
+          "precio": 2809
+        },
+        {
+          "sucursal": "056",
+          "precio": 2809
+        },
+        {
+          "sucursal": "085",
+          "precio": 2809
+        },
+        {
+          "sucursal": "090",
+          "precio": 2809
+        },
+        {
+          "sucursal": "060",
+          "precio": 2300
+        },
+        {
+          "sucursal": "185",
+          "precio": 2809
+        },
+        {
+          "sucursal": "219",
+          "precio": 2809
+        },
+        {
+          "sucursal": "182",
+          "precio": 2809
+        },
+        {
+          "sucursal": "215",
+          "precio": 2809
+        },
+        {
+          "sucursal": "063",
+          "precio": 2809
+        },
+        {
+          "sucursal": "064",
+          "precio": 2809
+        },
+        {
+          "sucursal": "197",
+          "precio": 2809
+        },
+        {
+          "sucursal": "204",
+          "precio": 2809
+        },
+        {
+          "sucursal": "209",
+          "precio": 2809
+        },
+        {
+          "sucursal": "178",
+          "precio": 2809
+        },
+        {
+          "sucursal": "220",
+          "precio": 2809
+        },
+        {
+          "sucursal": "065",
+          "precio": 2809
+        },
+        {
+          "sucursal": "165",
+          "precio": 2809
+        },
+        {
+          "sucursal": "181",
+          "precio": 2809
+        },
+        {
+          "sucursal": "133",
+          "precio": 2495
+        },
+        {
+          "sucursal": "078",
+          "precio": 2809
+        },
+        {
+          "sucursal": "184",
+          "precio": 2809
+        },
+        {
+          "sucursal": "188",
+          "precio": 2809
+        },
+        {
+          "sucursal": "092",
+          "precio": 2809
+        },
+        {
+          "sucursal": "131",
+          "precio": 2809
+        },
+        {
+          "sucursal": "200",
+          "precio": 2809
+        },
+        {
+          "sucursal": "107",
+          "precio": 2809
+        },
+        {
+          "sucursal": "129",
+          "precio": 2809
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00251800/00251875.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00251875-00251875-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Yogur Bebible Descremado Sabor Frutilla Sancor Vida 900g",
+      "nombre_ref": "Yogur bebible Ser o SanCor frutilla",
+      "categoria": "lacteos",
+      "ean": 7798321152333,
+      "sku_plu": 578534,
+      "marca": "SANCOR",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 3125,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "200",
+          "precio": 3125
+        },
+        {
+          "sucursal": "238",
+          "precio": 3125
+        },
+        {
+          "sucursal": "061",
+          "precio": 3125
+        },
+        {
+          "sucursal": "075",
+          "precio": 3125
+        },
+        {
+          "sucursal": "092",
+          "precio": 3125
+        },
+        {
+          "sucursal": "090",
+          "precio": 3125
+        },
+        {
+          "sucursal": "060",
+          "precio": 3125
+        },
+        {
+          "sucursal": "131",
+          "precio": 3125
+        },
+        {
+          "sucursal": "215",
+          "precio": 3125
+        },
+        {
+          "sucursal": "064",
+          "precio": 3125
+        },
+        {
+          "sucursal": "185",
+          "precio": 3125
+        },
+        {
+          "sucursal": "209",
+          "precio": 3125
+        },
+        {
+          "sucursal": "188",
+          "precio": 3125
+        },
+        {
+          "sucursal": "107",
+          "precio": 3125
+        },
+        {
+          "sucursal": "184",
+          "precio": 3125
+        },
+        {
+          "sucursal": "109",
+          "precio": 3125
+        },
+        {
+          "sucursal": "160",
+          "precio": 3125
+        },
+        {
+          "sucursal": "204",
+          "precio": 3125
+        },
+        {
+          "sucursal": "197",
+          "precio": 3125
+        },
+        {
+          "sucursal": "220",
+          "precio": 3125
+        },
+        {
+          "sucursal": "178",
+          "precio": 3125
+        },
+        {
+          "sucursal": "085",
+          "precio": 3125
+        },
+        {
+          "sucursal": "129",
+          "precio": 3125
+        },
+        {
+          "sucursal": "065",
+          "precio": 3125
+        },
+        {
+          "sucursal": "181",
+          "precio": 3125
+        },
+        {
+          "sucursal": "189",
+          "precio": 3125
+        },
+        {
+          "sucursal": "056",
+          "precio": 3125
+        },
+        {
+          "sucursal": "063",
+          "precio": 3125
+        },
+        {
+          "sucursal": "165",
+          "precio": 3125
+        },
+        {
+          "sucursal": "078",
+          "precio": 3125
+        },
+        {
+          "sucursal": "219",
+          "precio": 3125
+        },
+        {
+          "sucursal": "091",
+          "precio": 3125
+        },
+        {
+          "sucursal": "182",
+          "precio": 3125
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00578500/00578534.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00578534-00578534-200",
+      "disponible_sucursales": []
+    },
+    {
+      "nombre_original": "Queso Cremoso Fraccionado LA PAULINA Xkg",
+      "nombre_ref": "Queso cremoso La Paulina",
+      "categoria": "lacteos",
+      "ean": 2000199000001,
+      "sku_plu": 199,
+      "marca": "LA PAULINA",
+      "formato": null,
+      "formato_qty": 1,
+      "unidad_medida": "KGS",
+      "precio_lista": 12599,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "188",
+          "precio": 12599
+        },
+        {
+          "sucursal": "075",
+          "precio": 12599
+        },
+        {
+          "sucursal": "238",
+          "precio": 12599
+        },
+        {
+          "sucursal": "061",
+          "precio": 12599
+        },
+        {
+          "sucursal": "220",
+          "precio": 12599
+        },
+        {
+          "sucursal": "182",
+          "precio": 12599
+        },
+        {
+          "sucursal": "710",
+          "precio": 8799
+        },
+        {
+          "sucursal": "160",
+          "precio": 12599
+        },
+        {
+          "sucursal": "085",
+          "precio": 12599
+        },
+        {
+          "sucursal": "056",
+          "precio": 12599
+        },
+        {
+          "sucursal": "060",
+          "precio": 8999
+        },
+        {
+          "sucursal": "064",
+          "precio": 12599
+        },
+        {
+          "sucursal": "178",
+          "precio": 12599
+        },
+        {
+          "sucursal": "109",
+          "precio": 12599
+        },
+        {
+          "sucursal": "204",
+          "precio": 12599
+        },
+        {
+          "sucursal": "197",
+          "precio": 12599
+        },
+        {
+          "sucursal": "215",
+          "precio": 12599
+        },
+        {
+          "sucursal": "209",
+          "precio": 12599
+        },
+        {
+          "sucursal": "189",
+          "precio": 12599
+        },
+        {
+          "sucursal": "185",
+          "precio": 12599
+        },
+        {
+          "sucursal": "063",
+          "precio": 12599
+        },
+        {
+          "sucursal": "131",
+          "precio": 12599
+        },
+        {
+          "sucursal": "200",
+          "precio": 12599
+        },
+        {
+          "sucursal": "129",
+          "precio": 12599
+        },
+        {
+          "sucursal": "065",
+          "precio": 12599
+        },
+        {
+          "sucursal": "078",
+          "precio": 12599
+        },
+        {
+          "sucursal": "181",
+          "precio": 12599
+        },
+        {
+          "sucursal": "107",
+          "precio": 12599
+        },
+        {
+          "sucursal": "092",
+          "precio": 12599
+        },
+        {
+          "sucursal": "133",
+          "precio": 11299
+        },
+        {
+          "sucursal": "091",
+          "precio": 12599
+        },
+        {
+          "sucursal": "184",
+          "precio": 12599
+        },
+        {
+          "sucursal": "165",
+          "precio": 12599
+        },
+        {
+          "sucursal": "090",
+          "precio": 12599
+        },
+        {
+          "sucursal": "219",
+          "precio": 12599
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00000100/00000199.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00000199-00000199-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "215",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Manteca LA SERENISIMA 200gr",
+      "nombre_ref": "Manteca La Serenísima",
+      "categoria": "lacteos",
+      "ean": 7793940054006,
+      "sku_plu": 3818,
+      "marca": "LA SERENISIMA",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 4819,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "160",
+          "precio": 4819
+        },
+        {
+          "sucursal": "204",
+          "precio": 4819
+        },
+        {
+          "sucursal": "061",
+          "precio": 4589
+        },
+        {
+          "sucursal": "238",
+          "precio": 4819
+        },
+        {
+          "sucursal": "189",
+          "precio": 4819
+        },
+        {
+          "sucursal": "092",
+          "precio": 4819
+        },
+        {
+          "sucursal": "182",
+          "precio": 4819
+        },
+        {
+          "sucursal": "181",
+          "precio": 4819
+        },
+        {
+          "sucursal": "085",
+          "precio": 4819
+        },
+        {
+          "sucursal": "060",
+          "precio": 3909
+        },
+        {
+          "sucursal": "056",
+          "precio": 4819
+        },
+        {
+          "sucursal": "063",
+          "precio": 4819
+        },
+        {
+          "sucursal": "064",
+          "precio": 4819
+        },
+        {
+          "sucursal": "075",
+          "precio": 4819
+        },
+        {
+          "sucursal": "197",
+          "precio": 4819
+        },
+        {
+          "sucursal": "215",
+          "precio": 4819
+        },
+        {
+          "sucursal": "178",
+          "precio": 4819
+        },
+        {
+          "sucursal": "209",
+          "precio": 4819
+        },
+        {
+          "sucursal": "109",
+          "precio": 4819
+        },
+        {
+          "sucursal": "185",
+          "precio": 4819
+        },
+        {
+          "sucursal": "220",
+          "precio": 4819
+        },
+        {
+          "sucursal": "710",
+          "precio": 4589
+        },
+        {
+          "sucursal": "200",
+          "precio": 4819
+        },
+        {
+          "sucursal": "188",
+          "precio": 4819
+        },
+        {
+          "sucursal": "133",
+          "precio": 4285
+        },
+        {
+          "sucursal": "129",
+          "precio": 4819
+        },
+        {
+          "sucursal": "131",
+          "precio": 4819
+        },
+        {
+          "sucursal": "091",
+          "precio": 4819
+        },
+        {
+          "sucursal": "165",
+          "precio": 4819
+        },
+        {
+          "sucursal": "107",
+          "precio": 4819
+        },
+        {
+          "sucursal": "184",
+          "precio": 4819
+        },
+        {
+          "sucursal": "078",
+          "precio": 4819
+        },
+        {
+          "sucursal": "065",
+          "precio": 4819
+        },
+        {
+          "sucursal": "219",
+          "precio": 4819
+        },
+        {
+          "sucursal": "090",
+          "precio": 4819
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00003800/00003818.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00003818-00003818-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Huevo Blanco Maple X 30u",
+      "nombre_ref": "Huevo blanco maple 12",
+      "categoria": "lacteos",
+      "ean": 7798092353120,
+      "sku_plu": 32342,
+      "marca": "AVICOPER",
+      "formato": "Unidad",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 9750,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "131",
+          "precio": 9750
+        },
+        {
+          "sucursal": "107",
+          "precio": 9750
+        },
+        {
+          "sucursal": "189",
+          "precio": 9750
+        },
+        {
+          "sucursal": "065",
+          "precio": 9750
+        },
+        {
+          "sucursal": "178",
+          "precio": 9750
+        },
+        {
+          "sucursal": "061",
+          "precio": 9750
+        },
+        {
+          "sucursal": "185",
+          "precio": 9750
+        },
+        {
+          "sucursal": "109",
+          "precio": 9750
+        },
+        {
+          "sucursal": "238",
+          "precio": 9750
+        },
+        {
+          "sucursal": "064",
+          "precio": 9750
+        },
+        {
+          "sucursal": "182",
+          "precio": 9750
+        },
+        {
+          "sucursal": "200",
+          "precio": 9750
+        },
+        {
+          "sucursal": "085",
+          "precio": 9750
+        },
+        {
+          "sucursal": "060",
+          "precio": 9750
+        },
+        {
+          "sucursal": "056",
+          "precio": 9750
+        },
+        {
+          "sucursal": "209",
+          "precio": 9750
+        },
+        {
+          "sucursal": "063",
+          "precio": 9750
+        },
+        {
+          "sucursal": "075",
+          "precio": 9750
+        },
+        {
+          "sucursal": "204",
+          "precio": 9750
+        },
+        {
+          "sucursal": "197",
+          "precio": 9750
+        },
+        {
+          "sucursal": "215",
+          "precio": 9750
+        },
+        {
+          "sucursal": "220",
+          "precio": 9750
+        },
+        {
+          "sucursal": "219",
+          "precio": 9750
+        },
+        {
+          "sucursal": "133",
+          "precio": 9750
+        },
+        {
+          "sucursal": "181",
+          "precio": 9750
+        },
+        {
+          "sucursal": "090",
+          "precio": 9750
+        },
+        {
+          "sucursal": "091",
+          "precio": 9750
+        },
+        {
+          "sucursal": "188",
+          "precio": 9750
+        },
+        {
+          "sucursal": "160",
+          "precio": 9750
+        },
+        {
+          "sucursal": "165",
+          "precio": 9750
+        },
+        {
+          "sucursal": "078",
+          "precio": 9750
+        },
+        {
+          "sucursal": "184",
+          "precio": 9750
+        },
+        {
+          "sucursal": "129",
+          "precio": 9750
+        },
+        {
+          "sucursal": "092",
+          "precio": 9750
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00032300/00032342.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00032342-00032342-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Aceite Girasol NATURA Botella 1.5 L",
+      "nombre_ref": "Aceite girasol Natura 1.5 litros",
+      "categoria": "almacen",
+      "ean": 7790272001029,
+      "sku_plu": 14076,
+      "marca": "NATURA",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 6975,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "200",
+          "precio": 6975
+        },
+        {
+          "sucursal": "065",
+          "precio": 6975
+        },
+        {
+          "sucursal": "189",
+          "precio": 6975
+        },
+        {
+          "sucursal": "238",
+          "precio": 6975
+        },
+        {
+          "sucursal": "056",
+          "precio": 6975
+        },
+        {
+          "sucursal": "061",
+          "precio": 6645
+        },
+        {
+          "sucursal": "182",
+          "precio": 6975
+        },
+        {
+          "sucursal": "085",
+          "precio": 6975
+        },
+        {
+          "sucursal": "060",
+          "precio": 4827
+        },
+        {
+          "sucursal": "107",
+          "precio": 6975
+        },
+        {
+          "sucursal": "063",
+          "precio": 6975
+        },
+        {
+          "sucursal": "209",
+          "precio": 6975
+        },
+        {
+          "sucursal": "075",
+          "precio": 6975
+        },
+        {
+          "sucursal": "064",
+          "precio": 6975
+        },
+        {
+          "sucursal": "215",
+          "precio": 6975
+        },
+        {
+          "sucursal": "204",
+          "precio": 6975
+        },
+        {
+          "sucursal": "197",
+          "precio": 6975
+        },
+        {
+          "sucursal": "178",
+          "precio": 6975
+        },
+        {
+          "sucursal": "109",
+          "precio": 6975
+        },
+        {
+          "sucursal": "185",
+          "precio": 6975
+        },
+        {
+          "sucursal": "220",
+          "precio": 6975
+        },
+        {
+          "sucursal": "710",
+          "precio": 6975
+        },
+        {
+          "sucursal": "219",
+          "precio": 6975
+        },
+        {
+          "sucursal": "091",
+          "precio": 6975
+        },
+        {
+          "sucursal": "133",
+          "precio": 6329
+        },
+        {
+          "sucursal": "078",
+          "precio": 6975
+        },
+        {
+          "sucursal": "165",
+          "precio": 6975
+        },
+        {
+          "sucursal": "184",
+          "precio": 6975
+        },
+        {
+          "sucursal": "129",
+          "precio": 6975
+        },
+        {
+          "sucursal": "090",
+          "precio": 6975
+        },
+        {
+          "sucursal": "160",
+          "precio": 6975
+        },
+        {
+          "sucursal": "188",
+          "precio": 6975
+        },
+        {
+          "sucursal": "131",
+          "precio": 6975
+        },
+        {
+          "sucursal": "181",
+          "precio": 6975
+        },
+        {
+          "sucursal": "092",
+          "precio": 6975
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00014000/00014076.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00014076-00014076-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "129",
+        "131",
+        "160",
+        "178",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Arroz Blanco Largo Fino Molinos Ala 1kg",
+      "nombre_ref": "Arroz largo fino Molinos Ala 1kg",
+      "categoria": "almacen",
+      "ean": 7791120100857,
+      "sku_plu": 572001,
+      "marca": "MOLINOS ALA",
+      "formato": "Kilogramo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 2500,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "220",
+          "precio": 2500
+        },
+        {
+          "sucursal": "200",
+          "precio": 2500
+        },
+        {
+          "sucursal": "065",
+          "precio": 2500
+        },
+        {
+          "sucursal": "060",
+          "precio": 2500
+        },
+        {
+          "sucursal": "197",
+          "precio": 2500
+        },
+        {
+          "sucursal": "204",
+          "precio": 2500
+        },
+        {
+          "sucursal": "178",
+          "precio": 2500
+        },
+        {
+          "sucursal": "064",
+          "precio": 2500
+        },
+        {
+          "sucursal": "075",
+          "precio": 2500
+        },
+        {
+          "sucursal": "085",
+          "precio": 2500
+        },
+        {
+          "sucursal": "165",
+          "precio": 2500
+        },
+        {
+          "sucursal": "189",
+          "precio": 2500
+        },
+        {
+          "sucursal": "160",
+          "precio": 2500
+        },
+        {
+          "sucursal": "092",
+          "precio": 2500
+        },
+        {
+          "sucursal": "090",
+          "precio": 2500
+        },
+        {
+          "sucursal": "056",
+          "precio": 2500
+        },
+        {
+          "sucursal": "109",
+          "precio": 2500
+        },
+        {
+          "sucursal": "091",
+          "precio": 2500
+        },
+        {
+          "sucursal": "063",
+          "precio": 2500
+        },
+        {
+          "sucursal": "107",
+          "precio": 2500
+        },
+        {
+          "sucursal": "185",
+          "precio": 2500
+        },
+        {
+          "sucursal": "182",
+          "precio": 2500
+        },
+        {
+          "sucursal": "181",
+          "precio": 2500
+        },
+        {
+          "sucursal": "129",
+          "precio": 2500
+        },
+        {
+          "sucursal": "078",
+          "precio": 2500
+        },
+        {
+          "sucursal": "184",
+          "precio": 2500
+        },
+        {
+          "sucursal": "131",
+          "precio": 2500
+        },
+        {
+          "sucursal": "219",
+          "precio": 2500
+        },
+        {
+          "sucursal": "215",
+          "precio": 2500
+        },
+        {
+          "sucursal": "209",
+          "precio": 2500
+        },
+        {
+          "sucursal": "188",
+          "precio": 2500
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00572000/00572001.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00572001-00572001-200",
+      "disponible_sucursales": []
+    },
+    {
+      "nombre_original": "Fideos Tallarin N° 5 Matarazzo 500g",
+      "nombre_ref": "Fideos tallarines Matarazzo 500g",
+      "categoria": "almacen",
+      "ean": 7790070336316,
+      "sku_plu": 573920,
+      "marca": "MATARAZZO",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 2100,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "178",
+          "precio": 2100
+        },
+        {
+          "sucursal": "064",
+          "precio": 2100
+        },
+        {
+          "sucursal": "109",
+          "precio": 2100
+        },
+        {
+          "sucursal": "090",
+          "precio": 2100
+        },
+        {
+          "sucursal": "204",
+          "precio": 2100
+        },
+        {
+          "sucursal": "165",
+          "precio": 2100
+        },
+        {
+          "sucursal": "160",
+          "precio": 2100
+        },
+        {
+          "sucursal": "056",
+          "precio": 2100
+        },
+        {
+          "sucursal": "182",
+          "precio": 2100
+        },
+        {
+          "sucursal": "197",
+          "precio": 2100
+        },
+        {
+          "sucursal": "188",
+          "precio": 2100
+        },
+        {
+          "sucursal": "131",
+          "precio": 2100
+        },
+        {
+          "sucursal": "238",
+          "precio": 2100
+        },
+        {
+          "sucursal": "061",
+          "precio": 1850
+        },
+        {
+          "sucursal": "209",
+          "precio": 2100
+        },
+        {
+          "sucursal": "075",
+          "precio": 2100
+        },
+        {
+          "sucursal": "085",
+          "precio": 2100
+        },
+        {
+          "sucursal": "189",
+          "precio": 2100
+        },
+        {
+          "sucursal": "184",
+          "precio": 2100
+        },
+        {
+          "sucursal": "181",
+          "precio": 2100
+        },
+        {
+          "sucursal": "185",
+          "precio": 2100
+        },
+        {
+          "sucursal": "219",
+          "precio": 2100
+        },
+        {
+          "sucursal": "065",
+          "precio": 2100
+        },
+        {
+          "sucursal": "060",
+          "precio": 1750
+        },
+        {
+          "sucursal": "078",
+          "precio": 2100
+        },
+        {
+          "sucursal": "200",
+          "precio": 2100
+        },
+        {
+          "sucursal": "091",
+          "precio": 2100
+        },
+        {
+          "sucursal": "063",
+          "precio": 2100
+        },
+        {
+          "sucursal": "215",
+          "precio": 2100
+        },
+        {
+          "sucursal": "129",
+          "precio": 2100
+        },
+        {
+          "sucursal": "220",
+          "precio": 2100
+        },
+        {
+          "sucursal": "092",
+          "precio": 2100
+        },
+        {
+          "sucursal": "107",
+          "precio": 2100
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00573900/00573920.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00573920-00573920-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Harina Trigo 000 MORIXE 1kg",
+      "nombre_ref": "Harina de trigo 000 Morixe 1kg",
+      "categoria": "almacen",
+      "ean": 7790199000013,
+      "sku_plu": 480051,
+      "marca": "MORIXE",
+      "formato": "Kilogramo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1110,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "078",
+          "precio": 1110
+        },
+        {
+          "sucursal": "181",
+          "precio": 1110
+        },
+        {
+          "sucursal": "107",
+          "precio": 1110
+        },
+        {
+          "sucursal": "204",
+          "precio": 1110
+        },
+        {
+          "sucursal": "188",
+          "precio": 1110
+        },
+        {
+          "sucursal": "200",
+          "precio": 1110
+        },
+        {
+          "sucursal": "238",
+          "precio": 1110
+        },
+        {
+          "sucursal": "090",
+          "precio": 1110
+        },
+        {
+          "sucursal": "061",
+          "precio": 1029
+        },
+        {
+          "sucursal": "165",
+          "precio": 1110
+        },
+        {
+          "sucursal": "219",
+          "precio": 1110
+        },
+        {
+          "sucursal": "091",
+          "precio": 1110
+        },
+        {
+          "sucursal": "160",
+          "precio": 1110
+        },
+        {
+          "sucursal": "209",
+          "precio": 1110
+        },
+        {
+          "sucursal": "065",
+          "precio": 1110
+        },
+        {
+          "sucursal": "182",
+          "precio": 1110
+        },
+        {
+          "sucursal": "129",
+          "precio": 1110
+        },
+        {
+          "sucursal": "075",
+          "precio": 1110
+        },
+        {
+          "sucursal": "085",
+          "precio": 1110
+        },
+        {
+          "sucursal": "060",
+          "precio": 948.3
+        },
+        {
+          "sucursal": "056",
+          "precio": 1110
+        },
+        {
+          "sucursal": "063",
+          "precio": 1110
+        },
+        {
+          "sucursal": "189",
+          "precio": 1110
+        },
+        {
+          "sucursal": "064",
+          "precio": 1110
+        },
+        {
+          "sucursal": "197",
+          "precio": 1110
+        },
+        {
+          "sucursal": "178",
+          "precio": 1110
+        },
+        {
+          "sucursal": "215",
+          "precio": 1110
+        },
+        {
+          "sucursal": "109",
+          "precio": 1110
+        },
+        {
+          "sucursal": "185",
+          "precio": 1110
+        },
+        {
+          "sucursal": "220",
+          "precio": 1110
+        },
+        {
+          "sucursal": "184",
+          "precio": 1110
+        },
+        {
+          "sucursal": "131",
+          "precio": 1110
+        },
+        {
+          "sucursal": "092",
+          "precio": 1110
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00480000/00480051.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00480051-00480051-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Azúcar Superior Real LEDESMA 1kg",
+      "nombre_ref": "Azúcar Ledesma 1kg",
+      "categoria": "almacen",
+      "ean": 7792540250450,
+      "sku_plu": 218834,
+      "marca": "LEDESMA",
+      "formato": "Kilogramo escurrido",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1567,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "129",
+          "precio": 1567
+        },
+        {
+          "sucursal": "165",
+          "precio": 1567
+        },
+        {
+          "sucursal": "215",
+          "precio": 1567
+        },
+        {
+          "sucursal": "063",
+          "precio": 1567
+        },
+        {
+          "sucursal": "189",
+          "precio": 1567
+        },
+        {
+          "sucursal": "061",
+          "precio": 1499
+        },
+        {
+          "sucursal": "085",
+          "precio": 1567
+        },
+        {
+          "sucursal": "178",
+          "precio": 1567
+        },
+        {
+          "sucursal": "238",
+          "precio": 1567
+        },
+        {
+          "sucursal": "182",
+          "precio": 1567
+        },
+        {
+          "sucursal": "056",
+          "precio": 1567
+        },
+        {
+          "sucursal": "109",
+          "precio": 1567
+        },
+        {
+          "sucursal": "209",
+          "precio": 1567
+        },
+        {
+          "sucursal": "064",
+          "precio": 1567
+        },
+        {
+          "sucursal": "075",
+          "precio": 1567
+        },
+        {
+          "sucursal": "185",
+          "precio": 1567
+        },
+        {
+          "sucursal": "204",
+          "precio": 1567
+        },
+        {
+          "sucursal": "060",
+          "precio": 1225
+        },
+        {
+          "sucursal": "197",
+          "precio": 1567
+        },
+        {
+          "sucursal": "220",
+          "precio": 1567
+        },
+        {
+          "sucursal": "710",
+          "precio": 1567
+        },
+        {
+          "sucursal": "188",
+          "precio": 1567
+        },
+        {
+          "sucursal": "091",
+          "precio": 1567
+        },
+        {
+          "sucursal": "160",
+          "precio": 1567
+        },
+        {
+          "sucursal": "181",
+          "precio": 1567
+        },
+        {
+          "sucursal": "131",
+          "precio": 1567
+        },
+        {
+          "sucursal": "219",
+          "precio": 1567
+        },
+        {
+          "sucursal": "065",
+          "precio": 1567
+        },
+        {
+          "sucursal": "200",
+          "precio": 1567
+        },
+        {
+          "sucursal": "090",
+          "precio": 1567
+        },
+        {
+          "sucursal": "092",
+          "precio": 1567
+        },
+        {
+          "sucursal": "107",
+          "precio": 1567
+        },
+        {
+          "sucursal": "078",
+          "precio": 1567
+        },
+        {
+          "sucursal": "133",
+          "precio": 1420
+        },
+        {
+          "sucursal": "184",
+          "precio": 1567
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00218800/00218834.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00218834-00218834-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Yerba Mate YTACUÁ 1000g",
+      "nombre_ref": "Yerba mate Taragui 1kg",
+      "categoria": "almacen",
+      "ean": 7790387120349,
+      "sku_plu": 485038,
+      "marca": "YTACUÁ",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1756.78,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "181",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "182",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "204",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "063",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "060",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "209",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "085",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "056",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "091",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "075",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "189",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "064",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "197",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "178",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "215",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "109",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "200",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "185",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "078",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "160",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "165",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "107",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "129",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "219",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "131",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "188",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "092",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "065",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "220",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "090",
+          "precio": 1756.78
+        },
+        {
+          "sucursal": "184",
+          "precio": 1756.78
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00485000/00485038.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00485038-00485038-200",
+      "disponible_sucursales": []
+    },
+    {
+      "nombre_original": "Café Molido Tostado La Virginia 250g",
+      "nombre_ref": "Cafe molido La Virginia 250g",
+      "categoria": "almacen",
+      "ean": 7790150007501,
+      "sku_plu": 602429,
+      "marca": "LA VIRGINIA",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 8262,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "189",
+          "precio": 8262
+        },
+        {
+          "sucursal": "078",
+          "precio": 8262
+        },
+        {
+          "sucursal": "238",
+          "precio": 8262
+        },
+        {
+          "sucursal": "056",
+          "precio": 8262
+        },
+        {
+          "sucursal": "160",
+          "precio": 8262
+        },
+        {
+          "sucursal": "204",
+          "precio": 8262
+        },
+        {
+          "sucursal": "109",
+          "precio": 8262
+        },
+        {
+          "sucursal": "063",
+          "precio": 8262
+        },
+        {
+          "sucursal": "129",
+          "precio": 8262
+        },
+        {
+          "sucursal": "085",
+          "precio": 8262
+        },
+        {
+          "sucursal": "200",
+          "precio": 8262
+        },
+        {
+          "sucursal": "165",
+          "precio": 8262
+        },
+        {
+          "sucursal": "197",
+          "precio": 8262
+        },
+        {
+          "sucursal": "131",
+          "precio": 8262
+        },
+        {
+          "sucursal": "065",
+          "precio": 8262
+        },
+        {
+          "sucursal": "185",
+          "precio": 8262
+        },
+        {
+          "sucursal": "091",
+          "precio": 8262
+        },
+        {
+          "sucursal": "181",
+          "precio": 8262
+        },
+        {
+          "sucursal": "090",
+          "precio": 8262
+        },
+        {
+          "sucursal": "219",
+          "precio": 8262
+        },
+        {
+          "sucursal": "209",
+          "precio": 8262
+        },
+        {
+          "sucursal": "064",
+          "precio": 8262
+        },
+        {
+          "sucursal": "092",
+          "precio": 8262
+        },
+        {
+          "sucursal": "215",
+          "precio": 8262
+        },
+        {
+          "sucursal": "188",
+          "precio": 8262
+        },
+        {
+          "sucursal": "107",
+          "precio": 8262
+        },
+        {
+          "sucursal": "220",
+          "precio": 8262
+        },
+        {
+          "sucursal": "075",
+          "precio": 8262
+        },
+        {
+          "sucursal": "060",
+          "precio": 6520
+        },
+        {
+          "sucursal": "184",
+          "precio": 8262
+        },
+        {
+          "sucursal": "178",
+          "precio": 8262
+        },
+        {
+          "sucursal": "182",
+          "precio": 8262
+        },
+        {
+          "sucursal": "061",
+          "precio": 8656
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00602400/00602429.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00602429-00602429-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Puré De Tomate Arcor 520g",
+      "nombre_ref": "Pure de tomate Arcor 520g",
+      "categoria": "almacen",
+      "ean": 7790580146115,
+      "sku_plu": 581382,
+      "marca": "ARCOR",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1110,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "056",
+          "precio": 1110
+        },
+        {
+          "sucursal": "238",
+          "precio": 1110
+        },
+        {
+          "sucursal": "061",
+          "precio": 1110
+        },
+        {
+          "sucursal": "182",
+          "precio": 1110
+        },
+        {
+          "sucursal": "078",
+          "precio": 1110
+        },
+        {
+          "sucursal": "107",
+          "precio": 1110
+        },
+        {
+          "sucursal": "129",
+          "precio": 1110
+        },
+        {
+          "sucursal": "188",
+          "precio": 1110
+        },
+        {
+          "sucursal": "091",
+          "precio": 1110
+        },
+        {
+          "sucursal": "085",
+          "precio": 1110
+        },
+        {
+          "sucursal": "063",
+          "precio": 1110
+        },
+        {
+          "sucursal": "090",
+          "precio": 1110
+        },
+        {
+          "sucursal": "185",
+          "precio": 1110
+        },
+        {
+          "sucursal": "219",
+          "precio": 1110
+        },
+        {
+          "sucursal": "064",
+          "precio": 1110
+        },
+        {
+          "sucursal": "160",
+          "precio": 1110
+        },
+        {
+          "sucursal": "184",
+          "precio": 1110
+        },
+        {
+          "sucursal": "204",
+          "precio": 1110
+        },
+        {
+          "sucursal": "189",
+          "precio": 1110
+        },
+        {
+          "sucursal": "178",
+          "precio": 1110
+        },
+        {
+          "sucursal": "075",
+          "precio": 1110
+        },
+        {
+          "sucursal": "165",
+          "precio": 1110
+        },
+        {
+          "sucursal": "197",
+          "precio": 1110
+        },
+        {
+          "sucursal": "131",
+          "precio": 1110
+        },
+        {
+          "sucursal": "220",
+          "precio": 1110
+        },
+        {
+          "sucursal": "109",
+          "precio": 1110
+        },
+        {
+          "sucursal": "092",
+          "precio": 1110
+        },
+        {
+          "sucursal": "200",
+          "precio": 1110
+        },
+        {
+          "sucursal": "065",
+          "precio": 1110
+        },
+        {
+          "sucursal": "215",
+          "precio": 1110
+        },
+        {
+          "sucursal": "209",
+          "precio": 1110
+        },
+        {
+          "sucursal": "060",
+          "precio": 936
+        },
+        {
+          "sucursal": "181",
+          "precio": 1110
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00581300/00581382.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00581382-00581382-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "075",
+        "085",
+        "107",
+        "129",
+        "131",
+        "182",
+        "184",
+        "185",
+        "189",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Sal Fina CELUSAL 500g",
+      "nombre_ref": "Sal fina Celusal",
+      "categoria": "almacen",
+      "ean": 7790072001014,
+      "sku_plu": 11362,
+      "marca": "CELUSAL",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1549,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "200",
+          "precio": 1549
+        },
+        {
+          "sucursal": "075",
+          "precio": 1549
+        },
+        {
+          "sucursal": "184",
+          "precio": 1549
+        },
+        {
+          "sucursal": "710",
+          "precio": 1549
+        },
+        {
+          "sucursal": "109",
+          "precio": 1549
+        },
+        {
+          "sucursal": "238",
+          "precio": 1549
+        },
+        {
+          "sucursal": "061",
+          "precio": 1549
+        },
+        {
+          "sucursal": "091",
+          "precio": 1549
+        },
+        {
+          "sucursal": "219",
+          "precio": 1549
+        },
+        {
+          "sucursal": "182",
+          "precio": 1549
+        },
+        {
+          "sucursal": "063",
+          "precio": 1549
+        },
+        {
+          "sucursal": "160",
+          "precio": 1549
+        },
+        {
+          "sucursal": "197",
+          "precio": 1549
+        },
+        {
+          "sucursal": "085",
+          "precio": 1549
+        },
+        {
+          "sucursal": "060",
+          "precio": 1359
+        },
+        {
+          "sucursal": "056",
+          "precio": 1549
+        },
+        {
+          "sucursal": "209",
+          "precio": 1549
+        },
+        {
+          "sucursal": "189",
+          "precio": 1549
+        },
+        {
+          "sucursal": "064",
+          "precio": 1549
+        },
+        {
+          "sucursal": "215",
+          "precio": 1549
+        },
+        {
+          "sucursal": "204",
+          "precio": 1549
+        },
+        {
+          "sucursal": "178",
+          "precio": 1549
+        },
+        {
+          "sucursal": "185",
+          "precio": 1549
+        },
+        {
+          "sucursal": "220",
+          "precio": 1549
+        },
+        {
+          "sucursal": "133",
+          "precio": 1462
+        },
+        {
+          "sucursal": "165",
+          "precio": 1549
+        },
+        {
+          "sucursal": "078",
+          "precio": 1549
+        },
+        {
+          "sucursal": "129",
+          "precio": 1549
+        },
+        {
+          "sucursal": "188",
+          "precio": 1549
+        },
+        {
+          "sucursal": "090",
+          "precio": 1549
+        },
+        {
+          "sucursal": "065",
+          "precio": 1549
+        },
+        {
+          "sucursal": "092",
+          "precio": 1549
+        },
+        {
+          "sucursal": "131",
+          "precio": 1549
+        },
+        {
+          "sucursal": "107",
+          "precio": 1549
+        },
+        {
+          "sucursal": "181",
+          "precio": 1549
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00011300/00011362.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00011362-00011362-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Pan Blanco BIMBO 400g",
+      "nombre_ref": "Pan lactal blanco Bimbo",
+      "categoria": "panificados",
+      "ean": 7793890261233,
+      "sku_plu": 598185,
+      "marca": "BIMBO",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 6022,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "061",
+          "precio": 5708
+        },
+        {
+          "sucursal": "056",
+          "precio": 6022
+        },
+        {
+          "sucursal": "085",
+          "precio": 6022
+        },
+        {
+          "sucursal": "200",
+          "precio": 6022
+        },
+        {
+          "sucursal": "178",
+          "precio": 6022
+        },
+        {
+          "sucursal": "091",
+          "precio": 6022
+        },
+        {
+          "sucursal": "107",
+          "precio": 6022
+        },
+        {
+          "sucursal": "185",
+          "precio": 6022
+        },
+        {
+          "sucursal": "197",
+          "precio": 6022
+        },
+        {
+          "sucursal": "129",
+          "precio": 6022
+        },
+        {
+          "sucursal": "220",
+          "precio": 6022
+        },
+        {
+          "sucursal": "060",
+          "precio": 4789
+        },
+        {
+          "sucursal": "131",
+          "precio": 6022
+        },
+        {
+          "sucursal": "165",
+          "precio": 6022
+        },
+        {
+          "sucursal": "209",
+          "precio": 6022
+        },
+        {
+          "sucursal": "063",
+          "precio": 6022
+        },
+        {
+          "sucursal": "065",
+          "precio": 6022
+        },
+        {
+          "sucursal": "182",
+          "precio": 6022
+        },
+        {
+          "sucursal": "109",
+          "precio": 6022
+        },
+        {
+          "sucursal": "189",
+          "precio": 6022
+        },
+        {
+          "sucursal": "078",
+          "precio": 6022
+        },
+        {
+          "sucursal": "219",
+          "precio": 6022
+        },
+        {
+          "sucursal": "204",
+          "precio": 6022
+        },
+        {
+          "sucursal": "092",
+          "precio": 6022
+        },
+        {
+          "sucursal": "181",
+          "precio": 6022
+        },
+        {
+          "sucursal": "188",
+          "precio": 6022
+        },
+        {
+          "sucursal": "075",
+          "precio": 6022
+        },
+        {
+          "sucursal": "184",
+          "precio": 6022
+        },
+        {
+          "sucursal": "238",
+          "precio": 6022
+        },
+        {
+          "sucursal": "215",
+          "precio": 6022
+        },
+        {
+          "sucursal": "160",
+          "precio": 6022
+        },
+        {
+          "sucursal": "064",
+          "precio": 6022
+        },
+        {
+          "sucursal": "090",
+          "precio": 6022
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00598100/00598185.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00598185-00598185-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Galletitas Saladas Sabor Original Traviata 96g",
+      "nombre_ref": "Galletitas Criollitas Traviata",
+      "categoria": "panificados",
+      "ean": 7790040143937,
+      "sku_plu": 587609,
+      "marca": "TRAVIATA",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 898,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "129",
+          "precio": 898
+        },
+        {
+          "sucursal": "238",
+          "precio": 898
+        },
+        {
+          "sucursal": "061",
+          "precio": 898
+        },
+        {
+          "sucursal": "181",
+          "precio": 898
+        },
+        {
+          "sucursal": "184",
+          "precio": 898
+        },
+        {
+          "sucursal": "056",
+          "precio": 898
+        },
+        {
+          "sucursal": "090",
+          "precio": 898
+        },
+        {
+          "sucursal": "065",
+          "precio": 898
+        },
+        {
+          "sucursal": "182",
+          "precio": 898
+        },
+        {
+          "sucursal": "107",
+          "precio": 898
+        },
+        {
+          "sucursal": "075",
+          "precio": 898
+        },
+        {
+          "sucursal": "092",
+          "precio": 898
+        },
+        {
+          "sucursal": "220",
+          "precio": 898
+        },
+        {
+          "sucursal": "085",
+          "precio": 898
+        },
+        {
+          "sucursal": "060",
+          "precio": 752
+        },
+        {
+          "sucursal": "064",
+          "precio": 898
+        },
+        {
+          "sucursal": "160",
+          "precio": 898
+        },
+        {
+          "sucursal": "165",
+          "precio": 898
+        },
+        {
+          "sucursal": "215",
+          "precio": 898
+        },
+        {
+          "sucursal": "091",
+          "precio": 898
+        },
+        {
+          "sucursal": "178",
+          "precio": 898
+        },
+        {
+          "sucursal": "188",
+          "precio": 898
+        },
+        {
+          "sucursal": "209",
+          "precio": 898
+        },
+        {
+          "sucursal": "131",
+          "precio": 898
+        },
+        {
+          "sucursal": "078",
+          "precio": 898
+        },
+        {
+          "sucursal": "185",
+          "precio": 898
+        },
+        {
+          "sucursal": "219",
+          "precio": 898
+        },
+        {
+          "sucursal": "200",
+          "precio": 898
+        },
+        {
+          "sucursal": "204",
+          "precio": 898
+        },
+        {
+          "sucursal": "197",
+          "precio": 898
+        },
+        {
+          "sucursal": "063",
+          "precio": 898
+        },
+        {
+          "sucursal": "109",
+          "precio": 898
+        },
+        {
+          "sucursal": "189",
+          "precio": 898
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00587600/00587609.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00587609-00587609-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Picada Especial X KG",
+      "nombre_ref": "Picada especial vacuna",
+      "categoria": "carnes",
+      "ean": 2069607000002,
+      "sku_plu": 69607,
+      "marca": "COTO",
+      "formato": null,
+      "formato_qty": 1,
+      "unidad_medida": "KGS",
+      "precio_lista": 10499,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "219",
+          "precio": 12999
+        },
+        {
+          "sucursal": "061",
+          "precio": 10499
+        },
+        {
+          "sucursal": "178",
+          "precio": 12999
+        },
+        {
+          "sucursal": "165",
+          "precio": 12999
+        },
+        {
+          "sucursal": "238",
+          "precio": 12999
+        },
+        {
+          "sucursal": "109",
+          "precio": 12999
+        },
+        {
+          "sucursal": "160",
+          "precio": 12999
+        },
+        {
+          "sucursal": "056",
+          "precio": 12999
+        },
+        {
+          "sucursal": "182",
+          "precio": 12999
+        },
+        {
+          "sucursal": "060",
+          "precio": 8499
+        },
+        {
+          "sucursal": "204",
+          "precio": 12999
+        },
+        {
+          "sucursal": "065",
+          "precio": 12999
+        },
+        {
+          "sucursal": "209",
+          "precio": 12999
+        },
+        {
+          "sucursal": "063",
+          "precio": 12999
+        },
+        {
+          "sucursal": "085",
+          "precio": 12999
+        },
+        {
+          "sucursal": "220",
+          "precio": 12999
+        },
+        {
+          "sucursal": "188",
+          "precio": 12999
+        },
+        {
+          "sucursal": "092",
+          "precio": 12999
+        },
+        {
+          "sucursal": "129",
+          "precio": 12999
+        },
+        {
+          "sucursal": "075",
+          "precio": 12999
+        },
+        {
+          "sucursal": "064",
+          "precio": 12999
+        },
+        {
+          "sucursal": "189",
+          "precio": 12999
+        },
+        {
+          "sucursal": "215",
+          "precio": 12999
+        },
+        {
+          "sucursal": "197",
+          "precio": 12999
+        },
+        {
+          "sucursal": "185",
+          "precio": 12999
+        },
+        {
+          "sucursal": "710",
+          "precio": 10499
+        },
+        {
+          "sucursal": "133",
+          "precio": 10499
+        },
+        {
+          "sucursal": "131",
+          "precio": 12999
+        },
+        {
+          "sucursal": "090",
+          "precio": 12999
+        },
+        {
+          "sucursal": "200",
+          "precio": 12999
+        },
+        {
+          "sucursal": "184",
+          "precio": 12999
+        },
+        {
+          "sucursal": "181",
+          "precio": 12999
+        },
+        {
+          "sucursal": "078",
+          "precio": 12999
+        },
+        {
+          "sucursal": "091",
+          "precio": 12999
+        },
+        {
+          "sucursal": "107",
+          "precio": 12999
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00069600/00069607.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00069607-00069607-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Pollo Entero Fresco X Uni (4 Kg) Refrigerado",
+      "nombre_ref": "Pollo entero",
+      "categoria": "carnes",
+      "ean": 2000000127910,
+      "sku_plu": 12791,
+      "marca": "COTO",
+      "formato": "Kilogramo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 17596,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "200",
+          "precio": 17596
+        },
+        {
+          "sucursal": "215",
+          "precio": 17596
+        },
+        {
+          "sucursal": "204",
+          "precio": 17596
+        },
+        {
+          "sucursal": "238",
+          "precio": 17596
+        },
+        {
+          "sucursal": "182",
+          "precio": 17596
+        },
+        {
+          "sucursal": "197",
+          "precio": 17596
+        },
+        {
+          "sucursal": "085",
+          "precio": 17596
+        },
+        {
+          "sucursal": "061",
+          "precio": 15996
+        },
+        {
+          "sucursal": "092",
+          "precio": 17596
+        },
+        {
+          "sucursal": "131",
+          "precio": 17596
+        },
+        {
+          "sucursal": "165",
+          "precio": 17596
+        },
+        {
+          "sucursal": "060",
+          "precio": 13996
+        },
+        {
+          "sucursal": "181",
+          "precio": 17596
+        },
+        {
+          "sucursal": "219",
+          "precio": 17596
+        },
+        {
+          "sucursal": "178",
+          "precio": 17596
+        },
+        {
+          "sucursal": "091",
+          "precio": 17596
+        },
+        {
+          "sucursal": "109",
+          "precio": 17596
+        },
+        {
+          "sucursal": "184",
+          "precio": 17596
+        },
+        {
+          "sucursal": "220",
+          "precio": 17596
+        },
+        {
+          "sucursal": "063",
+          "precio": 17596
+        },
+        {
+          "sucursal": "129",
+          "precio": 17596
+        },
+        {
+          "sucursal": "107",
+          "precio": 17596
+        },
+        {
+          "sucursal": "189",
+          "precio": 17596
+        },
+        {
+          "sucursal": "056",
+          "precio": 17596
+        },
+        {
+          "sucursal": "078",
+          "precio": 17596
+        },
+        {
+          "sucursal": "064",
+          "precio": 17596
+        },
+        {
+          "sucursal": "065",
+          "precio": 17596
+        },
+        {
+          "sucursal": "188",
+          "precio": 17596
+        },
+        {
+          "sucursal": "160",
+          "precio": 17596
+        },
+        {
+          "sucursal": "090",
+          "precio": 17596
+        },
+        {
+          "sucursal": "075",
+          "precio": 17596
+        },
+        {
+          "sucursal": "209",
+          "precio": 17596
+        },
+        {
+          "sucursal": "185",
+          "precio": 17596
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00012700/00012791.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00012791-00012791-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Paleta Cocida Feteada Paladini Xkg",
+      "nombre_ref": "Paleta cocida fiambre",
+      "categoria": "carnes",
+      "ean": 2003836100003,
+      "sku_plu": 38361,
+      "marca": "PALADINI",
+      "formato": null,
+      "formato_qty": 1,
+      "unidad_medida": "KGS",
+      "precio_lista": 14999,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "188",
+          "precio": 24265
+        },
+        {
+          "sucursal": "204",
+          "precio": 24265
+        },
+        {
+          "sucursal": "075",
+          "precio": 24265
+        },
+        {
+          "sucursal": "178",
+          "precio": 24265
+        },
+        {
+          "sucursal": "063",
+          "precio": 24265
+        },
+        {
+          "sucursal": "220",
+          "precio": 24265
+        },
+        {
+          "sucursal": "238",
+          "precio": 24265
+        },
+        {
+          "sucursal": "182",
+          "precio": 24265
+        },
+        {
+          "sucursal": "061",
+          "precio": 24265
+        },
+        {
+          "sucursal": "060",
+          "precio": 17849
+        },
+        {
+          "sucursal": "109",
+          "precio": 24265
+        },
+        {
+          "sucursal": "107",
+          "precio": 24265
+        },
+        {
+          "sucursal": "165",
+          "precio": 24265
+        },
+        {
+          "sucursal": "091",
+          "precio": 24265
+        },
+        {
+          "sucursal": "064",
+          "precio": 24265
+        },
+        {
+          "sucursal": "189",
+          "precio": 24265
+        },
+        {
+          "sucursal": "092",
+          "precio": 24265
+        },
+        {
+          "sucursal": "085",
+          "precio": 24265
+        },
+        {
+          "sucursal": "160",
+          "precio": 24265
+        },
+        {
+          "sucursal": "181",
+          "precio": 24265
+        },
+        {
+          "sucursal": "056",
+          "precio": 24265
+        },
+        {
+          "sucursal": "209",
+          "precio": 24265
+        },
+        {
+          "sucursal": "215",
+          "precio": 24265
+        },
+        {
+          "sucursal": "197",
+          "precio": 24265
+        },
+        {
+          "sucursal": "185",
+          "precio": 24265
+        },
+        {
+          "sucursal": "184",
+          "precio": 24265
+        },
+        {
+          "sucursal": "078",
+          "precio": 24265
+        },
+        {
+          "sucursal": "090",
+          "precio": 24265
+        },
+        {
+          "sucursal": "133",
+          "precio": 15999
+        },
+        {
+          "sucursal": "219",
+          "precio": 24265
+        },
+        {
+          "sucursal": "129",
+          "precio": 24265
+        },
+        {
+          "sucursal": "065",
+          "precio": 24265
+        },
+        {
+          "sucursal": "200",
+          "precio": 24265
+        },
+        {
+          "sucursal": "131",
+          "precio": 24265
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00038300/00038361.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00038361-00038361-200",
+      "disponible_sucursales": [
+        "056",
+        "064",
+        "065",
+        "078",
+        "090",
+        "091",
+        "107",
+        "129",
+        "160",
+        "181",
+        "182",
+        "184",
+        "189",
+        "197",
+        "200",
+        "215",
+        "219"
+      ]
+    },
+    {
+      "nombre_original": "Gaseosa Coca-Cola Sabor Original 2,25 Lt",
+      "nombre_ref": "Coca-Cola Original 2.25L",
+      "categoria": "bebidas",
+      "ean": 7790895000997,
+      "sku_plu": 14450,
+      "marca": "COCA COLA",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 4845,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "091",
+          "precio": 4845
+        },
+        {
+          "sucursal": "209",
+          "precio": 4845
+        },
+        {
+          "sucursal": "063",
+          "precio": 4845
+        },
+        {
+          "sucursal": "182",
+          "precio": 4845
+        },
+        {
+          "sucursal": "204",
+          "precio": 4845
+        },
+        {
+          "sucursal": "238",
+          "precio": 4845
+        },
+        {
+          "sucursal": "165",
+          "precio": 4845
+        },
+        {
+          "sucursal": "185",
+          "precio": 4845
+        },
+        {
+          "sucursal": "061",
+          "precio": 5450
+        },
+        {
+          "sucursal": "065",
+          "precio": 4845
+        },
+        {
+          "sucursal": "197",
+          "precio": 4845
+        },
+        {
+          "sucursal": "085",
+          "precio": 4845
+        },
+        {
+          "sucursal": "178",
+          "precio": 4845
+        },
+        {
+          "sucursal": "220",
+          "precio": 4845
+        },
+        {
+          "sucursal": "092",
+          "precio": 4845
+        },
+        {
+          "sucursal": "060",
+          "precio": 4600
+        },
+        {
+          "sucursal": "056",
+          "precio": 4845
+        },
+        {
+          "sucursal": "075",
+          "precio": 4845
+        },
+        {
+          "sucursal": "064",
+          "precio": 4845
+        },
+        {
+          "sucursal": "215",
+          "precio": 4845
+        },
+        {
+          "sucursal": "189",
+          "precio": 4845
+        },
+        {
+          "sucursal": "109",
+          "precio": 4845
+        },
+        {
+          "sucursal": "710",
+          "precio": 5450
+        },
+        {
+          "sucursal": "184",
+          "precio": 4845
+        },
+        {
+          "sucursal": "160",
+          "precio": 4845
+        },
+        {
+          "sucursal": "133",
+          "precio": 5250
+        },
+        {
+          "sucursal": "188",
+          "precio": 4845
+        },
+        {
+          "sucursal": "090",
+          "precio": 4845
+        },
+        {
+          "sucursal": "200",
+          "precio": 4845
+        },
+        {
+          "sucursal": "078",
+          "precio": 5700
+        },
+        {
+          "sucursal": "129",
+          "precio": 4845
+        },
+        {
+          "sucursal": "219",
+          "precio": 4845
+        },
+        {
+          "sucursal": "107",
+          "precio": 4845
+        },
+        {
+          "sucursal": "131",
+          "precio": 4845
+        },
+        {
+          "sucursal": "181",
+          "precio": 4845
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00014400/00014450.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00014450-00014450-200",
+      "disponible_sucursales": [
+        "185",
+        "200",
+        "204",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Agua Sin Gas Mineral Villavicencio 2000c",
+      "nombre_ref": "Agua sin gas Villavicencio",
+      "categoria": "bebidas",
+      "ean": 7799155000197,
+      "sku_plu": 574450,
+      "marca": "VILLAVICENCIO",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 3050,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "131",
+          "precio": 3050
+        },
+        {
+          "sucursal": "065",
+          "precio": 3050
+        },
+        {
+          "sucursal": "064",
+          "precio": 3050
+        },
+        {
+          "sucursal": "091",
+          "precio": 3050
+        },
+        {
+          "sucursal": "056",
+          "precio": 3050
+        },
+        {
+          "sucursal": "238",
+          "precio": 3050
+        },
+        {
+          "sucursal": "061",
+          "precio": 3050
+        },
+        {
+          "sucursal": "184",
+          "precio": 3050
+        },
+        {
+          "sucursal": "063",
+          "precio": 3050
+        },
+        {
+          "sucursal": "178",
+          "precio": 3050
+        },
+        {
+          "sucursal": "060",
+          "precio": 2480
+        },
+        {
+          "sucursal": "078",
+          "precio": 3050
+        },
+        {
+          "sucursal": "182",
+          "precio": 3050
+        },
+        {
+          "sucursal": "075",
+          "precio": 3050
+        },
+        {
+          "sucursal": "204",
+          "precio": 3050
+        },
+        {
+          "sucursal": "185",
+          "precio": 3050
+        },
+        {
+          "sucursal": "109",
+          "precio": 3050
+        },
+        {
+          "sucursal": "085",
+          "precio": 3050
+        },
+        {
+          "sucursal": "220",
+          "precio": 3050
+        },
+        {
+          "sucursal": "188",
+          "precio": 3050
+        },
+        {
+          "sucursal": "092",
+          "precio": 3050
+        },
+        {
+          "sucursal": "129",
+          "precio": 3050
+        },
+        {
+          "sucursal": "219",
+          "precio": 3050
+        },
+        {
+          "sucursal": "189",
+          "precio": 3050
+        },
+        {
+          "sucursal": "215",
+          "precio": 3050
+        },
+        {
+          "sucursal": "165",
+          "precio": 3050
+        },
+        {
+          "sucursal": "200",
+          "precio": 3050
+        },
+        {
+          "sucursal": "160",
+          "precio": 3050
+        },
+        {
+          "sucursal": "197",
+          "precio": 3050
+        },
+        {
+          "sucursal": "181",
+          "precio": 3050
+        },
+        {
+          "sucursal": "090",
+          "precio": 3050
+        },
+        {
+          "sucursal": "209",
+          "precio": 3050
+        },
+        {
+          "sucursal": "107",
+          "precio": 3050
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00574400/00574450.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00574450-00574450-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Cerveza QUILMES Botella 1 L",
+      "nombre_ref": "Cerveza Quilmes",
+      "categoria": "bebidas",
+      "ean": 7792798007387,
+      "sku_plu": 238214,
+      "marca": "QUILMES",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 4580,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "131",
+          "precio": 4580
+        },
+        {
+          "sucursal": "215",
+          "precio": 4580
+        },
+        {
+          "sucursal": "185",
+          "precio": 4580
+        },
+        {
+          "sucursal": "060",
+          "precio": 3610
+        },
+        {
+          "sucursal": "238",
+          "precio": 4580
+        },
+        {
+          "sucursal": "061",
+          "precio": 4200
+        },
+        {
+          "sucursal": "078",
+          "precio": 4580
+        },
+        {
+          "sucursal": "219",
+          "precio": 4580
+        },
+        {
+          "sucursal": "165",
+          "precio": 4580
+        },
+        {
+          "sucursal": "182",
+          "precio": 4580
+        },
+        {
+          "sucursal": "178",
+          "precio": 4580
+        },
+        {
+          "sucursal": "209",
+          "precio": 4580
+        },
+        {
+          "sucursal": "085",
+          "precio": 4580
+        },
+        {
+          "sucursal": "056",
+          "precio": 4580
+        },
+        {
+          "sucursal": "063",
+          "precio": 4580
+        },
+        {
+          "sucursal": "189",
+          "precio": 4580
+        },
+        {
+          "sucursal": "075",
+          "precio": 4580
+        },
+        {
+          "sucursal": "064",
+          "precio": 4580
+        },
+        {
+          "sucursal": "197",
+          "precio": 4580
+        },
+        {
+          "sucursal": "204",
+          "precio": 4580
+        },
+        {
+          "sucursal": "109",
+          "precio": 4580
+        },
+        {
+          "sucursal": "220",
+          "precio": 4580
+        },
+        {
+          "sucursal": "184",
+          "precio": 4580
+        },
+        {
+          "sucursal": "200",
+          "precio": 4580
+        },
+        {
+          "sucursal": "065",
+          "precio": 4580
+        },
+        {
+          "sucursal": "133",
+          "precio": 4100
+        },
+        {
+          "sucursal": "090",
+          "precio": 4580
+        },
+        {
+          "sucursal": "092",
+          "precio": 4580
+        },
+        {
+          "sucursal": "188",
+          "precio": 4580
+        },
+        {
+          "sucursal": "091",
+          "precio": 4580
+        },
+        {
+          "sucursal": "160",
+          "precio": 4580
+        },
+        {
+          "sucursal": "181",
+          "precio": 4580
+        },
+        {
+          "sucursal": "129",
+          "precio": 4580
+        },
+        {
+          "sucursal": "107",
+          "precio": 4580
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00238200/00238214.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00238214-00238214-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Detergente MAGISTRAL Ultra Limón Botella 500ml",
+      "nombre_ref": "Detergente Magistral",
+      "categoria": "limpieza",
+      "ean": 7790990003039,
+      "sku_plu": 584037,
+      "marca": "MAGISTRAL",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 5049.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "160",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "065",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "063",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "178",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "061",
+          "precio": 4805.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "184",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "091",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "056",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "181",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "131",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "188",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "060",
+          "precio": 3819
+        },
+        {
+          "sucursal": "064",
+          "precio": 5049.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 5049.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00584000/00584037.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00584037-00584037-200",
+      "disponible_sucursales": [
+        "056",
+        "061",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Lavandina Original Ayudin 2l",
+      "nombre_ref": "Lavandina Ayudín",
+      "categoria": "limpieza",
+      "ean": 7793253006709,
+      "sku_plu": 591050,
+      "marca": "AYUDIN",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 2925.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "060",
+          "precio": 2459.06
+        },
+        {
+          "sucursal": "056",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "063",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "091",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "061",
+          "precio": 2761.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "188",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "181",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "064",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "131",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "065",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "178",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "184",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 2925.99
+        },
+        {
+          "sucursal": "160",
+          "precio": 2925.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00591000/00591050.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00591050-00591050-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Papel Higienico ELITE Ultra Suave Doble Hoja 30 M 4 Un",
+      "nombre_ref": "Papel higiénico Higienol o Elite",
+      "categoria": "limpieza",
+      "ean": 7790250026075,
+      "sku_plu": 568194,
+      "marca": "ELITE",
+      "formato": "Cuadrado",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 5617.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "091",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "061",
+          "precio": 5249.99
+        },
+        {
+          "sucursal": "131",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "065",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "160",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "184",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "188",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "064",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "060",
+          "precio": 4238.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "181",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "063",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "178",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "056",
+          "precio": 5617.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 5617.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00568100/00568194.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00568194-00568194-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Jabon en polvo Matic + A Mano Lavado Total con Bicarbonato ALA 800 g",
+      "nombre_ref": "Jabon en polvo Ala 800g",
+      "categoria": "limpieza",
+      "ean": 7791290796829,
+      "sku_plu": 627940,
+      "marca": "ALA",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 3321.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "091",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "188",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "178",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "063",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "184",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "181",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "131",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "056",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "065",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "064",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "160",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 3321.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 3321.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00627900/00627940.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00627940-00627940-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "DULCE DE LECHE LS ESTILO COLONIAL POTE 400GR",
+      "nombre_ref": "Dulce de leche La Serenisima 400g",
+      "categoria": "lacteos",
+      "ean": 7790742625205,
+      "sku_plu": 510307,
+      "marca": "LA SERENISIMA",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 4615,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "091",
+          "precio": 4615
+        },
+        {
+          "sucursal": "238",
+          "precio": 4615
+        },
+        {
+          "sucursal": "061",
+          "precio": 4505
+        },
+        {
+          "sucursal": "182",
+          "precio": 4615
+        },
+        {
+          "sucursal": "220",
+          "precio": 4615
+        },
+        {
+          "sucursal": "056",
+          "precio": 4615
+        },
+        {
+          "sucursal": "092",
+          "precio": 4615
+        },
+        {
+          "sucursal": "131",
+          "precio": 4615
+        },
+        {
+          "sucursal": "064",
+          "precio": 4615
+        },
+        {
+          "sucursal": "204",
+          "precio": 4615
+        },
+        {
+          "sucursal": "188",
+          "precio": 4615
+        },
+        {
+          "sucursal": "184",
+          "precio": 4615
+        },
+        {
+          "sucursal": "209",
+          "precio": 4615
+        },
+        {
+          "sucursal": "090",
+          "precio": 4615
+        },
+        {
+          "sucursal": "160",
+          "precio": 4615
+        },
+        {
+          "sucursal": "063",
+          "precio": 4615
+        },
+        {
+          "sucursal": "065",
+          "precio": 4615
+        },
+        {
+          "sucursal": "129",
+          "precio": 4615
+        },
+        {
+          "sucursal": "078",
+          "precio": 4615
+        },
+        {
+          "sucursal": "107",
+          "precio": 4615
+        },
+        {
+          "sucursal": "197",
+          "precio": 4615
+        },
+        {
+          "sucursal": "219",
+          "precio": 4615
+        },
+        {
+          "sucursal": "215",
+          "precio": 4615
+        },
+        {
+          "sucursal": "075",
+          "precio": 4615
+        },
+        {
+          "sucursal": "085",
+          "precio": 4615
+        },
+        {
+          "sucursal": "178",
+          "precio": 4615
+        },
+        {
+          "sucursal": "181",
+          "precio": 4615
+        },
+        {
+          "sucursal": "165",
+          "precio": 4615
+        },
+        {
+          "sucursal": "060",
+          "precio": 3879
+        },
+        {
+          "sucursal": "200",
+          "precio": 4615
+        },
+        {
+          "sucursal": "189",
+          "precio": 4615
+        },
+        {
+          "sucursal": "185",
+          "precio": 4615
+        },
+        {
+          "sucursal": "109",
+          "precio": 4615
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00510300/00510307.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00510307-00510307-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Crema Clásica Para Batir LA SERENISIMA 520ml",
+      "nombre_ref": "Crema de leche La Serenisima",
+      "categoria": "lacteos",
+      "ean": 7790742014122,
+      "sku_plu": 481395,
+      "marca": "LA SERENISIMA",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 7349,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "200",
+          "precio": 7349
+        },
+        {
+          "sucursal": "204",
+          "precio": 7349
+        },
+        {
+          "sucursal": "182",
+          "precio": 7349
+        },
+        {
+          "sucursal": "091",
+          "precio": 7349
+        },
+        {
+          "sucursal": "075",
+          "precio": 7349
+        },
+        {
+          "sucursal": "215",
+          "precio": 7349
+        },
+        {
+          "sucursal": "238",
+          "precio": 7349
+        },
+        {
+          "sucursal": "061",
+          "precio": 6999
+        },
+        {
+          "sucursal": "197",
+          "precio": 7349
+        },
+        {
+          "sucursal": "085",
+          "precio": 7349
+        },
+        {
+          "sucursal": "060",
+          "precio": 5962
+        },
+        {
+          "sucursal": "056",
+          "precio": 7349
+        },
+        {
+          "sucursal": "063",
+          "precio": 7349
+        },
+        {
+          "sucursal": "209",
+          "precio": 7349
+        },
+        {
+          "sucursal": "189",
+          "precio": 7349
+        },
+        {
+          "sucursal": "064",
+          "precio": 7349
+        },
+        {
+          "sucursal": "178",
+          "precio": 7349
+        },
+        {
+          "sucursal": "109",
+          "precio": 7349
+        },
+        {
+          "sucursal": "185",
+          "precio": 7349
+        },
+        {
+          "sucursal": "160",
+          "precio": 7349
+        },
+        {
+          "sucursal": "092",
+          "precio": 7349
+        },
+        {
+          "sucursal": "219",
+          "precio": 7349
+        },
+        {
+          "sucursal": "181",
+          "precio": 7349
+        },
+        {
+          "sucursal": "065",
+          "precio": 7349
+        },
+        {
+          "sucursal": "188",
+          "precio": 7349
+        },
+        {
+          "sucursal": "107",
+          "precio": 7349
+        },
+        {
+          "sucursal": "184",
+          "precio": 7349
+        },
+        {
+          "sucursal": "129",
+          "precio": 7349
+        },
+        {
+          "sucursal": "220",
+          "precio": 7349
+        },
+        {
+          "sucursal": "078",
+          "precio": 7349
+        },
+        {
+          "sucursal": "131",
+          "precio": 7349
+        },
+        {
+          "sucursal": "090",
+          "precio": 7349
+        },
+        {
+          "sucursal": "165",
+          "precio": 7349
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00481300/00481395.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00481395-00481395-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Queso Rallado COTO 150g",
+      "nombre_ref": "Queso rallado 150g",
+      "categoria": "lacteos",
+      "ean": 7790080014198,
+      "sku_plu": 2745,
+      "marca": "COTO",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 6779,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "184",
+          "precio": 6779
+        },
+        {
+          "sucursal": "165",
+          "precio": 6779
+        },
+        {
+          "sucursal": "109",
+          "precio": 6779
+        },
+        {
+          "sucursal": "238",
+          "precio": 6779
+        },
+        {
+          "sucursal": "061",
+          "precio": 6135
+        },
+        {
+          "sucursal": "182",
+          "precio": 6779
+        },
+        {
+          "sucursal": "091",
+          "precio": 6779
+        },
+        {
+          "sucursal": "085",
+          "precio": 6779
+        },
+        {
+          "sucursal": "060",
+          "precio": 5075
+        },
+        {
+          "sucursal": "065",
+          "precio": 6779
+        },
+        {
+          "sucursal": "185",
+          "precio": 6779
+        },
+        {
+          "sucursal": "189",
+          "precio": 6779
+        },
+        {
+          "sucursal": "220",
+          "precio": 6779
+        },
+        {
+          "sucursal": "056",
+          "precio": 6779
+        },
+        {
+          "sucursal": "064",
+          "precio": 6779
+        },
+        {
+          "sucursal": "063",
+          "precio": 6779
+        },
+        {
+          "sucursal": "197",
+          "precio": 6779
+        },
+        {
+          "sucursal": "107",
+          "precio": 6779
+        },
+        {
+          "sucursal": "200",
+          "precio": 6779
+        },
+        {
+          "sucursal": "078",
+          "precio": 6779
+        },
+        {
+          "sucursal": "188",
+          "precio": 6779
+        },
+        {
+          "sucursal": "181",
+          "precio": 6779
+        },
+        {
+          "sucursal": "178",
+          "precio": 6779
+        },
+        {
+          "sucursal": "204",
+          "precio": 6779
+        },
+        {
+          "sucursal": "131",
+          "precio": 6779
+        },
+        {
+          "sucursal": "092",
+          "precio": 6779
+        },
+        {
+          "sucursal": "209",
+          "precio": 6779
+        },
+        {
+          "sucursal": "090",
+          "precio": 6779
+        },
+        {
+          "sucursal": "075",
+          "precio": 6779
+        },
+        {
+          "sucursal": "215",
+          "precio": 6779
+        },
+        {
+          "sucursal": "160",
+          "precio": 6779
+        },
+        {
+          "sucursal": "219",
+          "precio": 6779
+        },
+        {
+          "sucursal": "129",
+          "precio": 6779
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00002700/00002745.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00002745-00002745-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Mermelada Light Durazno Arcor Fra 390 Grm",
+      "nombre_ref": "Mermelada Arcor durazno 390g",
+      "categoria": "almacen",
+      "ean": 7790580132224,
+      "sku_plu": 523170,
+      "marca": "ARCOR",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 3379,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "064",
+          "precio": 3379
+        },
+        {
+          "sucursal": "189",
+          "precio": 3379
+        },
+        {
+          "sucursal": "215",
+          "precio": 3379
+        },
+        {
+          "sucursal": "075",
+          "precio": 3379
+        },
+        {
+          "sucursal": "165",
+          "precio": 3379
+        },
+        {
+          "sucursal": "178",
+          "precio": 3379
+        },
+        {
+          "sucursal": "184",
+          "precio": 3379
+        },
+        {
+          "sucursal": "219",
+          "precio": 3379
+        },
+        {
+          "sucursal": "092",
+          "precio": 3379
+        },
+        {
+          "sucursal": "109",
+          "precio": 3379
+        },
+        {
+          "sucursal": "060",
+          "precio": 2760
+        },
+        {
+          "sucursal": "238",
+          "precio": 3379
+        },
+        {
+          "sucursal": "061",
+          "precio": 3379
+        },
+        {
+          "sucursal": "063",
+          "precio": 3379
+        },
+        {
+          "sucursal": "131",
+          "precio": 3379
+        },
+        {
+          "sucursal": "220",
+          "precio": 3379
+        },
+        {
+          "sucursal": "085",
+          "precio": 3379
+        },
+        {
+          "sucursal": "182",
+          "precio": 3379
+        },
+        {
+          "sucursal": "181",
+          "precio": 3379
+        },
+        {
+          "sucursal": "188",
+          "precio": 3379
+        },
+        {
+          "sucursal": "204",
+          "precio": 3379
+        },
+        {
+          "sucursal": "056",
+          "precio": 3379
+        },
+        {
+          "sucursal": "197",
+          "precio": 3379
+        },
+        {
+          "sucursal": "107",
+          "precio": 3379
+        },
+        {
+          "sucursal": "065",
+          "precio": 3379
+        },
+        {
+          "sucursal": "160",
+          "precio": 3379
+        },
+        {
+          "sucursal": "209",
+          "precio": 3379
+        },
+        {
+          "sucursal": "185",
+          "precio": 3379
+        },
+        {
+          "sucursal": "090",
+          "precio": 3379
+        },
+        {
+          "sucursal": "091",
+          "precio": 3379
+        },
+        {
+          "sucursal": "200",
+          "precio": 3379
+        },
+        {
+          "sucursal": "129",
+          "precio": 3379
+        },
+        {
+          "sucursal": "078",
+          "precio": 3379
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00523100/00523170.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00523170-00523170-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "131",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "200",
+        "204",
+        "209",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Arveja Secas Remojadas La Campagnola Lat 300 Grm",
+      "nombre_ref": "Arvejas La Campagnola lata",
+      "categoria": "almacen",
+      "ean": 7793360982309,
+      "sku_plu": 8759,
+      "marca": "LA CAMPAGNOLA",
+      "formato": "Kilo escurrido",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 94.9,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "065",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "129",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "085",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "060",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "056",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "063",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "209",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "215",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "189",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "064",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "075",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "197",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "204",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "178",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "165",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "109",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "185",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "220",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "181",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "090",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "092",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "188",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "160",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "091",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "200",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "184",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "133",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "107",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "131",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "219",
+          "precio": 94.9
+        },
+        {
+          "sucursal": "078",
+          "precio": 94.9
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00008700/00008759.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00008759-00008759-200",
+      "disponible_sucursales": []
+    },
+    {
+      "nombre_original": "Atun En Aceite La Campagnola Lat 300 Grm",
+      "nombre_ref": "Atun La Campagnola aceite lata",
+      "categoria": "almacen",
+      "ean": 7790580138769,
+      "sku_plu": 4453,
+      "marca": "LA CAMPAGNOLA",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 9082,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "160",
+          "precio": 9082
+        },
+        {
+          "sucursal": "188",
+          "precio": 9082
+        },
+        {
+          "sucursal": "056",
+          "precio": 9082
+        },
+        {
+          "sucursal": "238",
+          "precio": 9082
+        },
+        {
+          "sucursal": "061",
+          "precio": 9082
+        },
+        {
+          "sucursal": "182",
+          "precio": 9082
+        },
+        {
+          "sucursal": "078",
+          "precio": 9082
+        },
+        {
+          "sucursal": "085",
+          "precio": 9082
+        },
+        {
+          "sucursal": "178",
+          "precio": 9082
+        },
+        {
+          "sucursal": "109",
+          "precio": 9082
+        },
+        {
+          "sucursal": "197",
+          "precio": 9082
+        },
+        {
+          "sucursal": "189",
+          "precio": 9082
+        },
+        {
+          "sucursal": "204",
+          "precio": 9082
+        },
+        {
+          "sucursal": "063",
+          "precio": 9082
+        },
+        {
+          "sucursal": "060",
+          "precio": 7281
+        },
+        {
+          "sucursal": "215",
+          "precio": 9082
+        },
+        {
+          "sucursal": "064",
+          "precio": 9082
+        },
+        {
+          "sucursal": "075",
+          "precio": 9082
+        },
+        {
+          "sucursal": "209",
+          "precio": 9082
+        },
+        {
+          "sucursal": "185",
+          "precio": 9082
+        },
+        {
+          "sucursal": "220",
+          "precio": 9082
+        },
+        {
+          "sucursal": "129",
+          "precio": 9082
+        },
+        {
+          "sucursal": "200",
+          "precio": 9082
+        },
+        {
+          "sucursal": "107",
+          "precio": 9082
+        },
+        {
+          "sucursal": "181",
+          "precio": 9082
+        },
+        {
+          "sucursal": "133",
+          "precio": 8650
+        },
+        {
+          "sucursal": "131",
+          "precio": 9082
+        },
+        {
+          "sucursal": "091",
+          "precio": 9082
+        },
+        {
+          "sucursal": "092",
+          "precio": 9082
+        },
+        {
+          "sucursal": "165",
+          "precio": 9082
+        },
+        {
+          "sucursal": "184",
+          "precio": 9082
+        },
+        {
+          "sucursal": "065",
+          "precio": 9082
+        },
+        {
+          "sucursal": "219",
+          "precio": 9082
+        },
+        {
+          "sucursal": "090",
+          "precio": 9082
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00004400/00004453.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00004453-00004453-200",
+      "disponible_sucursales": [
+        "107",
+        "178",
+        "200",
+        "219",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Mayonesa Liviana Hellmanns 475g",
+      "nombre_ref": "Mayonesa Hellmanns 475g",
+      "categoria": "almacen",
+      "ean": 7794000007109,
+      "sku_plu": 554574,
+      "marca": "HELLMANNS",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 2999,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "131",
+          "precio": 2999
+        },
+        {
+          "sucursal": "238",
+          "precio": 2999
+        },
+        {
+          "sucursal": "061",
+          "precio": 2890
+        },
+        {
+          "sucursal": "182",
+          "precio": 2999
+        },
+        {
+          "sucursal": "078",
+          "precio": 2999
+        },
+        {
+          "sucursal": "200",
+          "precio": 2999
+        },
+        {
+          "sucursal": "197",
+          "precio": 2999
+        },
+        {
+          "sucursal": "056",
+          "precio": 2999
+        },
+        {
+          "sucursal": "107",
+          "precio": 2999
+        },
+        {
+          "sucursal": "209",
+          "precio": 2999
+        },
+        {
+          "sucursal": "219",
+          "precio": 2999
+        },
+        {
+          "sucursal": "065",
+          "precio": 2999
+        },
+        {
+          "sucursal": "189",
+          "precio": 2999
+        },
+        {
+          "sucursal": "204",
+          "precio": 2999
+        },
+        {
+          "sucursal": "185",
+          "precio": 2999
+        },
+        {
+          "sucursal": "085",
+          "precio": 2999
+        },
+        {
+          "sucursal": "184",
+          "precio": 2999
+        },
+        {
+          "sucursal": "188",
+          "precio": 2999
+        },
+        {
+          "sucursal": "215",
+          "precio": 2999
+        },
+        {
+          "sucursal": "063",
+          "precio": 2999
+        },
+        {
+          "sucursal": "160",
+          "precio": 2999
+        },
+        {
+          "sucursal": "129",
+          "precio": 2999
+        },
+        {
+          "sucursal": "064",
+          "precio": 2999
+        },
+        {
+          "sucursal": "092",
+          "precio": 2999
+        },
+        {
+          "sucursal": "181",
+          "precio": 2999
+        },
+        {
+          "sucursal": "075",
+          "precio": 2999
+        },
+        {
+          "sucursal": "220",
+          "precio": 2999
+        },
+        {
+          "sucursal": "090",
+          "precio": 2999
+        },
+        {
+          "sucursal": "060",
+          "precio": 2550
+        },
+        {
+          "sucursal": "165",
+          "precio": 2999
+        },
+        {
+          "sucursal": "178",
+          "precio": 2999
+        },
+        {
+          "sucursal": "091",
+          "precio": 2999
+        },
+        {
+          "sucursal": "109",
+          "precio": 2999
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00554500/00554574.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00554574-00554574-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Polenta Prestopronta 490g",
+      "nombre_ref": "Polenta Presto Pronta",
+      "categoria": "almacen",
+      "ean": 7790580138738,
+      "sku_plu": 580890,
+      "marca": "PRESTO PRONTA",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1599,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "215",
+          "precio": 1599
+        },
+        {
+          "sucursal": "181",
+          "precio": 1599
+        },
+        {
+          "sucursal": "085",
+          "precio": 1599
+        },
+        {
+          "sucursal": "056",
+          "precio": 1599
+        },
+        {
+          "sucursal": "185",
+          "precio": 1599
+        },
+        {
+          "sucursal": "238",
+          "precio": 1599
+        },
+        {
+          "sucursal": "061",
+          "precio": 1599
+        },
+        {
+          "sucursal": "165",
+          "precio": 1599
+        },
+        {
+          "sucursal": "197",
+          "precio": 1599
+        },
+        {
+          "sucursal": "131",
+          "precio": 1599
+        },
+        {
+          "sucursal": "200",
+          "precio": 1599
+        },
+        {
+          "sucursal": "075",
+          "precio": 1599
+        },
+        {
+          "sucursal": "209",
+          "precio": 1599
+        },
+        {
+          "sucursal": "060",
+          "precio": 1325
+        },
+        {
+          "sucursal": "090",
+          "precio": 1599
+        },
+        {
+          "sucursal": "063",
+          "precio": 1599
+        },
+        {
+          "sucursal": "129",
+          "precio": 1599
+        },
+        {
+          "sucursal": "109",
+          "precio": 1599
+        },
+        {
+          "sucursal": "220",
+          "precio": 1599
+        },
+        {
+          "sucursal": "178",
+          "precio": 1599
+        },
+        {
+          "sucursal": "219",
+          "precio": 1599
+        },
+        {
+          "sucursal": "189",
+          "precio": 1599
+        },
+        {
+          "sucursal": "184",
+          "precio": 1599
+        },
+        {
+          "sucursal": "064",
+          "precio": 1599
+        },
+        {
+          "sucursal": "091",
+          "precio": 1599
+        },
+        {
+          "sucursal": "107",
+          "precio": 1599
+        },
+        {
+          "sucursal": "078",
+          "precio": 1599
+        },
+        {
+          "sucursal": "188",
+          "precio": 1599
+        },
+        {
+          "sucursal": "182",
+          "precio": 1599
+        },
+        {
+          "sucursal": "092",
+          "precio": 1599
+        },
+        {
+          "sucursal": "204",
+          "precio": 1599
+        },
+        {
+          "sucursal": "065",
+          "precio": 1599
+        },
+        {
+          "sucursal": "160",
+          "precio": 1599
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00580800/00580890.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00580890-00580890-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Avena tradicional QUAKER 550g",
+      "nombre_ref": "Avena tradicional Quaker 400g",
+      "categoria": "almacen",
+      "ean": 7792170555543,
+      "sku_plu": 621419,
+      "marca": "QUAKER",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 3240.1,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "075",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "185",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "109",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "209",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "090",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "181",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "107",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "189",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "078",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "220",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "092",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "091",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "204",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "184",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "085",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "129",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "056",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "219",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "160",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "131",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "165",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "182",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "063",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "215",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "197",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "200",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "065",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "238",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "178",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "188",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "064",
+          "precio": 3240.1
+        },
+        {
+          "sucursal": "061",
+          "precio": 3240.1
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00621400/00621419.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00621419-00621419-200",
+      "disponible_sucursales": [
+        "063",
+        "075",
+        "091",
+        "092",
+        "109",
+        "129",
+        "131",
+        "160",
+        "178",
+        "182",
+        "184",
+        "189",
+        "197",
+        "200"
+      ]
+    },
+    {
+      "nombre_original": "Papas Fritas Clásicas Lays 330g",
+      "nombre_ref": "Papas fritas Lays clasicas",
+      "categoria": "almacen",
+      "ean": 7790310985588,
+      "sku_plu": 567596,
+      "marca": "LAYS",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 9979,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "165",
+          "precio": 9979
+        },
+        {
+          "sucursal": "238",
+          "precio": 9979
+        },
+        {
+          "sucursal": "185",
+          "precio": 9979
+        },
+        {
+          "sucursal": "129",
+          "precio": 9979
+        },
+        {
+          "sucursal": "065",
+          "precio": 9979
+        },
+        {
+          "sucursal": "200",
+          "precio": 9979
+        },
+        {
+          "sucursal": "215",
+          "precio": 9979
+        },
+        {
+          "sucursal": "181",
+          "precio": 9979
+        },
+        {
+          "sucursal": "085",
+          "precio": 9979
+        },
+        {
+          "sucursal": "063",
+          "precio": 9979
+        },
+        {
+          "sucursal": "197",
+          "precio": 9979
+        },
+        {
+          "sucursal": "219",
+          "precio": 9979
+        },
+        {
+          "sucursal": "060",
+          "precio": 8715
+        },
+        {
+          "sucursal": "160",
+          "precio": 9979
+        },
+        {
+          "sucursal": "092",
+          "precio": 9979
+        },
+        {
+          "sucursal": "209",
+          "precio": 9979
+        },
+        {
+          "sucursal": "061",
+          "precio": 9979
+        },
+        {
+          "sucursal": "107",
+          "precio": 9979
+        },
+        {
+          "sucursal": "220",
+          "precio": 9979
+        },
+        {
+          "sucursal": "131",
+          "precio": 9979
+        },
+        {
+          "sucursal": "056",
+          "precio": 9979
+        },
+        {
+          "sucursal": "188",
+          "precio": 9979
+        },
+        {
+          "sucursal": "204",
+          "precio": 9979
+        },
+        {
+          "sucursal": "090",
+          "precio": 9979
+        },
+        {
+          "sucursal": "182",
+          "precio": 9979
+        },
+        {
+          "sucursal": "091",
+          "precio": 9979
+        },
+        {
+          "sucursal": "189",
+          "precio": 9979
+        },
+        {
+          "sucursal": "178",
+          "precio": 9979
+        },
+        {
+          "sucursal": "075",
+          "precio": 9979
+        },
+        {
+          "sucursal": "109",
+          "precio": 9979
+        },
+        {
+          "sucursal": "078",
+          "precio": 9979
+        },
+        {
+          "sucursal": "064",
+          "precio": 9979
+        },
+        {
+          "sucursal": "184",
+          "precio": 9979
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00567500/00567596.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00567596-00567596-200",
+      "disponible_sucursales": [
+        "063",
+        "064",
+        "075",
+        "085",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "184",
+        "185",
+        "189",
+        "200",
+        "209",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Galletitas OREO Rellenas Con Crema Sabor Original 354g",
+      "nombre_ref": "Galletitas dulces Oreo",
+      "categoria": "panificados",
+      "ean": 7622201735258,
+      "sku_plu": 532300,
+      "marca": "OREO",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 6650,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "107",
+          "precio": 6650
+        },
+        {
+          "sucursal": "129",
+          "precio": 6650
+        },
+        {
+          "sucursal": "075",
+          "precio": 6650
+        },
+        {
+          "sucursal": "085",
+          "precio": 6650
+        },
+        {
+          "sucursal": "238",
+          "precio": 6650
+        },
+        {
+          "sucursal": "061",
+          "precio": 6026
+        },
+        {
+          "sucursal": "219",
+          "precio": 6650
+        },
+        {
+          "sucursal": "078",
+          "precio": 6650
+        },
+        {
+          "sucursal": "109",
+          "precio": 6650
+        },
+        {
+          "sucursal": "182",
+          "precio": 6650
+        },
+        {
+          "sucursal": "204",
+          "precio": 6650
+        },
+        {
+          "sucursal": "131",
+          "precio": 6650
+        },
+        {
+          "sucursal": "092",
+          "precio": 6650
+        },
+        {
+          "sucursal": "220",
+          "precio": 6650
+        },
+        {
+          "sucursal": "181",
+          "precio": 6650
+        },
+        {
+          "sucursal": "215",
+          "precio": 6650
+        },
+        {
+          "sucursal": "184",
+          "precio": 6650
+        },
+        {
+          "sucursal": "185",
+          "precio": 6650
+        },
+        {
+          "sucursal": "160",
+          "precio": 6650
+        },
+        {
+          "sucursal": "200",
+          "precio": 6650
+        },
+        {
+          "sucursal": "188",
+          "precio": 6650
+        },
+        {
+          "sucursal": "178",
+          "precio": 6650
+        },
+        {
+          "sucursal": "060",
+          "precio": 5179
+        },
+        {
+          "sucursal": "063",
+          "precio": 6650
+        },
+        {
+          "sucursal": "091",
+          "precio": 6650
+        },
+        {
+          "sucursal": "056",
+          "precio": 6650
+        },
+        {
+          "sucursal": "197",
+          "precio": 6650
+        },
+        {
+          "sucursal": "165",
+          "precio": 6650
+        },
+        {
+          "sucursal": "064",
+          "precio": 6650
+        },
+        {
+          "sucursal": "189",
+          "precio": 6650
+        },
+        {
+          "sucursal": "065",
+          "precio": 6650
+        },
+        {
+          "sucursal": "209",
+          "precio": 6650
+        },
+        {
+          "sucursal": "090",
+          "precio": 6650
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00532300/00532300.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00532300-00532300-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Bizcochos De Grasa 9de Oro 200g",
+      "nombre_ref": "Bizcochos 9 de Oro",
+      "categoria": "panificados",
+      "ean": 7792200000159,
+      "sku_plu": 4606,
+      "marca": "9 DE ORO",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1519,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "160",
+          "precio": 1519
+        },
+        {
+          "sucursal": "197",
+          "precio": 1519
+        },
+        {
+          "sucursal": "182",
+          "precio": 1519
+        },
+        {
+          "sucursal": "056",
+          "precio": 1519
+        },
+        {
+          "sucursal": "238",
+          "precio": 1519
+        },
+        {
+          "sucursal": "061",
+          "precio": 1350
+        },
+        {
+          "sucursal": "215",
+          "precio": 1519
+        },
+        {
+          "sucursal": "188",
+          "precio": 1519
+        },
+        {
+          "sucursal": "107",
+          "precio": 1519
+        },
+        {
+          "sucursal": "085",
+          "precio": 1519
+        },
+        {
+          "sucursal": "060",
+          "precio": 986
+        },
+        {
+          "sucursal": "063",
+          "precio": 1519
+        },
+        {
+          "sucursal": "075",
+          "precio": 1519
+        },
+        {
+          "sucursal": "209",
+          "precio": 1519
+        },
+        {
+          "sucursal": "189",
+          "precio": 1519
+        },
+        {
+          "sucursal": "204",
+          "precio": 1519
+        },
+        {
+          "sucursal": "064",
+          "precio": 1519
+        },
+        {
+          "sucursal": "178",
+          "precio": 1519
+        },
+        {
+          "sucursal": "109",
+          "precio": 1519
+        },
+        {
+          "sucursal": "185",
+          "precio": 1519
+        },
+        {
+          "sucursal": "220",
+          "precio": 1519
+        },
+        {
+          "sucursal": "165",
+          "precio": 1519
+        },
+        {
+          "sucursal": "184",
+          "precio": 1519
+        },
+        {
+          "sucursal": "219",
+          "precio": 1519
+        },
+        {
+          "sucursal": "133",
+          "precio": 1196
+        },
+        {
+          "sucursal": "129",
+          "precio": 1519
+        },
+        {
+          "sucursal": "131",
+          "precio": 1519
+        },
+        {
+          "sucursal": "200",
+          "precio": 1519
+        },
+        {
+          "sucursal": "091",
+          "precio": 1519
+        },
+        {
+          "sucursal": "092",
+          "precio": 1519
+        },
+        {
+          "sucursal": "078",
+          "precio": 1519
+        },
+        {
+          "sucursal": "181",
+          "precio": 1519
+        },
+        {
+          "sucursal": "065",
+          "precio": 1519
+        },
+        {
+          "sucursal": "090",
+          "precio": 1519
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00004600/00004606.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00004606-00004606-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Vino Tinto Clásico Toro Bot 1125 Ltr",
+      "nombre_ref": "Vino tinto Toro 1L",
+      "categoria": "bebidas",
+      "ean": 7790314074219,
+      "sku_plu": 517475,
+      "marca": "TORO",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 1959.03,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "091",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "185",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "181",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "182",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "219",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "188",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "075",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "220",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "129",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "131",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "165",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "092",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "109",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "197",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "056",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "184",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "060",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "107",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "178",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "204",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "215",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "065",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "189",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "200",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "085",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "064",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "090",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "209",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "078",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "063",
+          "precio": 1959.03
+        },
+        {
+          "sucursal": "160",
+          "precio": 1959.03
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00517400/00517475.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00517475-00517475-200",
+      "disponible_sucursales": []
+    },
+    {
+      "nombre_original": "Jugo En Polvo TANG Naranja Dulce 15g",
+      "nombre_ref": "Jugo en polvo Tang naranja",
+      "categoria": "bebidas",
+      "ean": 7622201735340,
+      "sku_plu": 548656,
+      "marca": "TANG",
+      "formato": "Gramos",
+      "formato_qty": 100,
+      "unidad_medida": "UNI",
+      "precio_lista": 550,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "160",
+          "precio": 550
+        },
+        {
+          "sucursal": "185",
+          "precio": 550
+        },
+        {
+          "sucursal": "178",
+          "precio": 550
+        },
+        {
+          "sucursal": "092",
+          "precio": 550
+        },
+        {
+          "sucursal": "182",
+          "precio": 550
+        },
+        {
+          "sucursal": "184",
+          "precio": 550
+        },
+        {
+          "sucursal": "056",
+          "precio": 550
+        },
+        {
+          "sucursal": "209",
+          "precio": 550
+        },
+        {
+          "sucursal": "165",
+          "precio": 550
+        },
+        {
+          "sucursal": "064",
+          "precio": 550
+        },
+        {
+          "sucursal": "238",
+          "precio": 550
+        },
+        {
+          "sucursal": "061",
+          "precio": 489
+        },
+        {
+          "sucursal": "204",
+          "precio": 550
+        },
+        {
+          "sucursal": "220",
+          "precio": 550
+        },
+        {
+          "sucursal": "189",
+          "precio": 550
+        },
+        {
+          "sucursal": "215",
+          "precio": 550
+        },
+        {
+          "sucursal": "090",
+          "precio": 550
+        },
+        {
+          "sucursal": "060",
+          "precio": 415
+        },
+        {
+          "sucursal": "065",
+          "precio": 550
+        },
+        {
+          "sucursal": "188",
+          "precio": 550
+        },
+        {
+          "sucursal": "075",
+          "precio": 550
+        },
+        {
+          "sucursal": "109",
+          "precio": 550
+        },
+        {
+          "sucursal": "063",
+          "precio": 550
+        },
+        {
+          "sucursal": "107",
+          "precio": 550
+        },
+        {
+          "sucursal": "131",
+          "precio": 550
+        },
+        {
+          "sucursal": "078",
+          "precio": 550
+        },
+        {
+          "sucursal": "219",
+          "precio": 550
+        },
+        {
+          "sucursal": "197",
+          "precio": 550
+        },
+        {
+          "sucursal": "091",
+          "precio": 550
+        },
+        {
+          "sucursal": "181",
+          "precio": 550
+        },
+        {
+          "sucursal": "129",
+          "precio": 550
+        },
+        {
+          "sucursal": "085",
+          "precio": 550
+        },
+        {
+          "sucursal": "200",
+          "precio": 550
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00548600/00548656.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00548656-00548656-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "SPRITE Zero Lima-Limón 2,25 Lt",
+      "nombre_ref": "Gaseosa Sprite 2.25L",
+      "categoria": "bebidas",
+      "ean": 7790895064166,
+      "sku_plu": 124467,
+      "marca": "SPRITE",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 5700,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "129",
+          "precio": 5700
+        },
+        {
+          "sucursal": "075",
+          "precio": 5700
+        },
+        {
+          "sucursal": "189",
+          "precio": 5700
+        },
+        {
+          "sucursal": "085",
+          "precio": 5700
+        },
+        {
+          "sucursal": "109",
+          "precio": 5700
+        },
+        {
+          "sucursal": "182",
+          "precio": 5700
+        },
+        {
+          "sucursal": "061",
+          "precio": 5450
+        },
+        {
+          "sucursal": "063",
+          "precio": 5700
+        },
+        {
+          "sucursal": "238",
+          "precio": 5700
+        },
+        {
+          "sucursal": "181",
+          "precio": 5700
+        },
+        {
+          "sucursal": "219",
+          "precio": 5700
+        },
+        {
+          "sucursal": "060",
+          "precio": 4600
+        },
+        {
+          "sucursal": "056",
+          "precio": 5700
+        },
+        {
+          "sucursal": "209",
+          "precio": 5700
+        },
+        {
+          "sucursal": "204",
+          "precio": 5700
+        },
+        {
+          "sucursal": "064",
+          "precio": 5700
+        },
+        {
+          "sucursal": "215",
+          "precio": 5700
+        },
+        {
+          "sucursal": "197",
+          "precio": 5700
+        },
+        {
+          "sucursal": "178",
+          "precio": 5700
+        },
+        {
+          "sucursal": "185",
+          "precio": 5700
+        },
+        {
+          "sucursal": "220",
+          "precio": 5700
+        },
+        {
+          "sucursal": "710",
+          "precio": 5450
+        },
+        {
+          "sucursal": "092",
+          "precio": 5700
+        },
+        {
+          "sucursal": "091",
+          "precio": 5700
+        },
+        {
+          "sucursal": "165",
+          "precio": 5700
+        },
+        {
+          "sucursal": "200",
+          "precio": 5700
+        },
+        {
+          "sucursal": "107",
+          "precio": 5700
+        },
+        {
+          "sucursal": "133",
+          "precio": 5250
+        },
+        {
+          "sucursal": "188",
+          "precio": 5700
+        },
+        {
+          "sucursal": "065",
+          "precio": 5700
+        },
+        {
+          "sucursal": "160",
+          "precio": 5700
+        },
+        {
+          "sucursal": "184",
+          "precio": 5700
+        },
+        {
+          "sucursal": "078",
+          "precio": 5700
+        },
+        {
+          "sucursal": "090",
+          "precio": 5700
+        },
+        {
+          "sucursal": "131",
+          "precio": 5700
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00124400/00124467.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00124467-00124467-200",
+      "disponible_sucursales": [
+        "063",
+        "064",
+        "065",
+        "075",
+        "085",
+        "091",
+        "109",
+        "131",
+        "165",
+        "178",
+        "185",
+        "200",
+        "204",
+        "209",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Shampoo Ceramidas Fuerza Y Brillo Sedal 190ml",
+      "nombre_ref": "Shampoo Sedal 190ml",
+      "categoria": "limpieza",
+      "ean": 7791293045658,
+      "sku_plu": 568123,
+      "marca": "SEDAL",
+      "formato": "Litro",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 3929.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "065",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "061",
+          "precio": 3629.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "184",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "181",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "064",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "060",
+          "precio": 3167
+        },
+        {
+          "sucursal": "063",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "160",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "178",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "188",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "131",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "091",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "056",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 3929.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 3929.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00568100/00568123.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00568123-00568123-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Pasta Dental COLGATE Total Whitening Con Flúor 90g",
+      "nombre_ref": "Pasta dental Colgate 90g",
+      "categoria": "limpieza",
+      "ean": 7891024135020,
+      "sku_plu": 141094,
+      "marca": "COLGATE",
+      "formato": "Kilo",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 6610.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "181",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "063",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "061",
+          "precio": 6120.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "184",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "060",
+          "precio": 5250
+        },
+        {
+          "sucursal": "056",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "064",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "178",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "710",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "131",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "091",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "160",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "065",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "133",
+          "precio": 5774
+        },
+        {
+          "sucursal": "188",
+          "precio": 6610.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 6610.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00141000/00141094.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00141094-00141094-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238",
+        "710"
+      ]
+    },
+    {
+      "nombre_original": "Jabon De Tocador DOVE Original Multipack 3x90 G",
+      "nombre_ref": "Jabon de tocador Dove",
+      "categoria": "limpieza",
+      "ean": 7891150046481,
+      "sku_plu": 462665,
+      "marca": "DOVE",
+      "formato": "Kilo escurrido",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 7299.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "131",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "060",
+          "precio": 5312
+        },
+        {
+          "sucursal": "178",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "061",
+          "precio": 6751.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "063",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "056",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "064",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "065",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "188",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "181",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "160",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "184",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "091",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 7299.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 7299.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00462600/00462665.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00462665-00462665-200",
+      "disponible_sucursales": [
+        "056",
+        "063",
+        "064",
+        "065",
+        "075",
+        "078",
+        "085",
+        "090",
+        "091",
+        "092",
+        "107",
+        "109",
+        "129",
+        "131",
+        "160",
+        "165",
+        "178",
+        "181",
+        "182",
+        "184",
+        "185",
+        "188",
+        "189",
+        "197",
+        "200",
+        "204",
+        "209",
+        "215",
+        "219",
+        "220",
+        "238"
+      ]
+    },
+    {
+      "nombre_original": "Rollo De Cocina Elite Ultra Absorbente 60 Paños 3 Un",
+      "nombre_ref": "Rollo de cocina Elite",
+      "categoria": "limpieza",
+      "ean": 7790250022053,
+      "sku_plu": 483268,
+      "marca": "ELITE",
+      "formato": "Cuadrado",
+      "formato_qty": 1,
+      "unidad_medida": "UNI",
+      "precio_lista": 3454.99,
+      "precio_promo": null,
+      "precio_unitario": null,
+      "precios_por_sucursal": [
+        {
+          "sucursal": "184",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "238",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "061",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "109",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "178",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "064",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "209",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "182",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "085",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "060",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "056",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "063",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "075",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "204",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "197",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "215",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "189",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "200",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "220",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "131",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "188",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "219",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "165",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "078",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "090",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "107",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "160",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "185",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "091",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "092",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "181",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "129",
+          "precio": 3454.99
+        },
+        {
+          "sucursal": "065",
+          "precio": 3454.99
+        }
+      ],
+      "imagen_url": "https://static.cotodigital3.com.ar/sitios/fotos/large/00483200/00483268.jpg",
+      "url_producto": "https://www.coto.com.ar/_/R-00483268-00483268-200",
+      "disponible_sucursales": []
+    }
+  ]
+}
