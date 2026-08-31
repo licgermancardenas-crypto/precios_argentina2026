@@ -51,10 +51,6 @@ def _buscar_por_texto(dominio: str, texto: str) -> dict | None:
     return resultados[0] if resultados else None
 
 
-# IVA general argentino. Jumbo publica su ListPrice neto de IVA y en centavos,
-# así que recuperar el precio de góndola es multiplicar por esto y dividir por 100.
-IVA = 1.21
-
 # Un precio regular no puede estar por debajo del efectivo ni ser un múltiplo
 # desmedido: por encima de 3x es un error de unidad, no un descuento. El techo
 # deja afuera rebajas de más del 66%, que en supermercado no existen.
@@ -65,35 +61,32 @@ def _precio_regular(oferta: dict, precio_venta: float) -> float:
     """
     Precio regular (pre-descuento) de una oferta VTEX.
 
-    `ListPrice` viene en dos codificaciones distintas según el ítem, y no según
-    la cadena. La mayoría de Jumbo lo publica **neto de IVA y en centavos**
-    —Price = ListPrice / 100 * 1.21, con el factor 82.645 clavado en 37 de 39
-    productos de la canasta—, mientras que Día, Carrefour y algunos ítems del
-    propio Jumbo lo mandan en pesos, directo.
+    Día y Carrefour publican `ListPrice` en pesos: si es mayor al efectivo, hay
+    descuento. Jumbo lo publica **neto de IVA y en centavos**, y de ahí el ×80
+    que parecía corrupción — el factor es 100 dividido la alícuota.
 
-    Antes se leía el 82.645 como corrupción y se caía a `PriceWithoutDiscount`,
-    que en Jumbo replica el precio efectivo. Eso hacía que **el precio con
-    descuento se registrara como precio de lista**: exactamente el tipo de
-    contaminación que el índice evita al no usar nunca el promo. Hoy hay al
-    menos un producto así (EAN 7790199000013: regular $1259,27 vendido a $1150).
+    **Ese campo no sirve para detectar promos en Jumbo**, y conviene dejarlo
+    escrito porque la trampa es sutil. La alícuota varía por producto: 21% en
+    general, 10,5% en la canasta básica (harina, carne). Decodificar todo al 21%
+    hace que un producto al 10,5% aparezca con un "descuento" de 1,21/1,105 =
+    8,68% que no existe. Se probó, y produjo 21 promos falsas por día sobre 45
+    productos: 19 por ruido de punto flotante y 2 por la alícuota reducida.
+    Sondeados los 39 productos con precio, los 39 decodifican EXACTO al efectivo
+    con su alícuota: Jumbo no está ocultando descuentos, no los tiene.
 
-    Decodificar a ciegas rompería el caso inverso —un ítem de Jumbo con
-    ListPrice ya en pesos pasaría de $112,39 a $1,36—, así que se prueban las
-    dos lecturas y se acepta la que caiga en el rango plausible. Las dos nunca
-    califican a la vez: los rangos que las validan son disjuntos.
+    Así que solo se acepta el `ListPrice` cuando ya viene en pesos y en un rango
+    plausible; si no, manda `PriceWithoutDiscount` y, en última instancia, el
+    precio efectivo. Asumir que no hay descuento es preferible a inventar uno.
     """
     candidatos = []
     list_price = oferta.get("ListPrice")
     if list_price:
-        candidatos.append(float(list_price))              # en pesos, directo
-        candidatos.append(float(list_price) / 100 * IVA)  # neto de IVA, en centavos
+        candidatos.append(float(list_price))
     sin_descuento = oferta.get("PriceWithoutDiscount")
     if sin_descuento:
         candidatos.append(float(sin_descuento))
 
     plausibles = [c for c in candidatos if precio_venta <= c <= precio_venta * _TOPE_REGULAR]
-    # Sin ninguna lectura creíble, el efectivo es el mejor dato disponible: se
-    # asume que no hay descuento antes que inventar un regular.
     return max(plausibles) if plausibles else float(precio_venta)
 
 

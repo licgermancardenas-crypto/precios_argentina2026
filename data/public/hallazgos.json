@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-30T14:30:21+00:00",
+  "generado_utc": "2026-08-31T16:39:28+00:00",
   "dispersion": {
     "fecha": "2026-08-30",
     "n_productos": 41,
-    "dispersion_media_pct": 12.8,
+    "dispersion_media_pct": 12.6,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -45,7 +45,7 @@
       {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
         "categoria": "almacen",
-        "precio_min": 7300.002600000001,
+        "precio_min": 7300.0,
         "precio_max": 9082.0,
         "dispersion_pct": 24.4,
         "mas_barata": "jumbo",
@@ -63,7 +63,7 @@
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
-        "precio_min": 4607.0024,
+        "precio_min": 4607.0,
         "precio_max": 5617.99,
         "dispersion_pct": 21.9,
         "mas_barata": "jumbo",
@@ -106,19 +106,10 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Harina 000 Morixe 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 1109.0,
-        "precio_max": 1259.2712,
-        "dispersion_pct": 13.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Crema para Batir 520 Ml La Serenisima",
         "categoria": "lacteos",
         "precio_min": 6999.0,
-        "precio_max": 7900.0053,
+        "precio_max": 7900.0,
         "dispersion_pct": 12.9,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
@@ -136,10 +127,19 @@
         "producto": "Mermelada Light Arcor Durazno 390gr",
         "categoria": "almacen",
         "precio_min": 3379.0,
-        "precio_max": 3800.005,
+        "precio_max": 3800.0,
         "dispersion_pct": 12.5,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Polenta Presto Pronta 490gr",
+        "categoria": "almacen",
+        "precio_min": 1599.0,
+        "precio_max": 1768.0,
+        "dispersion_pct": 10.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
       }
     ]
   },

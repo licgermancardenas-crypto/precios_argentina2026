@@ -100,31 +100,40 @@ if __name__ == "__main__":
 
 class TestPrecioRegularVTEX(unittest.TestCase):
     """
-    _precio_regular decodifica las dos codificaciones de ListPrice de VTEX.
+    _precio_regular NO decodifica el ListPrice de Jumbo, a propósito.
 
-    Jumbo publica ListPrice neto de IVA y en centavos (factor 82.645). Leerlo
-    como corrupción y caer a PriceWithoutDiscount —que en Jumbo replica el
-    precio efectivo— registraba el precio CON descuento como precio de lista,
-    que es justo lo que el índice evita al no usar nunca el promo.
+    Jumbo lo publica neto de IVA y en centavos (de ahí el ×80 que parecía
+    corrupción), pero la alícuota varía por producto —21% general, 10,5% en
+    canasta básica— así que decodificar todo al 21% inventa un descuento del
+    8,68% en los productos al 10,5%. Se probó en producción: 21 promos falsas
+    por día sobre 45 productos. Los 39 productos sondeados decodifican exacto al
+    precio efectivo con su alícuota: Jumbo no tiene promos que estemos perdiendo.
     """
 
-    def test_jumbo_sin_promo_devuelve_el_efectivo(self):
-        # ListPrice 231322 decodifica exacto al Price: no hay descuento.
+    def test_el_listprice_neto_de_iva_no_se_toma_como_regular(self):
+        # 231322/100*1.21 == 2799: mismo precio, otra unidad. No hay descuento.
         oferta = {"ListPrice": 231322.0, "PriceWithoutDiscount": 2799.0}
         self.assertAlmostEqual(_precio_regular(oferta, 2799.0), 2799.0, places=2)
 
-    def test_jumbo_con_promo_recupera_el_regular(self):
-        # Caso real, EAN 7790199000013: regular $1259,27 vendido a $1150.
+    def test_no_inventa_promo_con_alicuota_reducida(self):
+        # Harina Morixe, IVA 10,5%: 104072/100*1.105 == 1150. Decodificar al 21%
+        # daba 1259,27 y un "descuento" del 8,68% inexistente.
         oferta = {"ListPrice": 104072.0, "PriceWithoutDiscount": 1150.0}
-        self.assertAlmostEqual(_precio_regular(oferta, 1150.0), 1259.27, places=2)
+        self.assertAlmostEqual(_precio_regular(oferta, 1150.0), 1150.0, places=2)
+
+    def test_no_deja_ruido_de_punto_flotante_en_el_precio(self):
+        # La decodificación dejaba precio_lista en 7463.0017 contra un promo de
+        # 7463.0, y eso se publicaba como una promo del 0,00002%.
+        oferta = {"ListPrice": 616777.0, "PriceWithoutDiscount": 7463.0}
+        self.assertEqual(_precio_regular(oferta, 7463.0), 7463.0)
 
     def test_jumbo_con_listprice_ya_en_pesos(self):
-        # Mismo retailer, otra codificación. Decodificar acá daría $1,36.
         oferta = {"ListPrice": 112.39, "PriceWithoutDiscount": 112.39}
         self.assertAlmostEqual(_precio_regular(oferta, 112.39), 112.39, places=2)
 
-    def test_dia_conserva_la_lectura_directa(self):
-        # No debe haber regresión en las cadenas que ya funcionaban.
+    def test_dia_detecta_la_promo_real(self):
+        # Donde el ListPrice viene en pesos, un valor mayor al efectivo sí es
+        # descuento y hay que conservarlo.
         oferta = {"ListPrice": 4280.0, "PriceWithoutDiscount": 3200.0}
         self.assertAlmostEqual(_precio_regular(oferta, 3200.0), 4280.0, places=2)
 
@@ -132,16 +141,14 @@ class TestPrecioRegularVTEX(unittest.TestCase):
         self.assertAlmostEqual(_precio_regular({"PriceWithoutDiscount": 500.0}, 500.0), 500.0)
 
     def test_sin_ninguna_lectura_creible_usa_el_efectivo(self):
-        # Antes que inventar un regular, se asume que no hay descuento.
         self.assertAlmostEqual(_precio_regular({"ListPrice": 7.0}, 900.0), 900.0)
 
     def test_descarta_un_regular_desmedido(self):
         # 10x el efectivo es un error de unidad, no una rebaja del 90%.
         self.assertAlmostEqual(_precio_regular({"ListPrice": 9000.0}, 900.0), 900.0)
 
-    def test_el_promo_sale_de_la_diferencia(self):
-        # Integración con el parser: la promo oculta de Jumbo aparece.
+    def test_jumbo_no_genera_promo(self):
         prod = _producto_vtex(list_price=104072.0, price=1150.0, price_without_discount=1150.0)
         parseado = _parsear_producto(prod, "almacen", "ref")
-        self.assertAlmostEqual(parseado["precio_lista"], 1259.27, places=2)
-        self.assertAlmostEqual(parseado["precio_promo"], 1150.0, places=2)
+        self.assertAlmostEqual(parseado["precio_lista"], 1150.0, places=2)
+        self.assertIsNone(parseado["precio_promo"])

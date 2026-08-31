@@ -46,7 +46,11 @@ El primer índice que calculé daba **+157% en una semana** — imposible. La ca
 
 Ese patrón se repitió al sumar Jumbo, cuyo `ListPrice` VTEX venía ×80 respecto del precio efectivo. La lección quedó en el código: **guards de sanidad en dos capas** (scraper y pipeline) que descartan cualquier valor implausible antes de que contamine la serie. Un índice publicable se gana validando los datos, no confiando en ellos.
 
-**Y el segundo hallazgo fue descubrir que el primero estaba mal.** Ese ×80 de Jumbo no era corrupción: el factor era **82,645 clavado** en 37 de los 39 productos de la canasta, y 82,645 = 100 / 1,21. Jumbo publica su `ListPrice` **neto de IVA y en centavos**. Descartarlo como basura tenía un costo silencioso: el scraper caía a `PriceWithoutDiscount`, que en Jumbo replica el precio efectivo, así que **cuando Jumbo hacía una promo, el precio con descuento quedaba registrado como precio de lista** — justo la contaminación que el índice evita al no usar nunca el promo. Hoy `_precio_regular()` decodifica las dos lecturas posibles y se queda con la plausible: descartar un dato ruidoso es más barato que entenderlo, y a veces sale más caro.
+**Y el segundo hallazgo fue entender el ×80 de Jumbo — y el tercero, no sacarle la conclusión que parecía.** El factor no era ruido: era **82,645 clavado**, y 82,645 = 100 / 1,21. Jumbo publica su `ListPrice` **neto de IVA y en centavos**. De ahí salía una hipótesis tentadora: si el campo se podía decodificar, el scraper estaría perdiendo las promos de Jumbo y registrando el precio con descuento como precio de lista.
+
+Era falsa, y decodificarlo se publicó cuatro días antes de que se cayera. **La alícuota de IVA varía por producto** — 21% general, 10,5% en canasta básica (harina, carne). Decodificar todo al 21% le inventa a un producto al 10,5% un descuento de 1,21/1,105 = **8,68% que no existe**. En producción eso generó 21 promos falsas por día sobre 45 productos: 19 por ruido de punto flotante y 2 por la alícuota. Sondeados los 39 productos con precio, **los 39 decodifican exacto al precio efectivo con su alícuota**: el `ListPrice` de Jumbo no contiene información de descuento, es el mismo precio en otra unidad. Jumbo no tiene promos que estemos perdiendo.
+
+La lección no es la que uno querría contar. Un patrón numérico limpio —un factor constante en 37 de 39 casos— alcanza para probar que un campo *significa* algo, y no alcanza para saber *qué*. Los dos casos que no encajaban eran el dato importante, y se leyeron como excepciones en vez de como la refutación que eran. Quedó en el código: `_precio_regular()` acepta el `ListPrice` solo cuando ya viene en pesos, y el test que fija la conducta se llama `test_no_inventa_promo_con_alicuota_reducida`.
 
 ---
 
@@ -212,7 +216,7 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt -r requirement
 > **Usá un entorno virtual, no el Python del sistema.** En Debian/Ubuntu recientes `pip install --user` falla con `externally-managed-environment` (PEP 668), y si el intérprete del sistema ya tiene una versión vieja de Streamlit los tests fallan por el entorno y no por el código: `width="stretch"` no existe antes de la 1.49, así que el smoke test del dashboard explota contra un `requirements.txt` que pide `streamlit>=1.58`. Si `python -m venv` se queja de `ensurepip`, o instalás `python3-venv`, o usás [uv](https://github.com/astral-sh/uv): `uv venv .venv && uv pip install --python .venv/bin/python -r requirements.txt -r requirements-dev.txt`.
 
 Cubren:
-- **Guards de sanidad** — el promo corrupto de Coto se descarta, y el `ListPrice` de Jumbo se decodifica en sus dos codificaciones (neto de IVA en centavos, o en pesos) en vez de tirarse.
+- **Guards de sanidad** — el promo corrupto de Coto se descarta, y el `ListPrice` de Jumbo (neto de IVA, en centavos, con alícuota que cambia por producto) no se usa para inferir descuentos: hay un test que fija que no invente promos con la alícuota reducida.
 - **Matching por EAN** — mismo EAN entre cadenas = mismo producto; fallback por nombre para frescos.
 - **Índice** — filtra por `fuente` (no mezcla cadenas), encadena sobre productos pareados (un alta no lo mueve por composición) y excluye los frescos de balanza.
 - **Miniaturas** — la derivación de URL de cada CDN (Coto por carpeta, VTEX por `-ANCHO-ALTO` en el id) y el ruteo de la que hay que traer por servidor.
