@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-08-31T17:01:49+00:00",
+  "generado_utc": "2026-09-01T14:10:55+00:00",
   "dispersion": {
-    "fecha": "2026-08-31",
+    "fecha": "2026-09-01",
     "n_productos": 41,
-    "dispersion_media_pct": 13.0,
+    "dispersion_media_pct": 13.8,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -43,6 +43,24 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Leche Entera 1 Lts La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 2190.0,
+        "precio_max": 2915.0,
+        "dispersion_pct": 33.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
+      },
+      {
+        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 4365.0,
+        "precio_max": 5617.99,
+        "dispersion_pct": 28.7,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
         "categoria": "almacen",
         "precio_min": 7300.0,
@@ -61,15 +79,6 @@
         "mas_cara": "carrefour"
       },
       {
-        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 4607.0,
-        "precio_max": 5617.99,
-        "dispersion_pct": 21.9,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
         "categoria": "bebidas",
         "precio_min": 4845.0,
@@ -79,15 +88,6 @@
         "mas_cara": "carrefour"
       },
       {
-        "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
-        "categoria": "almacen",
-        "precio_min": 94.9,
-        "precio_max": 112.39,
-        "dispersion_pct": 18.4,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
         "categoria": "panificados",
         "precio_min": 898.0,
@@ -95,6 +95,15 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
+        "categoria": "almacen",
+        "precio_min": 94.9,
+        "precio_max": 112.39,
+        "dispersion_pct": 18.4,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Lavandina Líquida 2 Lts Ayudín",
@@ -115,13 +124,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Manteca Clásica 200 Grs La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 4280.0,
-        "precio_max": 4819.0,
-        "dispersion_pct": 12.6,
-        "mas_barata": "dia",
-        "mas_cara": "coto"
+        "producto": "Cafe Torrado Molido La Virginia 250 Gr.",
+        "categoria": "almacen",
+        "precio_min": 8259.0,
+        "precio_max": 9450.0,
+        "dispersion_pct": 14.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
       },
       {
         "producto": "Mermelada Light Arcor Durazno 390gr",
@@ -129,15 +138,6 @@
         "precio_min": 3379.0,
         "precio_max": 3800.0,
         "dispersion_pct": 12.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Café Molido 250 Grs La Virginia",
-        "categoria": "almacen",
-        "precio_min": 8259.0,
-        "precio_max": 9150.0,
-        "dispersion_pct": 10.8,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
