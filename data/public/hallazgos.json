@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-01T14:10:55+00:00",
+  "generado_utc": "2026-09-02T13:35:07+00:00",
   "dispersion": {
-    "fecha": "2026-09-01",
+    "fecha": "2026-09-02",
     "n_productos": 41,
-    "dispersion_media_pct": 13.8,
+    "dispersion_media_pct": 12.6,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -43,15 +43,6 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Leche Entera 1 Lts La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 2190.0,
-        "precio_max": 2915.0,
-        "dispersion_pct": 33.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "dia"
-      },
-      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4365.0,
@@ -70,15 +61,6 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Picada Especial X KG",
-        "categoria": "carnes",
-        "precio_min": 10499.0,
-        "precio_max": 12990.0,
-        "dispersion_pct": 23.7,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
-      },
-      {
         "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
         "categoria": "bebidas",
         "precio_min": 4845.0,
@@ -86,15 +68,6 @@
         "dispersion_pct": 21.8,
         "mas_barata": "coto",
         "mas_cara": "carrefour"
-      },
-      {
-        "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
-        "categoria": "panificados",
-        "precio_min": 898.0,
-        "precio_max": 1063.0,
-        "dispersion_pct": 18.4,
-        "mas_barata": "coto",
-        "mas_cara": "dia"
       },
       {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
@@ -106,13 +79,13 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3366.45,
-        "dispersion_pct": 15.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
+        "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
+        "categoria": "panificados",
+        "precio_min": 898.0,
+        "precio_max": 1063.0,
+        "dispersion_pct": 18.4,
+        "mas_barata": "coto",
+        "mas_cara": "dia"
       },
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
@@ -124,13 +97,22 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Cafe Torrado Molido La Virginia 250 Gr.",
+        "producto": "Café Molido 250 Grs La Virginia",
         "categoria": "almacen",
         "precio_min": 8259.0,
         "precio_max": 9450.0,
         "dispersion_pct": 14.4,
         "mas_barata": "carrefour",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
+        "categoria": "almacen",
+        "precio_min": 9979.0,
+        "precio_max": 11300.0,
+        "dispersion_pct": 13.2,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Mermelada Light Arcor Durazno 390gr",
@@ -140,10 +122,34 @@
         "dispersion_pct": 12.5,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
+        "categoria": "panificados",
+        "precio_min": 1389.0,
+        "precio_max": 1550.0,
+        "dispersion_pct": 11.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Polenta Presto Pronta 490gr",
+        "categoria": "almacen",
+        "precio_min": 1599.0,
+        "precio_max": 1768.0,
+        "dispersion_pct": 10.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
       }
     ]
   },
   "eventos": [
+    {
+      "fecha": "2026-09-02",
+      "tipo": "outlier",
+      "producto": "Paleta Cocida Feteada Paladini Xkg",
+      "detalle": "Variación 61.8%: 14999.0 → 24265.0"
+    },
     {
       "fecha": "2026-08-27",
       "tipo": "outlier",
