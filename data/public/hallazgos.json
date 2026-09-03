@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-02T13:35:07+00:00",
+  "generado_utc": "2026-09-03T13:32:49+00:00",
   "dispersion": {
-    "fecha": "2026-09-02",
+    "fecha": "2026-09-03",
     "n_productos": 41,
-    "dispersion_media_pct": 12.6,
+    "dispersion_media_pct": 13.1,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -14,15 +14,6 @@
         "dispersion_pct": 97.8,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Azúcar Molida 1 Kg Ledesma",
-        "categoria": "almacen",
-        "precio_min": 1565.0,
-        "precio_max": 2234.39,
-        "dispersion_pct": 42.8,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
       },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
@@ -43,6 +34,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Dulce de Leche Colonial 400 Grs La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 3460.0,
+        "precio_max": 4615.0,
+        "dispersion_pct": 33.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "carrefour"
+      },
+      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4365.0,
@@ -52,6 +52,24 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Leche Entera 1 Lts La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 2190.0,
+        "precio_max": 2809.0,
+        "dispersion_pct": 28.3,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 7490.0,
+        "precio_max": 9350.0,
+        "dispersion_pct": 24.8,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
         "categoria": "almacen",
         "precio_min": 7300.0,
@@ -59,15 +77,6 @@
         "dispersion_pct": 24.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
-        "categoria": "bebidas",
-        "precio_min": 4845.0,
-        "precio_max": 5900.0,
-        "dispersion_pct": 21.8,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
       },
       {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
@@ -86,6 +95,15 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "categoria": "bebidas",
+        "precio_min": 5015.0,
+        "precio_max": 5900.0,
+        "dispersion_pct": 17.6,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
@@ -115,15 +133,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Mermelada Light Arcor Durazno 390gr",
-        "categoria": "almacen",
-        "precio_min": 3379.0,
-        "precio_max": 3800.0,
-        "dispersion_pct": 12.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
         "categoria": "panificados",
         "precio_min": 1389.0,
@@ -131,15 +140,6 @@
         "dispersion_pct": 11.6,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Polenta Presto Pronta 490gr",
-        "categoria": "almacen",
-        "precio_min": 1599.0,
-        "precio_max": 1768.0,
-        "dispersion_pct": 10.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "dia"
       }
     ]
   },

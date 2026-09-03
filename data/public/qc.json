@@ -1,6 +1,6 @@
 {
-  "generado_utc": "2026-09-02T13:35:07+00:00",
-  "fecha": "2026-09-02",
+  "generado_utc": "2026-09-03T13:32:49+00:00",
+  "fecha": "2026-09-03",
   "esperado_por_cadena": 45,
   "cadenas": {
     "coto": {
@@ -19,8 +19,8 @@
       "estado": "ok"
     },
     "jumbo": {
-      "productos": 45,
-      "cobertura_pct": 100.0,
+      "productos": 44,
+      "cobertura_pct": 97.8,
       "estado": "ok"
     }
   },
