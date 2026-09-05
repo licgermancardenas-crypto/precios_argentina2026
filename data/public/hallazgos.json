@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-04T13:26:49+00:00",
+  "generado_utc": "2026-09-05T12:39:12+00:00",
   "dispersion": {
-    "fecha": "2026-09-04",
+    "fecha": "2026-09-05",
     "n_productos": 41,
-    "dispersion_media_pct": 12.5,
+    "dispersion_media_pct": 11.8,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -32,15 +32,6 @@
         "dispersion_pct": 34.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Leche Entera 1 Lts La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 2190.0,
-        "precio_max": 2915.0,
-        "dispersion_pct": 33.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
       },
       {
         "producto": "Huevos Blancos 30 Un",
@@ -140,6 +131,15 @@
         "dispersion_pct": 10.6,
         "mas_barata": "carrefour",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
       }
     ]
   },
