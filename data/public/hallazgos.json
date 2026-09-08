@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-07T15:04:32+00:00",
+  "generado_utc": "2026-09-08T13:34:58+00:00",
   "dispersion": {
-    "fecha": "2026-09-07",
+    "fecha": "2026-09-08",
     "n_productos": 40,
-    "dispersion_media_pct": 12.2,
+    "dispersion_media_pct": 11.7,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -32,15 +32,6 @@
         "dispersion_pct": 34.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 7490.0,
-        "precio_max": 9350.0,
-        "dispersion_pct": 24.8,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
       },
       {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
@@ -100,13 +91,13 @@
         "producto": "Café Molido 250 Grs La Virginia",
         "categoria": "almacen",
         "precio_min": 8259.0,
-        "precio_max": 9450.0,
+        "precio_max": 9452.0,
         "dispersion_pct": 14.4,
         "mas_barata": "carrefour",
-        "mas_cara": "dia"
+        "mas_cara": "coto"
       },
       {
-        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
+        "producto": "Papas Fritas Lays Clásicas 330 G",
         "categoria": "almacen",
         "precio_min": 9979.0,
         "precio_max": 11300.0,
@@ -139,6 +130,15 @@
         "precio_max": 2750.0,
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
     ]
