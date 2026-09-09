@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-08T13:34:58+00:00",
+  "generado_utc": "2026-09-09T13:44:22+00:00",
   "dispersion": {
-    "fecha": "2026-09-08",
+    "fecha": "2026-09-09",
     "n_productos": 40,
-    "dispersion_media_pct": 11.7,
+    "dispersion_media_pct": 11.5,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -97,7 +97,7 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Papas Fritas Lays Clásicas 330 G",
+        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
         "categoria": "almacen",
         "precio_min": 9979.0,
         "precio_max": 11300.0,
