@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-09T13:44:22+00:00",
+  "generado_utc": "2026-09-10T13:35:37+00:00",
   "dispersion": {
-    "fecha": "2026-09-09",
+    "fecha": "2026-09-10",
     "n_productos": 40,
-    "dispersion_media_pct": 11.5,
+    "dispersion_media_pct": 12.0,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -25,20 +25,20 @@
         "mas_cara": "dia"
       },
       {
-        "producto": "Yerba Mate Ytacuá 1 Kg",
+        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
         "categoria": "almacen",
-        "precio_min": 1307.19,
-        "precio_max": 1756.78,
+        "precio_min": 7300.0,
+        "precio_max": 9809.0,
         "dispersion_pct": 34.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
       },
       {
-        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
+        "producto": "Yerba Mate Ytacuá 1 Kg",
         "categoria": "almacen",
-        "precio_min": 7300.0,
-        "precio_max": 9082.0,
-        "dispersion_pct": 24.4,
+        "precio_min": 1307.19,
+        "precio_max": 1756.78,
+        "dispersion_pct": 34.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
       },
@@ -63,10 +63,10 @@
       {
         "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
         "categoria": "panificados",
-        "precio_min": 898.0,
+        "precio_min": 899.0,
         "precio_max": 1063.0,
-        "dispersion_pct": 18.4,
-        "mas_barata": "coto",
+        "dispersion_pct": 18.2,
+        "mas_barata": "carrefour",
         "mas_cara": "dia"
       },
       {
@@ -118,10 +118,19 @@
         "producto": "Polenta Presto Pronta 490gr",
         "categoria": "almacen",
         "precio_min": 1599.0,
-        "precio_max": 1768.0,
+        "precio_max": 1769.0,
         "dispersion_pct": 10.6,
         "mas_barata": "carrefour",
-        "mas_cara": "dia"
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 8490.0,
+        "precio_max": 9350.0,
+        "dispersion_pct": 10.1,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
@@ -130,15 +139,6 @@
         "precio_max": 2750.0,
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
-        "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
     ]
