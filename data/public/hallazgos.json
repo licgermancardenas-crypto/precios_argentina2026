@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-10T13:35:37+00:00",
+  "generado_utc": "2026-09-11T13:32:26+00:00",
   "dispersion": {
-    "fecha": "2026-09-10",
+    "fecha": "2026-09-11",
     "n_productos": 40,
-    "dispersion_media_pct": 12.0,
+    "dispersion_media_pct": 11.6,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -88,29 +88,11 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Café Molido 250 Grs La Virginia",
-        "categoria": "almacen",
-        "precio_min": 8259.0,
-        "precio_max": 9452.0,
-        "dispersion_pct": 14.4,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Papas Fritas Clásicas 330 Grs Lay's",
         "categoria": "almacen",
         "precio_min": 9979.0,
         "precio_max": 11300.0,
         "dispersion_pct": 13.2,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
-        "categoria": "panificados",
-        "precio_min": 1389.0,
-        "precio_max": 1550.0,
-        "dispersion_pct": 11.6,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
@@ -140,6 +122,24 @@
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
+        "categoria": "almacen",
+        "precio_min": 1110.0,
+        "precio_max": 1220.0,
+        "dispersion_pct": 9.9,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
       }
     ]
   },
