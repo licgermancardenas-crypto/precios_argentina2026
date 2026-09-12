@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-11T13:32:26+00:00",
+  "generado_utc": "2026-09-12T12:53:49+00:00",
   "dispersion": {
-    "fecha": "2026-09-11",
+    "fecha": "2026-09-12",
     "n_productos": 40,
-    "dispersion_media_pct": 11.6,
+    "dispersion_media_pct": 11.3,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
