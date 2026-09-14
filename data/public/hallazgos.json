@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-13T13:53:31+00:00",
+  "generado_utc": "2026-09-14T15:56:30+00:00",
   "dispersion": {
-    "fecha": "2026-09-13",
+    "fecha": "2026-09-14",
     "n_productos": 40,
-    "dispersion_media_pct": 11.3,
+    "dispersion_media_pct": 11.2,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -43,6 +43,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
+        "categoria": "panificados",
+        "precio_min": 899.0,
+        "precio_max": 1100.0,
+        "dispersion_pct": 22.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4607.0,
@@ -59,15 +68,6 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
-        "categoria": "panificados",
-        "precio_min": 899.0,
-        "precio_max": 1063.0,
-        "dispersion_pct": 18.2,
-        "mas_barata": "carrefour",
-        "mas_cara": "dia"
       },
       {
         "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
