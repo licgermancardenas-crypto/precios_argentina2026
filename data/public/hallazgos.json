@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-14T15:56:30+00:00",
+  "generado_utc": "2026-09-15T14:24:16+00:00",
   "dispersion": {
-    "fecha": "2026-09-14",
+    "fecha": "2026-09-15",
     "n_productos": 40,
-    "dispersion_media_pct": 11.2,
+    "dispersion_media_pct": 11.3,
     "dispersion_maxima_pct": 97.8,
     "top": [
       {
@@ -43,7 +43,7 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Galletitas Secas Sabor Original 96 Grs Traviata",
+        "producto": "Galletitas Sabor Original 96 Grs Traviata",
         "categoria": "panificados",
         "precio_min": 899.0,
         "precio_max": 1100.0,
@@ -79,6 +79,15 @@
         "mas_cara": "carrefour"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 15.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4409.0,
@@ -104,15 +113,6 @@
         "dispersion_pct": 10.6,
         "mas_barata": "carrefour",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 8490.0,
-        "precio_max": 9350.0,
-        "dispersion_pct": 10.1,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
       },
       {
         "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
