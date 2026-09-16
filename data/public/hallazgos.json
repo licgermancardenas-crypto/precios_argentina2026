@@ -1,20 +1,11 @@
 {
-  "generado_utc": "2026-09-15T14:24:16+00:00",
+  "generado_utc": "2026-09-16T14:16:32+00:00",
   "dispersion": {
-    "fecha": "2026-09-15",
-    "n_productos": 40,
-    "dispersion_media_pct": 11.3,
-    "dispersion_maxima_pct": 97.8,
+    "fecha": "2026-09-16",
+    "n_productos": 39,
+    "dispersion_media_pct": 10.6,
+    "dispersion_maxima_pct": 39.1,
     "top": [
-      {
-        "producto": "Vino Toro Clasico Tinto 1125",
-        "categoria": "bebidas",
-        "precio_min": 990.29,
-        "precio_max": 1959.03,
-        "dispersion_pct": 97.8,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
-      },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
         "categoria": "limpieza",
@@ -43,13 +34,22 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Galletitas Sabor Original 96 Grs Traviata",
-        "categoria": "panificados",
-        "precio_min": 899.0,
-        "precio_max": 1100.0,
-        "dispersion_pct": 22.4,
+        "producto": "Mayonesa Liviana 475 Grs Hellmann's",
+        "categoria": "almacen",
+        "precio_min": 2249.0,
+        "precio_max": 2999.0,
+        "dispersion_pct": 33.3,
         "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Leche Entera 1 Lts La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 2190.0,
+        "precio_max": 2915.0,
+        "dispersion_pct": 33.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
       },
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
@@ -70,7 +70,7 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "producto": "Gaseosa Coca-cola Sabor Original 2.25 L",
         "categoria": "bebidas",
         "precio_min": 5015.0,
         "precio_max": 5900.0,
@@ -79,11 +79,11 @@
         "mas_cara": "carrefour"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3366.45,
-        "dispersion_pct": 15.1,
+        "producto": "Galletitas Sabor Original 96 Grs Traviata",
+        "categoria": "panificados",
+        "precio_min": 949.0,
+        "precio_max": 1100.0,
+        "dispersion_pct": 15.9,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
@@ -97,6 +97,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Avena Tradicional 550 Grs Quaker",
+        "categoria": "almacen",
+        "precio_min": 3240.0,
+        "precio_max": 3700.0,
+        "dispersion_pct": 14.2,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
         "producto": "Papas Fritas Clásicas 330 Grs Lay's",
         "categoria": "almacen",
         "precio_min": 9979.0,
@@ -106,21 +115,12 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Polenta Presto Pronta 490gr",
-        "categoria": "almacen",
-        "precio_min": 1599.0,
-        "precio_max": 1769.0,
-        "dispersion_pct": 10.6,
+        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
+        "categoria": "panificados",
+        "precio_min": 1383.08,
+        "precio_max": 1550.0,
+        "dispersion_pct": 12.1,
         "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -133,13 +133,13 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
         "categoria": "almacen",
-        "precio_min": 1110.0,
-        "precio_max": 1220.0,
-        "dispersion_pct": 9.9,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
       }
     ]
   },
