@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-16T14:16:32+00:00",
+  "generado_utc": "2026-09-17T14:21:22+00:00",
   "dispersion": {
-    "fecha": "2026-09-16",
+    "fecha": "2026-09-17",
     "n_productos": 39,
-    "dispersion_media_pct": 10.6,
+    "dispersion_media_pct": 9.5,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -34,15 +34,6 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Mayonesa Liviana 475 Grs Hellmann's",
-        "categoria": "almacen",
-        "precio_min": 2249.0,
-        "precio_max": 2999.0,
-        "dispersion_pct": 33.3,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Leche Entera 1 Lts La Serenisima",
         "categoria": "lacteos",
         "precio_min": 2190.0,
@@ -68,15 +59,6 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Gaseosa Coca-cola Sabor Original 2.25 L",
-        "categoria": "bebidas",
-        "precio_min": 5015.0,
-        "precio_max": 5900.0,
-        "dispersion_pct": 17.6,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
       },
       {
         "producto": "Galletitas Sabor Original 96 Grs Traviata",
@@ -124,6 +106,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 8490.0,
+        "precio_max": 9350.0,
+        "dispersion_pct": 10.1,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
         "categoria": "limpieza",
         "precio_min": 3319.0,
@@ -140,6 +131,15 @@
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
+        "categoria": "almacen",
+        "precio_min": 1110.0,
+        "precio_max": 1220.0,
+        "dispersion_pct": 9.9,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
       }
     ]
   },
