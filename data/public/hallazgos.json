@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-17T14:21:22+00:00",
+  "generado_utc": "2026-09-18T13:40:13+00:00",
   "dispersion": {
-    "fecha": "2026-09-17",
+    "fecha": "2026-09-18",
     "n_productos": 39,
-    "dispersion_media_pct": 9.5,
+    "dispersion_media_pct": 8.6,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -34,15 +34,6 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Leche Entera 1 Lts La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 2190.0,
-        "precio_max": 2915.0,
-        "dispersion_pct": 33.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4607.0,
@@ -66,6 +57,15 @@
         "precio_min": 949.0,
         "precio_max": 1100.0,
         "dispersion_pct": 15.9,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 15.1,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
@@ -133,11 +133,11 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
+        "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
         "categoria": "almacen",
-        "precio_min": 1110.0,
-        "precio_max": 1220.0,
-        "dispersion_pct": 9.9,
+        "precio_min": 1919.0,
+        "precio_max": 2100.0,
+        "dispersion_pct": 9.4,
         "mas_barata": "carrefour",
         "mas_cara": "coto"
       }
