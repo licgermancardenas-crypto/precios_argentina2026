@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-18T13:40:13+00:00",
+  "generado_utc": "2026-09-19T13:08:33+00:00",
   "dispersion": {
-    "fecha": "2026-09-18",
+    "fecha": "2026-09-19",
     "n_productos": 39,
-    "dispersion_media_pct": 8.6,
+    "dispersion_media_pct": 8.3,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -22,7 +22,7 @@
         "precio_max": 9809.0,
         "dispersion_pct": 34.4,
         "mas_barata": "jumbo",
-        "mas_cara": "coto"
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Yerba Mate Ytacuá 1 Kg",
@@ -88,15 +88,6 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
-        "categoria": "almacen",
-        "precio_min": 9979.0,
-        "precio_max": 11300.0,
-        "dispersion_pct": 13.2,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
         "categoria": "panificados",
         "precio_min": 1383.08,
@@ -138,8 +129,17 @@
         "precio_min": 1919.0,
         "precio_max": 2100.0,
         "dispersion_pct": 9.4,
-        "mas_barata": "carrefour",
+        "mas_barata": "dia",
         "mas_cara": "coto"
+      },
+      {
+        "producto": "Shampoo Ceramidas 190 Ml Sedal",
+        "categoria": "limpieza",
+        "precio_min": 3919.0,
+        "precio_max": 4250.0,
+        "dispersion_pct": 8.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       }
     ]
   },
