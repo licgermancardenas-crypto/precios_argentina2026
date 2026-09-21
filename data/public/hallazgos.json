@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-20T13:40:43+00:00",
+  "generado_utc": "2026-09-21T15:55:39+00:00",
   "dispersion": {
-    "fecha": "2026-09-20",
+    "fecha": "2026-09-21",
     "n_productos": 39,
-    "dispersion_media_pct": 7.9,
+    "dispersion_media_pct": 8.4,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -61,6 +61,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
+        "categoria": "panificados",
+        "precio_min": 1383.08,
+        "precio_max": 1600.0,
+        "dispersion_pct": 15.7,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4409.0,
@@ -79,13 +88,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
-        "categoria": "panificados",
-        "precio_min": 1383.08,
-        "precio_max": 1550.0,
-        "dispersion_pct": 12.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
+        "producto": "Café Molido 250 Grs La Virginia",
+        "categoria": "almacen",
+        "precio_min": 8396.63,
+        "precio_max": 9452.0,
+        "dispersion_pct": 12.6,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
       },
       {
         "producto": "Huevos Blancos 30 Un",
@@ -97,21 +106,21 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
         "categoria": "limpieza",
         "precio_min": 3319.0,
         "precio_max": 3650.0,
         "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -129,15 +138,6 @@
         "precio_min": 3919.0,
         "precio_max": 4250.0,
         "dispersion_pct": 8.4,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
-        "categoria": "almacen",
-        "precio_min": 10499.0,
-        "precio_max": 11300.0,
-        "dispersion_pct": 7.6,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
