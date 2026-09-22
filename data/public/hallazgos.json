@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-21T15:55:39+00:00",
+  "generado_utc": "2026-09-22T14:08:58+00:00",
   "dispersion": {
-    "fecha": "2026-09-21",
+    "fecha": "2026-09-22",
     "n_productos": 39,
-    "dispersion_media_pct": 8.4,
+    "dispersion_media_pct": 8.1,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -97,11 +97,11 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 8490.0,
-        "precio_max": 9350.0,
-        "dispersion_pct": 10.1,
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
@@ -115,22 +115,13 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
-        "categoria": "almacen",
-        "precio_min": 1919.0,
-        "precio_max": 2100.0,
-        "dispersion_pct": 9.4,
-        "mas_barata": "dia",
-        "mas_cara": "coto"
+        "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
+        "categoria": "bebidas",
+        "precio_min": 549.0,
+        "precio_max": 595.0,
+        "dispersion_pct": 8.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
       },
       {
         "producto": "Shampoo Ceramidas 190 Ml Sedal",
@@ -138,6 +129,15 @@
         "precio_min": 3919.0,
         "precio_max": 4250.0,
         "dispersion_pct": 8.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
+        "categoria": "almacen",
+        "precio_min": 10499.0,
+        "precio_max": 11300.0,
+        "dispersion_pct": 7.6,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
