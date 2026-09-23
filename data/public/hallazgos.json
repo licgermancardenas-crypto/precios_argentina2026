@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-22T14:08:58+00:00",
+  "generado_utc": "2026-09-23T14:18:37+00:00",
   "dispersion": {
-    "fecha": "2026-09-22",
+    "fecha": "2026-09-23",
     "n_productos": 39,
-    "dispersion_media_pct": 8.1,
+    "dispersion_media_pct": 8.2,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -61,15 +61,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
-        "categoria": "panificados",
-        "precio_min": 1383.08,
-        "precio_max": 1600.0,
-        "dispersion_pct": 15.7,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4409.0,
@@ -115,22 +106,22 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
-        "categoria": "bebidas",
-        "precio_min": 549.0,
-        "precio_max": 595.0,
-        "dispersion_pct": 8.4,
+        "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
+        "categoria": "almacen",
+        "precio_min": 1915.38,
+        "precio_max": 2100.0,
+        "dispersion_pct": 9.6,
         "mas_barata": "carrefour",
-        "mas_cara": "dia"
+        "mas_cara": "coto"
       },
       {
         "producto": "Shampoo Ceramidas 190 Ml Sedal",
         "categoria": "limpieza",
-        "precio_min": 3919.0,
-        "precio_max": 4250.0,
-        "dispersion_pct": 8.4,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
+        "precio_min": 3929.99,
+        "precio_max": 4275.0,
+        "dispersion_pct": 8.8,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Papas Fritas Clásicas 330 Grs Lay's",
@@ -140,6 +131,15 @@
         "dispersion_pct": 7.6,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Aceite de Girasol 1,5 Lts Natura",
+        "categoria": "almacen",
+        "precio_min": 6975.0,
+        "precio_max": 7469.0,
+        "dispersion_pct": 7.1,
+        "mas_barata": "jumbo",
+        "mas_cara": "carrefour"
       }
     ]
   },
