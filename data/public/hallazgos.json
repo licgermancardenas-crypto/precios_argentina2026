@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-24T14:17:07+00:00",
+  "generado_utc": "2026-09-25T14:39:21+00:00",
   "dispersion": {
-    "fecha": "2026-09-24",
+    "fecha": "2026-09-25",
     "n_productos": 39,
-    "dispersion_media_pct": 8.3,
+    "dispersion_media_pct": 8.6,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -61,6 +61,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.0,
+        "precio_max": 3366.45,
+        "dispersion_pct": 15.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4409.0,
@@ -97,21 +106,21 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
-        "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
         "categoria": "almacen",
         "precio_min": 2500.0,
         "precio_max": 2750.0,
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -130,15 +139,6 @@
         "precio_max": 4650.0,
         "dispersion_pct": 8.8,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
-        "categoria": "almacen",
-        "precio_min": 10499.0,
-        "precio_max": 11300.0,
-        "dispersion_pct": 7.6,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
     ]
