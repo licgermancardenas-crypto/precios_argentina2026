@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-27T14:46:30+00:00",
+  "generado_utc": "2026-09-28T17:39:23+00:00",
   "dispersion": {
-    "fecha": "2026-09-27",
+    "fecha": "2026-09-28",
     "n_productos": 39,
-    "dispersion_media_pct": 8.5,
+    "dispersion_media_pct": 8.3,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -79,15 +79,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Café Molido 250 Grs La Virginia",
-        "categoria": "almacen",
-        "precio_min": 8396.63,
-        "precio_max": 9452.0,
-        "dispersion_pct": 12.6,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
-      },
-      {
         "producto": "Huevos Blancos 30 Un",
         "categoria": "lacteos",
         "precio_min": 8490.0,
@@ -138,6 +129,15 @@
         "precio_min": 10499.0,
         "precio_max": 11300.0,
         "dispersion_pct": 7.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Sal Fina 500 Grs Celusal",
+        "categoria": "almacen",
+        "precio_min": 1549.0,
+        "precio_max": 1650.0,
+        "dispersion_pct": 6.5,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
