@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-28T17:39:23+00:00",
+  "generado_utc": "2026-09-29T15:41:42+00:00",
   "dispersion": {
-    "fecha": "2026-09-28",
+    "fecha": "2026-09-29",
     "n_productos": 39,
-    "dispersion_media_pct": 8.3,
+    "dispersion_media_pct": 8.7,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -61,6 +61,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "categoria": "bebidas",
+        "precio_min": 5015.0,
+        "precio_max": 5900.0,
+        "dispersion_pct": 17.6,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
+      },
+      {
         "producto": "Galletitas Sabor Original 96 Grs Traviata",
         "categoria": "panificados",
         "precio_min": 949.0,
@@ -76,15 +85,6 @@
         "precio_max": 3366.45,
         "dispersion_pct": 15.1,
         "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 8490.0,
-        "precio_max": 9350.0,
-        "dispersion_pct": 10.1,
-        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -124,20 +124,20 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
+        "categoria": "bebidas",
+        "precio_min": 549.0,
+        "precio_max": 595.0,
+        "dispersion_pct": 8.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
+      },
+      {
         "producto": "Papas Fritas Clásicas 330 Grs Lay's",
         "categoria": "almacen",
         "precio_min": 10499.0,
         "precio_max": 11300.0,
         "dispersion_pct": 7.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Sal Fina 500 Grs Celusal",
-        "categoria": "almacen",
-        "precio_min": 1549.0,
-        "precio_max": 1650.0,
-        "dispersion_pct": 6.5,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
