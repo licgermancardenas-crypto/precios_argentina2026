@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-09-29T15:41:42+00:00",
+  "generado_utc": "2026-09-30T15:55:19+00:00",
   "dispersion": {
-    "fecha": "2026-09-29",
+    "fecha": "2026-09-30",
     "n_productos": 39,
-    "dispersion_media_pct": 8.7,
+    "dispersion_media_pct": 8.4,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -79,12 +79,12 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3366.45,
-        "dispersion_pct": 15.1,
-        "mas_barata": "carrefour",
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -97,16 +97,7 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
+        "producto": "Fideos Matarazzo Tallarin N11 500gr",
         "categoria": "almacen",
         "precio_min": 1915.38,
         "precio_max": 2100.0,
@@ -140,6 +131,15 @@
         "dispersion_pct": 7.6,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 9350.0,
+        "precio_max": 9990.0,
+        "dispersion_pct": 6.8,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
       }
     ]
   },
