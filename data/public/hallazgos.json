@@ -1,11 +1,38 @@
 {
-  "generado_utc": "2026-10-01T16:19:40+00:00",
+  "generado_utc": "2026-10-02T15:42:58+00:00",
   "dispersion": {
-    "fecha": "2026-10-01",
+    "fecha": "2026-10-02",
     "n_productos": 39,
-    "dispersion_media_pct": 9.2,
-    "dispersion_maxima_pct": 39.1,
+    "dispersion_media_pct": 13.3,
+    "dispersion_maxima_pct": 70.7,
     "top": [
+      {
+        "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
+        "categoria": "almacen",
+        "precio_min": 1230.0,
+        "precio_max": 2100.0,
+        "dispersion_pct": 70.7,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
+        "categoria": "almacen",
+        "precio_min": 790.0,
+        "precio_max": 1220.0,
+        "dispersion_pct": 54.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Leche Uat Serenisima 3 - 1 Lt",
+        "categoria": "lacteos",
+        "precio_min": 1939.0,
+        "precio_max": 2915.0,
+        "dispersion_pct": 50.3,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
         "categoria": "limpieza",
@@ -34,15 +61,6 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
-        "categoria": "limpieza",
-        "precio_min": 4429.0,
-        "precio_max": 5490.0,
-        "dispersion_pct": 24.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "dia"
-      },
-      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4607.0,
@@ -52,6 +70,24 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
+        "categoria": "limpieza",
+        "precio_min": 4559.0,
+        "precio_max": 5490.0,
+        "dispersion_pct": 20.4,
+        "mas_barata": "carrefour",
+        "mas_cara": "dia"
+      },
+      {
+        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "categoria": "bebidas",
+        "precio_min": 5015.0,
+        "precio_max": 6000.0,
+        "dispersion_pct": 19.6,
+        "mas_barata": "coto",
+        "mas_cara": "carrefour"
+      },
+      {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
         "categoria": "almacen",
         "precio_min": 94.9,
@@ -59,15 +95,6 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
-        "categoria": "bebidas",
-        "precio_min": 5015.0,
-        "precio_max": 5900.0,
-        "dispersion_pct": 17.6,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
       },
       {
         "producto": "Huevos Blancos 30 Un",
@@ -113,33 +140,6 @@
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Fideos Tallarín N11 500 Grs Matarazzo",
-        "categoria": "almacen",
-        "precio_min": 1915.38,
-        "precio_max": 2100.0,
-        "dispersion_pct": 9.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
-        "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
-        "categoria": "bebidas",
-        "precio_min": 549.0,
-        "precio_max": 599.0,
-        "dispersion_pct": 9.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
-        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
-        "categoria": "bebidas",
-        "precio_min": 2936.15,
-        "precio_max": 3200.0,
-        "dispersion_pct": 9.0,
-        "mas_barata": "jumbo",
-        "mas_cara": "dia"
       }
     ]
   },
