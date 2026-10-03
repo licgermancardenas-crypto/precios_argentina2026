@@ -1,38 +1,11 @@
 {
-  "generado_utc": "2026-10-02T15:42:58+00:00",
+  "generado_utc": "2026-10-03T14:21:36+00:00",
   "dispersion": {
-    "fecha": "2026-10-02",
+    "fecha": "2026-10-03",
     "n_productos": 39,
-    "dispersion_media_pct": 13.3,
-    "dispersion_maxima_pct": 70.7,
+    "dispersion_media_pct": 8.8,
+    "dispersion_maxima_pct": 39.1,
     "top": [
-      {
-        "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
-        "categoria": "almacen",
-        "precio_min": 1230.0,
-        "precio_max": 2100.0,
-        "dispersion_pct": 70.7,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
-        "producto": "Puré de Tomate Clásico 520 Grs Arcor",
-        "categoria": "almacen",
-        "precio_min": 790.0,
-        "precio_max": 1220.0,
-        "dispersion_pct": 54.4,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
-      {
-        "producto": "Leche Uat Serenisima 3 - 1 Lt",
-        "categoria": "lacteos",
-        "precio_min": 1939.0,
-        "precio_max": 2915.0,
-        "dispersion_pct": 50.3,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
-      },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
         "categoria": "limpieza",
@@ -140,10 +113,55 @@
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
+        "categoria": "bebidas",
+        "precio_min": 549.0,
+        "precio_max": 599.0,
+        "dispersion_pct": 9.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Shampoo Ceramidas 190 Ml Sedal",
+        "categoria": "limpieza",
+        "precio_min": 4273.99,
+        "precio_max": 4650.0,
+        "dispersion_pct": 8.8,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
+        "categoria": "almacen",
+        "precio_min": 10499.0,
+        "precio_max": 11300.0,
+        "dispersion_pct": 7.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       }
     ]
   },
   "eventos": [
+    {
+      "fecha": "2026-10-03",
+      "tipo": "outlier",
+      "producto": "Puré de Tomate Clásico 520 Grs Arcor",
+      "detalle": "Variación 54.4%: 790.0 → 1220.0"
+    },
+    {
+      "fecha": "2026-10-03",
+      "tipo": "outlier",
+      "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
+      "detalle": "Variación 70.7%: 1230.0 → 2099.0"
+    },
+    {
+      "fecha": "2026-10-03",
+      "tipo": "outlier",
+      "producto": "Leche Uat Serenisima 3 - 1 Lt",
+      "detalle": "Variación 50.3%: 1939.0 → 2915.0"
+    },
     {
       "fecha": "2026-09-02",
       "tipo": "outlier",
