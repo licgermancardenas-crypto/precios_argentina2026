@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-03T14:21:36+00:00",
+  "generado_utc": "2026-10-04T14:52:29+00:00",
   "dispersion": {
-    "fecha": "2026-10-03",
+    "fecha": "2026-10-04",
     "n_productos": 39,
-    "dispersion_media_pct": 8.8,
+    "dispersion_media_pct": 8.9,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -36,10 +36,10 @@
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
-        "precio_min": 4607.0,
+        "precio_min": 4609.0,
         "precio_max": 5617.99,
         "dispersion_pct": 21.9,
-        "mas_barata": "jumbo",
+        "mas_barata": "carrefour",
         "mas_cara": "coto"
       },
       {
