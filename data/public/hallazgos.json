@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-04T14:52:29+00:00",
+  "generado_utc": "2026-10-05T18:17:58+00:00",
   "dispersion": {
-    "fecha": "2026-10-04",
+    "fecha": "2026-10-05",
     "n_productos": 39,
-    "dispersion_media_pct": 8.9,
+    "dispersion_media_pct": 9.3,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -97,11 +97,20 @@
         "mas_cara": "dia"
       },
       {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "producto": "Café Molido 250 Grs La Virginia",
+        "categoria": "almacen",
+        "precio_min": 8396.63,
+        "precio_max": 9452.0,
+        "dispersion_pct": 12.6,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
         "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
+        "precio_min": 2925.0,
+        "precio_max": 3224.0,
+        "dispersion_pct": 10.2,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
@@ -115,6 +124,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
         "categoria": "bebidas",
         "precio_min": 549.0,
@@ -122,24 +140,6 @@
         "dispersion_pct": 9.1,
         "mas_barata": "carrefour",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Shampoo Ceramidas 190 Ml Sedal",
-        "categoria": "limpieza",
-        "precio_min": 4273.99,
-        "precio_max": 4650.0,
-        "dispersion_pct": 8.8,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
-        "categoria": "almacen",
-        "precio_min": 10499.0,
-        "precio_max": 11300.0,
-        "dispersion_pct": 7.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
       }
     ]
   },
