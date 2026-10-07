@@ -1,11 +1,20 @@
 {
-  "generado_utc": "2026-10-06T15:55:35+00:00",
+  "generado_utc": "2026-10-07T16:21:15+00:00",
   "dispersion": {
-    "fecha": "2026-10-06",
+    "fecha": "2026-10-07",
     "n_productos": 39,
-    "dispersion_media_pct": 9.7,
-    "dispersion_maxima_pct": 39.1,
+    "dispersion_media_pct": 13.7,
+    "dispersion_maxima_pct": 61.6,
     "top": [
+      {
+        "producto": "Agua Mineral Sin Gas 2 Lts Villavicencio",
+        "categoria": "bebidas",
+        "precio_min": 1980.0,
+        "precio_max": 3200.0,
+        "dispersion_pct": 61.6,
+        "mas_barata": "dia",
+        "mas_cara": "coto"
+      },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
         "categoria": "limpieza",
@@ -16,13 +25,13 @@
         "mas_cara": "dia"
       },
       {
-        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
-        "categoria": "almacen",
-        "precio_min": 7300.0,
-        "precio_max": 9809.0,
-        "dispersion_pct": 34.4,
-        "mas_barata": "jumbo",
-        "mas_cara": "carrefour"
+        "producto": "Crema para Batir 520 Ml La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 5730.0,
+        "precio_max": 7950.0,
+        "dispersion_pct": 38.7,
+        "mas_barata": "dia",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Yerba Mate Ytacuá 1 Kg",
@@ -34,6 +43,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
+        "categoria": "almacen",
+        "precio_min": 7300.0,
+        "precio_max": 9809.0,
+        "dispersion_pct": 34.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "carrefour"
+      },
+      {
         "producto": "Huevos Blancos 30 Un",
         "categoria": "lacteos",
         "precio_min": 6990.0,
@@ -41,6 +59,24 @@
         "dispersion_pct": 33.8,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Manteca Clásica 200 Grs La Serenisima",
+        "categoria": "lacteos",
+        "precio_min": 3750.0,
+        "precio_max": 5010.0,
+        "dispersion_pct": 33.6,
+        "mas_barata": "dia",
+        "mas_cara": "coto"
+      },
+      {
+        "producto": "Aceite de Girasol 1,5 Lts Natura",
+        "categoria": "almacen",
+        "precio_min": 5890.0,
+        "precio_max": 7469.0,
+        "dispersion_pct": 26.8,
+        "mas_barata": "dia",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
@@ -104,42 +140,6 @@
         "dispersion_pct": 12.6,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Galletas Secas Sabor Original 354 Grs x 3 Un Oreo",
-        "categoria": "panificados",
-        "precio_min": 6424.0,
-        "precio_max": 7140.0,
-        "dispersion_pct": 11.1,
-        "mas_barata": "jumbo",
-        "mas_cara": "dia"
-      },
-      {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3224.0,
-        "dispersion_pct": 10.2,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
-        "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
       }
     ]
   },
