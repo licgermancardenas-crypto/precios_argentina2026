@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-11T15:36:38+00:00",
+  "generado_utc": "2026-10-12T18:55:49+00:00",
   "dispersion": {
-    "fecha": "2026-10-11",
+    "fecha": "2026-10-12",
     "n_productos": 39,
-    "dispersion_media_pct": 9.5,
+    "dispersion_media_pct": 9.8,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -97,21 +97,21 @@
         "mas_cara": "dia"
       },
       {
+        "producto": "Cerveza Rubia 1 Lts Quilmes",
+        "categoria": "bebidas",
+        "precio_min": 4200.0,
+        "precio_max": 4649.0,
+        "dispersion_pct": 10.7,
+        "mas_barata": "jumbo",
+        "mas_cara": "carrefour"
+      },
+      {
         "producto": "Lavandina Líquida 2 Lts Ayudín",
         "categoria": "limpieza",
         "precio_min": 2920.0,
         "precio_max": 3224.0,
         "dispersion_pct": 10.4,
         "mas_barata": "dia",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
-        "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -124,21 +124,21 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Shampoo Ceramidas 190 Ml Sedal",
         "categoria": "limpieza",
         "precio_min": 4273.99,
         "precio_max": 4650.0,
         "dispersion_pct": 8.8,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
-        "categoria": "almacen",
-        "precio_min": 10499.0,
-        "precio_max": 11300.0,
-        "dispersion_pct": 7.6,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
     ]
