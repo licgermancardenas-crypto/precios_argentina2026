@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-12T18:55:49+00:00",
+  "generado_utc": "2026-10-13T16:57:30+00:00",
   "dispersion": {
-    "fecha": "2026-10-12",
+    "fecha": "2026-10-13",
     "n_productos": 39,
-    "dispersion_media_pct": 9.8,
+    "dispersion_media_pct": 9.1,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -32,15 +32,6 @@
         "dispersion_pct": 34.4,
         "mas_barata": "jumbo",
         "mas_cara": "coto"
-      },
-      {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 6990.0,
-        "precio_max": 9350.0,
-        "dispersion_pct": 33.8,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
       },
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
@@ -108,19 +99,10 @@
       {
         "producto": "Lavandina Líquida 2 Lts Ayudín",
         "categoria": "limpieza",
-        "precio_min": 2920.0,
+        "precio_min": 2925.0,
         "precio_max": 3224.0,
-        "dispersion_pct": 10.4,
-        "mas_barata": "dia",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
+        "dispersion_pct": 10.2,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -133,12 +115,30 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Shampoo Ceramidas 190 Ml Sedal",
         "categoria": "limpieza",
         "precio_min": 4273.99,
         "precio_max": 4650.0,
         "dispersion_pct": 8.8,
         "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
+        "categoria": "almacen",
+        "precio_min": 10499.0,
+        "precio_max": 11300.0,
+        "dispersion_pct": 7.6,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
     ]
