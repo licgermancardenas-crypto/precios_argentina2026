@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-14T14:34:14+00:00",
+  "generado_utc": "2026-10-15T14:12:04+00:00",
   "dispersion": {
-    "fecha": "2026-10-14",
+    "fecha": "2026-10-15",
     "n_productos": 39,
-    "dispersion_media_pct": 9.1,
+    "dispersion_media_pct": 9.2,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -70,6 +70,15 @@
         "mas_cara": "carrefour"
       },
       {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 7990.0,
+        "precio_max": 9350.0,
+        "dispersion_pct": 17.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Galletitas Sabor Original 96 Grs Traviata",
         "categoria": "panificados",
         "precio_min": 949.0,
@@ -77,15 +86,6 @@
         "dispersion_pct": 15.9,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Sal Fina 500 Grs Celusal",
-        "categoria": "almacen",
-        "precio_min": 1549.0,
-        "precio_max": 1790.0,
-        "dispersion_pct": 15.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "dia"
       },
       {
         "producto": "Cerveza Rubia 1 Lts Quilmes",
@@ -133,13 +133,13 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
+        "producto": "Sal Fina 500 Grs Celusal",
         "categoria": "almacen",
-        "precio_min": 10499.0,
-        "precio_max": 11300.0,
-        "dispersion_pct": 7.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
+        "precio_min": 1549.0,
+        "precio_max": 1673.0,
+        "dispersion_pct": 8.0,
+        "mas_barata": "dia",
+        "mas_cara": "coto"
       }
     ]
   },
