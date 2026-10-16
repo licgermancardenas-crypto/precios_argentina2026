@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-15T14:12:04+00:00",
+  "generado_utc": "2026-10-16T13:59:29+00:00",
   "dispersion": {
-    "fecha": "2026-10-15",
+    "fecha": "2026-10-16",
     "n_productos": 39,
-    "dispersion_media_pct": 9.2,
+    "dispersion_media_pct": 9.4,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -14,6 +14,15 @@
         "dispersion_pct": 39.1,
         "mas_barata": "coto",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Leche Uat Serenisima 3 - 1 Lt",
+        "categoria": "lacteos",
+        "precio_min": 2159.0,
+        "precio_max": 2915.0,
+        "dispersion_pct": 35.0,
+        "mas_barata": "carrefour",
+        "mas_cara": "coto"
       },
       {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
@@ -36,10 +45,10 @@
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
-        "precio_min": 4407.69,
+        "precio_min": 4508.0,
         "precio_max": 5505.99,
-        "dispersion_pct": 24.9,
-        "mas_barata": "carrefour",
+        "dispersion_pct": 22.1,
+        "mas_barata": "jumbo",
         "mas_cara": "coto"
       },
       {
@@ -76,15 +85,6 @@
         "precio_max": 9350.0,
         "dispersion_pct": 17.0,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Galletitas Sabor Original 96 Grs Traviata",
-        "categoria": "panificados",
-        "precio_min": 949.0,
-        "precio_max": 1100.0,
-        "dispersion_pct": 15.9,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
