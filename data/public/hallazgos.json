@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-16T13:59:29+00:00",
+  "generado_utc": "2026-10-17T12:56:59+00:00",
   "dispersion": {
-    "fecha": "2026-10-16",
+    "fecha": "2026-10-17",
     "n_productos": 39,
-    "dispersion_media_pct": 9.4,
+    "dispersion_media_pct": 8.1,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -14,15 +14,6 @@
         "dispersion_pct": 39.1,
         "mas_barata": "coto",
         "mas_cara": "dia"
-      },
-      {
-        "producto": "Leche Uat Serenisima 3 - 1 Lt",
-        "categoria": "lacteos",
-        "precio_min": 2159.0,
-        "precio_max": 2915.0,
-        "dispersion_pct": 35.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
       },
       {
         "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
@@ -97,15 +88,6 @@
         "mas_cara": "carrefour"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3224.0,
-        "dispersion_pct": 10.2,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
         "categoria": "limpieza",
         "precio_min": 3319.0,
@@ -133,13 +115,31 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Sal Fina 500 Grs Celusal",
+        "producto": "Papas Fritas Clásicas 330 Grs Lay's",
         "categoria": "almacen",
-        "precio_min": 1549.0,
-        "precio_max": 1673.0,
-        "dispersion_pct": 8.0,
-        "mas_barata": "dia",
-        "mas_cara": "coto"
+        "precio_min": 10499.0,
+        "precio_max": 11300.0,
+        "dispersion_pct": 7.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Galletitas Sabor Original 96 Grs Traviata",
+        "categoria": "panificados",
+        "precio_min": 1029.0,
+        "precio_max": 1100.0,
+        "dispersion_pct": 6.9,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Mayonesa Liviana 475 Grs Hellmann's",
+        "categoria": "almacen",
+        "precio_min": 2990.0,
+        "precio_max": 3197.0,
+        "dispersion_pct": 6.9,
+        "mas_barata": "jumbo",
+        "mas_cara": "dia"
       }
     ]
   },
