@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-17T12:56:59+00:00",
+  "generado_utc": "2026-10-18T13:15:00+00:00",
   "dispersion": {
-    "fecha": "2026-10-17",
+    "fecha": "2026-10-18",
     "n_productos": 39,
-    "dispersion_media_pct": 8.1,
+    "dispersion_media_pct": 7.9,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -79,13 +79,13 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Cerveza Rubia 1 Lts Quilmes",
-        "categoria": "bebidas",
-        "precio_min": 4200.0,
-        "precio_max": 4649.0,
-        "dispersion_pct": 10.7,
-        "mas_barata": "jumbo",
-        "mas_cara": "carrefour"
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
@@ -94,15 +94,6 @@
         "precio_max": 3650.0,
         "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -140,6 +131,15 @@
         "dispersion_pct": 6.9,
         "mas_barata": "jumbo",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Pan de Molde Blanco Familiar 400 Grs Bimbo",
+        "categoria": "panificados",
+        "precio_min": 6020.0,
+        "precio_max": 6400.0,
+        "dispersion_pct": 6.3,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       }
     ]
   },
