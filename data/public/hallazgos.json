@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-18T13:15:00+00:00",
+  "generado_utc": "2026-10-19T16:30:12+00:00",
   "dispersion": {
-    "fecha": "2026-10-18",
-    "n_productos": 39,
-    "dispersion_media_pct": 7.9,
+    "fecha": "2026-10-19",
+    "n_productos": 38,
+    "dispersion_media_pct": 7.5,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -79,15 +79,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
         "categoria": "limpieza",
         "precio_min": 3319.0,
@@ -140,6 +131,15 @@
         "dispersion_pct": 6.3,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
+        "categoria": "panificados",
+        "precio_min": 1519.0,
+        "precio_max": 1600.0,
+        "dispersion_pct": 5.3,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       }
     ]
   },
@@ -159,7 +159,7 @@
     {
       "fecha": "2026-10-03",
       "tipo": "outlier",
-      "producto": "Fideos Tallarín N°5 500 Grs Matarazzo",
+      "producto": "Matarazzo Tallarín N°11 20 x 500 Gr.",
       "detalle": "Variación 70.7%: 1230.0 → 2099.0"
     },
     {
