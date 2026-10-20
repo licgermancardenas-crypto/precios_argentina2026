@@ -1,6 +1,6 @@
 {
-  "generado_utc": "2026-10-19T16:30:12+00:00",
-  "fecha": "2026-10-19",
+  "generado_utc": "2026-10-20T14:21:38+00:00",
+  "fecha": "2026-10-20",
   "esperado_por_cadena": 45,
   "cadenas": {
     "coto": {
@@ -9,23 +9,21 @@
       "estado": "ok"
     },
     "dia": {
-      "productos": 43,
-      "cobertura_pct": 95.6,
+      "productos": 44,
+      "cobertura_pct": 97.8,
       "estado": "ok"
     },
     "carrefour": {
-      "productos": 42,
-      "cobertura_pct": 93.3,
+      "productos": 44,
+      "cobertura_pct": 97.8,
       "estado": "ok"
     },
     "jumbo": {
-      "productos": 35,
-      "cobertura_pct": 77.8,
-      "estado": "warning"
+      "productos": 45,
+      "cobertura_pct": 100.0,
+      "estado": "ok"
     }
   },
-  "estado_global": "warning",
-  "alertas": [
-    "jumbo: relevó 35/45 (78%)"
-  ]
+  "estado_global": "ok",
+  "alertas": []
 }
