@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-20T14:21:37+00:00",
+  "generado_utc": "2026-10-21T14:34:19+00:00",
   "dispersion": {
-    "fecha": "2026-10-20",
+    "fecha": "2026-10-21",
     "n_productos": 39,
-    "dispersion_media_pct": 9.8,
+    "dispersion_media_pct": 9.6,
     "dispersion_maxima_pct": 50.3,
     "top": [
       {
@@ -88,11 +88,11 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.99,
-        "precio_max": 3224.0,
-        "dispersion_pct": 10.2,
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
@@ -103,15 +103,6 @@
         "precio_max": 3650.0,
         "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -138,6 +129,15 @@
         "precio_min": 1519.0,
         "precio_max": 1650.0,
         "dispersion_pct": 8.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Harina 000 1 Kg Morixe",
+        "categoria": "almacen",
+        "precio_min": 1109.0,
+        "precio_max": 1200.0,
+        "dispersion_pct": 8.2,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
