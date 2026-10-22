@@ -1,7 +1,7 @@
 {
-  "generado_utc": "2026-10-21T14:34:19+00:00",
+  "generado_utc": "2026-10-22T14:35:31+00:00",
   "dispersion": {
-    "fecha": "2026-10-21",
+    "fecha": "2026-10-22",
     "n_productos": 39,
     "dispersion_media_pct": 9.6,
     "dispersion_maxima_pct": 50.3,
@@ -79,20 +79,11 @@
         "mas_cara": "carrefour"
       },
       {
-        "producto": "Avena Tradicional 550 Grs Quaker",
-        "categoria": "almacen",
-        "precio_min": 3550.0,
-        "precio_max": 3950.0,
-        "dispersion_pct": 11.3,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 7990.0,
+        "precio_max": 9300.0,
+        "dispersion_pct": 16.4,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
@@ -103,6 +94,15 @@
         "precio_max": 3650.0,
         "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
