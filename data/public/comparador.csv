@@ -1,16 +1,16 @@
 producto,categoria,ean,carrefour,coto,dia,jumbo,mas_barata,dif_pct_max
 aceite girasol natura botella 1 5 l,almacen,7790272001029,7469.0,7464.0,7460.0,7460.0,dia,0.1
-agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,3199.0,3200.0,3200.0,3200.0,carrefour,0.0
+agua sin gas mineral villavicencio 2000c,bebidas,7799155000197,3198.46,3200.0,3200.0,3200.0,carrefour,0.0
 arroz blanco largo fino molinos ala 1kg,almacen,7791120100857,,2500.0,,2750.0,coto,10.0
 arveja secas remojadas la campagnola lat 300 grm,almacen,7793360982309,,94.9,,112.39,coto,18.4
 atun en aceite la campagnola en lata 300 g,almacen,7790580138769,9809.0,9809.0,,7300.0,jumbo,34.4
 avena tradicional quaker en caja 550 grs,almacen,7792170555543,3700.0,3700.0,,3950.0,carrefour,6.8
 azucar superior real ledesma 1kg,almacen,7792540250450,1619.0,1567.0,1619.0,1613.0,coto,3.3
-bizcochos 9 de oro de grasa 200 g,panificados,7792200000159,1519.0,1519.0,1519.0,1650.0,carrefour,8.6
+bizcochos 9 de oro de grasa 200 g,panificados,7792200000159,1515.38,1519.0,1519.0,1650.0,carrefour,8.9
 cafe tostado molido la virginia 250 grs,almacen,7790150007501,9449.0,9452.0,9450.0,9108.29,jumbo,3.8
-cerveza quilmes botella 1 l,bebidas,7792798007387,4649.0,4649.0,,4649.0,carrefour,0.0
-crema la serenisima para batir 520 cc,lacteos,7790742014122,7645.0,7645.0,7642.0,7950.0,dia,4.0
-detergente magistral ultra limon botella 500ml,limpieza,7790990003039,4559.0,5505.99,4559.0,5509.0,carrefour,20.8
+cerveza quilmes botella 1 l,bebidas,7792798007387,4649.0,4649.0,,4650.0,carrefour,0.0
+crema la serenisima para batir 520 cc,lacteos,7790742014122,7645.0,7645.0,7642.0,8150.0,dia,6.6
+detergente magistral ultra limon botella 500ml,limpieza,7790990003039,4553.85,5505.99,4559.0,5509.0,carrefour,21.0
 dulce de leche la serenisima colonial 400 g,lacteos,7790742625205,4800.0,4800.0,4800.0,4800.0,carrefour,0.0
 fideos tallarin n 5 matarazzo 500g,almacen,7790070336316,2099.0,2200.0,2200.0,2125.0,carrefour,4.8
 galletitas oreo rellenas con crema sabor original 354 g,panificados,7622201735258,7139.0,7140.0,7140.0,7140.0,carrefour,0.0
@@ -22,13 +22,13 @@ huevo blanco maple x 30u,lacteos,7798092353120,,7990.0,,9300.0,coto,16.4
 jabon de tocador dove original multipack x3 90 grs,limpieza,7891150046481,7655.0,7655.99,7655.0,7655.0,carrefour,0.0
 jabon en polvo matic a mano lavado total con bicarbonato ala 800 g,limpieza,7791290796829,3319.0,3321.99,3320.0,3650.0,carrefour,10.0
 jugo en polvo tang naranja dulce 15 g,bebidas,7622201735340,595.0,599.0,595.0,598.0,carrefour,0.7
-lavandina original ayudin 2l,limpieza,7793253006709,3129.0,2925.99,3160.0,3130.0,coto,8.0
+lavandina original ayudin 2l,limpieza,7793253006709,3129.0,2925.99,3160.0,3601.79,coto,23.1
 leche larga vida entera ua clasica 3 la serenisima 1l,lacteos,7790742363008,2915.0,1939.0,2915.0,2915.0,coto,50.3
-manteca la serenisima 200gr,lacteos,7793940054006,5006.67,5010.0,5010.0,5010.0,carrefour,0.1
+manteca la serenisima 200gr,lacteos,7793940054006,5010.0,5010.0,5010.0,5010.0,carrefour,0.0
 mayonesa liviana hellmanns dp 475 g,almacen,7794000007109,3089.0,3089.0,3197.0,3100.0,carrefour,3.5
 mermelada light de durazno arcor 390 grs,almacen,7790580132224,3649.0,3649.0,3650.0,3900.0,carrefour,6.9
 paleta cocida feteada paladini xkg,carnes,2003836100003,,18719.0,,,coto,0.0
-pan blanco bimbo 400g,panificados,7793890261233,6020.0,6022.0,,6400.0,carrefour,6.3
+pan blanco bimbo 400g,panificados,7793890261233,6020.0,6022.0,,6500.0,carrefour,8.0
 papas fritas lays clasicas 330 g,almacen,7790310985588,10499.0,10500.0,,11500.0,carrefour,9.5
 papel higienico elite ultra suave doble hoja 30 m 4 un,limpieza,7790250026075,4609.0,5617.99,5615.0,4853.0,carrefour,21.9
 pasta dental colgate total whitening con fluor 90 grs,limpieza,7891024135020,7040.0,7040.99,7040.0,,carrefour,0.0

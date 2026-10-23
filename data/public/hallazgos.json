@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-22T14:35:31+00:00",
+  "generado_utc": "2026-10-23T14:18:35+00:00",
   "dispersion": {
-    "fecha": "2026-10-22",
+    "fecha": "2026-10-23",
     "n_productos": 39,
-    "dispersion_media_pct": 9.6,
+    "dispersion_media_pct": 10.1,
     "dispersion_maxima_pct": 50.3,
     "top": [
       {
@@ -43,6 +43,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.99,
+        "precio_max": 3601.79,
+        "dispersion_pct": 23.1,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4609.0,
@@ -54,9 +63,9 @@
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
-        "precio_min": 4559.0,
+        "precio_min": 4553.85,
         "precio_max": 5509.0,
-        "dispersion_pct": 20.8,
+        "dispersion_pct": 21.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
@@ -115,30 +124,21 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
+        "categoria": "panificados",
+        "precio_min": 1515.38,
+        "precio_max": 1650.0,
+        "dispersion_pct": 8.9,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Shampoo Ceramidas 190 Ml Sedal",
         "categoria": "limpieza",
         "precio_min": 4273.99,
         "precio_max": 4650.0,
         "dispersion_pct": 8.8,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
-        "categoria": "panificados",
-        "precio_min": 1519.0,
-        "precio_max": 1650.0,
-        "dispersion_pct": 8.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Harina 000 1 Kg Morixe",
-        "categoria": "almacen",
-        "precio_min": 1109.0,
-        "precio_max": 1200.0,
-        "dispersion_pct": 8.2,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
     ]
