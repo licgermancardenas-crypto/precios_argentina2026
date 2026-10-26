@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-25T13:47:52+00:00",
+  "generado_utc": "2026-10-26T16:07:43+00:00",
   "dispersion": {
-    "fecha": "2026-10-25",
+    "fecha": "2026-10-26",
     "n_productos": 39,
-    "dispersion_media_pct": 9.6,
+    "dispersion_media_pct": 9.7,
     "dispersion_maxima_pct": 50.3,
     "top": [
       {
@@ -52,6 +52,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "categoria": "bebidas",
+        "precio_min": 5100.0,
+        "precio_max": 6100.0,
+        "dispersion_pct": 19.6,
+        "mas_barata": "coto",
+        "mas_cara": "dia"
+      },
+      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4699.0,
@@ -68,15 +77,6 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
-        "categoria": "bebidas",
-        "precio_min": 5100.0,
-        "precio_max": 6000.0,
-        "dispersion_pct": 17.6,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
       },
       {
         "producto": "Huevos Blancos 30 Un",
