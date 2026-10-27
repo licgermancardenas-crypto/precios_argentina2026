@@ -1,20 +1,11 @@
 {
-  "generado_utc": "2026-10-26T16:07:43+00:00",
+  "generado_utc": "2026-10-27T15:22:36+00:00",
   "dispersion": {
-    "fecha": "2026-10-26",
+    "fecha": "2026-10-27",
     "n_productos": 39,
-    "dispersion_media_pct": 9.7,
-    "dispersion_maxima_pct": 50.3,
+    "dispersion_media_pct": 9.0,
+    "dispersion_maxima_pct": 39.1,
     "top": [
-      {
-        "producto": "Leche Uat Serenisima 3 - 1 Lt",
-        "categoria": "lacteos",
-        "precio_min": 1939.0,
-        "precio_max": 2915.0,
-        "dispersion_pct": 50.3,
-        "mas_barata": "coto",
-        "mas_cara": "carrefour"
-      },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
         "categoria": "limpieza",
@@ -43,6 +34,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.0,
+        "precio_max": 3601.79,
+        "dispersion_pct": 23.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4553.85,
@@ -50,15 +50,6 @@
         "dispersion_pct": 21.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
-        "categoria": "bebidas",
-        "precio_min": 5100.0,
-        "precio_max": 6100.0,
-        "dispersion_pct": 19.6,
-        "mas_barata": "coto",
-        "mas_cara": "dia"
       },
       {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
@@ -70,6 +61,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
+        "categoria": "bebidas",
+        "precio_min": 5100.0,
+        "precio_max": 6100.0,
+        "dispersion_pct": 19.6,
+        "mas_barata": "coto",
+        "mas_cara": "dia"
+      },
+      {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
         "categoria": "almacen",
         "precio_min": 94.9,
@@ -79,12 +79,12 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Huevos Blancos 30 Un",
+        "producto": "Crema para Batir 520 Ml La Serenisima",
         "categoria": "lacteos",
-        "precio_min": 7990.0,
-        "precio_max": 9300.0,
-        "dispersion_pct": 16.4,
-        "mas_barata": "coto",
+        "precio_min": 7642.0,
+        "precio_max": 8500.0,
+        "dispersion_pct": 11.2,
+        "mas_barata": "dia",
         "mas_cara": "jumbo"
       },
       {
@@ -144,6 +144,12 @@
     ]
   },
   "eventos": [
+    {
+      "fecha": "2026-10-27",
+      "tipo": "outlier",
+      "producto": "Leche Uat Serenisima 3 - 1 Lt",
+      "detalle": "Variación 56.3%: 1939.0 → 3030.0"
+    },
     {
       "fecha": "2026-10-08",
       "tipo": "outlier",
