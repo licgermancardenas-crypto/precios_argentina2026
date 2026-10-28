@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-27T15:22:36+00:00",
+  "generado_utc": "2026-10-28T15:58:26+00:00",
   "dispersion": {
-    "fecha": "2026-10-27",
+    "fecha": "2026-10-28",
     "n_productos": 39,
-    "dispersion_media_pct": 9.0,
+    "dispersion_media_pct": 8.7,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -34,20 +34,11 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3601.79,
-        "dispersion_pct": 23.1,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
         "precio_min": 4553.85,
-        "precio_max": 5509.0,
-        "dispersion_pct": 21.0,
+        "precio_max": 5507.0,
+        "dispersion_pct": 20.9,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
@@ -81,18 +72,9 @@
       {
         "producto": "Crema para Batir 520 Ml La Serenisima",
         "categoria": "lacteos",
-        "precio_min": 7642.0,
+        "precio_min": 7645.0,
         "precio_max": 8500.0,
         "dispersion_pct": 11.2,
-        "mas_barata": "dia",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
-        "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
@@ -103,6 +85,15 @@
         "precio_max": 2750.0,
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -138,6 +129,15 @@
         "precio_min": 1109.0,
         "precio_max": 1200.0,
         "dispersion_pct": 8.2,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Pan de Molde Blanco Familiar 400 Grs Bimbo",
+        "categoria": "panificados",
+        "precio_min": 6020.0,
+        "precio_max": 6500.0,
+        "dispersion_pct": 8.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       }
