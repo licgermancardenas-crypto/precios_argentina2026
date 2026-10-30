@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-29T16:06:54+00:00",
+  "generado_utc": "2026-10-30T15:52:16+00:00",
   "dispersion": {
-    "fecha": "2026-10-29",
+    "fecha": "2026-10-30",
     "n_productos": 39,
-    "dispersion_media_pct": 8.9,
+    "dispersion_media_pct": 9.5,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -34,6 +34,15 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Leche Uat Serenisima 3 - 1 Lt",
+        "categoria": "lacteos",
+        "precio_min": 2269.0,
+        "precio_max": 3031.0,
+        "dispersion_pct": 33.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Huevos Blancos 30 Un",
         "categoria": "lacteos",
         "precio_min": 7490.0,
@@ -43,12 +52,21 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Lavandina Líquida 2 Lts Ayudín",
+        "categoria": "limpieza",
+        "precio_min": 2925.0,
+        "precio_max": 3601.79,
+        "dispersion_pct": 23.1,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
         "categoria": "limpieza",
-        "precio_min": 4553.85,
+        "precio_min": 4559.0,
         "precio_max": 5507.0,
-        "dispersion_pct": 20.9,
-        "mas_barata": "carrefour",
+        "dispersion_pct": 20.8,
+        "mas_barata": "dia",
         "mas_cara": "jumbo"
       },
       {
@@ -61,30 +79,12 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Gaseosa Cola Sabor Original 2.25 Lts Coca Cola",
-        "categoria": "bebidas",
-        "precio_min": 5100.0,
-        "precio_max": 6100.0,
-        "dispersion_pct": 19.6,
-        "mas_barata": "coto",
-        "mas_cara": "dia"
-      },
-      {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
         "categoria": "almacen",
         "precio_min": 94.9,
         "precio_max": 112.39,
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Crema para Batir 520 Ml La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 7645.0,
-        "precio_max": 8500.0,
-        "dispersion_pct": 11.2,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -115,21 +115,21 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
-        "categoria": "panificados",
-        "precio_min": 1515.38,
-        "precio_max": 1650.0,
-        "dispersion_pct": 8.9,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Shampoo Ceramidas 190 Ml Sedal",
         "categoria": "limpieza",
         "precio_min": 4273.99,
         "precio_max": 4650.0,
         "dispersion_pct": 8.8,
         "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
+        "categoria": "panificados",
+        "precio_min": 1519.0,
+        "precio_max": 1650.0,
+        "dispersion_pct": 8.6,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
