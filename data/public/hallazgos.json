@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-10-30T15:52:16+00:00",
+  "generado_utc": "2026-10-31T15:21:44+00:00",
   "dispersion": {
-    "fecha": "2026-10-30",
+    "fecha": "2026-10-31",
     "n_productos": 39,
-    "dispersion_media_pct": 9.5,
+    "dispersion_media_pct": 8.1,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -34,30 +34,12 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Leche Uat Serenisima 3 - 1 Lt",
-        "categoria": "lacteos",
-        "precio_min": 2269.0,
-        "precio_max": 3031.0,
-        "dispersion_pct": 33.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Huevos Blancos 30 Un",
         "categoria": "lacteos",
         "precio_min": 7490.0,
         "precio_max": 9300.0,
         "dispersion_pct": 24.2,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Lavandina Líquida 2 Lts Ayudín",
-        "categoria": "limpieza",
-        "precio_min": 2925.0,
-        "precio_max": 3601.79,
-        "dispersion_pct": 23.1,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -139,6 +121,24 @@
         "precio_max": 1200.0,
         "dispersion_pct": 8.2,
         "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Pan de Molde Blanco Familiar 400 Grs Bimbo",
+        "categoria": "panificados",
+        "precio_min": 6020.0,
+        "precio_max": 6500.0,
+        "dispersion_pct": 8.0,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Polenta Presto Pronta 490gr",
+        "categoria": "almacen",
+        "precio_min": 1768.0,
+        "precio_max": 1900.0,
+        "dispersion_pct": 7.5,
+        "mas_barata": "dia",
         "mas_cara": "jumbo"
       }
     ]
