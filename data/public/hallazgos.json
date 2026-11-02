@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-01T16:03:09+00:00",
+  "generado_utc": "2026-11-02T19:27:52+00:00",
   "dispersion": {
-    "fecha": "2026-11-01",
-    "n_productos": 38,
-    "dispersion_media_pct": 5.1,
+    "fecha": "2026-11-02",
+    "n_productos": 39,
+    "dispersion_media_pct": 8.2,
     "dispersion_maxima_pct": 39.1,
     "top": [
       {
@@ -14,6 +14,24 @@
         "dispersion_pct": 39.1,
         "mas_barata": "coto",
         "mas_cara": "dia"
+      },
+      {
+        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
+        "categoria": "almacen",
+        "precio_min": 7300.0,
+        "precio_max": 9809.0,
+        "dispersion_pct": 34.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "carrefour"
+      },
+      {
+        "producto": "Yerba Mate Ytacuá 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 1307.19,
+        "precio_max": 1756.78,
+        "dispersion_pct": 34.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
       },
       {
         "producto": "Huevos Blancos 30 Un",
@@ -52,21 +70,21 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
         "categoria": "limpieza",
         "precio_min": 3319.0,
         "precio_max": 3650.0,
         "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -88,7 +106,16 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Sal Fina en Paquete Celusal 500 Gr.",
+        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
+        "categoria": "panificados",
+        "precio_min": 1519.0,
+        "precio_max": 1650.0,
+        "dispersion_pct": 8.6,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Sal Fina Celusal 500 Gr.",
         "categoria": "almacen",
         "precio_min": 1650.0,
         "precio_max": 1790.0,
@@ -97,49 +124,22 @@
         "mas_cara": "dia"
       },
       {
-        "producto": "Crema para Batir 520 Ml La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 7945.0,
-        "precio_max": 8500.0,
-        "dispersion_pct": 7.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Yogur Desc Sancor Vida Frut Sachet 900g",
-        "categoria": "lacteos",
-        "precio_min": 3000.0,
-        "precio_max": 3125.0,
-        "dispersion_pct": 4.2,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
-      },
-      {
-        "producto": "Manteca Clásica 200 Grs La Serenisima",
-        "categoria": "lacteos",
-        "precio_min": 5010.0,
-        "precio_max": 5211.0,
-        "dispersion_pct": 4.0,
-        "mas_barata": "dia",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Café Molido 250 Grs La Virginia",
+        "producto": "Harina 000 1 Kg Morixe",
         "categoria": "almacen",
-        "precio_min": 9108.29,
-        "precio_max": 9452.0,
-        "dispersion_pct": 3.8,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
+        "precio_min": 1109.0,
+        "precio_max": 1200.0,
+        "dispersion_pct": 8.2,
+        "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
       },
       {
-        "producto": "Galletas Saladas Rex Traviata 96 Gr.",
+        "producto": "Pan de Molde Blanco Familiar 400 Grs Bimbo",
         "categoria": "panificados",
-        "precio_min": 1029.0,
-        "precio_max": 1063.0,
-        "dispersion_pct": 3.3,
+        "precio_min": 6020.0,
+        "precio_max": 6500.0,
+        "dispersion_pct": 8.0,
         "mas_barata": "carrefour",
-        "mas_cara": "dia"
+        "mas_cara": "jumbo"
       }
     ]
   },
@@ -159,13 +159,13 @@
     {
       "fecha": "2026-10-03",
       "tipo": "outlier",
-      "producto": "Puré De Tomate Arcor 520 Gr.",
+      "producto": "Puré de Tomate Clásico 520 Grs Arcor",
       "detalle": "Variación 54.4%: 790.0 → 1220.0"
     },
     {
       "fecha": "2026-10-03",
       "tipo": "outlier",
-      "producto": "Matarazzo Tallarín N°11 20 x 500 Gr.",
+      "producto": "Fideos Tallarín N°11 500 Grs Matarazzo",
       "detalle": "Variación 70.7%: 1230.0 → 2099.0"
     },
     {
