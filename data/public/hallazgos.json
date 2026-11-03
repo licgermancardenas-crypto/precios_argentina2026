@@ -1,29 +1,11 @@
 {
-  "generado_utc": "2026-11-02T19:27:52+00:00",
+  "generado_utc": "2026-11-03T17:04:41+00:00",
   "dispersion": {
-    "fecha": "2026-11-02",
+    "fecha": "2026-11-03",
     "n_productos": 39,
-    "dispersion_media_pct": 8.2,
-    "dispersion_maxima_pct": 39.1,
+    "dispersion_media_pct": 7.1,
+    "dispersion_maxima_pct": 34.4,
     "top": [
-      {
-        "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 3454.99,
-        "precio_max": 4805.0,
-        "dispersion_pct": 39.1,
-        "mas_barata": "coto",
-        "mas_cara": "dia"
-      },
-      {
-        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
-        "categoria": "almacen",
-        "precio_min": 7300.0,
-        "precio_max": 9809.0,
-        "dispersion_pct": 34.4,
-        "mas_barata": "jumbo",
-        "mas_cara": "carrefour"
-      },
       {
         "producto": "Yerba Mate Ytacuá 1 Kg",
         "categoria": "almacen",
@@ -34,13 +16,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 7490.0,
-        "precio_max": 9300.0,
-        "dispersion_pct": 24.2,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
+        "producto": "Lomo De Atún Libre De Gluten La Campagnola 300 Gr",
+        "categoria": "almacen",
+        "precio_min": 7300.0,
+        "precio_max": 9809.0,
+        "dispersion_pct": 34.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Detergente para Lavavajillas Ultra Limón 500 Ml Magistral",
@@ -61,11 +43,29 @@
         "mas_cara": "coto"
       },
       {
+        "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 3454.99,
+        "precio_max": 4100.0,
+        "dispersion_pct": 18.7,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
         "categoria": "almacen",
         "precio_min": 94.9,
         "precio_max": 112.39,
         "dispersion_pct": 18.4,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
@@ -76,15 +76,6 @@
         "precio_max": 3650.0,
         "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -115,15 +106,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Sal Fina Celusal 500 Gr.",
-        "categoria": "almacen",
-        "precio_min": 1650.0,
-        "precio_max": 1790.0,
-        "dispersion_pct": 8.5,
-        "mas_barata": "carrefour",
-        "mas_cara": "dia"
-      },
-      {
         "producto": "Harina 000 1 Kg Morixe",
         "categoria": "almacen",
         "precio_min": 1109.0,
@@ -140,6 +122,24 @@
         "dispersion_pct": 8.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Polenta Presto Pronta 490gr",
+        "categoria": "almacen",
+        "precio_min": 1768.0,
+        "precio_max": 1900.0,
+        "dispersion_pct": 7.5,
+        "mas_barata": "dia",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 9300.0,
+        "precio_max": 9990.0,
+        "dispersion_pct": 7.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
       }
     ]
   },
