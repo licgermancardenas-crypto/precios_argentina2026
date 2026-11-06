@@ -1,7 +1,7 @@
 {
-  "generado_utc": "2026-11-05T17:22:07+00:00",
+  "generado_utc": "2026-11-06T16:48:27+00:00",
   "dispersion": {
-    "fecha": "2026-11-05",
+    "fecha": "2026-11-06",
     "n_productos": 39,
     "dispersion_media_pct": 7.6,
     "dispersion_maxima_pct": 34.4,
@@ -58,7 +58,7 @@
         "precio_max": 4100.0,
         "dispersion_pct": 18.7,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Arvejas Secas Remojadas La Campagnola 320 Gr",
