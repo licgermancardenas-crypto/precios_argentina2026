@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-10T17:02:14+00:00",
+  "generado_utc": "2026-11-11T17:08:17+00:00",
   "dispersion": {
-    "fecha": "2026-11-10",
+    "fecha": "2026-11-11",
     "n_productos": 39,
-    "dispersion_media_pct": 7.3,
+    "dispersion_media_pct": 6.8,
     "dispersion_maxima_pct": 34.4,
     "top": [
       {
@@ -49,15 +49,6 @@
         "precio_max": 112.39,
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Mayonesa Liviana 475 Grs Hellmann's",
-        "categoria": "almacen",
-        "precio_min": 2800.0,
-        "precio_max": 3100.0,
-        "dispersion_pct": 10.7,
-        "mas_barata": "dia",
         "mas_cara": "jumbo"
       },
       {
@@ -115,15 +106,6 @@
         "mas_cara": "jumbo"
       },
       {
-        "producto": "Sal Fina Celusal 500 Gr.",
-        "categoria": "almacen",
-        "precio_min": 1650.0,
-        "precio_max": 1790.0,
-        "dispersion_pct": 8.5,
-        "mas_barata": "dia",
-        "mas_cara": "carrefour"
-      },
-      {
         "producto": "Harina 000 1 Kg Morixe",
         "categoria": "almacen",
         "precio_min": 1109.0,
@@ -140,6 +122,24 @@
         "dispersion_pct": 8.0,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Polenta Presto Pronta 490gr",
+        "categoria": "almacen",
+        "precio_min": 1768.0,
+        "precio_max": 1900.0,
+        "dispersion_pct": 7.5,
+        "mas_barata": "dia",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 9300.0,
+        "precio_max": 9990.0,
+        "dispersion_pct": 7.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
       }
     ]
   },
