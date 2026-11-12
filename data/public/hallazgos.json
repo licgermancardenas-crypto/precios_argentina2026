@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-11T17:08:17+00:00",
+  "generado_utc": "2026-11-12T17:36:34+00:00",
   "dispersion": {
-    "fecha": "2026-11-11",
+    "fecha": "2026-11-12",
     "n_productos": 39,
-    "dispersion_media_pct": 6.8,
+    "dispersion_media_pct": 7.4,
     "dispersion_maxima_pct": 34.4,
     "top": [
       {
@@ -25,13 +25,13 @@
         "mas_cara": "carrefour"
       },
       {
-        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
-        "categoria": "limpieza",
-        "precio_min": 4699.0,
-        "precio_max": 5617.99,
-        "dispersion_pct": 19.6,
-        "mas_barata": "carrefour",
-        "mas_cara": "coto"
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 6990.0,
+        "precio_max": 9300.0,
+        "dispersion_pct": 33.0,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
       },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
@@ -50,6 +50,15 @@
         "dispersion_pct": 18.4,
         "mas_barata": "coto",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
+        "categoria": "limpieza",
+        "precio_min": 4850.0,
+        "precio_max": 5617.99,
+        "dispersion_pct": 15.8,
+        "mas_barata": "dia",
+        "mas_cara": "coto"
       },
       {
         "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
@@ -84,7 +93,7 @@
         "precio_min": 1619.0,
         "precio_max": 1762.0,
         "dispersion_pct": 8.8,
-        "mas_barata": "carrefour",
+        "mas_barata": "dia",
         "mas_cara": "jumbo"
       },
       {
@@ -131,15 +140,6 @@
         "dispersion_pct": 7.5,
         "mas_barata": "dia",
         "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 9300.0,
-        "precio_max": 9990.0,
-        "dispersion_pct": 7.4,
-        "mas_barata": "jumbo",
-        "mas_cara": "coto"
       }
     ]
   },
@@ -213,7 +213,7 @@
     {
       "fecha": "2026-07-26",
       "tipo": "cambio_presentacion",
-      "producto": "Jugo en Polvo Sabor Naranja Dulce 15 Grs Tang",
+      "producto": "Jugo En Polvo Tang Naranja Dulce 15gr",
       "detalle": "Contenido: 1.0 → 100.0 unidad"
     }
   ]
