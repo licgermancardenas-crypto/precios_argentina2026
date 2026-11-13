@@ -1,7 +1,7 @@
 {
-  "generado_utc": "2026-11-12T17:36:31+00:00",
+  "generado_utc": "2026-11-13T17:11:19+00:00",
   "serie": "indice_canasta_total",
-  "dias_historia": 117,
+  "dias_historia": 118,
   "dias_necesarios": 30,
   "horizonte_dias": 14,
   "historia": [
@@ -472,6 +472,10 @@
     {
       "fecha": "2026-11-12",
       "indice": 106.19
+    },
+    {
+      "fecha": "2026-11-13",
+      "indice": 106.47
     }
   ],
   "anomalias": [
@@ -508,88 +512,88 @@
   ],
   "forecast": [
     {
-      "fecha": "2026-11-13",
-      "yhat": 107.27,
-      "yhat_lower": 106.56,
-      "yhat_upper": 108.01
-    },
-    {
       "fecha": "2026-11-14",
-      "yhat": 107.26,
-      "yhat_lower": 106.57,
-      "yhat_upper": 108.02
+      "yhat": 107.15,
+      "yhat_lower": 106.46,
+      "yhat_upper": 107.92
     },
     {
       "fecha": "2026-11-15",
-      "yhat": 107.29,
-      "yhat_lower": 106.6,
-      "yhat_upper": 108.05
+      "yhat": 107.18,
+      "yhat_lower": 106.5,
+      "yhat_upper": 107.91
     },
     {
       "fecha": "2026-11-16",
-      "yhat": 107.36,
-      "yhat_lower": 106.62,
-      "yhat_upper": 108.08
+      "yhat": 107.25,
+      "yhat_lower": 106.51,
+      "yhat_upper": 108.0
     },
     {
       "fecha": "2026-11-17",
-      "yhat": 108.09,
-      "yhat_lower": 107.36,
-      "yhat_upper": 108.84
+      "yhat": 107.97,
+      "yhat_lower": 107.22,
+      "yhat_upper": 108.66
     },
     {
       "fecha": "2026-11-18",
-      "yhat": 108.17,
-      "yhat_lower": 107.42,
-      "yhat_upper": 108.95
+      "yhat": 108.05,
+      "yhat_lower": 107.3,
+      "yhat_upper": 108.8
     },
     {
       "fecha": "2026-11-19",
-      "yhat": 107.76,
-      "yhat_lower": 106.98,
-      "yhat_upper": 108.44
+      "yhat": 107.61,
+      "yhat_lower": 106.84,
+      "yhat_upper": 108.39
     },
     {
       "fecha": "2026-11-20",
-      "yhat": 107.82,
-      "yhat_lower": 107.04,
-      "yhat_upper": 108.63
+      "yhat": 107.64,
+      "yhat_lower": 106.89,
+      "yhat_upper": 108.41
     },
     {
       "fecha": "2026-11-21",
-      "yhat": 107.81,
-      "yhat_lower": 107.06,
-      "yhat_upper": 108.64
+      "yhat": 107.66,
+      "yhat_lower": 106.83,
+      "yhat_upper": 108.48
     },
     {
       "fecha": "2026-11-22",
-      "yhat": 107.85,
-      "yhat_lower": 107.08,
-      "yhat_upper": 108.72
+      "yhat": 107.69,
+      "yhat_lower": 106.8,
+      "yhat_upper": 108.45
     },
     {
       "fecha": "2026-11-23",
-      "yhat": 107.92,
-      "yhat_lower": 107.08,
-      "yhat_upper": 108.84
+      "yhat": 107.76,
+      "yhat_lower": 106.89,
+      "yhat_upper": 108.6
     },
     {
       "fecha": "2026-11-24",
-      "yhat": 108.64,
-      "yhat_lower": 107.76,
-      "yhat_upper": 109.59
+      "yhat": 108.49,
+      "yhat_lower": 107.64,
+      "yhat_upper": 109.37
     },
     {
       "fecha": "2026-11-25",
-      "yhat": 108.73,
-      "yhat_lower": 107.81,
-      "yhat_upper": 109.68
+      "yhat": 108.57,
+      "yhat_lower": 107.57,
+      "yhat_upper": 109.42
     },
     {
       "fecha": "2026-11-26",
-      "yhat": 108.31,
-      "yhat_lower": 107.35,
-      "yhat_upper": 109.29
+      "yhat": 108.13,
+      "yhat_lower": 107.21,
+      "yhat_upper": 109.09
+    },
+    {
+      "fecha": "2026-11-27",
+      "yhat": 108.16,
+      "yhat_lower": 107.2,
+      "yhat_upper": 109.15
     }
   ],
   "estado": "ok"
