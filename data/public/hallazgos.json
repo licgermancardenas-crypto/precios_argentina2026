@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-13T17:11:23+00:00",
+  "generado_utc": "2026-11-14T15:49:26+00:00",
   "dispersion": {
-    "fecha": "2026-11-13",
+    "fecha": "2026-11-14",
     "n_productos": 39,
-    "dispersion_media_pct": 7.4,
+    "dispersion_media_pct": 7.3,
     "dispersion_maxima_pct": 34.4,
     "top": [
       {
@@ -183,13 +183,13 @@
     {
       "fecha": "2026-08-27",
       "tipo": "outlier",
-      "producto": "Cerveza Rubia 1 Lts Quilmes",
+      "producto": "Cerveza Quilmes Clasica 1lt Ret",
       "detalle": "Variación 400.0%: 916.0 → 4580.0"
     },
     {
       "fecha": "2026-08-19",
       "tipo": "outlier",
-      "producto": "Cerveza Rubia 1 Lts Quilmes",
+      "producto": "Cerveza Quilmes Clasica 1lt Ret",
       "detalle": "Variación 80.0%: 4580.0 → 916.0"
     },
     {

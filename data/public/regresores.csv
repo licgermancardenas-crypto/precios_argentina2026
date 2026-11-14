@@ -113,6 +113,7 @@ fecha,serie,valor
 2026-08-31,dolar_oficial,1530.0
 2026-09-01,dolar_blue,1555.0
 2026-09-01,dolar_oficial,1535.0
+2026-09-01,ipc,12514.1508
 2026-09-02,dolar_blue,1545.0
 2026-09-02,dolar_oficial,1535.0
 2026-09-03,dolar_blue,1540.0
@@ -173,6 +174,7 @@ fecha,serie,valor
 2026-09-30,dolar_oficial,1540.0
 2026-10-01,dolar_blue,1555.0
 2026-10-01,dolar_oficial,1545.0
+2026-10-01,ipc,12785.9321
 2026-10-02,dolar_blue,1555.0
 2026-10-02,dolar_oficial,1545.0
 2026-10-03,dolar_blue,1560.0
@@ -259,3 +261,5 @@ fecha,serie,valor
 2026-11-12,dolar_oficial,1570.0
 2026-11-13,dolar_blue,1570.0
 2026-11-13,dolar_oficial,1570.0
+2026-11-14,dolar_blue,1575.0
+2026-11-14,dolar_oficial,1570.0
