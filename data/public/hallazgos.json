@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-16T19:34:31+00:00",
+  "generado_utc": "2026-11-17T18:27:52+00:00",
   "dispersion": {
-    "fecha": "2026-11-16",
+    "fecha": "2026-11-17",
     "n_productos": 39,
-    "dispersion_media_pct": 7.3,
+    "dispersion_media_pct": 6.6,
     "dispersion_maxima_pct": 34.4,
     "top": [
       {
@@ -23,15 +23,6 @@
         "dispersion_pct": 34.4,
         "mas_barata": "jumbo",
         "mas_cara": "carrefour"
-      },
-      {
-        "producto": "Huevos Blancos 30 Un",
-        "categoria": "lacteos",
-        "precio_min": 6990.0,
-        "precio_max": 9300.0,
-        "dispersion_pct": 33.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
       },
       {
         "producto": "Rollo de Cocina Doble Hoja x 3 Un Elite",
@@ -140,6 +131,15 @@
         "dispersion_pct": 7.5,
         "mas_barata": "dia",
         "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 9300.0,
+        "precio_max": 9990.0,
+        "dispersion_pct": 7.4,
+        "mas_barata": "jumbo",
+        "mas_cara": "coto"
       }
     ]
   },
