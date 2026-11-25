@@ -1,10 +1,10 @@
 {
-  "generado_utc": "2026-11-24T20:11:52+00:00",
+  "generado_utc": "2026-11-25T19:11:37+00:00",
   "nota": "El IPC oficial de INDEC se publica con ~6 semanas de rezago; la Canasta Atlas mide el mes en curso en tiempo real (nowcast).",
   "mes_en_curso": {
     "mes": "2026-11",
     "estado": "parcial",
-    "dias_observados": 24,
+    "dias_observados": 25,
     "desde": "2026-11-01",
     "var_canasta_pct": 1.21
   },

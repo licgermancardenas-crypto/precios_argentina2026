@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-24T20:11:53+00:00",
+  "generado_utc": "2026-11-25T19:11:37+00:00",
   "dispersion": {
-    "fecha": "2026-11-24",
+    "fecha": "2026-11-25",
     "n_productos": 39,
-    "dispersion_media_pct": 8.1,
+    "dispersion_media_pct": 7.9,
     "dispersion_maxima_pct": 53.9,
     "top": [
       {
@@ -99,7 +99,7 @@
       {
         "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
         "categoria": "panificados",
-        "precio_min": 1519.0,
+        "precio_min": 1518.67,
         "precio_max": 1650.0,
         "dispersion_pct": 8.6,
         "mas_barata": "carrefour",
@@ -165,7 +165,7 @@
     {
       "fecha": "2026-10-03",
       "tipo": "outlier",
-      "producto": "Puré de Tomate Clásico 520 Grs Arcor",
+      "producto": "Pure De Tomate Arcor X 520 Gr",
       "detalle": "Variación 54.4%: 790.0 → 1220.0"
     },
     {
