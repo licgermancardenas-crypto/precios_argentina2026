@@ -1,9 +1,9 @@
 {
-  "generado_utc": "2026-11-25T19:11:37+00:00",
+  "generado_utc": "2026-11-26T19:03:01+00:00",
   "dispersion": {
-    "fecha": "2026-11-25",
+    "fecha": "2026-11-26",
     "n_productos": 39,
-    "dispersion_media_pct": 7.9,
+    "dispersion_media_pct": 8.0,
     "dispersion_maxima_pct": 53.9,
     "top": [
       {
@@ -52,6 +52,15 @@
         "mas_cara": "jumbo"
       },
       {
+        "producto": "Huevos Blancos 30 Un",
+        "categoria": "lacteos",
+        "precio_min": 7990.0,
+        "precio_max": 9300.0,
+        "dispersion_pct": 16.4,
+        "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
         "producto": "Papel Higiénico Ultra Suave Doble Hoja 30 Mts x 4 Un Elite",
         "categoria": "limpieza",
         "precio_min": 4850.0,
@@ -61,21 +70,21 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
-        "categoria": "almacen",
-        "precio_min": 2500.0,
-        "precio_max": 2750.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
         "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
         "categoria": "limpieza",
         "precio_min": 3319.0,
         "precio_max": 3650.0,
         "dispersion_pct": 10.0,
         "mas_barata": "carrefour",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
+        "categoria": "almacen",
+        "precio_min": 2500.0,
+        "precio_max": 2750.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "coto",
         "mas_cara": "jumbo"
       },
       {
@@ -94,15 +103,6 @@
         "precio_max": 4650.0,
         "dispersion_pct": 8.8,
         "mas_barata": "coto",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Bizcochos de Grasa Clásicos 200 Grs 9 De Oro",
-        "categoria": "panificados",
-        "precio_min": 1518.67,
-        "precio_max": 1650.0,
-        "dispersion_pct": 8.6,
-        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
