@@ -1,7 +1,7 @@
 {
-  "generado_utc": "2026-11-26T19:03:01+00:00",
+  "generado_utc": "2026-11-27T18:55:19+00:00",
   "dispersion": {
-    "fecha": "2026-11-26",
+    "fecha": "2026-11-27",
     "n_productos": 39,
     "dispersion_media_pct": 8.0,
     "dispersion_maxima_pct": 53.9,
@@ -70,13 +70,13 @@
         "mas_cara": "coto"
       },
       {
-        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
-        "categoria": "limpieza",
-        "precio_min": 3319.0,
-        "precio_max": 3650.0,
-        "dispersion_pct": 10.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
+        "producto": "Azúcar Molida 1 Kg Ledesma",
+        "categoria": "almacen",
+        "precio_min": 1635.0,
+        "precio_max": 1800.0,
+        "dispersion_pct": 10.1,
+        "mas_barata": "dia",
+        "mas_cara": "carrefour"
       },
       {
         "producto": "Arroz Largo Fino Molinos Ala 1 Kg",
@@ -85,6 +85,15 @@
         "precio_max": 2750.0,
         "dispersion_pct": 10.0,
         "mas_barata": "coto",
+        "mas_cara": "jumbo"
+      },
+      {
+        "producto": "Jabon En Polvo Ala Matic Dual Con Bicarbonato",
+        "categoria": "limpieza",
+        "precio_min": 3319.0,
+        "precio_max": 3650.0,
+        "dispersion_pct": 10.0,
+        "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
       {
@@ -120,15 +129,6 @@
         "precio_min": 6020.0,
         "precio_max": 6500.0,
         "dispersion_pct": 8.0,
-        "mas_barata": "carrefour",
-        "mas_cara": "jumbo"
-      },
-      {
-        "producto": "Azúcar Molida 1 Kg Ledesma",
-        "categoria": "almacen",
-        "precio_min": 1635.0,
-        "precio_max": 1762.0,
-        "dispersion_pct": 7.8,
         "mas_barata": "carrefour",
         "mas_cara": "jumbo"
       },
